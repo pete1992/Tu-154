@@ -152,6 +152,7 @@ function private.callCallbackForAllLayers(name, isForward, arg)
     private.callCallback(name, popups, isForward, arg)
     private.callCallback(name, panel, isForward, arg)
     private.callCallback(name, contextWindows, isForward, arg)
+    private.callCallback(name, avionicsDevices, isForward, arg)
 end
 
 -------------------------------------------------------------------------------
@@ -195,6 +196,7 @@ function update()
     panel:update()
     popups:update()
     contextWindows:update()
+    avionicsDevices:update()
 end
 
 -------------------------------------------------------------------------------
@@ -254,6 +256,7 @@ function onPlaneCrash()
         end
         private.callCallback('onPlaneCrash', popups, false)
         private.callCallback('onPlaneCrash', contextWindows, false)
+        private.callCallback('onPlaneCrash', avionicsDevices, false)
     end
     return needReload
 end
