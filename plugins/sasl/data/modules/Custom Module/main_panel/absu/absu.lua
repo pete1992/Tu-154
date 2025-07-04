@@ -258,9 +258,16 @@ show_gns = globalPropertyi("tu154ce/anim/show_gns")
 show_RXP = globalPropertyi("tu154ce/anim/RXP")
 
 
--- RXP
-RXP_course = globalPropertyf("sim/cockpit/radios/gps_course_degtm") -- курс ЛЗП от КЛН
-RXP_dev = globalPropertyf("RXP/radios/indicators/gps_cross_track_nm") -- отклонение от ЛЗП, мили
+
+-- RXP 
+if findDataRef("RXP/radios/gps_course_degtm") then
+    defineProperty("RXP_course", globalPropertyf("RXP/radios/gps_course_degtm")) -- course to active GPS waypoint (from KLN)
+end
+
+if findDataRef("RXP/radios/indicators/gps_cross_track_nm") then
+    defineProperty("RXP_dev", globalPropertyf("RXP/radios/indicators/gps_cross_track_nm")) -- deviation from GPS course line, in nautical miles
+end
+
 
 -- GNS
 GNS430_dtk = globalPropertyf("tu154ce/SC/GNS430_dtk") -- курс на ГНС
