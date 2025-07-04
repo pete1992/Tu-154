@@ -29,11 +29,11 @@ defineProperty("have_pedals", globalPropertyi("tu154ce/have_pedals"))
 defineProperty("show_gns", globalPropertyi("tu154ce/anim/show_gns"))
 defineProperty("show_RXP",globalPropertyi("tu154ce/anim/RXP"))
 
-defineProperty("pnp_1_crs", globalPropertyi("tu154ce/gauges/compas/pkp_obs_set_L"))
-defineProperty("pnp_2_crs", globalPropertyi("tu154ce/gauges/compas/pkp_obs_set_R"))
+defineProperty("pnp_1_crs", globalPropertyf("tu154ce/gauges/compas/pkp_obs_set_L"))
+defineProperty("pnp_2_crs", globalPropertyf("tu154ce/gauges/compas/pkp_obs_set_R"))
 
-defineProperty("pnp_1_obs", globalPropertyi("tu154ce/gauges/compas/pkp_helper_course_L"))
-defineProperty("pnp_2_obs", globalPropertyi("tu154ce/gauges/compas/pkp_helper_course_R"))
+defineProperty("pnp_1_obs", globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_L"))
+defineProperty("pnp_2_obs", globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_R"))
 
 defineProperty("ark_1_channel", globalPropertyi("tu154ce/switchers/ovhd/ark_1_channel"))
 defineProperty("ark_1_hundr_left", globalPropertyi("tu154ce/switchers/ovhd/ark_1_hundr_left"))

@@ -1,0 +1,1605 @@
+TU154CE/Save_STATE_ENABLED INT is the preservation of the state of the aircraft 1
+TU154CE/Reset_State in Aircraft Status 0
+TU154CE/Save_State int. Forced preservation of the state of the aircraft 0
+
+TU154CE/Hardware_cockPit Int Theircraft is prepared for iron cockpit 0
+
+TU154CE/Time/Frame_time Float The time between the frames. When scrolling back, does not take a negative value. at FPS less than 10 - sets the frame time = 0.1 0.1
+TU154CE/Anim/Cargo_1 Float position of the luggage door 1. 0 - closed, 1 - open 0
+TU154CE/Anim/Cargo_2 Float position of the luggage door 2. 0 - closed, 1 - open 0
+TU154CE/Anim/APU_DOORS FLOAT Position of the APU sample. 0 - closed, 1 - open.	0
+TU154CE/Anim/PAX_DOOR_1 FLOAT POSSIBLE PASS PASS 0 doors 0
+TU154CE/Anim/PAX_DOOR_2 FLOAT Position of the middle passage of doors 0
+TU154CE/Anim/PAX_DOOR_3 FLOAT Position of the right emergency doors 0
+TU154CE/Anim/LG/Front_POS FLOAT Position of the anterior rack of the chassis 1
+TU154CE/Anim/LG/Front_defl Float Lamorezer Front strut 0
+TU154CE/Anim/LG/Front_turn Float turn of the front rack 0
+TU154CE/Anim/LG/Main_Pos_left Float position of the left main rack. 0-1 - release, 1+ - subsidence of ammortizer 1
+TU154CE/Anim/LG/Main_ROT_LEFT FLOAT Turn the left cart on the ground 0
+TU154CE/Anim/LG/Main_Pos_Right Float position of the right main rack. 0-1 - release, 1+ - subsidence of ammortizer 1
+TU154CE/Anim/LG/Main_rot_Right Float Turn of the right cart on the ground 0
+TU154CE/Anim/Light_open_left Float release of the left headlight 0
+TU154CE/Anim/Light_open_Right Float Release Farah 0
+TU154CE/Anim/SPD_BRK_INN_LEFT FLOAT Position of the left internal speedbreak 0
+TU154CE/Anim/SPD_BRK_inn_Right float position of the right inner speed -bore 0
+TU154CE/Anim/Wing_flx_left Float angle of bending of the left wing. Positive values ​​- bending up 0
+TU154CE/Anim/Wing_FLX_Right Float angle of bending of the right wing. Positive values ​​- bending up 0
+TU154CE/Anim/Rudder_anim Float angle of rotation of the steering wheel for animation. Its physical model will turn to a smaller angle during reverse.	0
+TU154CE/Anim/Elev_anim_l Float angle of rotation of the steering wheel height 0
+TU154CE/Anim/Elev_anim_r Float angle of rotation of the steering wheel height 0
+TU154CE/Anim/COCKPIT_DOOR FLOAT Opening the door to the cabin 0
+TU154CE/Anim/COCKPIT_TABLE_1 FLOAT tables on pilots 0 seats 0
+TU154CE/Anim/Cockpit_table_2 Float tables on pilots 0
+TU154CE/Anim/COCKPIT_VENT_1 FLOAT Turning angle 0
+TU154CE/Anim/COCKPIT_VENT_2 FLOAT Turning angle of fan 0
+TU154CE/Anim/COCKPIT_VENT_3 FLOAT Turning angle of fan 0
+TU154CE/Anim/Cockpit_window_left Float Opening the window 0
+TU154CE/Anim/Cockpit_window_Right Float Opening the window 0
+
+TU154CE/Anim/Show_GNS Int on the plane installed GNS430 instead of KLN 1
+TU154CE/Anim/RXP Ints installed in the system RXP 0
+TU154CE/Anim/Show_yokes Ints visible to the helmsman 1
+TU154CE/Anim/Show_Chairs intis whether chairs are visible 1
+TU154CE/Anim/Rise_Chair_arm_l Float Raise the handle of the chair 0
+TU154CE/Anim/Rise_Chair_arm_r Float Raise the handle of the chair 0
+TU154CE/Anim/Table_up_l int lift tables 0
+TU154CE/Anim/Table_up_r in Raise tables 0
+
+TU154CE/Anim/GPU_PRESENT Ints is present 0
+TU154CE/Anim/GPU_WORK FLOAT RAP works. Raising the exhaust cover 0
+
+TU154CE/Anim/Ground_Stuff_angle Float Correction of the Tangazh angle for technology 0
+
+TU154CE/Anim/Window_ice_1 Float ice level on glass 0
+TU154CE/Anim/Window_ice_2 Float ice level on glass 0
+TU154CE/Anim/Window_ice_3 Float ice level on glass 0
+TU154CE/Anim/Window_ice_4 Float Ice level on other glasses 0
+
+TU154CE/Anim/Gear_blocks int installation of chassis blocks 0
+TU154CE/Anim/Sensors_caps int installation of sensors 0 covers
+TU154CE/Anim/Engine_caps in installation of engines cover 0
+
+TU154CE/Anim/Ladder_1 Float Trape. 500 - hidden. +50..0 - drives up, 0 - stands near the cholelet, 0 ..- 50 - 500 leaves
+TU154CE/Anim/Ladder_2 Float Trape 500
+TU154CE/Anim/Catering Float kitchen 500
+TU154CE/Anim/Fuel_tanker Float Tasper 500
+
+TU154CE/Anim/Ladder_1_call int 1 drive up, 0 - leave 0
+TU154CE/Anim/Ladder_2_call intlet 0
+TU154CE/Anim/Catering_call int kitchen 0
+TU154CE/Anim/Fuel_tanker_call inte refueler 0
+
+TU154CE/Anim/Reverse_mid Float position of the general manipulator of reverse 0
+
+TU154CE/Buttons/CLOCK_24_LEFT Ints Left button of 24-hour hours. 0 - squeezed, 1 - pressed (applies to all buttons) 0
+TU154CE/Buttons/CLOCK_24_Right Intra 24-hour hours 0
+TU154CE/GAUGES/CLOCK_24_HOURS FLOAT CASTROY ARRICAL 0
+TU154CE/GAUGES/CLOCK_24_MINS FLOAT MINOT ARR
+TU154CE/GAUGES/CLOCK_24_RED FLOAT Red Strelka 0
+
+TU154CE/switchers/spu_1_power int  -1 - network 2, 0 - off, 1 - network 1 1
+TU154CE/Switchers/Spu_1_Mode inte switch of modes through the KVS. 0 - radio, 1 - after 0
+TU154CE/Switchers/Spu_1_Source Ints Source Sources on the KVS 0
+TU154CE/SWITCHERS/SPU_2_Power inte power switch to 2P 1
+TU154CE/SWITCHERS/SPU_2_MODE Ints Switch of modes 2P 0
+TU154CE/SWITCHERS/SPU_2_SOURCE Ints Sources Sources on DRU 2P 0
+TU154CE/Switchers/Spu_3_Power int
+TU154CE/SWITCHERS/SPU_3_MODE Ints Switch of modes award 0
+TU154CE/SWITCHERS/SPU_3_SOURCE Ints Sources Sources for STR 0
+TU154CE/switchers/spu_4_power int
+TU154CE/SWITCHERS/SPU_4_MODE Ints OUT STAMME
+TU154CE/SWITCHERS/SPU_4_SOURCE Ints Source Sources on Bi 0
+
+TU154CE/Lights/MID_PANEL_INT_SET_SET Int regulator of the front panel of the KVS 3
+TU154CE/Lights/Left_panel_int_Set Int regulator of the built -in lighting left panel 3
+TU154CE/Lights/Right_panel_int_Set Int regulator of the built -in lighting of the right panel 3
+TU154CE/Lights/MID_Right_PANEL_INT_SEET Ints built -in lighting front panel 2P 3
+TU154CE/Lights/Ovhd_panel_int_set Int regulator of the top panel 3
+TU154CE/Lights/Left_panel_flood_Set Float regulator of the brightness of the pouring light of the left panel 0.3
+TU154CE/Lights/Right_panel_flood_Set Float regulator of the brightness of the pouring light with the right panel 0.3
+TU154CE/Lights/MID_PANEL_FLOOD_SET FLOAT The brightness regulator of the pouring light of the central panel 0.3
+TU154CE/LIGHTS/FRONT_PANEL_FLOOD_SET FLOAT Regulator of the brightness of the filling light front panel 0.3
+TU154CE/Lights/Ovhd_front_panel_flood_Set Float regulator of the brightness of the full beam of the front of the front of the top 0.3
+TU154CE/LIGHTS/OVHD_BACK_PANEL_FLOOD_SET FLOAT A brightness regulator of a pouring light in the back of the Overhead 0.3
+TU154CE/LIGHTS/Eng_PANEL_FLOOD_SET FLOAT Regulator of brightness brightness panel 0.3
+TU154CE/Lights/Cabinl_flood_Set Ints switch of cabin 0
+TU154CE/Lights/AZS_PANEL_FLOOD_SET Ints switch Panel AZS 0
+TU154CE/Lights/Day_night_Set Ints switch Day - Night. 0 - day, 1 - night. The brightness of signal lamps muffles.	0
+TU154CE/Lights/Cargo_Light_1_Set Int switch of the cargo compartment 0
+TU154CE/Lights/Cargo_Light_2_Set Int switch of the cargo compartment 0
+TU154CE/LIGHTS/Tech_Light_Set Int switch of the technical compartment 0
+TU154CE/Lights/Gear_nacelle_Light_Set Int switch Gondol chassis 0
+TU154CE/Lights/Cabin_2D_Light Float brightness 2D backlight in the salon 0
+
+TU154CE/LIGHTS/NAV_LIGHTS_SET Ints switch 1
+TU154CE/Lights/Strobe_Set Ints switch strobes of light 1
+TU154CE/Lights/Wing_Light_left_Set int
+TU154CE/Lights/Wing_Light_Right_Set int
+TU154CE/Lights/Tail_Light_Set Ints switch of tail 1
+TU154CE/Lights/Wing_Light_left int
+TU154CE/LIGHTS/WING_LIGHT_RIGHT int expense wing rights 0
+TU154CE/Lights/Tail_Light in tail back 0
+
+TU154CE/Lights/Landing_ext_Set_L int release head Lion 0
+TU154CE/Lights/Landing_ext_Set_r Int release headlights 0
+TU154CE/Lights/Landing_mode_Set_L Ints headlight Leo. -1 - steering wheel, 0 - off, +1 - landing 0
+TU154CE/Lights/Landing_Mode_Set_R Ints FLASM Rights Rights 0
+TU154CE/Lights/Light_SIGNAL_SET int signal in flight 0
+
+TU154CE/CONTROLLS/NOSEWHEEL_LEVER FLOAT Object Ring of the front leg 0
+TU154CE/CONTROLLS/YOKE_PITCH FLOAT TOUNT OF HOUSE TO TAN to Tangazh 0
+TU154CE/CONTROLLS/YOKE_ROLL FLOAT TOUNT OF THE SHOL
+TU154CE/Controlls/Pedals Float pedaling 0
+TU154CE/CONTROLLS/Brake_L FLOAT Brake Pedal Lion 0
+TU154CE/CONTROLLS/Brake_R FLOAT Brake Pedal Rights 0
+TU154CE/CONTROLLS/Brake_emerg Float Emergency brake 0
+TU154CE/CONTROLLS/BRAKE_MERG_L FLOAT Emergency brake Leo 0
+TU154CE/Controlls/Brake_emerg_r Float Emergency brake of rights 0
+TU154CE/Controlls/Spoilers_lever Float interceptor lever 0
+TU154CE/Controlls/Throttle_1 Float Rud 1 0
+TU154CE/Controlls/Throttle_2 Float Rud 2 0
+TU154CE/Controlls/Throttle_3 Float Rud 3 0
+TU154CE/Controlls/Throttle_1_eng Float Rud 1 bi 0
+TU154CE/Controlls/Throttle_2_eng Float Rud 2 bi 0
+TU154CE/Controlls/Throttle_3_eng Float Rud 3 bi 0
+TU154CE/CONTROLLS/Revers_L FLOAT Obel Reverses Lion 0
+TU154CE/Controlls/Revers_r Float Right Right Rights 0
+TU154CE/Controlls/Fuel_cutoff_1 Float Out of fire crane 1 0
+TU154CE/CONTROLLLS/FUEL_CUTOFF_2 FLOAT Out of fire crane 2 0
+TU154CE/CONTROLLS/FUL_CUTOFF_3 FLOAT Object Obel 3 0
+TU154CE/Controlls/Throttle_Lock Float RUDA 0
+TU154CE/CONTROLL/PARKING_BRAKE int
+TU154CE/CONTROLL/EMERG_GEAR_EXT int
+TU154CE/CONTROLL/FLAPS_LAVER FLOAT OPEN OPEN OPEN. 0-45 0
+TU154CE/CONTROLL/GEAR_LERUT HANDE OF OPEN OF CHASNA. -1 - cleaning, 0 - neuter, +1 - issue 0
+TU154CE/CONTROLL/ELEV_TRimm_Switcher int -1 - diving, 0 - neuter, +1 Capurning 0
+
+
+
+TU154CE/CONTROLL/STAB_MAN_CAP Ints Control of Stabilizer 0
+TU154CE/CONTROLL/STAB_MANUAL Ints manual melting with a stabilizer. 0 - Neutr, +1 - Capurning 0
+TU154CE/Controll/Stab_Setting Ints Center for Stab. 0 - h, 1 - s, 2 - n 1
+TU154CE/Controll/AIL_TRimm_SW Ints switch Eleron
+TU154CE/CONTROLL/RUDD_TRIMM_SW Ints switch pH 0
+TU154CE/CONTROLL/CONTR_FORCE_CAP int
+TU154CE/CONTROLL/CONTR_FORCE_SET Ints switch RV pH. -1 - flight, 0 cars, +1 - take -off -landing 0
+
+TU154CE/Switchers/NOSEWHEEL_TURN_ENABLE Ints switch of the front rack at the helm 1
+TU154CE/Switchers/NOSEWHEEL_TURN_SEL Ints switch angle of rotation of the front rack. 0 - 10, 1 - 63 0
+TU154CE/Switchers/NOSEWHEEL_TURN_CAP int
+TU154CE/SWITCHERS/SLAT_MAN int manual control of datingrals. -1 - cleaning, 0 off, +1 - issue 0
+TU154CE/SWITCHERS/SLAT_MAN_CAP int
+TU154CE/Switchers/FLAPS_SEL Int selection of shutters operating modes. -1 - off, 0 - AUT, +1 - manual 0
+TU154CE/SWITCHERS/FLAPS_SEL_CAP int
+TU154CE/SWITCHERS/GEARS_RETR_LOCK int locking chassis 0
+TU154CE/Switchers/GEARS_RETR_LOCK_CAP int covering chassis 0
+TU154CE/SWITCHERS/GEARS_EXT_3GS Int release of the chassis from 3GS 0
+TU154CE/Switchers/GEARARS_EXT_3GS_CAP Ints Channel Oss
+
+TU154CE/GAUGES/ACS1/Left_knob_Press int left watch ACS1 KVS 0
+TU154CE/GAUGES/ACS1/Right_knob_Press intra Right clock button ACHS1 kVS 0
+TU154CE/GAUGES/ACS1/Needle_Hours float Office ACHS1 kVS 0
+TU154CE/GAUGES/ACS1/Needle_mins Float Minute arrow AChS1 kVS 0
+TU154CE/GAUGES/ACS1/NEEDLE_SECS FLOATA Second Arrow AChS1 kVS 0
+TU154CE/GAUGES/ACS1/Flag_pos inte red and white flag ACHS1 kVS. -1 - white, 0 - white -red, +1 - red 0
+TU154CE/GAUGES/ACS1/Flight_Timer_HOURS FLOAT OF THE TIMENTRY ORTICAL ORTICA
+TU154CE/GAUGES/ACS1/Flight_Timer_mins Float Permanent Room Arrow 0
+TU154CE/GAUGES/ACS1/Stopwatch_mins Float Minute arrow of the stopwatch 0
+
+TU154CE/GAUGES/ACS2/Left_KNOB_PRESS int left watch ACHS1 2P 0
+TU154CE/GAUGES/ACS2/Right_knob_Press inte right watch button ACHS1 2P 0
+TU154CE/GAUGES/ACS2/Needle_HOURS FLOAT OF ACHS1 2P 0
+TU154CE/GAUGES/ACS2/NEEDLE_MINS FLOAT MINOTRY ACHS1 2P 0
+TU154CE/GAUGES/ACS2/NEEDLE_SECS FLOATA Second Arrow AChS1 2P 0
+TU154CE/GAUGES/ACS2/Flag_pos inte red and white flag ACHS1 2P 0
+TU154CE/GAUGES/ACS2/Flight_Timer_HOURS FLOAT OF THE SAME ORTION OF THE TIMEMENT 0
+TU154CE/GAUGES/ACS2/Flight_Timer_mins Float Permanent Room Arrow 0
+TU154CE/GAUGES/ACS2/Stopwatch_mins Float Minute shooter of a stopwatch 0
+
+TU154CE/GAUGES/ACS3/Left_KNOB_PRESS int left watch ACHS1 Bi 0
+TU154CE/GAUGES/ACS3/Right_knob_Press intra -right watch button ACHS1 BI 0
+TU154CE/GAUGES/ACS3/NEEDLE_HOURS FLOAT OF ACHS1 BI 0
+TU154CE/GAUGES/ACS3/NEEDLE_MINS FLOAT MINOTRY ACHS1 BI 0
+TU154CE/GAUGES/ACS3/NEEDLE_SECS FLOATA Second Arrow AChS1 Bi 0
+TU154CE/GAUGES/ACS3/Flag_pos inte red and white flag ACHS1 BI 0
+TU154CE/GAUGES/ACS3/Flight_Timer_HOURS FLOAT OF THE TIMETARY ORDER FOOD 0
+TU154CE/GAUGES/ACS3/Flight_Timer_mins Float Permanent Room Arrow 0
+TU154CE/GAUGES/ACS3/Stopwatch_mins Float Minute shooter stopwood 0
+
+TU154CE/GAUGES/Speed/Kus_ias_left Float Devices for KUS730 kVS 0
+TU154CE/GAUGES/SPEED/KUS_TAS_LEFT FLOAT True speed for KUS730 kVS 0
+TU154CE/GAUGES/SPEED/KUS_AS_RIIT FLOATA DALITURE OF COMPLE OF KUS730 2P 0
+TU154CE/GAUGES/SPEED/KUS_TAS_Right FLOAT True speed for KUS730 2P 0
+TU154CE/GAUGES/SPEED/KUS_AS_eng FLOAT DISURE OPEN OF COMPA
+TU154CE/GAUGES/SPEED/KUS_TAS_ENG FLOAT True speed for KUS730 BI 0
+TU154CE/GAUGES/SPEED/IAS_LEFT FLOAT DEMPLE COURE COMM
+TU154CE/GAUGES/SPEED/IAS_YILLOLOLOFT FLOATE Yellow marker on the velocity of the KVS 0
+TU154CE/GAUGES/SPEED/IAS_RIGHT FLOAT DAWN SPIRITION 2P 0
+TU154CE/GAUGES/SPEED/IAS_YYLLOLOLOLOLOW_RIIT FLOATE Yellow marker on speed indoditor 2p 0
+TU154CE/GAUGES/SPEED/MACH_LEFT FLOAT Speed ​​Mach KVS 0
+TU154CE/GAUGES/SPEED/MACH_RIGHT FLOAT Speed ​​Mach 2p 0
+TU154CE/GAUGES/SPEED/Speed_MID_NEEDLE FLOAT ARRICTION ORITER ONE Speed ​​in Center 0
+TU154CE/GAUGES/SPEED/Speed_MID_FLAG INT Speed ​​indicator flag in the center 0 - Put, 1 - Put 0
+
+TU154CE/GAUGES/ALT/VAR75 FLOAT SIRITEMENT 75 kVS 0
+TU154CE/GAUGES/ALT/VAR30 FLOAT Subeometer 30 bi 0
+TU154CE/GAUGES/ALT/Radioalt_needle_left Float Radio Highlight of the KVS 0
+TU154CE/GAUGES/ALT/RADIOALT_DH_LEFT FLOAT ARD Radio Highlight of the KVS 0
+TU154CE/GAUGES/ALT/Radioalt_flag_left Float Flag of the KVS Radio -Helpers 0
+TU154CE/GAUGES/ALT/Radioalt_button_left Int button Test Radio -Helpers KVS 0
+TU154CE/GAUGES/ALT/RADIOOLT_NEEDLE_RIIT FLOOT Radio -Helder 2P 0
+TU154CE/GAUGES/ALT/Radioalt_DH_Right FLOAT ARRICE Radio Highlight 2P 0
+TU154CE/GAUGES/ALT/Radioalt_Flag_Right Float flag of radio -highlight 2p 0
+TU154CE/GAUGES/ALT/Radioalt_button_Right int
+
+TU154CE/GAUGES/ALT/UVID_NEEDLE_LEFT FLOAT ARRICTION HEALTOR See KVS 0
+TU154CE/GAUGES/ALT/UVID_FEET_COUNTER FLOATE PEACE BECTION FUTI
+TU154CE/GAUGES/ALT/UVID_HUNDREADS_COUNTER FLOOT BAST CAST HR FUTS 0
+TU154CE/GAUGES/ALT/UVID_THOUSANDS_COUNTER FLOOT TOME TOME TOME TOME.	0
+TU154CE/GAUGES/ALT/UVID_TENS_THOUSANDS_COUNTER FLOAT A BAST BASTEN TEAM TOLD TO thousand feet.	0
+TU154CE/GAUGES/ALT/UVID_Pressure_KNOB FLOATE Pressure settings 1013
+TU154CE/GAUGES/ALT/UVID_Pressure_ONE FLOAT Pressure units 3
+TU154CE/GAUGES/ALT/UVID_Pressure_TEN FLOAT Tens of pressure 1
+TU154CE/GAUGES/ALT/UVID_Pressure_HUND FLOAT Hundreds of pressure 0
+TU154CE/GAUGES/ALT/UVID_Pressure_THOUS FLOOT thousand pressure 1
+
+TU154CE/GAUGES/ALT/VD15_ALT_LEFT FLOAT VD15 kVS 0
+TU154CE/GAUGES/ALT/VD15_TRI_NEEDLE_LEFT FLOAT Correction Arrow on VD15 kVS 0
+TU154CE/GAUGES/ALT/VD15_Pressure_left Float pressure on VD15 kVS 760
+
+TU154CE/GAUGES/ALT/VD15_ALT_RIGHT FLOAT VD15 2P 0
+TU154CE/GAUGES/ALT/VD15_TRI_NEEDLE_RIGHT FLOAT Correction Arrow on VD15 2p 0
+TU154CE/GAUGES/ALT/VD15_Pressure_Right FLOAT A pressure on VD15 2P 760
+
+TU154CE/GAUGES/ALT/VD15_ALT_ENG FLOAT VD15 BI 0
+TU154CE/GAUGES/ALT/VD15_TRI_NEEDLE_ENG FLOAT Correction Arrow on VD15 Bi 0
+TU154CE/GAUGES/ALT/VD15_Pressure_eng Float pressure on VD15 BI 760
+
+TU154CE/GAUGES/ALT/VBE_LT_LEFT FLOAT Higher VBE Lyu 0
+TU154CE/GAUGES/ALT/VBE_Press_LEFT Int pressure on VBE Lev 1013
+TU154CE/GAUGES/ALT/VBE_BRT_LEFT FLOAT The brightness on VBE Levi 0.7
+TU154CE/GAUGES/ALT/VBE_Press_KNOB_LEFT int
+TU154CE/GAUGES/ALT/VBE_FL_KNOB_LEFT int
+TU154CE/GAUGES/ALT/VBE_MODE_BUT_LEFT Ints for choosing modes on VBE Levi 0
+TU154CE/GAUGES/ALT/VBE_MODE_LEFT Int mode
+TU154CE/GAUGES/ALT/VBE_STD_LEFT Ints inclusion of standard pressure 0
+
+TU154CE/GAUGES/ALT/VBE_ALT_RIGHT FLOAT Higher Rights Rights Rights 0
+TU154CE/GAUGES/ALT/VBE_Press_Right Int pressure on VBE Rights 1013
+TU154CE/GAUGES/ALT/VBE_BRT_RIGHT FLOAT The brightness on VBE Rights 0.7
+TU154CE/GAUGES/ALT/VBE_Press_KNOB_RIGHT int
+TU154CE/GAUGES/ALT/VBE_FL_KNOB_RIIT int
+TU154CE/GAUGES/ALT/VBE_MODE_BUT_RIRIT Ints for choosing modes on VBE Rights 0
+TU154CE/GAUGES/ALT/VBE_MODE_RIGHT Ints on VBE Rights 0
+TU154CE/GAUGES/ALT/VBE_STD_RIGHT Ints inclusion of standard pressure 0
+
+TU154CE/GAUGES/VSI/VSI_BRT_LEFT FLOAT The brightness of the screen VSI 0.7
+TU154CE/GAUGES/VSI/VSI_BRT_RIGHT FLOAT The brightness of the screen VSI 0.7
+
+TU154CE/GAUGES/Compass/Radiocomp_Scale_left Float scale on the radio compass of the KVS 0
+TU154CE/GAUGES/Compass/Bearing_1_left Float ORIKIC ORDER 1 Radio Compass of the KVS 0
+TU154CE/GAUGES/Compass/Bearing_2_left Float ORIKARY 2 radio compass kVS 0
+TU154CE/GAUGES/Compass/SOURCE_1_SWITCH_LEFT Intshore Radio COMPASE KVS. 0 - empty, 1 - ARK1, 2 - ARK2, 3 - Vor1, 4 - Vor2, 5 - RSBN 1
+TU154CE/GAUGES/Compass/SOURCE_2_SWITCH_LEFT Intshore 2 Radio COPAS KVS 2
+
+TU154CE/GAUGES/Compass/RADIOCOMP_SCALE_RIGHT FLOATE STARLE OF A Radio Compass 2P 0
+TU154CE/GAUGES/Compass/Bearing_1_Right FLOAT ARRICAL ORDER 1 Radio Compass 2p 0
+TU154CE/GAUGES/Compass/Bearing_2_Right FLOAT ARRICTION ORDER 2 Radio Compass 2P 0
+TU154CE/GAUGES/Compass/SOURCE_1_SWITCH_RIGHT Intshore Radio 2P Radio 2P. 0 - empty, 1 - ARK1, 2 - ARK2, 3 - Vor1, 4 - Vor2, 5 - RSBN 1
+TU154CE/GAUGES/Compass/SOURCE_2_SWITCH_RIGHT Ints Radio 2P 2P 2P 2P 2P 2P 2P 2P
+
+TU154CE/GAUGES/Compass/BIG_KNOB FLOAT Turn Ruski ZK on a large compass 0
+TU154CE/Gaugs/Compass/Big_course_needle Float Strelka "Airplane" 0
+TU154CE/Gaugs/Compass/Big_True_course_needle Float Strelka PU 0
+TU154CE/GAUGES/Compass/BIG_TRI_NEEDLE FLOAT Triangular Strelka 0
+
+TU154CE/GAUGES/Compass/PKP_Gyro_course_L Float Course of the Gyroscope of the PKP KVS 0
+TU154CE/GAUGES/Compass/PKP_OBS_L FLOAT Flight Course on the KVS PKP 0
+TU154CE/GAUGES/Compass/PKP_helper_course_L FLOATA Termanvoka course with a yellow arrow on the PKP KVS 0
+TU154CE/GAUGES/Compass/PKP_SLip_angle_L Float angle of demolition on the KVS PKP 0
+TU154CE/GAUGES/Compass/PKP_course_PLANK_L FLOAT Course plank PKP KVS + Deviation of the Planck to the right 0
+TU154CE/GAUGES/Compas/PKP_GS_PLANK_L FLOAT GLISSADE PLANT PKP CVS + Deviation of the Service up 0
+TU154CE/GAUGES/Compas/PKP_course_Flag_L int flag of the course of the course bar 0
+TU154CE/GAUGES/Compass/PKP_GS_FLAG_L int flag of the glidgrack refusal 0
+TU154CE/GAUGES/Compass/PKP_Main_Flag_L int flag of the course of the course 0
+TU154CE/GAUGES/Compas/PKP_OBS_FLAG_L int flag of the course of the course of the course 0
+TU154CE/GAUGES/Compass/PKP_OBS_ONE_L FLOAT Course counter. units 0
+TU154CE/GAUGES/Compas/PKP_OBS_TEN_L FLOAT Course counter. tens of 0
+TU154CE/GAUGES/Compass/PKP_OBS_HUNDR_L FLOAT Counter Counter. hundreds 0
+TU154CE/GAUGES/Compass/PKP_OBS_KNOB_L FLOAT PEN NAMP
+TU154CE/GAUGES/Compass/PKP_OBS_SET_L FLOAT PNP 0
+
+TU154CE/GAUGES/Compass/PKP_Gyro_course_r Float Course of the gyroscope PKP 2P 0
+TU154CE/GAUGES/Compass/PKP_OBS_R FLOAT Flight Course on PKP 2P 0
+TU154CE/GAUGES/Compass/PKP_helper_course_r Float Trantan Course with a yellow arrow on PKP 2P 0
+TU154CE/GAUGES/Compass/PKP_SLip_angle_r Float angle of demolition on PKP 2p 0
+TU154CE/GAUGES/Compass/PKP_course_PLANK_R FLOAT Course PMC PKP 2P + Deviation of the Planck to the right 0
+TU154CE/GAUGES/Compas/PKP_GS_PLANK_R FLOAT GLISSARY PLACE PKP 2P + Deviation of the Plank up 0
+TU154CE/GAUGES/Compass/PKP_course_Flag_r in the Flag of the terminal bar 0
+TU154CE/GAUGES/Compass/PKP_GS_FLAG_R INT flag of the glidgrack refusal 0
+TU154CE/GAUGES/Compass/PKP_Main_Flag_r int flag of the course of the course 0
+TU154CE/GAUGES/Compas/PKP_OBS_FLAG_R INT Flag of the course of the course 0
+TU154CE/GAUGES/Compass/PKP_OBS_ONE_R FLOAT Course counter. units 0
+TU154CE/GAUGES/Compass/PKP_OBS_TEN_R FLOAT Course counter. tens of 0
+TU154CE/GAUGES/Compass/PKP_OBS_HUNDR_R FLOAT Course counter. hundreds 0
+TU154CE/GAUGES/Compass/PKP_OBS_KNOB_R FLOAT PEN OF SELIVERY OF CU
+TU154CE/GAUGES/Compass/PKP_OBS_SET_R FLOAT Course PNP 0
+
+TU154CE/GAUGES/AHZ/ROLL_L FLOAT Kren on the AGD KVS + to the right 0
+TU154CE/GAUGES/AHZ/Pitch_L FLOAT Tangazh on AGD kVS + nose up 0
+TU154CE/Gauges/AHZ/DIR_ROLL_L FLOAT Director of the Kren AGD CVS + to the right 0
+TU154CE/Gauges/AHZ/DIR_PIL_L FLOAT Director
+TU154CE/GAUGES/AHZ/COURSE_PLANK_L FLOAT Course Planck AGD CVS + to the right 0
+TU154CE/gauges/AHZ/GS_PLANK_L FLOAT GLISSARY PROSDENT AGD CVS + Up 0
+TU154CE/Gauges/AHZ/Speed_PLANK_L FLOAT Change in the velocity of the KVS + Up 0
+TU154CE/Gauges/AHZ/Pitch_corr_L FLOAT Correction of Tangaa on AGD KVS + to the right 0
+TU154CE/Gauges/AHZ/AHZ_FLAG_L int flag refusal AGD KVS 0
+TU154CE/GAUGES/AHZ/DIR_ROLL_FLAG_L INT Flag of Kren Kren KVS 0
+TU154CE/Gauges/AHZ/DIR_PITCH_FLAG_L INT Flag of the Director of the Director
+
+TU154CE/GAUGES/AHZ/Roll_R FLOAT Kren on AGD 2P + to the right 0
+TU154CE/Gauges/AHZ/Pitch_R FLOAT Tangazh on AGD 2p + nose up 0
+TU154CE/Gauges/AHZ/DIR_ROLL_R FLOAT Director of the Kren AGD 2P + to the right 0
+TU154CE/Gauges/AHZ/DIR_PIF_R FLOAT Director
+TU154CE/GAUGES/AHZ/COURSE_PLANK_R FLOAT Course Planck AGD 2P + in right 0
+TU154CE/GAUGES/AHZ/GS_PLANK_R FLOAT GLISSARY STRARY AGD 2P + Up 0
+TU154CE/Gauges/AHZ/Speed_PLANK_R FLOAT Change in the speed of AGD 2P + Up 0
+TU154CE/Gauges/AHZ/Pitch_corr_R FLOAT Correction of Tangaa on AGD 2P + to the right 0
+TU154CE/Gauges/AHZ/AHZ_FLAG_R INT Flag refusal AGD KVS 0
+TU154CE/GAUGES/AHZ/DIR_ROLL_FLAG_R INT Flag of the refusal of the director of the Kren KVS 0
+TU154CE/GAUGES/AHZ/DIR_PIF_FLAG_R INT Flag of Director of the Director
+
+TU154CE/GAUGES/AHZ/Roll_C FLOAT Kren on AGR + in the right 0
+TU154CE/GAUGES/AHZ/Pitch_C FLOAT Tangazh on agr + nose up 0
+TU154CE/Gauges/AHZ/Pitch_corr_C FLOAT Correction of the Tanga Correction on AGR + to the right 0
+TU154CE/GAUGES/AHZ/AHZ_FLAG_C INT Flag AGR 0
+
+TU154CE/GAUGES/MISC/AOA_ind Float indicator of the angle of attack 0
+TU154CE/GAUGES/MISC/AOA_Sector FLOATE Sector of the Apartia angle indicator 0
+TU154CE/GAUGES/MISC/GFORCE_Iind FLOAT Obload indicator 0
+TU154CE/GAUGES/MISC/GFORCE_MAX FLOAT indicator Max Overload 0
+TU154CE/GAUGES/MISC/GFORCE_MIN FLOAT indicator Min overload 0
+TU154CE/Buttons/MISC/GFORCE_RESET Int button for resetting arrows maximum overload 0
+
+TU154CE/GAUGES/Engine/RPM_LOW_1 FLOAT Turning Turbine Low Pressure No. 1 0
+TU154CE/GAUGES/Engine/RPM_LOW_2 FLOAT Turning Turbine Low Pressure No. 2 0
+TU154CE/GAUGES/Engine/RPM_LOW_3 FLOAT Turning Turbine Low Pressure No. 3 0
+TU154CE/GAUGES/Engine/RPM_HIGH_1 FLOAT Turning Turbine High Pressure No. 1 0
+TU154CE/GAUGES/Engine/RPM_HIGH_2 FLOAT Turning Turbine High Pressure No. 2 0
+TU154CE/GAUGES/Engine/RPM_HIGH_3 FLOAT Turning Turbine High Pressure No. 3 0
+
+TU154CE/GAUGES/MISC/Stab_ind Float position indicator Stub 0
+TU154CE/GAUGES/MISC/Elevator_ind Float RV position indicator 0
+TU154CE/GAUGES/MISC/FLAP_LEFT_IIND FLOATA indicator of the left flavor position 0
+TU154CE/GAUGES/MISC/FLAP_Right_ind Float Right shuttle position indicator 0
+
+TU154CE/SWITCHERS/ZK_SELECT Ints "Entry ZK" on the front panel. 0 Lev, 1-right 0
+TU154CE/SWITCHERS/NAV_SELECT Ints NVU -SNS 0 - NVU, 1 - SNS 0
+TU154CE/Switchers/VBE_SELECT Ints Cluffer VBE. 0 Lev, 1-right 0
+
+TU154CE/GAUGES/HYDRO/Pressure_ind_1 Float Dressing Dresser 1 0
+TU154CE/GAUGES/HYDRO/Pressure_ind_2 Float Dressing Dresser 2 0
+TU154CE/GAUGES/HYDRO/Pressure_ind_3 Float Dressing System 3 0
+TU154CE/GAUGES/HYDRO/Pressure_ind_emerg Float indicator of emergency braking pressure 0
+
+TU154CE/GAUGES/MISC/Thermo_outside Float indicator of temperature overboard 0
+TU154CE/GAUGES/MISC/TURN_RATE_IIND FLOATA Dress indicator 0
+TU154CE/GAUGES/MISC/SLIP_Rate_ind Float Sliding indicator 0
+
+TU154CE/GAUGES/MISC/RUDDER_POS_IIND FLOATA DO OF PRODUCTION PH 0
+TU154CE/GAUGES/MISC/AILERON_POS_IIND FLOATA indicator of the Elerona position 0
+TU154CE/GAUGES/MISC/Elevator_pos_ind Float RV position indicator 0
+
+TU154CE/GAUGES/MISC/FUEL_FRONT_IIND FLOAT A fuel indicator on the front panel 0
+TU154CE/Buttons/Misc/Fuel_front_zero Ints the fuel indicator on the front panel.
+TU154CE/Buttons/Misc/Fuel_front_max Ints the fuel indicator on the front panel. Max cap 0
+
+TU154CE/GAUGES/MISC/RSBN_AZIMuth_ind Float Azimuth RSBN 0
+TU154CE/GAUGES/MISC/RSBN_DISTANCE_KM FLOAT ARSBN 0
+TU154CE/GAUGES/MISC/RSBN_KM_ONE FLOAT POBARASHIC units KM 0
+TU154CE/GAUGES/MISC/RSBN_KM_TEN FLOAT POBARART ABOUT THE TELLOM KM 0
+TU154CE/GAUGES/MISC/RSBN_KM_HUN FLOAT POBARARCH COME Km 0
+
+TU154CE/GAUGES/MISC/Compass_Big_NEEDLE FLOAT Long -handed arrow on compass 2p 0
+TU154CE/GAUGES/MISC/Compas_Small_NEEDLE FLOAT A short arrow on compass 2p 0
+TU154CE/GAUGES/MISC/Compas_knob Float Truck on Compass 2p 0
+
+TU154CE/GAUGES/MISC/DISS_ABS_ANGLE_1 FLOAT POBAGASHIC of units of angle 1
+TU154CE/GAUGES/MISC/DISS_ABS_ANGLE_10 FLOAT POBABAGART AT A TOMAL ORGEMENT 2
+TU154CE/GAUGES/MISC/DISS_ABS_ANGLE_100 FLOAT POBARDOCH HRR
+TU154CE/GAUGES/MISC/DISS_PLUS_NGLE_1 FLOAT POBAGART ONE ORGETH 0
+TU154CE/GAUGES/MISC/DISS_PLUS_ANGLE_10 FLOAT POBABABABART AT A TOMAL ORGEL 0
+TU154CE/GAUGES/MISC/DISS_MINUS_ANGLE_1 FLOAT POBAGART ONE ORGETH 0
+TU154CE/GAUGES/MISC/DISS_MINUS_ANGLE_10 FLOATE Tenses
+TU154CE/GAUGES/MISC/DISS_WIND_SPD_1 FLOAT POBAGARACHIC of wind speed 0
+TU154CE/GAUGES/MISC/DISS_WIND_SPD_10 FLOAT POBABABABABARY Tens of wind speed 0
+TU154CE/GAUGES/MISC/DISS_WIND_SPD_100 FLOAT POBEL HRS HIGHTS OPEN 0
+
+TU154CE/Switchers/Ovhd/Var_left Int. Var Lev 1
+TU154CE/Switchers/Ovhd/Var_Right Int. Var Rights 1
+TU154CE/Switchers/Ovhd/Uvid_on Ints switch see 1
+TU154CE/Switchers/Ovhd/auasp_on int. Auasas 1
+TU154CE/Switchers/Ovhd/auasp_contr int. Auas control 0
+TU154CE/Switchers/Ovhd/Eup_on Ints switch EUP 1
+TU154CE/Switchers/OVHD/AGR_ON Ints switch AGR 1
+TU154CE/Switchers/OVHD/BKK_CONTR_CAP int
+TU154CE/Switchers/OVHD/BKK_CONTR Ints control BKK. -1 - 2, 0 - off, +1 - 1 0
+TU154CE/Switchers/OVHD/BKK_on_cap int
+TU154CE/Switchers/OVHD/BKK_on Ints switch BKK 1
+TU154CE/switchers/ovhd/sau_stu_on int.
+TU154CE/switchers/ovhd/sau_stu_cap int
+TU154CE/switchers/ovhd/pkp_left_cap in vene PKP Lev 0
+TU154CE/Switchers/OVHD/PKP_LAFT_ON Ints PKP Lev 1
+TU154CE/Switchers/Ovhd/PKP_Right_cap in PKP Cover Rights 0
+TU154CE/Switchers/OVHD/PKP_Right_on Ints Rights Rights 1
+TU154CE/switchers/ovhd/mgv_contr_cap int control mGV cover 0
+TU154CE/Switchers/OVHD/Mgv_contr Ints control of mgV 1
+TU154CE/Switchers/OVHD/TKS_on_1 Ints switch TKS 1 1 1 1
+TU154CE/Switchers/OVHD/TKS_on_2 Ints switch Ts 2 1 1 1
+TU154CE/Switchers/OVHD/TKS_HEAT int heating ha 0
+TU154CE/Switchers/OVHD/TKS_corr_1 Intor Correction BGMK 2 - 1 1
+TU154CE/Switchers/OVHD/TKS_corr_2 Int. Correction of BGMK 2 - 2 1
+TU154CE/switchers/ovhd/curs_pnp_mode_1 int mode PNP course. 0 - GMK, 1 - GPK 1
+TU154CE/Switchers/OVHD/Curs_pnp_mode_2 int mode PNP course. 0 - GMK, 1 - GPK 1
+TU154CE/buttons/ovhd/svs_contr inte button SVS control 0
+TU154CE/Switchers/OVHD/SVS_on Ints circuit breaker 1
+TU154CE/Switchers/OVHD/SVS_HEAT int heating SVS 1
+TU154CE/Switchers/OVHD/KLN_on Ints switch Kln 1
+
+TU154CE/Switchers/OVHD/TCAS_ON Ints switch TCAS 1
+TU154CE/Switchers/Ovhd/emerg_lyight_cap int
+TU154CE/Switchers/OVHD/Emerg_Light_on int. Emergency lighting 0
+TU154CE/Switchers/OVHD/VBE_1_on Ints 1 1 1 1 1
+TU154CE/Switchers/OVHD/VBE_2_on int 2 1 1 1
+TU154CE/Switchers/OVHD/Curs_np_on_1 Ints Course MP 1 1
+TU154CE/Switchers/Ovhd/Curs_np_on_2 Ints Course MP 2 1
+TU154CE/Switchers/OVHD/TRA_67_on Ints 67 1
+TU154CE/buttons/ovhd/tks_signal_Off in Removing the TKS signal lock 0
+TU154CE/Switchers/OVHD/RSBN_on Ints Power 1
+TU154CE/Switchers/OVHD/RSBN_RECON in RSBN ISSECTION 1
+TU154CE/Switchers/OVHD/RV5_1_on Int RV5 1 1 1 1
+TU154CE/Switchers/OVHD/RV5_2_on int RV5 2 1 1 1
+TU154CE/Switchers/OVHD/VHF_1_on Int.
+TU154CE/Switchers/OVHD/VHF_2_on int 2 1 1 1
+TU154CE/Switchers/OVHD/Stabil_GA_MAIN Ints Stabilization of GA on the roll 1
+TU154CE/Switchers/OVHD/Stabil_GA_Reserv Ints Stabilization GA Reserve 1
+TU154CE/Switchers/OVHD/Micron_1_on Ints micron 1 1 1 1
+TU154CE/Switchers/OVHD/Micron_2_on Ints micron 2 1 1 1
+TU154CE/Switchers/Ovhd/Spu_on Ints 1
+TU154CE/Switchers/OVHD/SGS_on Ints SGS 1
+TU154CE/Switchers/OVHD/SD75_1_on Ints SD75 1 1 1 1 1
+TU154CE/Switchers/OVHD/SD75_2_on Ints SD75 2 1 1 1
+TU154CE/Switchers/Ovhd/Mars_on Ints Mars 1
+
+TU154CE/Switchers/Ovhd/Diss_on Ints disse 1
+TU154CE/Switchers/OVHD/Diss_Mode inte trans. 0 - sea, 1 - land 1
+TU154CE/Switchers/OVHD/NVU_calc_Set Int Culption. -1 - DISS control in flight, 0 - NVU on SVS, 1 - NVU according to Diss 1
+
+TU154CE/Switchers/OVHD/Vent_1 Ints KVS fan 0
+TU154CE/Switchers/OVHD/Vent_2 Ints Fan 2p 0
+TU154CE/Switchers/OVHD/Vent_3 Ints Fan Bi 0
+
+TU154CE/Switchers/OVHD/Sign_belts Int to be fastened with belts 1
+TU154CE/Switchers/Ovhd/Sign_nosmoke int transpent not smoking 1
+TU154CE/Switchers/OVHD/Sign_Exit int transparence exit 0
+
+TU154CE/Switchers/OVHD/Window_heat_1 int heating glasses. -1 - weak, 0 - off, 1 - strong -1
+TU154CE/Switchers/OVHD/Window_heat_2 int heating glasses. -1 - weak, 0 - off, 1 - strong -1
+TU154CE/Switchers/OVHD/Window_HEAT_3 Ints heating glasses. -1 - weak, 0 - off, 1 - strong -1
+TU154CE/Switchers/Ovhd/Pitot_heat_1 int heating PPD Lev 1
+TU154CE/Switchers/Ovhd/Pitot_heat_2 int heating PPD Rights 1
+TU154CE/Switchers/Ovhd/Pitot_heat_3 Ints heating PPD Absu 1
+
+TU154CE/Switchers/OVHD/ARM406 Ints ARM 406 1
+TU154CE/Switchers/OVHD/USHDB_MODE_1 IntB and DAY 1. 0 - Ark, 1 - Vor 0
+TU154CE/Switchers/OVHD/USHDB_MODE_2 int heating PPD 0
+
+TU154CE/Switchers/OVHD/EGPWS_ALARM_1 Int Thelarm SRPBZ total 1
+TU154CE/Switchers/OVHD/EGPWS_ALARM_2 Int Thelarm SRPBZ 1
+TU154CE/Switchers/OVHD/EGPWS_ALARM_1_CAP int Thelarm SRPBZ total 0
+TU154CE/Switchers/OVHD/EGPWS_ALARM_2_CAP int Thelarm SRPBZ 0
+TU154CE/Switchers/OVHD/EGPWS_RELIEF Int relief 1
+TU154CE/Switchers/OVHD/EGPWS_MODE Int QNH - QFE 0
+TU154CE/Buttons/OVHD/EGPWS_Control intra CRPBZ control button
+TU154CE/Buttons/OVHD/EGPWS_CONTR_GS int control SRPBZ GLISSADA 0
+
+TU154CE/Buttons/Ovhd/RSBN_Control_STROBE Ints control strobe RSBN 0
+TU154CE/buttons/ovhd/rsbn_control_azimuth int control of zero Azimut RSBN 0
+TU154CE/buttons/ovhd/rsbn_control_distance int control of zero RSBN 0
+TU154CE/Buttons/Ovhd/RSBN_CH_TEN Ints installation of dozens of canal 0
+TU154CE/buttons/ovhd/rsbn_ch_one int
+
+TU154CE/Switchers/Ovhd/Transponder_mode in the defendant mode. 0 Obt, 1 Goth, 2 RSP, 3 ATC, 4 ATC-M, 5 AS, 6 A. 	0
+TU154CE/Buttons/OVHD/Transponder_control Ints control 0 button
+TU154CE/Buttons/OVHD/Transponder_sign Ints Besday 0
+TU154CE/Buttons/Ovhd/Transponder_but_1 Ints 1 0
+TU154CE/Buttons/OVHD/Transponder_but_2 Ints 2 0
+TU154CE/Buttons/Ovhd/Transponder_but_3 Ints 3 0
+TU154CE/Buttons/OVHD/Transponder_but_4 Ints 4 0
+TU154CE/Buttons/OVHD/Transponder_emerg Ints Accident
+TU154CE/Buttons/Ovhd/Transponder_emerg_cap in the accident button 0
+
+TU154CE/Switchers/OVHD/TKS_MODE Int mode TKS 0 - MK, 1 - CCP, 2 - AK 1
+TU154CE/Switchers/OVHD/TKS_MODE_LEFT in the left GA mode. 0 - counter, 1 - OSN 1
+TU154CE/Switchers/OVHD/TKS_MODE_RIGHT in the right ha 1
+TU154CE/Switchers/OVHD/TKS_lat_Mode int mode of latitude installation mode. 0 - Auto, 1 - Ruchn 1
+TU154CE/Switchers/OVHD/TKS_COURSE_SET Ints Course 0
+TU154CE/Buttons/OVHD/TKS_Corrrrrrrrrrrrrrrrrrrrrrrrrrrrrrome Inter Conservation button 0
+TU154CE/ROTARY/OVHD/TKS_LAT_SET FLOAT PETTRICTION OF REALTION OF RESPECTIONS 45
+
+TU154CE/Switchers/OVHD/Ark_1_Mode Int mode Ark 1 0 - DECH, 1 - Comp, 2 - ANT, 3 - Ram 1
+TU154CE/Switchers/OVHD/Ark_1_Channel Ints Channel Arc 1 1 1 1
+TU154CE/Switchers/OVHD/Ark_1_hundr_left Ints hundreds of frequencies 1 - 17 1
+TU154CE/Switchers/OVHD/Ark_1_Tens_left Ints of the Frequencies 1 - 10 (0) 1
+TU154CE/Switchers/Ovhd/Ark_1_ones_left int units of frequency 0 - 9 0
+TU154CE/Switchers/Ovhd/Ark_1_hundr_Right Ints hundreds of frequencies 1 - 17 1
+TU154CE/Switchers/Ovhd/Ark_1_Tens_Right Int dozens of frequency 1 - 10 (0) 1
+TU154CE/Switchers/OVHD/Ark_1_ones_Right int units of frequency 0 - 9 0
+TU154CE/Buttons/Ovhd/Ark_1_ramka Ints Frame 0
+
+TU154CE/Switchers/OVHD/Ark_2_Mode int mode arc 2 1 1 1
+TU154CE/Switchers/OVHD/Ark_2_Channel Ints Channel ARK 2 1 1 1
+TU154CE/Switchers/Ovhd/Ark_2_hundr_left Ints hundreds of frequencies 1 - 17 1
+TU154CE/Switchers/OVHD/Ark_2_Tens_left Ints of the Frequencies 1 - 10 (0) 1
+TU154CE/Switchers/Ovhd/Ark_2_ones_left int units of frequency 0 - 9 0
+TU154CE/Switchers/OVHD/Ark_2_hundr_Right Ints Hundreds of Frequencies 1 - 17 1
+TU154CE/Switchers/OVHD/Ark_2_Tens_Right Ints ten frequency 1 - 10 (0) 1
+TU154CE/Switchers/OVHD/Ark_2_ones_Right int unit frequency 0 - 9 0
+TU154CE/Buttons/Ovhd/Ark_2_ramka Ints Frame 0
+
+TU154CE/Switchers/OVHD/SP50_MODE Int mode SP50. 0 - ILS, 1 - KATET, 2 - SP -50 0
+TU154CE/Switchers/OVHD/SP50_NAV_MODE int mode SP50. Planting - route 0
+TU154CE/Switchers/OVHD/SP50_Night_DAY INT SP50 mode. Night - day 1
+TU154CE/Switchers/OVHD/SP50_DME_RSBN Int mode SP50. DME - RSBN 0
+
+TU154CE/ROTARY/OVHD/VHF_1_LEFT Ints Left Cool Radio 0
+TU154CE/ROTARY/OVHD/VHF_1_Right Intra Radio Twallows 0
+TU154CE/ROTARY/OVHD/VHF_2_LEFT Ints Left Cool Radio 0
+TU154CE/ROTARY/OVHD/VHF_2_Right Int.
+
+TU154CE/Switchers/NAV_1_MODE Ints Nav1. Capture - Vor -Dme 1
+TU154CE/SWITCHERS/NAV_1_MAN_AUTO in manual mode - automatic 0
+TU154CE/SWITCHERS/NAV_1_MILE_KM Int mode Miles - km 1
+TU154CE/ROTARY/OVHD/NAV_1_LEFT Ints Twit 0
+TU154CE/ROTARY/OVHD/NAV_1_Right Ints Cool 0
+TU154CE/buttons/ovhd/nav_1_but_1 int button 1 0
+TU154CE/buttons/ovhd/nav_1_but_2 int button 2 0
+TU154CE/buttons/ovhd/nav_1_but_3 Ints 3 0
+
+TU154CE/Switchers/NAV_2_MODE Ints Nav1. Capture - Vor -Dme 1
+TU154CE/switchers/nav_2_man_auto int mode manual - automatic 0
+TU154CE/SWITCHERS/NAV_2_MILE_KM Int mode Mili - km 1
+TU154CE/ROTARY/OVHD/NAV_2_LEFT Ints Twiter 0
+TU154CE/ROTARY/OVHD/NAV_2_RIight into the Right Cool 0
+TU154CE/buttons/ovhd/nav_2_but_1 int button 1 0
+TU154CE/buttons/ovhd/nav_2_but_2 int button 2 0
+TU154CE/buttons/ovhd/nav_2_but_3 Ints 3 0
+
+TU154CE/GAUGES/Eng/FUEL_TEMP_1 FLOAT Fuel temperature 20
+TU154CE/GAUGES/Eng/FUEL_TEMP_2 FLOAT Fuel temperature 20
+
+TU154CE/GAUGES/ENG/OIL_QTY_1 FLOAT The amount of oil 1
+TU154CE/GAUGES/ENG/OIL_QTY_2 FLOAT The amount of oil 1
+TU154CE/GAUGES/ENG/OIL_QTY_3 FLOAT The amount of oil 1
+
+TU154CE/GAUGES/ENG/KM5_SCALE_1 FLOAT The turn of the scale on km5 0
+TU154CE/GAUGES/ENG/KM5_needle_1 Float Strelka KM5 0
+TU154CE/GAUGES/ENG/KM5_KNOB_1 FLOAT Twoles on km5 0
+TU154CE/GAUGES/ENG/KM5_SCALE_2 FLOAT Turning the scale on km5 0
+TU154CE/GAUGES/ENG/KM5_needle_2 Float Strelka KM5 0
+TU154CE/GAUGES/ENG/KM5_KNOB_2 FLOAT Twoles on KM5 0
+
+TU154CE/Buttons/LAMP_TEST_FRONT Ints Verkhnaya panel lamp checks
+TU154CE/Buttons/LAMP_TEST_UPPER_GEAR Ints for checking the lamps of the upper panel of the chassis 0
+TU154CE/Buttons/LAMP_Test_eng_up_1 Ints for checking the lamps on the drain nozzle panel 0
+TU154CE/Buttons/LAMP_Test_eng_up_2 Ints for checking the lamps on the drain nozzle panel 0
+TU154CE/Buttons/LAMP_TEST_MSRP Ints for checking the lamps MSRP 0
+TU154CE/Buttons/LAMP_Test_PA56 Ints for checking the lamps on the hydraulic pump panel Ra-56 0
+TU154CE/Buttons/LAMP_Test_fire_panel Ints for checking the lamps on the fire panel 0
+TU154CE/Buttons/LAMP_TEST_APU Inters for checking the lamps on the Armed Forces of Ukraine 0
+TU154CE/Buttons/LAMP_Test_engines Ints for checking the lamps on the engines panel 0
+TU154CE/Buttons/LAMP_TEST_HYDRO Ints for checking the lamps on the hydraulic system panel 0
+TU154CE/Buttons/LAMP_Test_SRD Ints for checking the lamps on the boost panel 0
+TU154CE/Buttons/LAMP_TEST_DOORS Ints for checking the lamps on the indication panel of doors and hatches 0
+
+TU154CE/Switchers/Eng/Wing_Light Int Gabarit ground lights on the wing 1
+TU154CE/Switchers/Eng/Door_heat int heating doors 0
+TU154CE/Switchers/Eng/Gear_fan Int ventilation of the chassis 0
+TU154CE/Switchers/Eng/Galley_heat int heating the drain of the kitchen 0
+TU154CE/SWITCHERS/Eng/LAVATORY_HEAT int heating toilets 0
+TU154CE/SWITCHERS/Eng/Water_Meter Ints water level in tank 0
+TU154CE/Switchers/Eng/Water_compressor_1 int heating the drain of the kitchen 0
+TU154CE/Switchers/Eng/Water_compressor_2 int heating the drain of the kitchen 0
+TU154CE/GAUGES/Eng/Water_Pressure Float water pressure 0
+TU154CE/Buttons/Eng/Tail_TEMP_SIGNAL_CONTROL_1 Ints control control of the temperature of the tail compartment 0
+TU154CE/Buttons/English/Tail_TEMP_SIGNAL_CONTROL_2 int controling the temperature of the tail compartment 0
+TU154CE/Switchers/Eng/Tail_TEMP_SIGNAL Ints Single Meter Signal 0
+TU154CE/Switchers/Eng/Tail_TEMP_HEAT int heating ard 0
+
+TU154CE/Switchers/Eng/MSRP_DATE_TEN Ints MRSP Date Number Ten 0
+TU154CE/Switchers/Eng/MSRP_DATE_ONE Ints MRSP Date number 0
+TU154CE/Switchers/Eng/MSRP_MONTH_TEN Ints MRSP Date month tens 0
+TU154CE/Switchers/Eng/MSRP_MONTH_ONE Ints MRSP Date month unit 0
+TU154CE/Switchers/Eng/MSRP_YEAR_TEN Ints MRSP Date a year tens 0
+TU154CE/SWITCHERS/Eng/MSRP_YEAR_ONE Ints MRSP Date a year unit 0
+TU154CE/SWITCHERS/Eng/MSRP_ROUTE_HUUN inte flight to flight. hundreds 0
+TU154CE/SWITCHERS/Eng/MSRP_ROUTE_TEN Ints MPP flight. tens of 0
+TU154CE/SWITCHERS/Eng/MSRP_ROUTE_ONE Ints MPP flight. units 0
+TU154CE/SWITCHERS/Eng/MSRP_MLP_1 Ints MLP MLP OSN 1
+TU154CE/SWITCHERS/Eng/MSRP_MLP_2 Ints MLP MLP DOP 1
+TU154CE/SWITCHERS/Eng/MSRP_Night_DAY Ints Night - Day 1
+TU154CE/SWITCHERS/Eng/MSRP_Main_SWISWITCH Ints Main switch 1
+
+TU154CE/Switchers/Eng/Hydro_trimm_rud_1 Int trimming RV 1 1
+TU154CE/Switchers/Eng/Hydro_trimm_rud_2 int trimming RV 2 1
+TU154CE/Switchers/Eng/Hydro_trimm_rud_1_cap int trimming RV 1 0
+TU154CE/Switchers/Eng/Hydro_trimm_rud_2_cap int trimming RV 2 0
+
+TU154CE/SWITCHERS/ENG/Emerg_gen_on_1 int. Emergency inclusion of generators 0
+TU154CE/Switchers/ENG/EMERG_GEN_ON_2 int. Emergency inclusion of generators 0
+TU154CE/Switchers/ENG/EMERG_GEN_ON_3 int. Emergency inclusion of generators 0
+TU154CE/Switchers/ENG/emerg_gen_on_1_cap int. Emergency inclusion of generators 0
+TU154CE/Switchers/ENG/emerg_gen_on_2_cap int. Emergency inclusion of generators 0
+TU154CE/Switchers/ENG/emerg_gen_on_3_cap int. Emergency inclusion of generators 0
+
+TU154CE/SWITCHERS/Eng/HYDRO_RA56_RUD_1 Ints Hydrotech of R56 Course 1
+TU154CE/SWITCHERS/Eng/HYDRO_RA56_RUD_2 Ints Hydrauli RA56 course 1
+TU154CE/SWITCHERS/Eng/HYDRO_RA56_RUD_3 Ints Hydroducting RA56 Course 1
+TU154CE/SWITCHERS/Eng/HYDRO_RA56_AIL_1 Ints Hydrote by RA56 Kren 1
+TU154CE/Switchers/Eng/Hydro_ra56_ail_2 int hydrold RA56 Kren 1
+TU154CE/SWITCHERS/Eng/HYDRO_RA56_AIL_3 Ints hydrogen RA56 Kren 1
+TU154CE/Switchers/Eng/Hydro_ra56_elev_1 Ints hydrochloric
+TU154CE/Switchers/Eng/Hydro_ra56_elev_2 Ints hydro -tangas 1 pitch 1
+TU154CE/Switchers/Eng/Hydro_ra56_elev_3 Ints Hydrauli RA56 Tangage 1
+
+TU154CE/Switchers/Eng/Hydro_circuit_auto_man Ints Automatic - Manual 0
+TU154CE/Switchers/Eng/Hydro_long_control Ints Product Management 1
+TU154CE/Switchers/Eng/Hydro_circuit_auto_man_cap in Ring -out automatic - manual 0
+TU154CE/Switchers/Eng/Hydro_long_control_cap in Longitudinal Management 0
+
+TU154CE/Buttons/Eng/Fire_ext_1 Ints Stuffing Fire 0
+TU154CE/Buttons/Eng/Fire_ext_2 Ints extinguishing fire 0
+TU154CE/Buttons/Eng/Fire_Ext_3 Ints Exterior Fire 0
+TU154CE/Buttons/Eng/Cold_eng_1 int supplying a shade 0
+TU154CE/Buttons/Eng/Cold_eng_2 int supplying a shade 0
+TU154CE/Buttons/English/Cold_eng_3 int supplying a shade 0
+TU154CE/Buttons/Eng/Cold_apu Ints for a shade 0
+TU154CE/Buttons/Eng/Neutral_gas int Neutral gas 0
+TU154CE/Buttons/Eng/Smoke_Test Ints Submissions 0
+TU154CE/Buttons/Eng/Ext_Test Ints delivery
+TU154CE/Switchers/Eng/Fire_Sensor_SEL Int selection of a group of sensors 0
+TU154CE/SWITCHERS/Eng/FIRE_PLACE_SEL Int selection of compartment 0
+TU154CE/Switchers/Eng/Fire_Main_Switch Ints switch 1
+TU154CE/SWITCHERS/Eng/FIRE_BUZZER int Fire Siren 1
+TU154CE/SWITCHERS/Eng/FIRE_BUZZER_CAP int Fire Siren 0
+
+TU154CE/Switchers/Eng/SRD_BUZZER Intc Crd Siren 1
+TU154CE/SWITCHERS/ENG/SRD_BUZZER_CAP int
+TU154CE/Buttons/English/SRD_BUZZER_TESTET VERSISHING SIREND SRD 0
+TU154CE/Switchers/Eng/Fuel_buzzer int siren fuel residue 2500 kg 1
+TU154CE/Switchers/Eng/Fuel_buzzer_cap int siren fuel residue 2500 kg 0
+
+TU154CE/Switchers/Eng/Soi21_on Ints switch 21 1 1 1
+TU154CE/Buttons/Eng/Soi21_Test Ints Check 21 0
+
+TU154CE/Switchers/Eng/Antiice_Slats Ints Anti -Osselers 0
+TU154CE/Switchers/Eng/Antiice_eng_1 Ints Anti -Oceanchers 0
+TU154CE/Switchers/Eng/Antiice_eng_2 Ints Anti -Occenters 0
+TU154CE/Switchers/Eng/Antiice_eng_3 Ints Anti -Oceanchers 0
+TU154CE/SWITCHERS/Eng/Antiice_wing Ints Anti -Osselers 0
+
+TU154CE/GAUGES/ENG/Stab_TEMP FLOAT The temperature of the stabilizer 20
+TU154CE/GAUGES/Eng/Wing_TEMP FLOAT Wing temperature 20
+
+TU154CE/SWITCHERS/Eng/SARD_DISBLE INT OF Air Discount valve 0
+TU154CE/SWITCHERS/Eng/SARD_DISABLE_CAP Ints Cover the air discharge valve 0
+
+TU154CE/GAUGES/ENG/BUS115_FREQ FLOATE network frequency 115V - angle 0
+TU154CE/GAUGES/ENG/BUS115_VOLT FLOAT Voltmeter network 115V - angle 0
+TU154CE/GAUGES/ENG/BUS115_AMP FLOAT EMERMEMETS Network 115V - angle 0
+TU154CE/Switchers/Eng/GPU_on Ints switch RAP 0
+TU154CE/SWITCHERS/English/APU_GEN_ON Ints switch General Armed Forces 0
+TU154CE/Switchers/Eng/Bus115_volt_SEL Ints Source Source 0
+TU154CE/Switchers/Eng/Bus115_volt_Phase_SEL Ints switch voltmeter 0
+TU154CE/Switchers/Eng/Bus115_AMP_SEL Ints Source Source 0
+TU154CE/Switchers/Eng/Bus115_AMP_PHASE_SEL Ints Source Source 0Mometer 0
+
+TU154CE/Switchers/Eng/Gen_1_on Ints switch 1. -1 - check, 0 - off, +1 - vkl.	1
+TU154CE/Switchers/Eng/Gen_2_on Ints switch 2. -1 - check, 0 - off, +1 - vkl.	1
+TU154CE/Switchers/Eng/Gen_3_on Ints switch 3. -1 - check, 0 - off, +1 - vkl.	1
+
+TU154CE/Switchers/Eng/Emerg_inv115 Ints. Transfigure 115V 0
+TU154CE/Switchers/Eng/Emerg_inv115_cap in Emergency. Transfigure 115V 0
+
+TU154CE/GAUGES/Eng/BUS36_VOLT FLOAT Voltmeter Network 36V - angle 0
+TU154CE/Switchers/Eng/Bus36_volt_SEL Ints switch 36V 0
+TU154CE/Switchers/Eng/PTS250_SEL Ints switch PTS250. 0 - No. 1, 1 - No. 2 0
+TU154CE/Switchers/Eng/Bus36_TR_LAFT_TO_RIGHT inteinet network on TR2. 0 - car, 1 - manual 0
+TU154CE/Switchers/English/Bus36_TR_RIight_to_left in Rights Network on TR1 0
+TU154CE/Switchers/Eng/PTS250_on Ints switch PTS250 0
+TU154CE/Switchers/Eng/PTS250_MODE Ints PTS250 mode. Auto - manual 0
+TU154CE/SWITCHERS/Eng/PTS250_on_CAP Ints switch PTS250 0
+TU154CE/SWITCHERS/Eng/PTS250_MODE_CAP in PTS250 mode. Auto - manual 0
+
+TU154CE/GAUGES/ENG/BUS27_VOLT FLOAT Voltmeter network 27V - angle 0
+TU154CE/GAUGES/Eng/BUS27_AMP1 Float network ammeter 27V - angle 0
+TU154CE/GAUGES/ENG/BUS27_AMP2 FLOAT A ammeter of the network 27V - angle 0
+TU154CE/Switchers/Eng/Bus27_volt_SEL Ints switch 27V 0
+TU154CE/Switchers/Eng/Bus27_AMP1_SEL Ints ammeter 27V 0
+TU154CE/Switchers/Eng/Bus27_AMP2_SEL Ints ammeter 27V 0
+TU154CE/Switchers/Eng/Bus27_Connect Ints Connection 27V 0
+TU154CE/Switchers/Eng/Bus27_Connect_cap in Networks 27v 0
+TU154CE/Switchers/Eng/Bus27_vu1 int1. -1 - reserve, 0 - off, +1 - v.	1
+TU154CE/Switchers/Eng/Bus27_VU2 int2. -1 - reserve, 0 - off, +1 - v.	1
+TU154CE/Switchers/Eng/Bat1_on Ints Battery 1 1 1 1
+TU154CE/Switchers/Eng/Bat2_on Ints Battery 2 1 1 1
+TU154CE/Switchers/Eng/Bat3_on Ints Battery 3 1
+TU154CE/Switchers/Eng/Bat4_on Ints Battery 4 1
+
+TU154CE/Switchers/Eng/APU_Main_SWISWITCH Ints switch APU 0
+TU154CE/Switchers/Eng/APU_START_MODE Int mode launching APU 0
+TU154CE/Switchers/Eng/APU_Air_Bleed Ints switching air selection damage. -1 - close, 0 - neuter, +1 - open 0
+TU154CE/Buttons/Eng/APU_START Ints Start APU 0
+TU154CE/Buttons/Eng/APU_STOP Ints Stop APU 0
+TU154CE/GAUGES/ENG/APU_RPM FLOAT RIGHT RIGHT APU 0
+TU154CE/GAUGES/ENG/APU_EGT FLOAT TWG APU 0
+TU154CE/GAUGES/Eng/APU_OIL_TEMP FLOAT APU Oil temperature 0
+
+TU154CE/GAUGES/ENG/EGT_1 FLOAT TWG Dvig 1 20
+TU154CE/GAUGES/ENG/EGT_2 FLOAT TWG Dvig 2 20
+TU154CE/GAUGES/ENG/EGT_3 FLOAT TWG Dvig 3 20
+
+TU154CE/GAUGES/ENG/FUEL_PRESS_1 FLOAT DEVELOUS DEVELOPHY DEVEL
+TU154CE/GAUGES/ENG/FUEL_PRESS_2 FLOAT DEVELOUS DEVELOPHY DEVEL
+TU154CE/GAUGES/ENG/FUEL_PRESS_3 FLOAT DEVELOUS DEVELOPHY DEVEL
+TU154CE/GAUGES/ENG/OIL_PRESS_1 FLOAT Pressure Patterns Dvig 1 0
+TU154CE/GAUGES/ENG/OIL_PRESS_2 FLOAT Pressure Patterns Dvig 2 0
+TU154CE/GAUGES/ENG/OIL_PRESS_3 FLOAT Pressure Patterns Dvig 3 0
+TU154CE/GAUGES/ENG/OIL_TEMP_1 FLOAT MOUSE PITTROD PITTLUS OF DOUNT
+TU154CE/GAUGES/ENG/OIL_TEMP_2 FLOAT MOUSE OF Oil Dvig 2 0
+TU154CE/Gauges/ENG/OIL_TEMP_3 FLOAT MOUSE PITTROD PITTLUS OF POVIG 3 0
+
+TU154CE/GAUGES/ENG/FUEL_FLOW_1 FLOAT Fuel Consumption Dvig 1 0
+TU154CE/GAUGES/ENG/FUEL_FLOW_2 FLOAT Fuel Consumption Dvig 2 0
+TU154CE/GAUGES/ENG/FUEL_FLOW_3 FLOAT Fuel Consumption Dvig 3 0
+TU154CE/GAUGES/ENG/Vibra_1 Float Vibration Dvig 1 0
+TU154CE/GAUGES/ENG/Vibra_2 Float Vibration Dvig 2 0
+TU154CE/GAUGES/ENG/Vibra_3 Float Vibration Dvig 3 0
+
+TU154CE/Buttons/Eng/Control_ut Ints Control Ut 0
+TU154CE/Buttons/Eng/Control_vibro_1 Ints control vibration control 0
+TU154CE/Buttons/Eng/Control_vibro_2 Ints control vibration control 0
+TU154CE/Buttons/Eng/Control_vibro_3 Ints control vibration control 0
+TU154CE/Switchers/Eng/Vibro_SEL_1 Ints switch vibration 0
+TU154CE/Switchers/Eng/Vibro_SEL_2 Ints switch vibration 0
+TU154CE/Switchers/Eng/Vibro_SEL_3 Ints switch vibration 0
+
+TU154CE/GAUGES/FUEL/FUEL_METER_SUMM FLOAT Sumarian fuel weight 0
+TU154CE/GAUGES/FUEL/FUEL_METER_TANK1 FLOAT Mass fuel in the tank 1 0
+TU154CE/GAUGES/FUEL/FUEL_METER_TANK2_LEFT FLOAT Mass fuel in the tank 2 0
+TU154CE/GAUGES/FUEL/FUEL_METER_TANK2_RIIT FLOOT Fuel mass in tank 2 0
+TU154CE/GAUGES/FUEL/FUEL_METER_TANK3_LEFT FLOAT Mass fuel in the tank 3 0
+TU154CE/GAUGES/FUEL/FUEL_METER_TANK3_RIGHT FLOOT MUSTION OF Fuel in the tank 3 0
+TU154CE/GAUGES/FUEL/FUEL_METER_TANK4 FLOAT Mass fuel in the tank 4 0
+TU154CE/GAUGES/FUEL/FUEL_METER_MECH FLOAT COMPLEMENT 0
+
+TU154CE/Buttons/Fuel/Fuel_Meter_summ_zero intsumar fuel weight. Zero button 0
+TU154CE/Buttons/Fuel/Fuel_Meter_summ_max intsumar fuel weight. button p 0
+TU154CE/Buttons/Fuel/Fuel_Meter_tank2_zero int fuel tank 2. Zero button 0
+TU154CE/Buttons/Fuel/Fuel_Meter_tank2_max int fuel tank 2. Button P 0
+TU154CE/Buttons/Fuel/Fuel_Meter_tank3_zero int fuel tank 3. Zero button 0
+TU154CE/Buttons/Fuel/Fuel_Meter_tank3_max int fuel tank 3. Button P 0
+TU154CE/Buttons/Fuel/Fuel_Meter_tank4_zero int fuel tank 4. Zero button 0
+TU154CE/Buttons/Fuel/Fuel_Meter_tank4_max int fuel tank 4. Button P 0
+
+TU154CE/Switchers/Fuel/PUMP_TANK2_LEFT Ints tank 2 1 1 1
+TU154CE/Switchers/Fuel/PUMP_TANK2_RIight int pumps of tank 2 1
+TU154CE/Switchers/Fuel/PUMP_TANK3_LEFT Ints tank 3 1 1 1 1 1
+TU154CE/SWITCHERS/FUEL/PUMP_TANK3_RIIT int pumps of tank 3 1
+TU154CE/Switchers/Fuel/PUMP_TANK4 Ints BAK 4 1 Pumps 4 1
+TU154CE/Switchers/Fuel/PUMP_TANK1_1 Ints tank 1 1 1 1
+TU154CE/Switchers/Fuel/PUMP_TANK1_2 Ints tank 1 1 1 1
+TU154CE/Switchers/Fuel/PUMP_TANK1_3 Ints tank 1 1 1 1
+TU154CE/Switchers/Fuel/PUMP_TANK1_4 Ints tank 1 1 1 1
+
+TU154CE/Switchers/Fuel/Fuel_trans int
+TU154CE/Switchers/Fuel/Fuel_trans_cap int
+TU154CE/Switchers/Fuel/Fuel_PORC int. LUCK
+TU154CE/Switchers/Fuel/Fuel_Porc_cap int
+TU154CE/Switchers/Fuel/Fuel_level interture of alignment 1
+TU154CE/Switchers/Fuel/Fuel_flow_Mode int Executive Meter mode. manual - machine gun 1
+TU154CE/Switchers/Fuel/Fuel_flow_on Ints Cost
+TU154CE/Switchers/Fuel/Fuel_flow_on_cap in Automatic Consumables 0
+TU154CE/Switchers/Fuel/Fuel_Meter_on Ints Fuelmer 1
+TU154CE/Switchers/Fuel/Fuel_Meter_Mech_on Ints Production 1
+TU154CE/Switchers/FUEL/FIRE_VALVE_1 Int Fire crane 1
+TU154CE/Switchers/Fuel/Fire_valve_2 Int fire tap 1
+TU154CE/Switchers/Fuel/Fire_valve_3 Int fire tap 1
+TU154CE/Switchers/FUEL/FIRE_VALVE_1_CAP int Fire crane 0
+TU154CE/Switchers/FUEL/FIRE_VALVE_2_CAP int Fire crane 0
+TU154CE/Switchers/FUEL/FIRE_VALVE_3_CAP int Fire crane 0
+
+TU154CE/GAUGES/HYDRO/QTY_12 FLOAT HALLS 0
+TU154CE/GAUGES/HYDRO/QTY_3 FLOAT hydraulic shoes 0
+TU154CE/Switchers/HYDRO/Connect2TO1 Ints Connection 2 GS per 1 GS 0
+TU154CE/Switchers/HYDRO/Connect2TO1_cap Ints Connection 2 GS per 1 GS 0
+TU154CE/Switchers/HYDRO/PUMP_2 Ints hydraulic pumps 2 0
+TU154CE/Switchers/HYDRO/PUMP_3 Ints hydraulic pumps 3 0
+TU154CE/Buttons/HYDRO/QTY_TEST_12 Ints control level 0
+TU154CE/Buttons/HYDRO/QTY_TEST_3 Ints control level 0
+TU154CE/Buttons/Hydro/Accum_Fill Ints Battery 0
+
+TU154CE/Gauges/Airbleed/Cabin_alt Float Height in the cabin 0
+TU154CE/GAUGES/AIRBLEED/CABIN_DIFF FLOATE Pressure drop 0
+TU154CE/GAUGES/AIRBLEED/CABIN_VVI FLOAT Cabinet variometer. angle 0
+TU154CE/GAUGES/AIRBLEED/COCKPIT_TEMP FLOAT Temperature in cabin 20
+TU154CE/GAUGES/AIRBLEED/CABIN_TEMP Float temperature in salons 20
+TU154CE/GAUGES/AIRBLEED/SYSTEM_TEMP Float temperature in pipeline 20
+TU154CE/GAUGES/AIRBLEED/AIR_FLOW_1 FLOAT Air Consumption. angle 0
+TU154CE/GAUGES/AIRBLEED/AIR_FLOW_2 FLOAT Air Consumption. angle 0
+
+TU154CE/Switchers/Airbleed/Cabin_SEL Int selection of salon 0
+TU154CE/Switchers/Airbleed/Cockpit_TEMP_SET Ints set the temperature of the cabin 20
+TU154CE/Switchers/Airbleed/Cabin1_TEMP_SET INT installation of the temperature of the salon 20
+TU154CE/Switchers/Airbleed/Cabin2_TEMP_SET INT Installation of the temperature of the salon 20
+TU154CE/Switchers/Airbleed/Cockpit_mode_Set int installation of the heating mode. 0 - Neutr. 1 - Auto, 2 - Hol, 3 - Gore 1
+TU154CE/Switchers/Airbleed/Cabin1_mode_Set int installation of the heating mode 1
+TU154CE/Switchers/Airbleed/Cabin2_mode_Set int installation of the heating mode 1
+TU154CE/Switchers/Airbleed/Heat_Close Ints Contains Heating 0
+TU154CE/Switchers/Airbleed/Heat_Close_cap in Continuation of heating 0
+TU154CE/Switchers/Airbleed/Left_Sys_TEMP_SET INT installation of the temperature of the left line 22
+TU154CE/Switchers/Airbleed/Right_Sys_TEMP_SET INT Installation of the temperature of the right line 22
+TU154CE/Switchers/Airbleed/Left_Sys_Mode_Set int installation of the left line 1
+TU154CE/Switchers/Airbleed/Right_Sys_Mode_Set Int installation of the Right Magistral Main
+TU154CE/Switchers/Airbleed/Ground_cond_on Ints Conducting air conditioning 0
+TU154CE/Switchers/Airbleed/Ground_cond_on_cap in ground conditioning 0
+TU154CE/Switchers/Airbleed/SKV_Faster_work Int -1 - Cooling of the Civil Code, 0 - DECH, +1 - Accelerated heating modes 0
+TU154CE/Switchers/Airbleed/SKV_FASTER_WORK_CAP Ints 0
+TU154CE/Switchers/Airbleed/Sys_TEMP_SELECT Ints switch thermometer sources. 0 - heating of the doors, 1 - Ekip, 2 - Salon 1, 3 - Salon 2, 4 - Magician Lev, 5 - Magic Magist 1 Rights 1
+
+TU154CE/Switchers/Airbleed/PSVP_LAFT_ON in PSVP Lev 1
+TU154CE/Switchers/Airbleed/PSVP_Right_on Ints PSVP Rights 1
+TU154CE/Switchers/Airbleed/Psvp_left_on_cap in PSVP Lev 0
+TU154CE/Switchers/Airbleed/PSVP_Right_on_cap in PSVP Rights 0
+TU154CE/Switchers/Airbleed/Air_valve_left int. -1 STSR, 0 - Neutr, +1 Revpers 0
+TU154CE/Switchers/Airbleed/Air_valve_Right int. -1 STSR, 0 - Neutr, +1 Revpers 0
+TU154CE/Switchers/Airbleed/Air_valve_both int. -1 STSR, 0 - Neutr, +1 Revpers 0
+TU154CE/Switchers/Airbleed/Emerg_Decompress Ints Resetting 0
+TU154CE/Switchers/Airbleed/Emerg_Decompress_cap Ints Resetting 0
+TU154CE/Switchers/Airbleed/Eng_valve_1 Int selection of air from engines 1
+TU154CE/Switchers/Airbleed/Eng_valve_2 Int selection of air from engines 1
+TU154CE/Switchers/Airbleed/Eng_valve_3 Int selection of air from engines 1
+TU154CE/Switchers/Airbleed/Dubler_on intraner 0
+TU154CE/Switchers/Airbleed/Dubler_on_cap int. Duner 0
+
+TU154CE/GAUGES/Eng/Starter_Press Float pressure in the launch system 0
+TU154CE/SWITCHERS/Eng/Starter_cap int panel cover 0
+TU154CE/Switchers/Eng/Starter_Switch Ints switch 0
+TU154CE/SWITCHERS/Eng/Starter_eng_select int selection of engine 0
+TU154CE/Switchers/Eng/Starter_mode inte launch mode 0
+TU154CE/Buttons/Eng/Starter_Start Ints Stop 0
+TU154CE/Buttons/Eng/Starter_Stop Ints Starting Broadcasting
+TU154CE/Buttons/Eng/Flight_Start_1 Int laing in flight 0
+TU154CE/Buttons/Eng/Flight_Start_2 int launch in flight 0
+TU154CE/Buttons/Eng/Flight_Start_3 Int laing in flight 0
+TU154CE/Switchers/Eng/Gauges_on_1 int devices of engine control 1
+TU154CE/Switchers/Eng/Gauges_on_2 int devices of engine control 1
+TU154CE/SWITCHERS/Eng/GAUGES_ON_3 int devices of engine control 1
+TU154CE/Switchers/Eng/Gauges_on_1_cap int devices of engine control 0
+TU154CE/Switchers/Eng/Gauges_on_2_cap int devices of engine control 0
+TU154CE/Switchers/Eng/Gauges_on_3_cap int devices of engine control 0
+TU154CE/Buttons/Eng/Reserv_pump_Test Ints checking the pump of the pump 0
+
+TU154CE/Buttons/CONSOLE/ABSU_ZK Ints ZC button on the Absu panel 0
+TU154CE/Buttons/CONSOLE/ABSU_RESET Int button Resetting the Program on the Absu panel 0
+TU154CE/Buttons/CONSOLE/ABSU_NVU Ints NVU button on the Absu panel 0
+TU154CE/Buttons/CONSOLE/ABSU_AZ1 Ints AZ 1 on the ABSU panel 0
+TU154CE/Buttons/CONSOLE/ABSU_AZ2 Ints AZ 2 on the Absu 0 panel 0
+TU154CE/Buttons/CONSOLE/ABSU_App int
+TU154CE/Buttons/CONSOLE/ABSU_GS Ints Glossade button on the Absu panel 0
+TU154CE/Buttons/CONSOLE/ABSU_SSTAB_M Ints MOST MANEL ABSU 0
+TU154CE/Buttons/CONSOLE/ABSU_STAB_V Ints V on the Absu panel 0
+TU154CE/Buttons/CONSOLE/ABSU_STAB_H Ints H on the Absu 0 panel 0
+TU154CE/Buttons/CONSOLE/ABSU_STAB Ints Stub button on the Absu panel 0
+TU154CE/Buttons/CONSOLE/ABSU_STAB_Speed ​​Ints C on the Absu panel 0
+TU154CE/Buttons/CONSOLE/ABSU_THROT_OFF_1 Ints ONE G1 on the Absu 0 panel 0
+TU154CE/Buttons/CONSOLE/ABSU_THROT_OFF_2 Ints ONE G2 ON ABSU 0
+TU154CE/Buttons/CONSOLE/ABSU_THROT_OFF_3 Ints ONE OND G3 on the Absu panel 0
+
+TU154CE/GAUGES/CONSOLE/ABSU_ROLL_MODE int mode of operation of abSU. 0 - Off, 1 - helm, 2 - Stub 0
+TU154CE/GAUGES/CONSOLE/ABSU_PITCH_MODE in the operating mode of Absu. 0 - Off, 1 - helm, 2 - Stub 0
+
+TU154CE/GAUGES/CONSOLE/GEAR_BRAKE_PRESS_L FLOAT Brake pressure lion 0
+TU154CE/GAUGES/CONSOLE/GEAR_BRAKE_PRESS_R FLOAT Brake Pressure of Rights 0
+TU154CE/GAUGES/CONSOLE/MAP_angle Float Card angle 0
+
+TU154CE/SWITCHERS/CONSOLE/BUner_on_1 Ints switch 1
+TU154CE/Switchers/Console/Buster_on_2 Ints switch 1
+TU154CE/Switchers/Console/Buster_on_3 Ints switch 1
+TU154CE/Switchers/CONSOLE/BUSTERS_CAP Ints Cover of booster switches 0
+
+TU154CE/Switchers/CONSOLE/RLS_on Ints switch 1
+TU154CE/SWITCHERS/CONSOLE/RLS_MODE Ints radar modes. 0 -Gotov, 1 - Meteo 0
+TU154CE/Switchers/CONSOLE/RLS_Distance Int.
+TU154CE/SWITCHERS/CONSOLE/RLS_BRT FLOAT brightness radar 1
+TU154CE/Switchers/CONSOLE/RLS_CONTR FLOAT Contrast radar 1
+TU154CE/SWITCHERS/CONSOLE/RLS_SIGNS FLOAT The brightness of the radar 1
+
+TU154CE/Switchers/Console/Absu_zpu_SEL Ints switch ZPU. lion - right 0
+TU154CE/Switchers/CONSOLE/ABSU_NAV_ON int Arriers Navigation 1
+TU154CE/Switchers/CONSOLE/Absu_Landing_on Ints Landing 0
+TU154CE/Switchers/Console/Absu_needles_on int 2
+TU154CE/Switchers/Console/Absu_Speed_Mode in stupa mode. 0 - OTL, 1 - NVU, 2 - AZ1, 3 - AZ2, 4 - POS 0
+TU154CE/Switchers/Console/Absu_Speed_change int 	0
+TU154CE/Switchers/CONSOLE/ABSU_Speed_OFF Ints shutdown 1 and 2 0
+TU154CE/Switchers/CONSOLE/Absu_Speed_Prepare in Preparation 1
+TU154CE/Switchers/CONSOLE/Absu_Speed_Off_cap int shutdown 1 and 2 0
+TU154CE/Switchers/CONSOLE/Absu_Speed_prepare_cap in Preparation 0
+TU154CE/Switchers/CONSOLE/ABSU_Speed_us_Right_left in Preparation 1
+TU154CE/Buttons/CONSOLE/ABSU_Speed_Test_1 Ints button of the STARITA STOVENA 0
+TU154CE/Buttons/CONSOLE/ABSU_Speed_Test_2 Ints button Verkhnyaya Station 0 0
+
+TU154CE/SWITCHERS/CONSOLE/Absu_turn_Handle int
+TU154CE/Switchers/CONSOLE/Absu_pitch_wheel Float Wheel of descent, rise 0
+TU154CE/Switchers/Console/Absu_Roll_ch_on Ints switch channel 1
+TU154CE/SWITCHERS/CONSOLE/ABSU_PITCH_CH_ON Ints switch of the tanking 1
+TU154CE/Switchers/CONSOLE/ABSU_SMOOTH_ON Ints switch "to the chatter" 0
+TU154CE/Switchers/CONSOLE/ABSU_SMOOTH_ON_CAP Ints switch "to the chatter" 0
+TU154CE/Switchers/CONSOLE/ABSU_PITCH_WHEEL_DIR Ints direction of the descent wheel, rise 0
+
+TU154CE/Buttons/CONSOLE/ABSU_arRESTIT ARRETISTING NOCTIONS 0
+TU154CE/Buttons/Console/Absu_arrest_cap int
+
+TU154CE/Switchers/CONSOLE/NVU_PARAM_SEL int -4 - z, -3 - s, -2 - zm, -1 - SM, 0 - OFF, 1 - SN, 2 - Zn, 3 - S, 4 - Z 0
+TU154CE/Switchers/Console/NVU_TURN_SEL Ints Choosing Radius of the U -RECOME, -1 - Burely, 0 - OKL, 1 - 5, 2 - 10, 3 - 15 - 20, 5 - 25 0
+TU154CE/Switchers/CONSOLE/NVU_Power_on Ints NVU 1
+TU154CE/Switchers/CONSOLE/NVU_calc_on Ints Refered NVU 0
+TU154CE/Switchers/CONSOLE/NVU_corr_on Int Carries NVU 0
+
+
+TU154CE/NVU/Current_z1_1 Float Z1 4
+TU154CE/NVU/Current_z1_10 Float Z1 3
+TU154CE/NVU/Current_z1_100 Float Z1 2
+TU154CE/NVU/Current_z1_1000 Float Z1 1
+
+TU154CE/NVU/Current_z1_min_1 Float Z1 4
+TU154CE/NVU/Current_z1_min_10 Float Z1 3
+TU154CE/NVU/Current_z1_Min_100 Float Z1 2
+TU154CE/NVU/Current_z1_min_1000 Float Z1 1
+
+TU154CE/NVU/Current_s1_1 Float S1 4
+TU154CE/NVU/Current_s1_10 Float S1 3
+TU154CE/NVU/Current_s1_100 Float S1 2
+TU154CE/NVU/Current_s1_1000 Float S1 1
+
+TU154CE/NVU/Current_S1_MIN_1 FLOAT S1 4
+TU154CE/NVU/Current_S1_MIN_10 FLOAT S1 3
+TU154CE/NVU/Current_S1_MIN_100 FLOAT S1 2
+TU154CE/NVU/Current_S1_MIN_1000 FLOAT S1 1
+
+TU154CE/NVU/Next_z1_1 Float Z1 4
+TU154CE/NVU/Next_z1_10 Float Z1 3
+TU154CE/NVU/Next_z1_100 Float Z1 2
+TU154CE/NVU/Next_z1_1000 Float Z1 1
+
+TU154CE/NVU/Next_z1_min_1 Float Z1 4
+TU154CE/NVU/Next_z1_min_10 Float Z1 3
+TU154CE/NVU/Next_z1_min_100 Float Z1 2
+TU154CE/NVU/Next_z1_min_1000 Float Z1 1
+
+TU154CE/NVU/NEXT_S1_1 FLOAT S1 4
+TU154CE/NVU/NEXT_S1_10 FLOAT S1 3
+TU154CE/NVU/NEXT_S1_100 FLOAT S1 2
+TU154CE/NVU/NEXT_S1_1000 FLOAT S1 1
+
+TU154CE/NVU/NEXT_S1_MIN_1 FLOAT S1 4
+TU154CE/NVU/NEXT_S1_MIN_10 FLOAT S1 3
+TU154CE/NVU/Next_s1_min_100 Float S1 2
+TU154CE/NVU/Next_s1_min_1000 Float S1 1
+
+
+TU154CE/NVU/Current_z2_1 Float Z2 4
+TU154CE/NVU/Current_z2_10 Float Z2 3
+TU154CE/NVU/Current_z2_100 Float Z2 2
+TU154CE/NVU/Current_z2_1000 Float Z2 1
+
+TU154CE/NVU/Current_s2_1 Float S2 4
+TU154CE/NVU/Current_s2_10 Float S2 3
+TU154CE/NVU/Current_s2_100 Float S2 2
+TU154CE/NVU/Current_s2_1000 Float S2 1
+
+TU154CE/NVU/Next_z2_1 Float Z2 4
+TU154CE/NVU/Next_z2_10 Float Z2 3
+TU154CE/NVU/Next_z2_100 Float Z2 2
+TU154CE/NVU/Next_z2_1000 Float Z2 1
+
+TU154CE/NVU/Next_s2_1 Float S2 4
+TU154CE/NVU/NEXT_S2_10 FLOAT S2 3
+TU154CE/NVU/Next_s2_100 Float S2 2
+TU154CE/NVU/Next_s2_1000 Float S2 1
+
+TU154CE/NVU/Current_z2_min_1 Float Z2 4
+TU154CE/NVU/Current_z2_min_10 Float Z2 3
+TU154CE/NVU/Current_z2_min_100 Float Z2 2
+TU154CE/NVU/Current_z2_min_1000 Float Z2 1
+
+TU154CE/NVU/Current_S2_MIN_1 FLOAT S2 4
+TU154CE/NVU/Current_S2_MIN_10 FLOAT S2 3
+TU154CE/NVU/Current_S2_MIN_100 FLOAT S2 2
+TU154CE/NVU/Current_S2_MIN_1000 FLOAT S2 1
+
+TU154CE/NVU/Next_z2_min_1 Float Z2 4
+TU154CE/NVU/Next_z2_min_10 Float Z2 3
+TU154CE/NVU/Next_z2_min_100 Float Z2 2
+TU154CE/NVU/Next_z2_min_1000 Float Z2 1
+
+TU154CE/NVU/Next_s2_min_1 Float S2 4
+TU154CE/NVU/Next_s2_min_10 Float S2 3
+TU154CE/NVU/Next_s2_min_100 Float S2 2
+TU154CE/NVU/Next_s2_min_1000 Float S2 1
+
+TU154CE/NVU/ZPU1_01 Float Zpu 5
+TU154CE/NVU/ZPU1_1 Float Zpu 3
+TU154CE/NVU/ZPU1_10 Float Zpu 2
+TU154CE/NVU/ZPU1_100 Float Zpu 1
+
+TU154CE/NVU/ZPU2_01 Float Zpu 5
+TU154CE/NVU/ZPU2_1 Float Zpu 3
+TU154CE/NVU/ZPU2_10 Float Zpu 2
+TU154CE/NVU/ZPU2_100 Float Zpu 1
+
+TU154CE/nvu/z1_minus_cap float digits cap 1
+TU154CE/nvu/z1_plus_cap float digits cap 1
+TU154CE/NVU/S1_minus_cap float digits cap 1
+TU154CE/NVU/S1_PLUS_CAP FLOAT DIGITS CAP 1
+
+TU154CE/NVU/Z2_Minus_cap float digits cap 1
+TU154CE/NVU/Z2_Plus_CAP Float Digits Cap 1
+TU154CE/NVU/S2_minus_cap float digits cap 1
+TU154CE/NVU/S2_PLUS_CAP FLOAT DIGITS CAP 1
+
+TU154CE/NVU/Z1_NEXT_Minus_CAP Float Digits Cap 1
+TU154CE/NVU/Z1_NEXT_PLUS_CAP FLOAT DIGITS CAP 1
+TU154CE/NVU/S1_NEXT_MINUS_CAP FLOAT DIGITS CAP 1
+TU154CE/NVU/S1_NEXT_PLUS_CAP FLOAT DIGITS CAP 1
+
+TU154CE/NVU/Z2_NEXT_MINUS_CAP FLOAT DIGITS CAP 1
+TU154CE/NVU/Z2_NEXT_PLUS_CAP FLOAT DIGITS CAP 1
+TU154CE/NVU/S2_NEXT_MINUS_CAP FLOAT DIGITS CAP 1
+TU154CE/NVU/S2_NEXT_PLUS_CAP FLOAT DIGITS CAP 1
+
+TU154CE/buttons/nvu/nvu_left_btn int left button NVU 0
+TU154CE/Buttons/NVU/NVU_CTR_BTN Ints Center button NVU 0
+TU154CE/Buttons/NVU/NVU_Right_BTN Ints the right button NVU 0
+
+TU154CE/buttons/nvu/zpu_1_left_btn int left button ZPU 0
+TU154CE/Buttons/NVU/ZPU_1_CTR_BTN Ints Center ZPU 0
+TU154CE/buttons/nvu/zpu_1_right_btn in the right button ZPU 0
+
+TU154CE/buttons/nvu/zpu_2_left_btn int left button ZPU 0
+TU154CE/Buttons/NVU/ZPU_2_CTR_BTN Ints Center ZPU 0
+TU154CE/Buttons/NVU/ZPU_2_Right_BTN Ints Right button ZPU 0
+
+TU154CE/ROTARY/CONSOLE/NAV_1_COURSE Ints for 1 0
+TU154CE/ROTARY/CONSOLE/NAV_1_COURSE_1 FLOAT Course for 1 0
+TU154CE/ROTARY/CONSOLE/NAV_1_COURSE_10 FLOAT Course for 1 0
+TU154CE/ROTARY/CONSOLE/NAV_1_COURSE_100 FLOAT Course for 1 0
+TU154CE/ROTARY/CONSOLE/NAV_2_COURSE Ints for 2 0
+TU154CE/ROTARY/CONSOLE/NAV_2_COURSE_1 FLOAT Course for 2 0
+TU154CE/ROTARY/CONSOLE/NAV_2_COURSE_10 FLOAT Course for 2 0
+TU154CE/ROTARY/CONSOLE/NAV_2_COURSE_100 FLOAT Course for 2 0
+TU154CE/ROTARY/CONSOLE/WIND_SET FLOATT ETALLICTION OF WINDER 0
+
+TU154CE/Button/CONSOLE/WIND_COURSE_LEFT Ints installation of the wind rate 0
+TU154CE/Button/CONSOLE/WIND_COURSE_CTR Ints for installing the wind rate 0
+TU154CE/Button/CONSOLE/WIND_COURSE_RIight int
+TU154CE/Button/Console/Wind_SPD_LEFT Ints NEW Speed ​​Speed ​​0
+TU154CE/Button/CONSOLE/WIND_SPD_CTR Ints NECT OPTER
+TU154CE/Button/CONSOLE/WIND_SPD_Right Int button of the wind speed 0
+
+TU154CE/Switchers/CONSOLE/EMERG_ELAV_TRIMM INT Emergency Directorate of Trimmer 0
+TU154CE/Switchers/CONSOLE/EMERG_ELAV_TRIMM_CAP int. Emergency control of trimmer 0
+
+TU154CE/Buttons/CONSOLE/RADIO Ints Radio on Pedestral 0
+TU154CE/Buttons/CONSOLE/PDU406_CONTROL Ints Control Office 0
+TU154CE/Buttons/CONSOLE/PDU406_SOUND_OFF Ints Dressing Sound 0
+
+TU154CE/Switchers/Sard/Sard_cabin_press_Set Float setting pressure in the cab 650
+TU154CE/Switchers/Sard/Sard_Abs_Press_Set Float Installation of absolute pressure 1013
+TU154CE/SWITCHERS/SARD/SARD_DIFF_SET FLOAT installation of pressure drops 0.6
+TU154CE/SWITCHERS/SARD/SARD_SPD_SET FLOAT installation setting speed Sard 0.5
+
+TU154CE/Switchers/TCAS/TCAS_MODE Int mode TCAS. -1 = test, 0 - Stby, 1 = Alt Off, 2 = Alt On, 3 = Ta, 4 = Tara 4
+TU154CE/Switchers/TCAS/TCAS_ROT_BIG Ints Big Signing 0
+TU154CE/Switchers/TCAS/TCAS_ROT_SMALL Ints Stern 0
+TU154CE/Buttons/TCAS/TCAS_Ired_BTN Ints Ident 0 button
+TU154CE/Buttons/TCAS/TCAS_FCN_BTN Ints FCN 0
+TU154CE/Buttons/TCAS/TCAS_LEFT_BTN Ints <0
+TU154CE/Buttons/TCAS/TCAS_Right_BTN Ints> 0
+TU154CE/Buttons/TCAS/TCAS_ENT_BTN Ints ENT 0
+TU154CE/Buttons/TCAS/TCAS_ATC_BTN Intc ATC 0
+TU154CE/Buttons/TCAS/TCAS_ALT_BTN Ints Alt 0
+TU154CE/Buttons/TCAS/TCAS_RNG_DN_BTN Ints RNG DN 0
+TU154CE/Buttons/TCAS/TCAS_RNG_UP_BTN Ints RNG UP 0
+
+TU154CE/Buttons/SRPBZ/BUT_VIEW Ints button Vid
+TU154CE/Buttons/SRPBZ/BUT_EMPTY Ints - 0
+TU154CE/Buttons/SRPBZ/BUT_DOWN Ints the Upstate Paul 0
+TU154CE/Buttons/SRPBZ/BUT_UP Ints button Update 0
+TU154CE/ROTARY/SRPBZ/BRITNESS FLOAT A brightness handle 0.7
+
+
+TU154CE/LIGHT/No_LIT FLOAT variable to turn off the luminosity of objects that have LIT texture, but should not shine 0
+
+TU154CE/Lights/Exit_LAMP FLOAT Output Lamp 0
+TU154CE/Lights/Fasten_seatbelts_lamp Float Lamp Fasten 0
+TU154CE/Lights/Nosmoking_lamp Float Do not smoke 0
+TU154CE/Lights/Toilet_busy_lamp Float Lamp Tuett
+TU154CE/Lights/Seats_leters_LAMP FLOAT lamps with letters of seats 0
+
+
+TU154CE/Lights/MID_PANEL_INT FLOAT The brightness of the glow
+TU154CE/Lights/Left_panel_int Float brightness of the integrated lighting of the KVS panel 0
+TU154CE/Lights/Right_panel_int Float brightness of the built -in lighting panel 2P 0
+TU154CE/Lights/MID_Right_PANEL_INT FLOAT The brightness of the built -in lighting of the middle front panel 0
+TU154CE/LIGHTS/OVHD_PANEL_INT FLOAT The brightness of the built -in lighting of the upper panel 0
+TU154CE/Lights/LEFT_PANEL_FLOOD FLOAT The brightness of the pouring light of the left panel 0
+TU154CE/Lights/Right_panel_flood Float brightness of the pouring light with the right panel 0
+TU154CE/Lights/MID_PANEL_FLOOD FLOAT The brightness of the pouring light of the central panel 0
+TU154CE/Lights/Front_panel_flood Float brightness of the pouring light of the front panel 0
+TU154CE/Lights/Ovhd_front_panel_flood Float The brightness of the flooding of the front of the front of the overhead 0
+TU154CE/LIGHTS/OVHD_BACK_PANEL_FLOOD FLOAT The brightness of the pouring light of the rear of the rear.
+TU154CE/Lights/English_panel_flood Float brightness of the lighting of the panel BI 0
+TU154CE/Lights/AZS_PANEL_FLOOD FLOAT Panel SPS 0
+TU154CE/Lights/Cargo_Light_1 Float Cargo compartment lighting 1 0
+TU154CE/LIGHTS/CARGO_Light_2 FLOAT Lighting Cargo compartment 2 0
+TU154CE/Lights/Tech_Light Float Tek-Stesyk Clump
+TU154CE/Lights/Gear_nacelle_lyight Float lighting gondol chassis 0
+TU154CE/Lights/Left_Spotlight_Flood Float The brightness of the left flashlight 0
+
+TU154CE/Lights/Ark1_left_lit Float LEAR ARK 1 0
+TU154CE/LIGHTS/ArK1_Right_LIT FLOAT HIGHT LIGHT ARK 1 0
+TU154CE/Lights/Ark1_all_LIT FLOAT HIGH
+
+TU154CE/Lights/Ark2_left_lit Float LEAR ARK 2 0
+TU154CE/Lights/Ark2_Right_LIT FLOAT HIGHT LIGHT ARK 2 0
+TU154CE/LIGHTS/ArK2_LLIT FLOAT HIGH
+
+TU154CE/Lights/Tks_Mode_lit_MK FLOAT LOAD LAMPLE TOKS - MK 0
+TU154CE/Lights/Tks_Mode_LIT_AK FLOAT LOAD LAMPLE TOKS - AK 0
+TU154CE/Lights/Tks_Mode_LIT_GPK FLOAT LOWLOUS TOCE TOS - GPK 0
+
+TU154CE/Lights/to_NOT_READY FLOAT is not ready to take off 0
+TU154CE/Lights/Wrong_trimm Float False Trimming 0
+TU154CE/Lights/Controlle_Roll Float control roll 0
+TU154CE/Lights/Controll_pitch Float Drive Tangazh 0
+TU154CE/LIGHTS/YOKE_SIGN FLOAT The alarm alarm to the second round in the helm 0
+TU154CE/Lights/Triangle Float Integral Fire 0
+TU154CE/Lights/Controll_Thrust Float control thrust 0
+TU154CE/Lights/COURSE_LIM FLOAT ACTION OF THE COURSE
+TU154CE/LIGHTS/GS_LIM FLOAT exit beyond the glidade 0
+TU154CE/Lights/Fire Float Fire 0
+TU154CE/LIGHTS/No_AG_CONTROLL FLOAT No Control Ag 0
+TU154CE/Lights/Fuel_less_2500 Float Fuel Local 000 0
+TU154CE/Lights/SSO_DANGER FLOAT MTO is dangerous 0
+TU154CE/Lights/SSO_Connect FLOAT MECA
+TU154CE/Lights/Speed_HIGH FLOAT
+TU154CE/Lights/Roll_left_high Float Fool Lev Great 0
+TU154CE/Lights/Roll_Right_HIGH FLOAT Kren is right
+TU154CE/Lights/Alpha_HIGH FLOAT MARE Wa 0
+TU154CE/Lights/G_F_Force_HIGH FLOAT BEARD ORDER OPERARY 0
+TU154CE/Lights/Auasp_lamp Float Lamp on Auasas 0
+TU154CE/Lights/Toga Float 0 Care 0
+TU154CE/Lights/Decision_height Float SSO Svyazvoy decision -making H 0
+
+TU154CE/Lights/COURSE FLOAT CED
+TU154CE/Lights/Glideslope Float Gliss 0
+TU154CE/Lights/ZK_LAMP FLOAT ZK 0
+TU154CE/Lights/Thrust_automat Float Automatic Rumway 0
+TU154CE/Lights/Stab_Roll Float Book Stabilization
+TU154CE/Lights/Stab_pitch Float Stabilization longitudinal 0
+TU154CE/Lights/NVU_LAMP FLOAT NVU 0
+TU154CE/Lights/Vor_LAMP FLOAT VOR 0
+TU154CE/Lights/Stab_H Float Stub h 0
+TU154CE/Lights/Stab_v Float Stub V 0
+TU154CE/Lights/Stab_m Float Stub M 0
+TU154CE/Lights/Marker_1 Float Marker 1 0
+TU154CE/Lights/Marker_2 Float Marker 2 0
+TU154CE/Lights/Marker_3 Float Marker 3 0
+
+TU154CE/Lights/Pull_up Float pull up 0
+TU154CE/Lights/Check_alt_left Float check n 0
+TU154CE/Lights/Check_alt_Right Float Check N 0
+TU154CE/Lights/SNS_LAMP FLOAT SNS 0
+TU154CE/Lights/FP_eng_fail_1 Float Dvig. Napr 1 on the front panel 0
+TU154CE/Lights/FP_eng_fail_2 Float Dvig. Napr 2 on the front panel 0
+TU154CE/Lights/FP_eng_fail_3 Float Dvig. Napr 3 on the front panel 0
+TU154CE/LIGHTS/FP_REVERSE_1 FLOAT Obel Reverses 1 on the front panel 0
+TU154CE/Lights/FP_Reversee_3 Float Vessorsa 3 on the front panel 0
+TU154CE/Lights/Stab_work Float Stabiliz is included
+TU154CE/Lights/Flaps_1_valve float flaps 1 PC 0
+TU154CE/Lights/Flaps_2_valve float flaps 2 PC 0
+TU154CE/Lights/spoilers_mid_left float interceptors of middle lion 0
+TU154CE/Lights/Spoilers_Mid_Right Float interceptors of the average rights of rights 0
+TU154CE/Lights/spoilers_inn_left float interceptors intra -lion 0
+TU154CE/Lights/spoilers_inn_right float interceptors Introductory Rights 0
+TU154CE/Lights/GEARS_NOT_EXT FLOAT CHASSIA NOT released 0
+TU154CE/Lights/GEARS_RED_LEFT FLOAT Red lamp chassis 0
+TU154CE/Lights/GEARS_RED_FRONT FLOAT Red lamp chassis 0
+TU154CE/Lights/GEARS_RED_RIGHT FLOAT Red lamp chassis 0
+TU154CE/Lights/GEARS_GREEN_LEFT FLOAT Green Channel Lamp 0
+TU154CE/Lights/GEARS_GREEN_FRONT FLOAT green chassis 0
+TU154CE/Lights/GEARS_GREEN_RIGHT FLOAT green chassis 0
+TU154CE/Lights/GEARS_RED_LEFT_enG FLOAT Red Channel lamp on Bi Panel 0
+TU154CE/Lights/GEARS_RED_FRONT_ENG FLOAT Red chassis on the BI 0 panel 0
+TU154CE/Lights/GEARS_RED_Right_eng Float red chassis on the Bi panel 0
+TU154CE/Lights/GEARS_GREEN_LEFT_enG FLOAT Green Channel lamp on Bi Panel 0
+TU154CE/Lights/GEARS_GREEN_FRONT_ENG FLOAT green chassis on the Bi Panel 0
+TU154CE/Lights/GEARS_GREEN_Right_eng Float green chassis lamp on the Bi panel 0
+TU154CE/Lights/FLAPS_UNSYNC FLOAT SAVENCHR CLISHER 0
+TU154CE/Lights/Slats_unsync Float SAVSINHR Predkr 0
+TU154CE/Lights/Slats_Extnded Float Drops released 0
+
+TU154CE/Lights/to_RUDER FLOAT ANSWER-Posper pH 0
+TU154CE/Lights/to_elevator float take-off-landing RV 0
+TU154CE/Lights/Trimm_zero_course Float DECE
+TU154CE/Lights/Trimm_zero_roll Float is a hard roll 0
+TU154CE/Lights/Trimm_zero_pitch Float is impassive tangas 0
+TU154CE/Lights/Damper_course Float Demper Course 0
+TU154CE/Lights/DAMPER_ROLL FLOAT DEMPER Kren 0
+TU154CE/Lights/DAMPER_PITH FLOAT DUR
+TU154CE/LIGHTS/No_RESERVE_C FLOAT No reserve to 0
+TU154CE/LIGHTS/No_RESERVE_G FLOAT No Reserve G 0
+TU154CE/Lights/Pitch_control_fail Float continued control 0
+TU154CE/Lights/Roll_Control_Fail Float Books control 0
+
+TU154CE/Lights/Ga_Main_fail Float Refusal HA OSN 0
+TU154CE/Lights/GA_RESERVE_FAIL FLOAT Refusal ha counter 0
+TU154CE/Lights/MSG_LAMP FLOAT MSG 0
+TU154CE/Lights/WPT_LAMP FLOAT WPT 0
+TU154CE/Lights/Stuard_call Float call BP 0
+TU154CE/LIGHTS/MGV_Control_Fail Float Refusal MGV Counter 0
+TU154CE/Lights/SNS_LAMP FLOAT SNS 0
+TU154CE/Lights/Correct_on Float Correction Togut 2
+TU154CE/Lights/Change_ch_o Float Change Cho 0
+TU154CE/Lights/Warning_terran Float attention Earth 0
+TU154CE/Lights/GS_LOW FLOAT GLISSADA low 0
+TU154CE/LIGHTS/COCKPIT_P_LOW FLOAT P CABL
+TU154CE/Lights/NVU_Fail Float Otakaz NVVU 0
+TU154CE/LIGHTS/NVU_VOR_AUTOMAT FLOAT NVU-Vor Automat 0
+TU154CE/Lights/Dist_autonom Float Autonomous Dist 0
+TU154CE/Lights/Diss_Memory Float memory Diss 0
+TU154CE/Lights/Azimuth_autonom Float Azimuth Autonom
+TU154CE/Lights/SRPBZ_FAIL FLOAT Refusal SRPBZ 0
+TU154CE/Lights/TCAS_ident Float LEC Labb
+
+TU154CE/Lights/Other_hatches Float lamp for non -lawsuated hatches 0
+TU154CE/Lights/Left_front_pax_door Float left front door is open 0
+TU154CE/Lights/Left_Mid_PAX_DOOR FLOAT Left Middle Door Open 0 Open
+TU154CE/Lights/Right_Mid_PAX_DOOR FLOAT A medium -sized door is open 0
+TU154CE/Lights/Cargo_front_Door Float Front Luke 0
+TU154CE/Lights/Cargo_Back_Door Float Front Luke 0
+TU154CE/Lights/Turn63_LAMP FLOAT RARET 63 0
+TU154CE/Lights/Nosewheel_turn_Off Float NOT Turn
+TU154CE/Lights/Busters_Off Float Booster Lamp 0
+
+TU154CE/Lights/Water_level_1 Float water level 1 0
+TU154CE/Lights/Water_level_12 Float water level 1/2 0
+TU154CE/Lights/Water_level_14 Float water level 1/4 0
+TU154CE/Lights/Water_level_0 Float water level 0 0 0 0
+TU154CE/Lights/RA56_Roll_Fail_1 Float Refusal RAL
+TU154CE/Lights/RA56_Roll_Fail_2 Float Refusal Ra56 Kren 0
+TU154CE/Lights/RA56_Roll_Fail_3 Float Refusal Ra56 Kren 0
+TU154CE/Lights/RA56_PITCH_FAIL_1 FLOAT Refusal Ra56 Tangage 0
+TU154CE/Lights/RA56_PITCH_FAIL_2 FLOAT Refusal Ra56 Tangage 0
+TU154CE/Lights/RA56_PITCH_FAIL_3 FLOAT Refusal Ra56 Tangage 0
+TU154CE/Lights/Ra56_course_fail_1 Float Refusal RA56 course 0
+TU154CE/Lights/Ra56_course_fail_2 Float Refusal RA56 Course 0
+TU154CE/Lights/Ra56_course_fail_3 Float Refusal RA56 course 0
+TU154CE/LIGHTS/NVU_NO_RESERVE FLOAT NU NVU no 0
+TU154CE/Lights/Absu_work Float IBSU 0
+
+TU154CE/Lights/Fire/Smoke_1 Float Smoke in compartments 0
+TU154CE/Lights/Fire/Smoke_2 Float Smoke in compartments 0
+TU154CE/Lights/Fire/Smoke_zone2_left Float Smoke in compartments 0
+TU154CE/Lights/Fire/Smoke_zone2_Right Float Smoke in compartments 0
+TU154CE/Lights/Fire/Smoke_zone3 Float Smoke in compartments 0
+TU154CE/Lights/Fire/Smoke_zone4 Float Smoke in compartments 0
+TU154CE/Lights/Fire/Smoke_zone5_left Float Smoke in compartments 0
+TU154CE/Lights/Fire/Smoke_zone5_Right Float Smoke in compartments 0
+TU154CE/Lights/Fire/Smoke_zone6 Float Smoke in compartments 0
+TU154CE/Lights/Fire/Fire_eng_1 Float Fire in the engine 0
+TU154CE/Lights/Fire/Fire_eng_2 Float Fire in the engine 0
+TU154CE/Lights/Fire/Fire_eng_3 Float Fire in the engine 0
+TU154CE/Lights/Fire/Overheat_eng_1 Float engine overheating 0
+TU154CE/Lights/Fire/Overheat_eng_2 Float engine overheating 0
+TU154CE/Lights/Fire/Overheat_eng_3 Float engine overheating 0
+TU154CE/Lights/Fire/Fuel_off_eng_1 Float Fuel closed 0
+TU154CE/Lights/Fire/Fuel_off_eng_2 Float Fuel closed 0
+TU154CE/Lights/Fire/Fuel_off_eng_3 Float Fuel closed 0
+TU154CE/Lights/Fire/Check_overheat Float check overheating and smoke 0
+TU154CE/Lights/Fire/Fire_apu Float Fire Armed Forces 0
+TU154CE/Lights/Fire/Turn_on_spz Float Turn on the SPZ 0
+
+TU154CE/Lights/APU/Low_oil Float Little 0
+TU154CE/LIGHTS/APU/Low_oil_Press float p oil 0
+TU154CE/LIGHTS/APU/High_TEMP FLOAT Permit temperature 0
+TU154CE/Lights/APU/High_rpm Float Maximum revolutions 0
+TU154CE/Lights/APU/PTA6_Fail Float PTA 6A is faulty 0
+TU154CE/Lights/APU/Doors_open Float Sasis opened 0
+TU154CE/Lights/APU/Fuel_Press float p fuel 0
+TU154CE/Lights/APU/Start_ready Float is ready for launch 0
+TU154CE/Lights/APU/work_Mode float Outpat 0
+TU154CE/Lights/APU/Start_apu Float Launch Armed Forces 0
+
+TU154CE/Lights/Engines/ENG1_DANGEROUS_VIBRO FLOAT Dangerous vibration 0
+TU154CE/Lights/Engines/ENG1_Oil_level Float Oil level 0
+TU154CE/LIGHTS/Engines/ENG1_OIL_P FLOAT Oil Pressure 0
+TU154CE/Lights/Engines/ENG1_BYPASS_VALVE FLOAT Valves of Remoling 0
+TU154CE/Lights/Engines/Eng1_vna33 Float VNA 33 0
+TU154CE/LIGHTS/Engines/ENG1_reverse_LOCK FLOATE Obel Castle 0
+TU154CE/Lights/Engines/ENG1_HIGH_VIBRO FLOAT VIBAMICAL 0
+TU154CE/Lights/Engines/ENG1_CHips float shavings in oil 0
+TU154CE/LIGHTS/Engines/ENG1_FUEL_P FLOAT Fuel pressure 0
+TU154CE/LIGHTS/Engines/ENG1_Filter_Fail Float filter clogged 0
+TU154CE/Lights/Engines/Eng1_vna0 Float VNA 0 0 0 0
+TU154CE/Lights/Engines/ENG1_reverse_DOORS FLOAT OBESORS SHIP 0
+
+TU154CE/Lights/Engines/ENG2_DANGEROUS_VIBRO FLOAT Dangerous vibration 0
+TU154CE/Lights/Engines/Eng2_oil_level Float Oil level 0
+TU154CE/Lights/Engines/ENG2_OIL_P FLOAT Oil Pressure 0
+TU154CE/Lights/Engines/ENG2_BYPASS_VALVE FLOAT Valves of Remoling 0
+TU154CE/Lights/Engines/Eng2_vna33 Float VNA 33 0
+TU154CE/Lights/Engines/Eng_at_on Float AT included 0
+TU154CE/Lights/Engines/ENG2_HIGH_VIBRO FLOAT VIBAMICAL 0
+TU154CE/Lights/Engines/ENG2_CHips Float shavings in oil 0
+TU154CE/Lights/Engines/Eng2_Fuel_p Float fuel pressure 0
+TU154CE/Lights/Engines/Eng2_filter_fail Float filter clogged 0
+TU154CE/Lights/Engines/ENG2_VNA0 Float VNA 0 0 0 0
+TU154CE/Lights/Engines/Eng_block Float Sector Sector 0
+
+TU154CE/Lights/Engines/ENG3_DANGEROUS_VIBRO FLOAT Dangerous vibration 0
+TU154CE/Lights/Engines/ENG3_OIL_LEVEL FLOATE Oil level 0
+TU154CE/Lights/Engines/ENG3_OIL_P FLOAT Oil Pressure 0
+TU154CE/Lights/Engines/ENG3_BYPASS_VALVE FLOAT Valves of Remoling 0
+TU154CE/Lights/Engines/ENG3_VNA33 Float VNA 33 0
+TU154CE/Lights/Engines/ENG3_reverse_LOCK FLOATE Obel Castle 0
+TU154CE/Lights/Engines/ENG3_HIGH_VIBRO FLOAT VIBAMICAL 0
+TU154CE/Lights/Engines/ENG3_CHIPS FLOAT OLE OLE 0
+TU154CE/Lights/Engines/ENG3_FUEL_P FLOAT Fuel pressure 0
+TU154CE/Lights/Engines/ENG3_FILTER_FAIL FLOAT filter clogged 0
+TU154CE/Lights/Engines/ENG3_VNA0 Float VNA 0 0 0 0
+TU154CE/Lights/Engines/ENG3_REVERSE_DOORS FLOAT OBESORS 0
+
+TU154CE/Lights/Small/Transponder1_fail Float left panel. The transmitter refusal 0
+TU154CE/Lights/Small/Transponder1_kd Float left panel. KD 0
+TU154CE/Lights/Small/Transponder1_kp Float left panel. KP 0
+TU154CE/Lights/Small/Leftside_yellow float Yellow lamp on the left 0
+TU154CE/Lights/Small/Turn_on_aux float turn on the spare 0
+TU154CE/LIGHTS/SMALL/FRONT_HYDR_FAIL_1 FLOAT Low GS pressure 1. Front panel 0
+TU154CE/LIGHTS/SMALL/FRONT_HYDR_FAIL_2 FLOAT Low GS pressure 2. Front panel 0
+TU154CE/LIGHTS/SMALL/FRONT_HYDR_FAIL_3 FLOAT Low GS pressure 3. Front panel 0
+TU154CE/Lights/Small/Front_hydr_fail_4 Float Low pressure of the Avarin. front panel 0
+TU154CE/Lights/Small/RV5_left_DH FLOATE VOLS on Left RV5 0
+TU154CE/Lights/Small/RV5_Right_DH Float VPR on the right RV5 0
+TU154CE/Lights/Small/VD15_LAMP FLOAT lamp near the altimeter on the front panel 0
+
+TU154CE/Lights/Small/BKK_OK FLOAT DEAR OF DIREED FOR OF BKK on the upper panel 0
+TU154CE/Lights/Small/Heat_ok_1 Float Heating District 0
+TU154CE/LIGHTS/SMALL/HeAT_OK_2 FLOAT DEPIRITION OF WEACH IT
+TU154CE/Lights/Small/Heat_ok_3 Float Heating Heating Lamp 0
+TU154CE/Lights/Small/SP50_C1 Float panel SP50 - Course 1 0
+TU154CE/LIGHTS/SMALL/SP50_G1 Float panel SP50 - GLISS 1 0
+TU154CE/Lights/Small/SP50_C2 Float panel SP50 - course 2 0
+TU154CE/Lights/Small/SP50_G2 Float panel SP50 - GLISS 2 0
+TU154CE/Lights/Small/Transponder_Red Float red lamp on the defendant 0
+TU154CE/Lights/Small/Transponder_green Float green lamp on the defendant 0
+TU154CE/LIGHTS/SMALL/TKS_MAIN_FAIL FLOAT Refusing OSN GA for TKS 0
+TU154CE/LIGHTS/SMALL/TKS_CONTR_FAIL FLOAT Refusing a counter ha on TKS 0
+
+TU154CE/Lights/Small/RLS_READY FLOAT RLS is ready
+TU154CE/Lights/Small/RLS_Weather Float RALS Meteo 0
+TU154CE/Lights/Small/Stu_roll Float START 0
+TU154CE/Lights/Small/Stu_pitch Float STED 0
+TU154CE/Lights/Small/Stu_toga Float 0
+TU154CE/Lights/Small/at_2 Float at 2 0
+TU154CE/Lights/Small/at_1 Float at 1 0
+TU154CE/Lights/Small/NVU_ON FLOAT NVU SPR 0
+TU154CE/Lights/Small/NVU_CORR FLOAT NVU CORR 0
+TU154CE/LIGHTS/SMALL/NAV_1_TO FLOAT NAV 1 on 0
+TU154CE/Lights/Small/NAV_1_FROM FLOAT NAV 1 from 0
+TU154CE/Lights/Small/NAV_2_TO FLOAT NAV 2 on 0
+TU154CE/Lights/Small/Nav_2_from Float Nav 2 from 0
+
+TU154CE/Lights/Small/APU_GEN_ON FLOAT RAP connected 0
+TU154CE/Lights/Small/Bus_NPK_1 FLOAT NPK NPK 3 0
+TU154CE/Lights/Small/Bus_NPK_2 FLOAT NPK Rights Rights for 1 0
+TU154CE/Lights/Small/Emerg_inv_115 Float Emergency Prectes. 115v 0
+TU154CE/Lights/Small/Gen_fail_1 Float generator does not work 0
+TU154CE/Lights/Small/Gen_fail_2 Float generator does not work 0
+TU154CE/Lights/Small/Gen_fail_3 Float generator does not work 0
+TU154CE/Lights/Small/Bus_ConNECTED FLOOT network connected 0
+TU154CE/Lights/Small/Left_bus_use_bat Float left network from batteries 0
+TU154CE/Lights/Small/Right_bus_use_bat Float right network from batteries 0
+TU154CE/LIGHTS/SMALL/TURN_OFF_BAT_1 FLOAT Turn off the battery 0
+TU154CE/LIGHTS/SMALL/TURN_OFF_BAT_3 FLOAT Turn off the battery 0
+TU154CE/LIGHTS/SMALL/TURN_OFF_BAT_2 FLOAT Turn off the battery 0
+TU154CE/LIGHTS/SMALL/TURN_OFF_BAT_4 FLOAT Turn off the battery 0
+TU154CE/Lights/Small/vu_on_1 float v1 0
+TU154CE/Lights/Small/vu_on_2 float v1 0
+TU154CE/Lights/Small/Left_bus_on_TR2 FLOAT Left network on TR 2 0
+TU154CE/Lights/Small/Right_bus_on_TR1 FLOAT RIGHT NECHEN TR 1 0
+TU154CE/Lights/Small/PTS250_N1 FLOAT PTS 250 does not work 0
+TU154CE/Lights/Small/PTS250_N2 FLOAT PTS 250 per network 0
+
+TU154CE/Lights/Small/Throttle_1_fire Float fire lamp on ore 0
+TU154CE/Lights/Small/Throttle_2_fire Float fire lamp on ore 0
+TU154CE/Lights/Small/Throttle_3_fire Float fire lamp on ore 0
+
+TU154CE/Lights/Small/Oil_Meter_1 Float green oils at oil levels 0
+TU154CE/Lights/Small/Oil_Meter_2 Float Green oil at oil levels 0
+TU154CE/Lights/Small/Oil_Meter_3 Float green oils at oil levels 0
+
+TU154CE/Lights/Small/Starter_HIGH_RPM_1 FLOAT Dangerous turns of starter 0
+TU154CE/Lights/Small/Starter_HIGH_RPM_2 FLOAT Dangerous turns of starter 0
+TU154CE/Lights/Small/Starter_HIGH_RPM_3 FLOAT Dangerous turns of starter 0
+TU154CE/Lights/Small/Fuel_2500 Float fuel remains 2500 0
+TU154CE/Lights/Small/Fuel_Tank1_USED FLOAT Consumption from tank 1 0
+TU154CE/Lights/Small/Fuel_tank3_left_fail Float Red lamp tank 3 lion 0
+TU154CE/Lights/Small/Fuel_tank2_left_fail Float Red lamp tank 2 lion 0
+TU154CE/Lights/Small/Fuel_Tank2_Right_Fail Float Red lamp BAK 2 Rights 0
+TU154CE/Lights/Small/Fuel_tank3_Right_Fail Float Red lamp BAK 3 Rights 0
+TU154CE/Lights/Small/Fuel_pump_left_5 Float pump BAK 5 lion 0
+TU154CE/Lights/Small/Fuel_pump_left_6 Float pump BAK 6 Leo 0
+TU154CE/Lights/Small/Fuel_pump_left_7 Float pump BAK 7 Leo 0
+TU154CE/Lights/Small/Fuel_pump_left_8 Float pump BAK 8 lion 0
+TU154CE/Lights/Small/Fuel_pump_left_9 Float pump BAK 9 lion 0
+TU154CE/Lights/Small/Fuel_Pump_Right_5 Float pump BAK 5 Rights 0
+TU154CE/Lights/Small/Fuel_pump_right_6 Float pump BAK 6 Rights 0
+TU154CE/Lights/Small/Fuel_pump_right_7 Float pump BAK 7 Rights 0
+TU154CE/Lights/Small/Fuel_Pump_Right_8 Float pump BAK 8 Rights 0
+TU154CE/Lights/Small/Fuel_pump_right_9 Float pump BAK 9 Rights 0
+TU154CE/Lights/Small/Fuel_pump_10 Float pump DOUNT 10 0 0
+TU154CE/Lights/Small/Fuel_pump_11 Float pump pump 11 0
+TU154CE/Lights/Small/Fuel_pump_1 Float pump pump 1 0
+TU154CE/Lights/Small/Fuel_pump_2 Float pump BAK 2 0
+TU154CE/Lights/Small/Fuel_pump_3 Float pump BAK 3 0
+TU154CE/Lights/Small/Fuel_pump_4 Float pump BAK 4 0
+
+TU154CE/Lights/Small/Fuel_cut_Off_1 Float Transfiguration Cranes 0
+TU154CE/Lights/Small/Fuel_cut_Off_2 Float Transfiguration Cranes 0
+TU154CE/Lights/Small/Fuel_cut_Off_3 Float Transfiguration Cranes 0
+TU154CE/Lights/Small/Fuel_flow_from_2 Float Process of Consumption 0
+TU154CE/Lights/Small/Fuel_flow_from_3 Float Process of Consumption 0
+TU154CE/Lights/Small/Fuel_flow_from_4 Float Process of Consumption 0
+TU154CE/Lights/Small/Fuel_flow_auto_fail Float Automatic Consumable Automatic
+TU154CE/LIGHTS/SMALL/FULL_RESERV_TRANS_LEFT FLOAT Resources in tank 1 0
+TU154CE/Lights/Small/Fuel_Reserv_Trans_Right Float Reserve Backing in tank 1 0
+TU154CE/Lights/Small/Fuel_PORC_RESERV FLOAT Porcams 0
+TU154CE/Lights/Small/Fuel_level_automat Float Automobile Automatic
+TU154CE/Lights/Small/SKV_VERHEAT FLOATE Overheating SLE
+TU154CE/LIGHTS/SMALL/SKV_VERPRESS_LEFT FLOAT Excess pressure 0
+TU154CE/Lights/Small/SKV_VERPRESS_RIGHT FLOAT
+TU154CE/LIGHTS/SMALL/SKV_TAIL_TEMP FLOAT The temperature of the CV compartment is great
+TU154CE/Lights/Small/SKV_Bleed_fail_1 Float selection refusal 0
+TU154CE/Lights/Small/SKV_Bleed_fail_2 Float selection refusal 0
+TU154CE/LIGHTS/SMALL/SKV_BLED_FAIL_3 FLOAT OF SISTORY OF SISTORY 0
+TU154CE/Lights/Small/SKV_bleed_Closed_1 Float selection closed 0
+TU154CE/LIGHTS/SMALL/SKV_BLED_CLOSED_2 FLOAT Closed 0
+TU154CE/LIGHTS/SMALL/SKV_BLED_CLOSED_3 FLOAT selection closed 0
+TU154CE/Lights/Small/APD_WORK_1 FLOAT APD works 0
+TU154CE/Lights/Small/APD_WORK_2 FLOAT APD works 0
+TU154CE/Lights/Small/APD_WORK_3 FLOAT APD works 0
+
+TU154CE/Lights/Small/Eng_hydr_fail_1 Float Low GS Press 1. Panel Bi 0
+TU154CE/Lights/Small/Eng_hydr_fail_2 Float Low GS Panel 2. Bi panel 0
+TU154CE/Lights/Small/Eng_hydr_fail_3 Float Low GS Panel 3. Bi panel 0
+TU154CE/Lights/Small/Eng_hydr_fail_4 Float Low Dengers Aquarius. Panel Bi 0
+
+TU154CE/Lights/Small/Tail_TEMP_HIGH FLOAT Topics. HB. The compartment is great 0
+TU154CE/Lights/Small/Lavatory_heat Float heating of the drain of the toilet 0
+TU154CE/Lights/Small/Galley_heat Float Heating of the kitchen 0
+TU154CE/Lights/Small/MSRP_MLP_MAIN FLOAT MSRP. MLP SOU 0
+TU154CE/Lights/Small/MSRP_MLP_AUX FLOAT MSRP. Mlp add 0
+TU154CE/Lights/Small/MSRP_UP2 FLOAT MSRP. UN2 0
+TU154CE/Lights/Small/MSRP_MARS FLOAT MSRP. Mars 0
+
+TU154CE/Lights/Small/SRD_LOW_PRESS FLOAT Less Cab.
+TU154CE/Lights/Small/SRD_OVERPRESS FLOAT Cabin
+TU154CE/Lights/Small/Soi_work Float Soy is serviceable 0
+TU154CE/Lights/Small/Soi_ice_Detieded Float soy icing 0
+TU154CE/Lights/Small/Antiice_Slats Float shutters
+TU154CE/LIGHTS/SMALL/ANTIICE_ENG_1 FLOAT The dashes of the dilute
+TU154CE/Lights/Small/Antiice_eng_2 Float shutters
+TU154CE/Lights/Small/Antiice_eng_3 Float shutters
+TU154CE/Lights/Small/Antiice_wings Float.
+TU154CE/Lights/Small/Close_toilet Float Close the toilet 0
+
+TU154CE/Lights/Small/PNP_SP_LEFT FLOAT lamp joint venture on the PNP lion 0
+TU154CE/Lights/Small/pnp_vor_left Float Vor Lamp Lev 0
+TU154CE/Lights/Small/pnp_nv_left Float HB lamp on the Lion 0
+TU154CE/Lights/Small/pnp_rsbn_left float RSBN lamp on the PNP Lion 0
+TU154CE/Lights/Small/PNP_SP_Right Float Lamp joint venture on PNP Rights
+TU154CE/Lights/Small/pnp_vor_Right float Vor Lamp Rights Rights
+TU154CE/Lights/Small/pnp_nv_right float HB Lamp Rights Rights
+TU154CE/Lights/Small/pnp_rsbn_right float RSBN Rights Rights 0
+TU154CE/Lights/Small/Dme_Mile_left Float Mile Lev Lev 0
+TU154CE/Lights/Small/Dme_km_left Float KM lamp on dm Leo 0
+TU154CE/Lights/Small/DME_Mile_Right Float Mili lamp right 0
+TU154CE/Lights/Small/Dme_km_Right Float KM Rights Rights 0
+
+TU154CE/Lights/Button/Absu_zk Float Absu ZK 0
+TU154CE/Lights/Button/ABSU_Reset Float Absu Reset 0
+TU154CE/Lights/Button/Absu_nvu Float Absu NVU 0
+TU154CE/Lights/Button/Absu_az1 Float Absu AZ1 0
+TU154CE/Lights/Button/Absu_az2 Float Absu Az2 0
+TU154CE/Lights/Button/ABSU_App float Absu Object 0
+TU154CE/Lights/Button/Absu_gz Float Absu Gliss 0
+TU154CE/Lights/Button/Absu_stab_m Float Absu Stub M 0
+TU154CE/Lights/Button/Absu_stab_v Float Absu Stub V 0
+TU154CE/Lights/Button/ABSU_STAB_H FLOAT Absu Stub h 0
+TU154CE/Lights/Button/Absu_Stab Float Absu Stub h 0
+TU154CE/Lights/Button/ABSU_STAB_SPD float Absu Stub Speed ​​0
+TU154CE/Lights/Button/ABSU_THRO1 FLOAT ABOS ON G1 0
+TU154CE/Lights/Button/ABSU_THRO2 FLOAT ABOS ONE ON G2 0
+TU154CE/Lights/Button/ABSU_THRO3 FLOAT ABLE ON ON G3 0
+TU154CE/Lights/Button/Dejur_contr Float on duty Counter 0
+TU154CE/Lights/Button/Sound_Off Float Obel Sound 0
+
+TU154CE/Lights/Button/Fire_eng_1 Float Fire Fire Dvig 1 0
+TU154CE/Lights/Button/Fire_eng_2 Float Fire Fire Dvig 2 0
+TU154CE/Lights/Button/Fire_eng_3 Float Fire Fire Dvig 3 0
+TU154CE/Lights/Button/Fire_apu Float Fire Fire Armed Forces 0
+TU154CE/Lights/Button/Fire_ng Float Fire NG 0
+TU154CE/Lights/Button/Fire_turn_3 Float fire extinguishing 3 0
+TU154CE/Lights/Button/Fire_turn_2 Float fire extinguishing 2 0
+TU154CE/Lights/Button/Fire_turn_1 Float fire extinguishing 1 0
+
+TU154CE/LIGHTS/White_Light_left in the luminosity of the left white fire on the wing 1
+TU154CE/Lights/White_Light_Right int Line of the right white fire on the wing 1
+TU154CE/Lights/Beacon_Light_b in the Light of the Red Lighthouse below 1
+TU154CE/Lights/Beacon_Light_t in the Light of the Red Lighthouse at the top 1
+
+TU154CE/Lights/Sard_panel_LIT FLOAT SARDRA SARDRAL Light
+
+TU154CE/LIGHTS/NVU_1_ACTIVE FLOAT Lighting Active Panel NVU 0
+TU154CE/LIGHTS/NVU_2_active Float Active Panel NVU 0
+
+TU154CE/LIGHTS/OIL_QTY_WORK_1 FLOAT Lamp Light Lamp 1
+TU154CE/LIGHTS/OIL_QTY_WORK_2 FLOAT Lamp Light Lamp 1
+TU154CE/Lights/Oil_qty_work_3 Float lamp luminosity on the oil meter 1
+
+TU154CE/ROTARY/KLN90/3D_L_angle int rotation of the left handle Kln90 0
+TU154CE/ROTARY/KLN90/3D_R_NANGLE Ints turn the right handle Kln90 0
+TU154CE/ROTARY/KLN90/Power_KNOB Ints stretch the power handle 0
+TU154CE/ROTARY/KLN90/Power_knob_angle int rotation
+TU154CE/ROTARY/KLN90/Scan_knob Ints Extending SCAN 0
+
+TU154CE/SWITCHERS/WIPER_LEFT Ints switch of the wiper. -1 - slowly, 0 - off, +1 - quickly 0
+TU154CE/Switchers/Wiper_Right Int switch of the wiper. -1 - slowly, 0 - off, +1 - quickly 0
+
+TU154CE/Anim/Wiper_angle_left Float angle of rotation of the wiper from the edge. 0 - 62 0
+TU154CE/Anim/Wiper_angle_Right Float angle of rotation of the wiper from the edge. 0 - 62 0
+
+TU154CE/Switchers/KLN_KNOB_OUT INT OF CLEASE KLN 0
+TU154CE/Switchers/KLN_POWER_KNOB Ints pressing the power handle Kln 0
+
+TU154CE/Lights/Landing_Light_OFF Ints switch 0
+TU154CE/Lights/Landing_Light_Off_cap Ints switch 0
+
+TU154CE/Lights/GNS430_LIT FLOAT Lighting Panel GNS 1
+
+TU154CE/ROTARY/GNS430/LB_angle int rotation of the left large handle GN430 0
+TU154CE/ROTARY/GNS430/LS_angle int rotation of the left small handle GN430 0
+TU154CE/ROTARY/GNS430/RB_angle int rotation of the right large handle GN430 0
+TU154CE/ROTARY/GNS430/RS_angle int rotation of the right small handle GN430 0
+
+TU154CE/SWITCHERS/BREAKERS/RIGHT/AP_SUBChanNNNNNEL3 INT gas station SAU III PC 1
+TU154CE/SWITCHERS/BREAKERS/RIGHT/FD_SUBCHANNNNNEL3 INT III PC III PC 1
+TU154CE/Switchers/Breakers/Right/FD_Test Intes control stupa 1
+TU154CE/Switchers/Breakers/Right/AFCS_SC3 ints 3 PC 1
+TU154CE/SWITCHERS/BREAKERS/RIGHT/AFCS_SC2 ints 2 PC 1
+TU154CE/Switchers/Breakers/Right/AHRS2 int 2 1 1 1 1
+TU154CE/SWITCHERS/BREAKERS/RIGHT/GA_Calc_Sc1 Ints for Care 1 PC 1
+TU154CE/SWITCHERS/BREAKERS/RIGHT/GA_Calc_Sc2 Ints for Care 2 PC 1
+TU154CE/SWITCHERS/BREAKERS/RIGHT/AT_C2 int automatic thrust 2 Channel 1

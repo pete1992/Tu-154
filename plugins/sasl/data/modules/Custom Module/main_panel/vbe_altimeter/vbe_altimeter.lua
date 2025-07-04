@@ -18,7 +18,7 @@ defineProperty("press_knob", globalPropertyi("tu154ce/gauges/alt/vbe_press_knob_
 defineProperty("fl_knob", globalPropertyi("tu154ce/gauges/alt/vbe_fl_knob_left"))  -- flight level knob
 defineProperty("vbe_mode", globalPropertyi("tu154ce/gauges/alt/vbe_mode_left"))  -- meters/feet mode
 
-defineProperty("vbe_flightlevel", globalPropertyi("tu154ce/gauges/alt/vbe_flightlevel_left"))  -- эшелон
+defineProperty("vbe_flightlevel", globalPropertyf("tu154ce/gauges/alt/vbe_flightlevel_left"))  -- эшелон
 
 defineProperty("mode_button", globalPropertyi("tu154ce/gauges/alt/vbe_mode_but_left"))  -- mode button
 

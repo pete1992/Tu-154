@@ -36,7 +36,7 @@ defineProperty("xpdr_code", globalPropertyf("sim/cockpit/radios/transponder_code
 defineProperty("xpdr_mode", globalPropertyf("sim/cockpit/radios/transponder_mode")) 
 defineProperty("xpdr_led", globalPropertyf("sim/cockpit/radios/transponder_light"))
 ident_cmd = findCommand("sim/transponder/transponder_ident")  -- comand of transponder ident
-defineProperty("xpdr_fail", globalPropertyi("sim/operation/failures/rel_g_xpndr"))
+defineProperty("xpdr_fail", globalPropertyi("sim/operation/failures/rel_xpndr"))
 
 -- time
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time

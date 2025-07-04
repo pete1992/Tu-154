@@ -21,7 +21,7 @@ defineProperty("pkp_course_L", globalPropertyf("tu154ce/gauges/compas/pkp_helper
 defineProperty("pkp_course_R", globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_R")) -- устанвока курса желтой стрелкой на ПКП
 
 
---[[
+
 --sim/autopilot/fdir_on                              Flight director on.
 --sim/autopilot/fdir_toggle                          Flight director toggle.
 --sim/autopilot/autothrottle_toggle                  Autopilot auto-throttle toggle.
@@ -44,9 +44,8 @@ defineProperty("pkp_course_R", globalPropertyf("tu154ce/gauges/compas/pkp_helper
 --sim/autopilot/heading_copilot_up                   Autopilot heading copilot up.
 --sim/autopilot/airspeed_down                        Autopilot airspeed down.
 --sim/autopilot/airspeed_up                          Autopilot airspeed up.
-
 --sim/engines/TOGA_power
---]]
+
 
 local AP_stab = findCommand("sim/autopilot/fdir_on")
 

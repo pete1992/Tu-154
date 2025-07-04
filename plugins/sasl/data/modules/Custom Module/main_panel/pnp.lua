@@ -63,10 +63,19 @@ defineProperty("GNS430_dev", globalPropertyf("tu154ce/SC/GNS430_dev")) -- отк
 defineProperty("GNS430_flag", globalPropertyi("tu154ce/SC/GNS430_flag")) -- отклонение от курса на ГНС
 defineProperty("gps_power", globalPropertyi("sim/cockpit2/radios/actuators/gps_power")) -- GPS power
 
+
 -- RXP
-defineProperty("RXP_course", globalPropertyf("RXP/radios/indicators/gps_course_degtm")) -- курс ЛЗП от КЛН
-defineProperty("RXP_dev", globalPropertyf("RXP/radios/indicators/gps_cross_track_nm")) -- отклонение от ЛЗП, мили
-defineProperty("RXP_flag", globalPropertyf("RXP/radios/indicators/hsi_flag_from_to_pilot")) -- флаг
+if findDataRef("RXP/radios/gps_course_degtm") then
+    defineProperty("RXP_course", globalPropertyf("RXP/radios/gps_course_degtm")) -- course to active GPS waypoint (from KLN)
+end
+
+if findDataRef("RXP/radios/indicators/gps_cross_track_nm") then
+    defineProperty("RXP_dev", globalPropertyf("RXP/radios/indicators/gps_cross_track_nm")) -- deviation from GPS course line, in nautical miles
+end
+
+if findDataRef("RXP/radios/indicators/hsi_flag_from_to_pilot") then
+    defineProperty("RXP_flag", globalPropertyf("RXP/radios/indicators/hsi_flag_from_to_pilot")) -- HSI flag: FROM/TO/none
+end
 
 
 -- controls

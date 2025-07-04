@@ -30,7 +30,7 @@ defineProperty("tcas_rot_big", globalPropertyi("tu154ce/switchers/tcas/tcas_rot_
 defineProperty("alt_svs", globalPropertyf("tu154ce/svs/altitude")) -- Altitude by 1013 hpa
 
 defineProperty("rv_angle", globalPropertyf("tu154ce/gauges/alt/radioalt_needle_left"))  -- RV needle
-defineProperty("rv_flag", globalPropertyi("tu154ce/gauges/alt/radioalt_flag_left"))  -- RV flag
+defineProperty("rv_flag", globalPropertyf("tu154ce/gauges/alt/radioalt_flag_left"))  -- RV flag
 defineProperty("rv5_alt", globalPropertyf("tu154ce/misc/rv5_alt_left"))  -- высота на левом высотомере
 defineProperty("screen_mode", globalPropertyi("tu154ce/tcas/screen_mode"))  -- отображения на экране. 0 = код ответчика, -1 = ошибка, 1 = test
 
@@ -44,7 +44,7 @@ defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_righ
 defineProperty("xpdr_code", globalPropertyf("sim/cockpit/radios/transponder_code"))
 defineProperty("xpdr_mode", globalPropertyf("sim/cockpit/radios/transponder_mode")) 
 defineProperty("xpdr_led", globalPropertyf("sim/cockpit/radios/transponder_light"))
-defineProperty("xpdr_fail", globalPropertyi("sim/operation/failures/rel_g_xpndr"))
+defineProperty("xpdr_fail", globalPropertyi("sim/operation/failures/rel_xpndr"))
 
 defineProperty("ovhd_mode", globalPropertyi("tu154ce/switchers/ovhd/transponder_mode"))
 

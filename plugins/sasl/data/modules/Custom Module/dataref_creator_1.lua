@@ -1100,7 +1100,7 @@ createGlobalPropertyf("tu154ce/lights/msg_lamp", 0) -- MSG
 createGlobalPropertyf("tu154ce/lights/wpt_lamp", 0) -- WPT
 createGlobalPropertyf("tu154ce/lights/stuard_call", 0) -- вызов БП
 createGlobalPropertyf("tu154ce/lights/mgv_control_fail", 0) -- отказ МГВ контр
-createGlobalPropertyf("tu154ce/lights/sns_lamp", 0) -- СНС
+--createGlobalPropertyf("tu154ce/lights/sns_lamp", 0) -- СНС
 createGlobalPropertyf("tu154ce/lights/correct_on", 0) -- коррекция включ
 createGlobalPropertyf("tu154ce/lights/change_ch_o", 0) -- смена ЧО
 createGlobalPropertyf("tu154ce/lights/warning_terrain", 0) -- внимание земля

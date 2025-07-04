@@ -5,13 +5,10 @@ size = { 2048, 2048 }
 
 components = {
 
-	--[[	
-	test_hud {
-	
-		position = {1600, 0, 400, 400},
-	
-	},
---]]
+
+--	test_hud {	
+--		position = {1600, 0, 400, 400},
+--	},
 
 	vers {},
 
@@ -84,7 +81,7 @@ components = {
 		vbe_mode = globalPropertyi("tu154ce/gauges/alt/vbe_mode_right"),         -- meters/feet mode
 		vbe_std = globalPropertyi("tu154ce/gauges/alt/vbe_std_right"),           -- включение стандартного давления
 		alt_mtr = globalPropertyf("tu154ce/gauges/alt/vbe_alt_right"),           -- indicated altitude in meters
-		vbe_flightlevel = globalPropertyi("tu154ce/gauges/alt/vbe_flightlevel_right"), -- эшелон
+		vbe_flightlevel = globalPropertyf("tu154ce/gauges/alt/vbe_flightlevel_right"), -- эшелон
 		fail = globalPropertyi("sim/operation/failures/rel_cop_alt"),            --
 	},
 
@@ -98,7 +95,7 @@ components = {
 		bus27_volt = globalPropertyf("tu154ce/elec/bus27_volt_right"),
 		bus115_volt = globalPropertyf("tu154ce/elec/bus115_3_volt"),
 		rv_angle = globalPropertyf("tu154ce/gauges/alt/radioalt_needle_right"), -- RV needle
-		rv_flag = globalPropertyi("tu154ce/gauges/alt/radioalt_flag_right"), -- RV flag
+		rv_flag = globalPropertyf("tu154ce/gauges/alt/radioalt_flag_right"), -- RV flag
 		rv_lamp = globalPropertyf("tu154ce/lights/small/rv5_right_dh"),   -- RV lamp
 		rv5_dh_signal = globalPropertyi("tu154ce/misc/rv5_dh_signal_right"),
 		rv_cc = globalPropertyf("tu154ce/elec/rv5_right_cc"),             -- RV current

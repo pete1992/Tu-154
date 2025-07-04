@@ -6,7 +6,7 @@ size = {440, 167}
 defineProperty("xpdr_code", globalPropertyf("sim/cockpit/radios/transponder_code"))
 
 ident_cmd = findCommand("sim/transponder/transponder_ident")  -- comand of transponder ident
-defineProperty("xpdr_fail", globalPropertyi("sim/operation/failures/rel_g_xpndr"))
+defineProperty("xpdr_fail", globalPropertyi("sim/operation/failures/rel_xpndr"))
 
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
 

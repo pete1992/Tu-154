@@ -42,7 +42,7 @@ defineProperty("door5", globalPropertyf("tu154ce/lights/cargo_back_door")) -- з
 defineProperty("msrp_27_L_cc", globalPropertyf("tu154ce/msrp/msrp_27_L_cc")) -- нагрузка на сеть
 defineProperty("msrp_27_R_cc", globalPropertyf("tu154ce/msrp/msrp_27_R_cc")) -- нагрузка на сеть
 
-defineProperty("rv_flag", globalPropertyi("tu154ce/gauges/alt/radioalt_flag_left"))  -- RV flag
+defineProperty("rv_flag", globalPropertyf("tu154ce/gauges/alt/radioalt_flag_left"))  -- RV flag
 
 defineProperty("pump_tank2_left", globalPropertyi("tu154ce/switchers/fuel/pump_tank2_left")) -- насосы бака 2
 defineProperty("pump_tank2_right", globalPropertyi("tu154ce/switchers/fuel/pump_tank2_right")) -- насосы бака 2
