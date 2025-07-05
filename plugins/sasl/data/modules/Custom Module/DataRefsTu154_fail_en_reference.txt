@@ -1,0 +1,150 @@
+tu154ce/failures/failures_enabled	int	general failures master switch	1
+tu154ce/failures/lan_lamp_fail_FL	int	landing light failure	0
+tu154ce/failures/lan_lamp_fail_FR	int	landing light failure	0
+tu154ce/failures/lan_lamp_fail_WL	int	landing light failure	0
+tu154ce/failures/lan_lamp_fail_WR	int	landing light failure	0
+tu154ce/failures/lan_lamp_fail_signal	int	landing light failure	0
+tu154ce/failures/acs1_fail	int	clock failure	0
+tu154ce/failures/acs2_fail	int	clock failure	0
+tu154ce/failures/acs3_fail	int	clock failure	0
+tu154ce/failures/bat_1_kz	int	short circuit or thermal runaway battery 1	0
+tu154ce/failures/bat_2_kz	int	short circuit or thermal runaway battery 2	0
+tu154ce/failures/bat_3_kz	int	short circuit or thermal runaway battery 3	0
+tu154ce/failures/bat_4_kz	int	short circuit or thermal runaway battery 4	0
+tu154ce/failures/bat_1_fail	int	battery failure, no output and no charge	0
+tu154ce/failures/bat_2_fail	int	battery failure, no output and no charge	0
+tu154ce/failures/bat_3_fail	int	battery failure, no output and no charge	0
+tu154ce/failures/bat_4_fail	int	battery failure, no output and no charge	0
+tu154ce/failures/vu1_fail	int	control unit 1 failure	0
+tu154ce/failures/vu2_fail	int	control unit 2 failure	0
+tu154ce/failures/vu3_fail	int	control unit 3 failure	0
+tu154ce/failures/tr1_fail	int	transformer rectifier 1 failure	0
+tu154ce/failures/tr2_fail	int	transformer rectifier 2 failure	0
+tu154ce/failures/pts250_1_fail	int	PTS-250 failure	0
+tu154ce/failures/pts250_2_fail	int	PTS-250 failure	0
+tu154ce/failures/inv115_fail	int	115V inverter failure	0
+tu154ce/failures/hydro_leak_1	int	hydraulic leak	0
+tu154ce/failures/hydro_leak_2	int	hydraulic leak	0
+tu154ce/failures/hydro_leak_3	int	hydraulic leak	0
+tu154ce/failures/hydro_leak_4	int	hydraulic leak	0
+tu154ce/failures/tth_left_fail	int	turbo chiller failure (left)	0
+tu154ce/failures/tth_right_fail	int	turbo chiller failure (right)	0
+tu154ce/failures/sard_valve_fail	int	exhaust valve failure	0
+tu154ce/failures/psvp_fail_left	int	PSVP failure (left)	0
+tu154ce/failures/psvp_fail_right	int	PSVP failure (right)	0
+tu154ce/failures/airbleed_1	int	engine bleed air failure	0
+tu154ce/failures/airbleed_2	int	engine bleed air failure	0
+tu154ce/failures/airbleed_3	int	engine bleed air failure	0
+tu154ce/failures/apu_start_fail	int	APU starter failure	0
+tu154ce/failures/apu_gen_fail	int	APU generator failure	0
+tu154ce/failures/apu_runtime	float	APU runtime	0
+tu154ce/failures/apu_fail_oilt	int	APU oil overheat failure	0
+tu154ce/failures/apu_fail_egt	int	APU EGT overlimit failure	0
+tu154ce/failures/apu_fail_fuel_left	int	APU fuel depletion failure	0
+tu154ce/failures/apu_fail	int	APU failure	0
+tu154ce/failures/apu_press_fail	int	APU bleed pressure failure	0
+tu154ce/failures/apu_oil_qty	float	APU oil quantity	10
+tu154ce/failures/brake_heat_left	float	brake temperature (left)	0
+tu154ce/failures/brake_heat_right	float	brake temperature (right)	0
+tu154ce/failures/brake_runtime_left	float	brake pad wear time (left)	0
+tu154ce/failures/brake_runtime_right	float	brake pad wear time (right)	0
+tu154ce/failures/rio_fail	int	ice detection sensor failure	0
+tu154ce/failures/window_heat_fail_1	int	window heater failure	0
+tu154ce/failures/window_heat_fail_2	int	window heater failure	0
+tu154ce/failures/window_heat_fail_3	int	window heater failure	0
+tu154ce/antiice/ppd_3_heat_fail	int	PPD-3 heater failure	0
+tu154ce/failures/ail_fail_left	int	aileron failure (left)	0
+tu154ce/failures/ail_fail_right	int	aileron failure (right)	0
+tu154ce/failures/fail_spoil_inn_left	int	spoiler inner failure (left)	0
+tu154ce/failures/fail_spoil_inn_right	int	spoiler inner failure (right)	0
+tu154ce/failures/fail_spoil_mid_left	int	spoiler middle failure (left)	0
+tu154ce/failures/fail_spoil_mid_right	int	spoiler middle failure (right)	0
+tu154ce/failures/fail_spoil_out_left	int	spoiler outer failure (left)	0
+tu154ce/failures/fail_spoil_out_right	int	spoiler outer failure (right)	0
+tu154ce/failures/flap_fail_left	int	flap failure (left)	0
+tu154ce/failures/flap_fail_right	int	flap failure (right)	0
+tu154ce/failures/stab_eng_fail	int	stabilizer actuator failure	0
+tu154ce/failures/stab_automatic_fail	int	stabilizer automatic control failure	0
+tu154ce/failures/rudder_fail	int	rudder failure	0
+tu154ce/failures/elev_fail_left	int	elevator failure (left)	0
+tu154ce/failures/elev_fail_right	int	elevator failure (right)	0
+tu154ce/failures/trim_emerg_elv_fail	int	emergency elevator trim failure	0
+tu154ce/failures/slats_fail	int	slat failure	0
+
+tu154ce/failures/engine_runtime_1	float	engine runtime 1	0
+tu154ce/failures/engine_runtime_2	float	engine runtime 2	0
+tu154ce/failures/engine_runtime_3	float	engine runtime 3	0
+tu154ce/failures/engn_oil_qty_1	float	engine oil quantity 1	30
+tu154ce/failures/engn_oil_qty_2	float	engine oil quantity 2	30
+tu154ce/failures/engn_oil_qty_3	float	engine oil quantity 3	30
+tu154ce/failures/engn_oil_leak_1	int	engine oil leak 1	0
+tu154ce/failures/engn_oil_leak_2	int	engine oil leak 2	0
+tu154ce/failures/engn_oil_leak_3	int	engine oil leak 3	0
+tu154ce/failures/eng_fuel_pmp_fail_1	int	engine fuel pump failure 1	0
+tu154ce/failures/eng_fuel_pmp_fail_2	int	engine fuel pump failure 2	0
+tu154ce/failures/eng_fuel_pmp_fail_3	int	engine fuel pump failure 3	0
+tu154ce/failures/fuel_pump_2l_fail	int	fuel pump failure 2L	0
+tu154ce/failures/fuel_pump_2r_fail	int	fuel pump failure 2R	0
+tu154ce/failures/fuel_pump_3l_fail	int	fuel pump failure 3L	0
+tu154ce/failures/fuel_pump_3r_fail	int	fuel pump failure 3R	0
+tu154ce/failures/fuel_pump_1_fail	int	fuel pump failure 1	0
+tu154ce/failures/fuel_pump_4_fail	int	fuel pump failure 4	0
+tu154ce/failures/fuel_auto_fail	int	fuel automation failure	0
+tu154ce/failures/fuel_level_fail	int	fuel level equalization failure	0
+tu154ce/failures/fuel_porc_fail	int	fuel purge failure	0
+tu154ce/failures/fuel_meter_2l_fail	int	fuel gauge failure 2L	0
+tu154ce/failures/fuel_meter_2r_fail	int	fuel gauge failure 2R	0
+tu154ce/failures/fuel_meter_3l_fail	int	fuel gauge failure 3L	0
+tu154ce/failures/fuel_meter_3r_fail	int	fuel gauge failure 3R	0
+tu154ce/failures/fuel_meter_1_fail	int	fuel gauge failure 1	0
+tu154ce/failures/fuel_meter_4_fail	int	fuel gauge failure 4	0
+tu154ce/failures/fuel_meter_summ	int	total fuel gauge failure	0
+tu154ce/failures/fuel_flowmeter_1_fail	int	fuel flowmeter failure 1	0
+tu154ce/failures/fuel_flowmeter_2_fail	int	fuel flowmeter failure 2	0
+tu154ce/failures/fuel_flowmeter_3_fail	int	fuel flowmeter failure 3	0
+tu154ce/failures/hydro_pump_fail_11	int	hydraulic pump failure 1.1	0
+tu154ce/failures/hydro_pump_fail_12	int	hydraulic pump failure 1.2	0
+tu154ce/failures/hydro_pump_fail_2	int	hydraulic pump failure 2	0
+tu154ce/failures/hydro_pump_fail_3	int	hydraulic pump failure 3	0
+tu154ce/failures/hydro_elec_fail_2	int	electric hydraulic pump failure 2	0
+tu154ce/failures/hydro_elec_fail_3	int	electric hydraulic pump failure 3	0
+tu154ce/failures/main_alarm_fail	int	main alarm buzzer failure	0
+tu154ce/failures/speaker_alarm_fail	int	speaker alarm failure	0
+tu154ce/failures/absu_ra56_roll_fail	int	RA-56 roll channel failure	0
+tu154ce/failures/absu_ra56_pitch_fail	int	RA-56 pitch channel failure	0
+tu154ce/failures/absu_ra56_yaw_fail	int	RA-56 yaw channel failure	0
+tu154ce/failures/absu_at1_fail	int	autothrottle unit 1 failure	0
+tu154ce/failures/absu_at2_fail	int	autothrottle unit 2 failure	0
+tu154ce/failures/absu_damp_roll_fail	int	roll damper failure	0
+tu154ce/failures/absu_damp_pitch_fail	int	pitch damper failure	0
+tu154ce/failures/absu_damp_yaw_fail	int	yaw damper failure	0
+tu154ce/failures/absu_contr_roll_fail	int	roll control failure	0
+tu154ce/failures/absu_contr_pitch_fail	int	pitch control failure	0
+tu154ce/failures/absu_calc_toga_fail	int	takeoff go-around calculator failure	0
+tu154ce/failures/absu_calc_roll_fail	int	autothrottle roll channel failure	0
+tu154ce/failures/absu_calc_pitch_fail	int	autothrottle pitch channel failure	0
+tu154ce/failures/nav1_fail	int	KursMP 1 failure	0
+tu154ce/failures/nav2_fail	int	KursMP 2 failure	0
+tu154ce/failures/dme1_fail	int	DME 1 failure	0
+tu154ce/failures/dme2_fail	int	DME 2 failure	0
+tu154ce/failures/diss_fail	int	DISS failure	0
+tu154ce/failures/nvu_fail	int	NVU failure	0
+tu154ce/failures/radar_fail	int	weather radar failure	0
+tu154ce/failures/mrp_fail	int	MRP failure	0
+tu154ce/failures/rsbn_fail	int	RSBN failure	0
+tu154ce/failures/taws_fail	int	TAWS failure	0
+tu154ce/failures/tks_km1_fail	int	TKS KM1 failure	0
+tu154ce/failures/tks_km2_fail	int	TKS KM2 failure	0
+tu154ce/failures/tks_bgmk1_fail	int	TKS BGMK1 failure	0
+tu154ce/failures/tks_bgmk2_fail	int	TKS BGMK2 failure	0
+tu154ce/failures/agr_fail	int	AGR failure	0
+tu154ce/failures/bkk_fail	int	BKK failure	0
+tu154ce/failures/mgv_fail	int	MGV failure	0
+tu154ce/failures/rv1_fail	int	RV5-1 failure	0
+tu154ce/failures/rv2_fail	int	RV5-2 failure	0
+tu154ce/failures/uvid15_fail	int	UVID-15 failure	0
+tu154ce/failures/pitot1	int	pitot tube failure 1	0
+tu154ce/failures/pitot2	int	pitot tube failure 2	0
+tu154ce/failures/static1	int	static port failure 1	0
+tu154ce/failures/static2	int	static port failure 2	0
+tu154ce/failures/AOA	int	angle of attack sensor failure	0

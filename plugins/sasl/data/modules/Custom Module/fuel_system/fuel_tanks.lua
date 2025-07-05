@@ -34,7 +34,7 @@ defineProperty("pump_tank1_4_work", globalPropertyi("tu154ce/fuel/pump_tank1_4_w
 
 defineProperty("reserv_trans", globalPropertyi("tu154ce/fuel/reserv_trans"))
 
-defineProperty("apu_burn_fuel", globalPropertyi("tu154ce/elec/apu_burning_fuel")) -- ВСУ работает и сжигает топливо
+defineProperty("apu_burn_fuel", globalPropertyf("tu154ce/elec/apu_burning_fuel")) -- ВСУ работает и сжигает топливо
 
 -- fuel flow per engine
 defineProperty("ENGN_FF_1", globalProperty("sim/cockpit2/engine/indicators/fuel_flow_kg_sec[0]")) -- FF from sim kg/second

@@ -1,4 +1,4 @@
-print("This is Tu154M Community Edition, v1.0.0")
+print("This is Tu154M Community Edition, XP12 Alpha Custom")
 size = { 4096, 4096 }
 print("Lua version is", _VERSION)
 

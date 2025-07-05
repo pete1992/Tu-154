@@ -18,8 +18,11 @@ joy_yaw = globalPropertyf("sim/cockpit2/controls/yoke_heading_ratio") -- yaw pos
 tire_steer_command_deg = globalProperty("sim/flightmodel2/gear/tire_steer_command_deg[0]")
 tire_steer_actual_deg = globalProperty("sim/flightmodel2/gear/tire_steer_actual_deg[0]")
 
+if findDataRef("bp/connected") then
+    defineProperty("bp_connected", globalPropertyi("bp/connected"))
+end
 
-pushback = globalPropertyi("bp/connected") or 0
+--pushback = globalPropertyi("bp/connected") or 0
 
 override_wheel_steer = globalPropertyi("sim/operation/override/override_wheel_steer")
 

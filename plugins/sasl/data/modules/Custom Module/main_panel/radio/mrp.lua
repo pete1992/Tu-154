@@ -10,21 +10,43 @@ defineProperty("alt", globalPropertyf("sim/flightmodel/position/y_agl"))
 defineProperty("mrp_mode", globalPropertyi("tu154ce/switchers/ovhd/sp50_nav_mode")) -- 0 - landing, 1 = navigation
 --defineProperty("marker_audio", globalPropertyi("sim/cockpit/radios/gear_audio_working"))
 
---[[
-tu154ce/switchers/ovhd/sp50_mode	int	режим СП50. 0 - ILS, 1 - Katet, 2 - SP-50	0
-tu154ce/switchers/ovhd/sp50_nav_mode	int	режим СП50. посадка - маршрут	0
 
---]]
+-- SP-50 mode selector: 0 = ILS, 1 = Katet, 2 = SP-50
+--defineProperty("sp50_mode", globalPropertyi("tu154ce/switchers/ovhd/sp50_mode"))
+
+-- SP-50 navigation mode: 0 = landing, 1 = enroute
+--defineProperty("sp50_nav_mode", globalPropertyi("tu154ce/switchers/ovhd/sp50_nav_mode"))
+
+--local mode = get(sp50_mode)
+--local nav_mode = get(sp50_nav_mode)
+
+-- interpret SP-50 main mode
+--local current_mode = "ILS"  -- default
+
+--if mode == 1 then
+--    current_mode = "Katet"
+--elseif mode == 2 then
+--    current_mode = "SP-50"
+--end
+
+-- interpret SP-50 nav/landing mode
+--local current_nav_mode = "Landing"  -- default
+
+--if nav_mode == 1 then
+ --   current_nav_mode = "Navigation"
+--end
 
 
 -- power
 defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left"))
 defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right"))
 
-defineProperty("mrp_cc", globalPropertyf("tu154ce/xap/An24_gauges/mrp_cc"))
+--defineProperty("mrp_cc", globalPropertyf("tu154ce/xap/An24_gauges/mrp_cc"))
+defineProperty("mrp_cc", createGlobalPropertyf("tu154ce/xap/An24_gauges/mrp_cc", 0))
 
 -- sfail
-defineProperty("sim_fail", globalPropertyi("sim/operation/sim_failures/rel_marker"))
+--defineProperty("sim_fail", globalPropertyi("sim/operation/sim_failures/rel_marker"))
+defineProperty("sim_fail", globalPropertyi("sim/operation/failures/rel_marker"))
 defineProperty("mrp_fail", globalPropertyi("tu154ce/failures/mrp_fail"))
 
 

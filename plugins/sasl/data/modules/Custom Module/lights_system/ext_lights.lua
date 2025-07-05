@@ -60,6 +60,7 @@ defineProperty("wing_light_right_set", globalPropertyf("tu154ce/lights/wing_ligh
 defineProperty("tail_light_set", globalPropertyf("tu154ce/lights/tail_light_set")) -- выключатель подсвета хвоста
 defineProperty("day_night_set", globalPropertyf("tu154ce/lights/day_night_set")) -- переключатель день - ночь. 0 - день, 1 - ночь. приглушает яркость сигнальных ламп.
 defineProperty("wing_light", globalPropertyf("tu154ce/switchers/eng/wing_light"))
+defineProperty("sim_anticollision_light", globalPropertyf("sim/cockpit2/switches/anticollision_light_switch[0]"))
 
 defineProperty("cargo_1", globalPropertyf("tu154ce/lights/cargo_light_1_set"))
 defineProperty("cargo_2", globalPropertyf("tu154ce/lights/cargo_light_2_set"))
@@ -90,8 +91,8 @@ defineProperty("rel_lites_nav", globalPropertyi("sim/operation/failures/rel_lite
 defineProperty("rel_lites_beac", globalPropertyi("sim/operation/failures/rel_lites_beac")) -- отказ на огней
 
 
-
-defineProperty("sim_lights_switch", globalPropertyi("sim/cockpit2/switches/landing_lights_switch"))
+defineProperty("landing_lights_switch_0", globalPropertyf("sim/cockpit2/switches/landing_lights_switch[0]"))
+--defineProperty("sim_lights_switch", globalPropertyi("sim/cockpit2/switches/landing_lights_switch"))
 
 --sim/cockpit2/switches/landing_lights_switch
 
@@ -210,19 +211,23 @@ function update()
 	if nav_lit > 0 then nav_lit = 1 end
 	set(sim_nav_light, nav_lit)
 	
-	-- white lamps on wings
-	if nav_counter < 1 and nav_lit == 1 and get(gear_defl) > 0.05 and get(wing_light) == 1 then 
+	-- strobe lights on wings
+	if nav_lit == 1 then
+	if nav_counter < 0.125 then
 		set(white_light_left, 1)
-		set(white_light_right, 0)
-	elseif nav_counter > 1 and nav_lit == 1 and get(gear_defl) > 0.05 and get(wing_light) == 1 then 
-		set(white_light_left, 0)
 		set(white_light_right, 1)
 	else
 		set(white_light_left, 0)
-		set(white_light_right, 0)	
+		set(white_light_right, 0)
 	end
-	nav_counter = nav_counter + passed
-	if nav_counter > 2 then nav_counter = 0 end
+else
+	set(white_light_left, 0)
+	set(white_light_right, 0)
+end
+
+nav_counter = nav_counter + passed
+if nav_counter > 0.25 then nav_counter = 0 end
+
 
 	-- red beacon
 	local beacons_lit = get(strobe_set) * coef_27_R * coef_115 * bool2int(get(rel_lites_beac) ~= 6)

@@ -58,7 +58,11 @@ defineProperty("dump_all_on", globalPropertyi("sim/cockpit2/pressurization/actua
 defineProperty("cabin_alt_now_ft", globalPropertyf("sim/cockpit2/pressurization/indicators/cabin_altitude_ft")) -- Cabin altitude actually occurring, feet
 defineProperty("pressure_diff_psi", globalPropertyf("sim/cockpit2/pressurization/indicators/pressure_diffential_psi")) -- pounds/square_inch	Cabin differential pressure, psi.
 
-defineProperty("acf_has_press_controls", globalPropertyf("sim/aircraft/view/acf_has_press_controls")) --
+
+if findDataRef("sim/aircraft/view/acf_has_press_controls") then
+    defineProperty("has_press_controls", globalPropertyf("sim/aircraft/view/acf_has_press_controls"))
+end
+--defineProperty("acf_has_press_controls", globalPropertyf("sim/aircraft/view/acf_has_press_controls")) --
 
 
 -- Smart Copilot
@@ -124,9 +128,9 @@ function update()
 	elseif current_diff < diff_set then
 		if current_alt < alt_set then press_reg = 1
 		else press_reg = 0  end
-	--[[else
-		if current_diff > diff_set then press_reg = 1
-		else press_reg = 0 end--]]
+	
+	--	if current_diff > diff_set then press_reg = 1
+	--	else press_reg = 0 end
 	end
 	if current_diff > diff_set then press_reg = 1 end
 	

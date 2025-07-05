@@ -37,7 +37,7 @@ defineProperty("fuel_pumps_27_cc", globalPropertyf("tu154ce/elec/fuel_pumps_27_c
 
 defineProperty("apu_doors", globalPropertyf("tu154ce/anim/apu_doors")) -- положение створок ВСУ. 0 - закрыты, 1 - открыты.
 
-defineProperty("apu_burn_fuel", globalPropertyi("tu154ce/elec/apu_burning_fuel")) -- ВСУ работает и сжигает топливо
+defineProperty("apu_burn_fuel", globalPropertyf("tu154ce/elec/apu_burning_fuel")) -- ВСУ работает и сжигает топливо
 
 -- engine #2 bleed
 defineProperty("eng_airvalve_2", globalPropertyf("tu154ce/bleed/eng_airvalve_2")) -- открытие отбора воздуха от двигателя

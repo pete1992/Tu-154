@@ -1,125 +1,103 @@
---this is main ABSU script
+-- this is main ABSU script
 
 -- Properties --------------------------------
-ias_left = globalPropertyf("tu154ce/gauges/speed/ias_left") -- приборная скорость КВС
-ias_right = globalPropertyf("tu154ce/gauges/speed/ias_right") -- приборная скорость 2П
+ias_left = globalPropertyf("tu154ce/gauges/speed/ias_left") -- indicated airspeed, captain
+ias_right = globalPropertyf("tu154ce/gauges/speed/ias_right") -- indicated airspeed, FO
 
 -- controls
-absu_speed_change = globalPropertyi("tu154ce/switchers/console/absu_speed_change") -- ручка изменения скорости.
-absu_speed_off = globalPropertyi("tu154ce/switchers/console/absu_speed_off") -- отключение 1 и 2
-absu_speed_prepare = globalPropertyi("tu154ce/switchers/console/absu_speed_prepare") -- подготовка
-absu_speed_us_right_left = globalPropertyi("tu154ce/switchers/console/absu_speed_us_right_left") -- подготовка
+absu_speed_change = globalPropertyi("tu154ce/switchers/console/absu_speed_change") -- speed change lever
+absu_speed_off = globalPropertyi("tu154ce/switchers/console/absu_speed_off") -- disable 1 and 2
+absu_speed_prepare = globalPropertyi("tu154ce/switchers/console/absu_speed_prepare") -- preparation
+absu_speed_us_right_left = globalPropertyi("tu154ce/switchers/console/absu_speed_us_right_left") -- right/left preparation
 
-absu_stab_speed = globalPropertyi("tu154ce/buttons/console/absu_stab_speed") -- кнопка C на панели АБСУ
-absu_throt_off_1 = globalPropertyi("tu154ce/buttons/console/absu_throt_off_1") -- кнопка откл Г1 на панели АБСУ
-absu_throt_off_2 = globalPropertyi("tu154ce/buttons/console/absu_throt_off_2") -- кнопка откл Г2 на панели АБСУ
-absu_throt_off_3 = globalPropertyi("tu154ce/buttons/console/absu_throt_off_3") -- кнопка откл Г3 на панели АБСУ
+absu_stab_speed = globalPropertyi("tu154ce/buttons/console/absu_stab_speed") -- "C" button on ABSU panel
+absu_throt_off_1 = globalPropertyi("tu154ce/buttons/console/absu_throt_off_1") -- disable engine 1 button on ABSU panel
+absu_throt_off_2 = globalPropertyi("tu154ce/buttons/console/absu_throt_off_2") -- disable engine 2 button on ABSU panel
+absu_throt_off_3 = globalPropertyi("tu154ce/buttons/console/absu_throt_off_3") -- disable engine 3 button on ABSU panel
 
-anim_rud1 = globalPropertyf("tu154ce/controlls/throttle_1") -- РУД 1
-anim_rud2 = globalPropertyf("tu154ce/controlls/throttle_2") -- РУД 2
-anim_rud3 = globalPropertyf("tu154ce/controlls/throttle_3") -- РУД 3
-
---tro_comm_1 = globalProperty("sim/flightmodel/engine/ENGN_thro[0]")
---tro_comm_2 = globalProperty("sim/flightmodel/engine/ENGN_thro[1]")
---tro_comm_3 = globalProperty("sim/flightmodel/engine/ENGN_thro[2]")
+anim_rud1 = globalPropertyf("tu154ce/controlls/throttle_1") -- throttle 1
+anim_rud2 = globalPropertyf("tu154ce/controlls/throttle_2") -- throttle 2
+anim_rud3 = globalPropertyf("tu154ce/controlls/throttle_3") -- throttle 3
 
 tro_comm_1 = globalPropertyf("tu154ce/SC/engine/ENGN_thro_0")
 tro_comm_2 = globalPropertyf("tu154ce/SC/engine/ENGN_thro_1")
 tro_comm_3 = globalPropertyf("tu154ce/SC/engine/ENGN_thro_2")
 
+absu_nav_on = globalPropertyi("tu154ce/switchers/console/absu_nav_on") -- navigation arrows
+absu_landing_on = globalPropertyi("tu154ce/switchers/console/absu_landing_on") -- landing arrows
 
-absu_nav_on = globalPropertyi("tu154ce/switchers/console/absu_nav_on") -- стрелки навигация
-absu_landing_on = globalPropertyi("tu154ce/switchers/console/absu_landing_on") -- стрелки посадка
+roll_main_mode = globalPropertyi("tu154ce/absu/roll_main_mode") -- main ABSU roll mode: 0 - off, 1 - manual, 2 - stab
+pitch_main_mode = globalPropertyi("tu154ce/absu/pitch_main_mode") -- main ABSU pitch mode: 0 - off, 1 - manual, 2 - stab
 
-roll_main_mode = globalPropertyi("tu154ce/absu/roll_main_mode") -- основной режим АБСУ по крену. 0 - выкл, 1 - штурвальный - 2 - стаб
-pitch_main_mode = globalPropertyi("tu154ce/absu/pitch_main_mode") -- основной режим АБСУ по тангажу. 0 - выкл, 1 - штурвальный - 2 - стаб
-
-roll_sub_mode = globalPropertyi("tu154ce/absu/roll_sub_mode") -- режим АБСУ по крену. 0 - выкл, 1 - стаб, 2 - ЗК, 3 - НВУ, 4 - АЗ1, 5 - АЗ2, 6 - заход, 7 - уход, 10 - арм ЗАХОД
-pitch_sub_mode = globalPropertyi("tu154ce/absu/pitch_sub_mode") -- режим АБСУ по тангажу. 0 - выкл, 1 - стаб, 2 - V, 3 - M, 4 - H, 5 - глисс, 6 - уход, 10 - арм ГЛИСС
+roll_sub_mode = globalPropertyi("tu154ce/absu/roll_sub_mode") -- roll submode: 0 - off, 1 - stab, 2 - ZK, 3 - NVU, 4 - AZ1, 5 - AZ2, 6 - approach, 7 - go-around, 10 - armed approach
+pitch_sub_mode = globalPropertyi("tu154ce/absu/pitch_sub_mode") -- pitch submode: 0 - off, 1 - stab, 2 - V, 3 - M, 4 - H, 5 - glide, 6 - go-around, 10 - armed glide
 
 -- power
 bus27_volt_left = globalPropertyf("tu154ce/elec/bus27_volt_left")
 bus27_volt_right = globalPropertyf("tu154ce/elec/bus27_volt_right")
-
 bus36_volt_left = globalPropertyf("tu154ce/elec/bus36_volt_left")
-
 bus115_1_volt = globalPropertyf("tu154ce/elec/bus115_1_volt")
-
-absu_at_power_cc = globalPropertyf("tu154ce/absu_at_power_cc") -- потребление тока АБСУ
-
-
-
+absu_at_power_cc = globalPropertyf("tu154ce/absu_at_power_cc") -- ABSU power consumption
 
 frame_time = globalPropertyf("tu154ce/time/frame_time") -- time of frame
 
 -- results
-ias_yellow_left = globalPropertyf("tu154ce/gauges/speed/ias_yellow_left") -- желтый маркер на индкиторе скорости КВС
-ias_yellow_right = globalPropertyf("tu154ce/gauges/speed/ias_yellow_right") -- желтый маркер на индкиторе скорости 2П
+ias_yellow_left = globalPropertyf("tu154ce/gauges/speed/ias_yellow_left") -- yellow marker on captain’s airspeed indicator
+ias_yellow_right = globalPropertyf("tu154ce/gauges/speed/ias_yellow_right") -- yellow marker on FO’s airspeed indicator
 
+absu_at_dif_left = globalPropertyf("tu154ce/absu_at_dif_left") -- speed difference indicator (left)
+absu_at_dif_right = globalPropertyf("tu154ce/absu_at_dif_right") -- speed difference indicator (right)
 
-absu_at_dif_left = globalPropertyf("tu154ce/absu_at_dif_left") -- разность скоростей для индикации на ПКП
-absu_at_dif_right = globalPropertyf("tu154ce/absu_at_dif_right") -- разность скоростей для индикации на ПКП
+rud_1_spd = globalPropertyf("tu154ce/absu/rud_1_spd") -- throttle 1 movement speed
+rud_2_spd = globalPropertyf("tu154ce/absu/rud_2_spd") -- throttle 2 movement speed
+rud_3_spd = globalPropertyf("tu154ce/absu/rud_3_spd") -- throttle 3 movement speed
 
-
-rud_1_spd = globalPropertyf("tu154ce/absu/rud_1_spd") -- скорость изменения положения рычага
-rud_2_spd = globalPropertyf("tu154ce/absu/rud_2_spd") -- скорость изменения положения рычага
-rud_3_spd = globalPropertyf("tu154ce/absu/rud_3_spd") -- скорость изменения положения рычага
-
-stu_mode = globalPropertyi("tu154ce/absu/stu_mode") -- режимы автомата тяги 0 - выкл, 1 - вкл, 2 - готов, 3 стаб, 4 - уход	
-toga_command = globalPropertyi("tu154ce/absu/toga_comm") -- 	режим УХОД
-
+stu_mode = globalPropertyi("tu154ce/absu/stu_mode") -- auto-throttle mode: 0 - off, 1 - on, 2 - ready, 3 - stab, 4 - TOGA
+toga_command = globalPropertyi("tu154ce/absu/toga_comm") -- TOGA command mode
 
 -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyf("scp/api/ismaster") -- master role: 0 = plugin not found, 1 = slave, 2 = master
+hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- control authority: 0 = plugin not found, 1 = no control, 2 = has control
 
 -- failures
-absu_at1_fail = globalPropertyi("tu154ce/failures/absu_at1_fail") -- отказ AT
-absu_at2_fail = globalPropertyi("tu154ce/failures/absu_at2_fail") -- отказ AT
-
+absu_at1_fail = globalPropertyi("tu154ce/failures/absu_at1_fail") -- AT failure
+absu_at2_fail = globalPropertyi("tu154ce/failures/absu_at2_fail") -- AT failure
 
 -- XP 11.10 fix
-sim_vers = globalPropertyi("sim/version/xplane_internal_version") -- версия сима
+sim_vers = globalPropertyi("sim/version/xplane_internal_version") -- X-Plane internal version
 
-absu_zk = globalPropertyi("tu154ce/buttons/console/absu_zk") -- кнопка ЗК на панели АБСУ
-absu_reset = globalPropertyi("tu154ce/buttons/console/absu_reset") -- кнопка сброс программы на панели АБСУ
-absu_nvu = globalPropertyi("tu154ce/buttons/console/absu_nvu") -- кнопка НВУ на панели АБСУ
-absu_app = globalPropertyi("tu154ce/buttons/console/absu_app") -- кнопка заход на панели АБСУ
-absu_gs = globalPropertyi("tu154ce/buttons/console/absu_gs") -- кнопка глиссада на панели АБСУ
-absu_stab_m = globalPropertyi("tu154ce/buttons/console/absu_stab_m") -- кнопка M на панели АБСУ
-absu_stab_v = globalPropertyi("tu154ce/buttons/console/absu_stab_v") -- кнопка V на панели АБСУ
-absu_stab_h = globalPropertyi("tu154ce/buttons/console/absu_stab_h") -- кнопка H на панели АБСУ
-absu_stab = globalPropertyi("tu154ce/buttons/console/absu_stab") -- кнопка СТАБ на панели АБСУ
+absu_zk = globalPropertyi("tu154ce/buttons/console/absu_zk") -- ZK button on ABSU panel
+absu_reset = globalPropertyi("tu154ce/buttons/console/absu_reset") -- reset button on ABSU panel
+absu_nvu = globalPropertyi("tu154ce/buttons/console/absu_nvu") -- NVU button on ABSU panel
+absu_app = globalPropertyi("tu154ce/buttons/console/absu_app") -- approach button on ABSU panel
+absu_gs = globalPropertyi("tu154ce/buttons/console/absu_gs") -- glide slope button on ABSU panel
+absu_stab_m = globalPropertyi("tu154ce/buttons/console/absu_stab_m") -- M mode button on ABSU panel
+absu_stab_v = globalPropertyi("tu154ce/buttons/console/absu_stab_v") -- V mode button on ABSU panel
+absu_stab_h = globalPropertyi("tu154ce/buttons/console/absu_stab_h") -- H mode button on ABSU panel
+absu_stab = globalPropertyi("tu154ce/buttons/console/absu_stab") -- STAB button on ABSU panel
 
+absu_stab_speed = globalPropertyi("tu154ce/buttons/console/absu_stab_speed") -- C button on ABSU panel
 
-absu_stab_speed = globalPropertyi("tu154ce/buttons/console/absu_stab_speed") -- кнопка C на панели АБСУ
+absu_speed_change = globalPropertyi("tu154ce/switchers/console/absu_speed_change") -- speed adjustment lever
+absu_turn_handle = globalPropertyi("tu154ce/switchers/console/absu_turn_handle") -- turn handle
+absu_pitch_wheel_dir = globalPropertyi("tu154ce/switchers/console/absu_pitch_wheel_dir") -- pitch wheel direction
 
-absu_speed_change = globalPropertyi("tu154ce/switchers/console/absu_speed_change") -- ручка изменения скорости.
-absu_turn_handle = globalPropertyi("tu154ce/switchers/console/absu_turn_handle") -- ручка поворота
-absu_pitch_wheel_dir = globalPropertyi("tu154ce/switchers/console/absu_pitch_wheel_dir") -- колесико спуска, подъема
-
-
-pkp_course_L = globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_L") -- устанвока курса желтой стрелкой на ПКП
-pkp_course_R = globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_R") -- устанвока курса желтой стрелкой на ПКП
-
-
-
+pkp_course_L = globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_L") -- yellow arrow course setting, left PKP
+pkp_course_R = globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_R") -- yellow arrow course setting, right PKP
 
 -- failures
-failures_enabled = globalPropertyi("tu154ce/failures/failures_enabled") -- включение неисправностей
-absu_ra56_roll_fail = globalPropertyi("tu154ce/failures/absu_ra56_roll_fail") -- отказ ra56
-absu_ra56_pitch_fail = globalPropertyi("tu154ce/failures/absu_ra56_pitch_fail") -- отказ ra56
-absu_ra56_yaw_fail = globalPropertyi("tu154ce/failures/absu_ra56_yaw_fail") -- отказ ra56
-absu_at1_fail = globalPropertyi("tu154ce/failures/absu_at1_fail") -- отказ AT
-absu_at2_fail = globalPropertyi("tu154ce/failures/absu_at2_fail") -- отказ AT
-absu_damp_roll_fail = globalPropertyi("tu154ce/failures/absu_damp_roll_fail") -- отказ демперов крена
-absu_damp_pitch_fail = globalPropertyi("tu154ce/failures/absu_damp_pitch_fail") -- отказ демперов тангажа
-absu_damp_yaw_fail = globalPropertyi("tu154ce/failures/absu_damp_yaw_fail") -- отказ демперов курса
-absu_contr_roll_fail = globalPropertyi("tu154ce/failures/absu_contr_roll_fail") -- отказ бокового управления
-absu_contr_pitch_fail = globalPropertyi("tu154ce/failures/absu_contr_pitch_fail") -- отказ продольного управления
-absu_calc_toga_fail = globalPropertyi("tu154ce/failures/absu_calc_toga_fail") -- отказ вычислителя УХОД
-absu_calc_roll_fail = globalPropertyi("tu154ce/failures/absu_calc_roll_fail") -- отказ бокового канала СТУ
-absu_calc_pitch_fail = globalPropertyi("tu154ce/failures/absu_calc_pitch_fail") -- отказ продольного канала СТУ
+failures_enabled = globalPropertyi("tu154ce/failures/failures_enabled") -- master failure switch
+absu_ra56_roll_fail = globalPropertyi("tu154ce/failures/absu_ra56_roll_fail") -- RA-56 roll channel failure
+absu_ra56_pitch_fail = globalPropertyi("tu154ce/failures/absu_ra56_pitch_fail") -- RA-56 pitch channel failure
+absu_ra56_yaw_fail = globalPropertyi("tu154ce/failures/absu_ra56_yaw_fail") -- RA-56 yaw channel failure
+absu_damp_roll_fail = globalPropertyi("tu154ce/failures/absu_damp_roll_fail") -- roll damper failure
+absu_damp_pitch_fail = globalPropertyi("tu154ce/failures/absu_damp_pitch_fail") -- pitch damper failure
+absu_damp_yaw_fail = globalPropertyi("tu154ce/failures/absu_damp_yaw_fail") -- yaw damper failure
+absu_contr_roll_fail = globalPropertyi("tu154ce/failures/absu_contr_roll_fail") -- lateral control failure
+absu_contr_pitch_fail = globalPropertyi("tu154ce/failures/absu_contr_pitch_fail") -- longitudinal control failure
+absu_calc_toga_fail = globalPropertyi("tu154ce/failures/absu_calc_toga_fail") -- TOGA computer failure
+absu_calc_roll_fail = globalPropertyi("tu154ce/failures/absu_calc_roll_fail") -- ABSU roll channel computer failure
+absu_calc_pitch_fail = globalPropertyi("tu154ce/failures/absu_calc_pitch_fail") -- ABSU pitch channel computer failure
 
 joy_pitch = globalPropertyf("tu154ce/SC/yoke_pitch_ratio")
 joy_roll = globalPropertyf("tu154ce/SC/yoke_roll_ratio")
@@ -129,57 +107,52 @@ joy_yaw = globalPropertyf("tu154ce/SC/yoke_heading_ratio")
 frame_time = globalPropertyf("tu154ce/time/frame_time") -- time of frame
 
 -- hydraulics
-gs_press_1 = globalPropertyf("tu154ce/hydro/gs_press_1") -- давление в ГС1
-gs_press_2 = globalPropertyf("tu154ce/hydro/gs_press_2") -- давление в ГС2
-gs_press_3 = globalPropertyf("tu154ce/hydro/gs_press_3") -- давление в ГС3
-
+gs_press_1 = globalPropertyf("tu154ce/hydro/gs_press_1") -- pressure in Hydraulic System 1
+gs_press_2 = globalPropertyf("tu154ce/hydro/gs_press_2") -- pressure in Hydraulic System 2
+gs_press_3 = globalPropertyf("tu154ce/hydro/gs_press_3") -- pressure in Hydraulic System 3
 
 -- controls
-hydro_ra56_rud_1 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_rud_1") -- гидропитание РА56 курс
-hydro_ra56_rud_2 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_rud_2") -- гидропитание РА56 курс
-hydro_ra56_rud_3 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_rud_3") -- гидропитание РА56 курс
+hydro_ra56_rud_1 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_rud_1") -- hydraulic power to RA-56 yaw channel
+hydro_ra56_rud_2 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_rud_2") -- hydraulic power to RA-56 yaw channel
+hydro_ra56_rud_3 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_rud_3") -- hydraulic power to RA-56 yaw channel
 
-hydro_ra56_ail_1 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_ail_1") -- гидропитание РА56 крен
-hydro_ra56_ail_2 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_ail_2") -- гидропитание РА56 крен
-hydro_ra56_ail_3 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_ail_3") -- гидропитание РА56 крен
+hydro_ra56_ail_1 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_ail_1") -- hydraulic power to RA-56 roll channel
+hydro_ra56_ail_2 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_ail_2") -- hydraulic power to RA-56 roll channel
+hydro_ra56_ail_3 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_ail_3") -- hydraulic power to RA-56 roll channel
 
-hydro_ra56_elev_1 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_elev_1") -- гидропитание РА56 тангаж
-hydro_ra56_elev_2 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_elev_2") -- гидропитание РА56 тангаж
-hydro_ra56_elev_3 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_elev_3") -- гидропитание РА56 тангаж
+hydro_ra56_elev_1 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_elev_1") -- hydraulic power to RA-56 pitch channel
+hydro_ra56_elev_2 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_elev_2") -- hydraulic power to RA-56 pitch channel
+hydro_ra56_elev_3 = globalPropertyi("tu154ce/switchers/eng/hydro_ra56_elev_3") -- hydraulic power to RA-56 pitch channel
 
-absu_turn_handle = globalPropertyi("tu154ce/switchers/console/absu_turn_handle") -- ручка поворота
-absu_pitch_wheel = globalPropertyi("tu154ce/switchers/console/absu_pitch_wheel") -- колесико спуска, подъема
+absu_turn_handle = globalPropertyi("tu154ce/switchers/console/absu_turn_handle") -- turn handle
+absu_pitch_wheel = globalPropertyf("tu154ce/switchers/console/absu_pitch_wheel") -- pitch control wheel (up/down)
 
-absu_zpu_sel = globalPropertyi("tu154ce/switchers/console/absu_zpu_sel") -- переключатель ЗПУ. лев - прав
-ZK_select = globalPropertyi("tu154ce/switchers/ZK_select") -- тумблер "ввод ЗК" на передней панели. 0-лев, 1-прав	0
+absu_zpu_sel = globalPropertyi("tu154ce/switchers/console/absu_zpu_sel") -- ZPU selector switch, left-right
+ZK_select = globalPropertyi("tu154ce/switchers/ZK_select") -- "Input ZK" switch on front panel, 0 - left, 1 - right
 
-absu_smooth_on = globalPropertyi("tu154ce/switchers/console/absu_smooth_on") -- тумблер "вкл в болтанку"
+absu_smooth_on = globalPropertyi("tu154ce/switchers/console/absu_smooth_on") -- toggle "Enable in turbulence"
 
-absu_nav_on = globalPropertyi("tu154ce/switchers/console/absu_nav_on") -- стрелки навигация
-absu_landing_on = globalPropertyi("tu154ce/switchers/console/absu_landing_on") -- стрелки посадка
-absu_needles_on = globalPropertyi("tu154ce/switchers/console/absu_needles_on") -- стрелки
+absu_nav_on = globalPropertyi("tu154ce/switchers/console/absu_nav_on") -- navigation needles
+absu_landing_on = globalPropertyi("tu154ce/switchers/console/absu_landing_on") -- landing needles
+absu_needles_on = globalPropertyi("tu154ce/switchers/console/absu_needles_on") -- needles toggle
 
-nav_select = globalPropertyi("tu154ce/switchers/nav_select") -- тумблер НВУ-СНС 0 - НВУ, 1 - СНС
+nav_select = globalPropertyi("tu154ce/switchers/nav_select") -- NVU/GPS switch: 0 - NVU, 1 - GPS
 
+absu_speed_test_1 = globalPropertyi("tu154ce/buttons/console/absu_speed_test_1") -- lower STU test button
+absu_speed_test_2 = globalPropertyi("tu154ce/buttons/console/absu_speed_test_2") -- upper STU test button
 
-absu_speed_test_1 = globalPropertyi("tu154ce/buttons/console/absu_speed_test_1") -- кнопка првоерки СТУ нижняя
-absu_speed_test_2 = globalPropertyi("tu154ce/buttons/console/absu_speed_test_2") -- кнопка првоерки СТУ верхняя
-
-
-absu_use_second_nav = globalPropertyi("tu154ce/absu_use_second_nav") -- АБСУ использует второй КурсМП
-
-
+absu_use_second_nav = globalPropertyi("tu154ce/absu_use_second_nav") -- ABSU uses second KursMP system
 
 -- PNP
-pkp_course_L = globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_L") -- устанвока курса желтой стрелкой на ПКП
-pkp_course_R = globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_R") -- устанвока курса желтой стрелкой на ПКП
+pkp_course_L = globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_L") -- course set by yellow arrow on left PKP
+pkp_course_R = globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_R") -- course set by yellow arrow on right PKP
 
-pkp_gyro_course_L = globalPropertyf("tu154ce/gauges/compas/pkp_gyro_course_L") -- курс гироскопа ПКП
-pkp_gyro_course_R = globalPropertyf("tu154ce/gauges/compas/pkp_gyro_course_R") -- курс гироскопа ПКП
+pkp_gyro_course_L = globalPropertyf("tu154ce/gauges/compas/pkp_gyro_course_L") -- gyro course on left PKP
+pkp_gyro_course_R = globalPropertyf("tu154ce/gauges/compas/pkp_gyro_course_R") -- gyro course on right PKP
 
+pkp_obs_1 = globalPropertyf("tu154ce/gauges/compas/pkp_obs_L") -- flight course on left PKP
+pkp_obs_2 = globalPropertyf("tu154ce/gauges/compas/pkp_obs_R") -- flight course on right PKP
 
-pkp_obs_1 = globalPropertyf("tu154ce/gauges/compas/pkp_obs_L") -- курс полета на ПКП
-pkp_obs_2 = globalPropertyf("tu154ce/gauges/compas/pkp_obs_R") -- курс полета на ПКП
 -- angular speeds
 roll_rate = globalPropertyf("sim/flightmodel/position/P") -- deg/sec	The roll rotation rates (relative to the flight)
 pitch_rate = globalPropertyf("sim/flightmodel/position/Q") -- deg/sec	The pitch rotation rates (relative to the flight)
@@ -355,7 +328,7 @@ absu_pitch_ch_on =  globalPropertyi("tu154ce/switchers/console/absu_pitch_ch_on"
 absu_smooth_on =  globalPropertyi("tu154ce/switchers/console/absu_smooth_on") -- выключатель "в болтанку"
 
 absu_turn_handle =  globalPropertyi("tu154ce/switchers/console/absu_turn_handle") -- ручка поворота
-absu_pitch_wheel =  globalPropertyi("tu154ce/switchers/console/absu_pitch_wheel") -- колесико спуска, подъема
+absu_pitch_wheel =  globalPropertyf("tu154ce/switchers/console/absu_pitch_wheel") -- колесико спуска, подъема
 
 hydro_ra56_rud_1 =  globalPropertyi("tu154ce/switchers/eng/hydro_ra56_rud_1") -- гидропитание РА56 курс
 hydro_ra56_rud_2 =  globalPropertyi("tu154ce/switchers/eng/hydro_ra56_rud_2") -- гидропитание РА56 курс

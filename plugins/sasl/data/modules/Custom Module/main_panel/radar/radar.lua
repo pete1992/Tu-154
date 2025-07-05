@@ -20,22 +20,20 @@ defineProperty("rls_signs", globalPropertyf("tu154ce/switchers/console/rls_signs
 defineProperty("rls_ready", globalPropertyf("tu154ce/lights/small/rls_ready")) -- ready lamp
 defineProperty("rls_weather", globalPropertyf("tu154ce/lights/small/rls_weather")) -- weather lamp
 
---[[
-
-tu154ce/switchers/console/rls_on
-tu154ce/switchers/console/rls_mode
-tu154ce/switchers/console/rls_distance
 
 
-defineProperty("rls_power_sw", globalPropertyi("tu154ce/xap/An24_rls/rls_power_sw")) -- power switch
-defineProperty("rls_power_cc", globalPropertyf("tu154ce/xap/An24_rls/rls_power_cc")) -- power switch
-defineProperty("rls_scan_spd", globalPropertyi("tu154ce/xap/An24_rls/rls_scan_spd")) -- power switch
-defineProperty("rls_mode", globalPropertyi("tu154ce/xap/An24_rls/rls_mode")) -- power switch
-defineProperty("rls_mode_lamp", globalPropertyi("tu154ce/xap/An24_rls/rls_mode_lamp")) -- power switch
-defineProperty("rls_bright", globalPropertyf("tu154ce/xap/An24_rls/rls_bright")) -- power switch
-defineProperty("rls_contr", globalPropertyf("tu154ce/xap/An24_rls/rls_contr")) -- power switch
-defineProperty("rls_signs", globalPropertyf("tu154ce/xap/An24_rls/rls_signs")) -- power switch
---]]
+-- tu154ce/switchers/console/rls_on
+-- tu154ce/switchers/console/rls_mode
+-- tu154ce/switchers/console/rls_distance
+-- defineProperty("rls_power_sw", globalPropertyi("tu154ce/xap/An24_rls/rls_power_sw")) -- power switch
+-- defineProperty("rls_power_cc", globalPropertyf("tu154ce/xap/An24_rls/rls_power_cc")) -- power switch
+-- defineProperty("rls_scan_spd", globalPropertyi("tu154ce/xap/An24_rls/rls_scan_spd")) -- power switch
+-- defineProperty("rls_mode", globalPropertyi("tu154ce/xap/An24_rls/rls_mode")) -- power switch
+-- defineProperty("rls_mode_lamp", globalPropertyi("tu154ce/xap/An24_rls/rls_mode_lamp")) -- power switch
+-- defineProperty("rls_bright", globalPropertyf("tu154ce/xap/An24_rls/rls_bright")) -- power switch
+-- defineProperty("rls_contr", globalPropertyf("tu154ce/xap/An24_rls/rls_contr")) -- power switch
+-- defineProperty("rls_signs", globalPropertyf("tu154ce/xap/An24_rls/rls_signs")) -- power switch
+
 
 
 -- power
@@ -43,7 +41,7 @@ defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_righ
 defineProperty("bus36_volt_pts250_1", globalPropertyf("tu154ce/elec/bus36_volt_pts250_1"))
 defineProperty("bus115_3_volt", globalPropertyf("tu154ce/elec/bus115_3_volt"))
 
-defineProperty("radar_cc", globalPropertyf("tu154ce/radio/radar_cc")) -- ����������� ���� �� ��� �����
+defineProperty("radar_cc", globalPropertyf("tu154ce/radio/radar_cc"))
 
 
 
@@ -58,11 +56,15 @@ defineProperty("EFIS_airport_on", globalPropertyi("sim/cockpit2/EFIS/EFIS_airpor
 defineProperty("EFIS_vor_on", globalPropertyi("sim/cockpit2/EFIS/EFIS_vor_on"))
 defineProperty("EFIS_ndb_on", globalPropertyi("sim/cockpit2/EFIS/EFIS_ndb_on"))
 
-defineProperty("EFIS_weather_alpha", globalPropertyi("sim/cockpit/switches/EFIS_weather_alpha"))
+defineProperty("EFIS_weather_alpha", globalPropertyf("sim/cockpit/switches/EFIS_weather_alpha"))
 
 
 defineProperty("EFIS_fix_on", globalPropertyi("sim/cockpit2/EFIS/EFIS_fix_on"))
-defineProperty("EFIS_page", globalPropertyi("sim/cockpit2/EFIS/EFIS_page"))
+--defineProperty("EFIS_page", globalPropertyi("sim/cockpit2/EFIS/EFIS_page"))
+defineProperty("efis_page_captain", globalPropertyi("sim/cockpit2/EFIS/EFIS_page[0]"))
+defineProperty("efis_page_copilot", globalPropertyi("sim/cockpit2/EFIS/EFIS_page[1]"))
+
+
 defineProperty("EFIS_fail", globalPropertyi("sim/operation/failures/rel_efis_2"))
 
 
@@ -73,11 +75,11 @@ defineProperty("mask2", loadImage("radar_mask2.png", 0, 0, 256, 256))
 
 defineProperty("scale", loadImage("radar_scale.png", 0, 170, 512, 345))
 
---[[
-defineProperty("needle_1", loadImage("radar_scale.png", 0, 190, 256, 4))
-defineProperty("needle_2", loadImage("radar_scale.png", 0, 200, 256, 4))
-defineProperty("needle_3", loadImage("radar_scale.png", 0, 210, 256, 4))
---]]
+
+-- defineProperty("needle_1", loadImage("radar_scale.png", 0, 190, 256, 4))
+-- defineProperty("needle_2", loadImage("radar_scale.png", 0, 200, 256, 4))
+-- defineProperty("needle_3", loadImage("radar_scale.png", 0, 210, 256, 4))
+
 
 defineProperty("scale_1", loadImage("radar_scale_marks.png", 0, 437, 130, 80))
 defineProperty("scale_3", loadImage("radar_scale_marks.png", 144, 365, 250, 156))
@@ -161,7 +163,7 @@ function update()
 	power_sw_last = power_switch
 	
 	mode = get(rls_mode)
-	if mode ~= mode_sw_last then --[[if get(xplane_version) < 120000 then playSample(rotary_sound, false) end]] end
+	if mode ~= mode_sw_last then end
 	mode_sw_last = mode
 
 	range = get(map_range)
@@ -228,10 +230,10 @@ function update()
 		mask_angle = -25
 		first_mask = false
 	
-	--[[elseif power and mode == 2 then -- slip angle mode
-		current = current + 3
-		slip_angle = get(deg2) - get(deg1)
-		needle_show = math.random(1, 3)--]]
+--	 elseif power and mode == 2 then -- slip angle mode
+--     current = current + 3
+--     slip_angle = get(deg2) - get(deg1)
+--     needle_show = math.random(1, 3)
 	end
 
 
@@ -261,15 +263,12 @@ function update()
 	
 	set(EFIS_weather_alpha, 1)
 	
-	 -- ������� ������� ���. GPS �� �������� �� ������������
 	--local i = 0 
-	--[[
-	if countFMSEntries() > 0 then 
-		for i = 1, countFMSEntries() do 
-			clearFMSEntry(i) 
-		end 
-	end
-	--]]
+-- if countFMSEntries() > 0 then 
+--     for i = 1, countFMSEntries() do 
+--         clearFMSEntry(i) 
+--     end 
+-- end
 	
 	set(radar_cc, bool2int(power_el) * 0.2 + bool2int(power) * 0.1 + bool2int(mode > 0) * 0.7)
 	

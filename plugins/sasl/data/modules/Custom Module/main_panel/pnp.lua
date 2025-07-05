@@ -41,8 +41,8 @@ defineProperty("pitch_sub_mode", globalPropertyi("tu154ce/absu/pitch_sub_mode"))
 defineProperty("nav_course_1", globalPropertyi("tu154ce/rotary/console/nav_1_course")) -- ручка установки курса
 defineProperty("nav_course_2", globalPropertyi("tu154ce/rotary/console/nav_2_course")) -- ручка установки курса
 
-defineProperty("obs1", globalPropertyi("sim/cockpit2/radios/actuators/nav1_obs_deg_mag_pilot")) -- OBS course
-defineProperty("obs2", globalPropertyi("sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot")) -- OBS course
+defineProperty("obs1", globalPropertyf("sim/cockpit2/radios/actuators/nav1_obs_deg_mag_pilot")) -- OBS course
+defineProperty("obs2", globalPropertyf("sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot")) -- OBS course
 
 -- NVU
 defineProperty("nvu_res_course", globalPropertyf("tu154ce/nvu/nvu_res_course")) -- курс полета по НВУ

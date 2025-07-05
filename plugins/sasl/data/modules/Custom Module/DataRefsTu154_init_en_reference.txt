@@ -1,0 +1,493 @@
+tu154ce/lang/hide_rus_objects	int	Hide Russian cockpit objects	0
+tu154ce/lang/hide_eng_objects	int	Hide English cockpit objects	1
+tu154ce/have_pedals	int	Has pedals with brakes	0
+tu154ce/sounds_voulme	int	Master sound volume	1000
+tu154ce/elec/bat_volt_1	float	Battery voltage	25
+tu154ce/elec/bat_volt_2	float	Battery voltage	25
+tu154ce/elec/bat_volt_3	float	Battery voltage	25
+tu154ce/elec/bat_volt_4	float	Battery voltage	25
+tu154ce/elec/bat_amp_1	float	Battery current	0
+tu154ce/elec/bat_amp_2	float	Battery current	0
+tu154ce/elec/bat_amp_3	float	Battery current	0
+tu154ce/elec/bat_amp_4	float	Battery current	0
+tu154ce/elec/bat_cc_1	float	Battery charge current	0
+tu154ce/elec/bat_cc_2	float	Battery charge current	0
+tu154ce/elec/bat_cc_3	float	Battery charge current	0
+tu154ce/elec/bat_cc_4	float	Battery charge current	0
+tu154ce/elec/bat_therm_1	float	Battery temperature	20
+tu154ce/elec/bat_therm_2	float	Battery temperature	20
+tu154ce/elec/bat_therm_3	float	Battery temperature	20
+tu154ce/elec/bat_therm_4	float	Battery temperature	20
+tu154ce/elec/vu1_volt	float	Rectifier unit (VU1) voltage	27
+tu154ce/elec/vu2_volt	float	Rectifier unit (VU2) voltage	27
+tu154ce/elec/vu_res_volt	float	Backup rectifier unit voltage	27
+tu154ce/elec/vu1_amp	float	Rectifier unit (VU1) current	0
+tu154ce/elec/vu2_amp	float	Rectifier unit (VU2) current	0
+tu154ce/elec/vu_res_amp	float	Backup rectifier unit current	0
+tu154ce/elec/vu_res_to_L	int	Backup rectifier connected to left bus	0
+tu154ce/elec/vu_res_to_R	int	Backup rectifier connected to right bus	0
+tu154ce/elec/bus27_volt_left	float	Left 27V bus voltage	27
+tu154ce/elec/bus27_amp_left	float	Left 27V bus voltage	27
+tu154ce/elec/bus27_amp_right	float	Right 27V bus current	0
+tu154ce/elec/bus27_volt_right	float	Right 27V bus current	0
+tu154ce/elec/bus27_source_left	int	Left bus power source. 0 - None, 1 - VU1, 2 - VU backup, 3 - Batteries 1 & 3, 4 - Battery 1, 5 - Battery 2	1
+tu154ce/elec/bus27_source_right	int	Right bus power source. 0 - None, 1 - VU2, 2 - VU backup, 3 - Batteries 1 & 3, 4 - Battery 1, 5 - Battery 2	0
+tu154ce/elec/bat_is_source_1	int	Battery is power source	1
+tu154ce/elec/bat_is_source_2	int	Battery is power source	1
+tu154ce/elec/bat_is_source_3	int	Battery is power source	1
+tu154ce/elec/bat_is_source_4	int	Battery is power source	1
+tu154ce/elec/bus_connected	int	Buses connected	0
+tu154ce/elec/bus36_volt_left	float	Left 36V bus voltage	36
+tu154ce/elec/bus36_volt_right	float	Right 36V bus voltage	36
+tu154ce/elec/bus36_volt_pts250_1	float	36V bus PTS250 #1 voltage	36
+tu154ce/elec/bus36_volt_pts250_2	float	36V bus PTS250 #2 voltage	36
+tu154ce/elec/bus36_amp_left	float	Left 36V bus current	0
+tu154ce/elec/bus36_amp_right	float	Right 36V bus current	0
+tu154ce/elec/bus36_amp_pts250_1	float	PTS250 #1 36V bus current	0
+tu154ce/elec/bus36_amp_pts250_2	float	PTS250 #2 36V bus current	0
+tu154ce/elec/bus36_tr1_work	int	Transformer #1 operating	1
+tu154ce/elec/bus36_tr2_work	int	Transformer #2 operating	1
+tu154ce/elec/bus36_pts1_work	int	PTS250 #1 operating	1
+tu154ce/elec/bus36_pts2_work	int	PTS250 #2 operating	0
+tu154ce/elec/bus36_src_L	int	Left bus source. 0 = TR1, 1 = TR2	0
+tu154ce/elec/bus36_src_R	int	Right bus source. 0 = TR2, 1 = TR1	0
+tu154ce/elec/gen1_work	int	Generator 1 operating	1
+tu154ce/elec/gen2_work	int	Generator 2 operating	1
+tu154ce/elec/gen3_work	int	Generator 3 operating	1
+tu154ce/elec/gen4_work	int	APU generator operating	0
+tu154ce/elec/gpu_work	int	GPU operating	0
+tu154ce/elec/gen1_overload	int	Generator 1 overload	0
+tu154ce/elec/gen2_overload	int	Generator 2 overload	0
+tu154ce/elec/gen3_overload	int	Generator 3 overload	0
+tu154ce/elec/gen4_overload	int	APU generator overload	0
+tu154ce/elec/gpu_overload	int	GPU overload	0
+tu154ce/elec/gen1_volt	float	Generator voltage	115
+tu154ce/elec/gen2_volt	float	Generator voltage	115
+tu154ce/elec/gen3_volt	float	Generator voltage	115
+tu154ce/elec/gen4_volt	float	Generator voltage	115
+tu154ce/elec/gpu_volt	float	Generator voltage	115
+tu154ce/elec/bus115_1_volt	float	115V bus voltage	115
+tu154ce/elec/bus115_2_volt	float	115V bus voltage	115
+tu154ce/elec/bus115_3_volt	float	115V bus voltage	115
+tu154ce/elec/bus115_em_1_volt	float	115V emergency bus voltage	115
+tu154ce/elec/bus115_em_2_volt	float	115V emergency bus voltage	115
+tu154ce/elec/bus115_1_amp	float	115V bus current	0
+tu154ce/elec/bus115_2_amp	float	115V bus current	0
+tu154ce/elec/bus115_3_amp	float	115V bus current	0
+tu154ce/elec/bus115_em_1_amp	float	115V bus current	0
+tu154ce/elec/bus115_em_2_amp	float	115V bus current	0
+tu154ce/elec/gen1_amp	float	Generator load	0
+tu154ce/elec/gen2_amp	float	Generator load	0
+tu154ce/elec/gen3_amp	float	Generator load	0
+tu154ce/elec/gen4_amp	float	Generator load	0
+tu154ce/elec/gpu_amp	float	Generator load	0
+tu154ce/thermo/cockpit_temp	float	Cockpit temperature	20
+tu154ce/thermo/cabin1_temp	float	Cabin 1 temperature	20
+tu154ce/thermo/cabin2_temp	float	Cabin 2 temperature	20
+tu154ce/elec/apu_start_bus	float	APU start bus voltage	27
+tu154ce/elec/apu_start_cc	float	APU starter current	0
+tu154ce/elec/apu_start_seq	int	APU start sequence active	0
+tu154ce/elec/apu_burning_fuel	float	APU starter current	0
+tu154ce/elec/cockpit_light_cc_left	float	load on left network from cockpit lighting	0
+tu154ce/elec/cockpit_light_cc_right	float	load on right network from cockpit lighting	0
+tu154ce/elec/cockpit_light_cc_115	float	load on 115V network from cockpit lighting	0
+tu154ce/elec/ext_light_cc_left	float	load on left network from external lighting	0
+tu154ce/elec/ext_light_cc_right	float	load on right network from external lighting	0
+tu154ce/elec/ext_light_cc_115	float	load on 115V network from external lighting	0
+tu154ce/eng/apu_n1	float	APU RPM	0
+tu154ce/eng/apu_oil_t	float	APU oil temperature	0
+tu154ce/eng/apu_oil_q	float	APU oil quantity	0
+tu154ce/eng/apu_oil_p	float	APU oil pressure	0
+tu154ce/eng/apu_fuel_p	float	APU fuel pressure	0
+tu154ce/eng/apu_egt	float	APU exhaust gas temperature	0
+tu154ce/eng/apu_air_press	float	air pressure for engine start	0
+tu154ce/eng/apu_air_doors	float	position of air bleed doors	0
+tu154ce/eng/apu_system_on	int	APU system switch	0
+tu154ce/eng/vibration_1	float	engine vibration	0
+tu154ce/eng/vibration_2	float	engine vibration	0
+tu154ce/eng/vibration_3	float	engine vibration	0
+tu154ce/fuel/eng_fuel_press_1	int	fuel can be supplied to engine, ignoring shutoff valves	1
+tu154ce/fuel/eng_fuel_press_2	int	fuel can be supplied to engine, ignoring shutoff valves	1
+tu154ce/fuel/eng_fuel_press_3	int	fuel can be supplied to engine, ignoring shutoff valves	1
+tu154ce/fuel/pump_tank2_left_work	int	tank 2 pumps	1
+tu154ce/fuel/pump_tank2_right_work	int	tank 2 pumps	1
+tu154ce/fuel/pump_tank3_left_work	int	tank 3 pumps	1
+tu154ce/fuel/pump_tank3_right_work	int	tank 3 pumps	1
+tu154ce/fuel/pump_tank4_work	int	tank 4 pumps	1
+tu154ce/fuel/pump_tank1_1_work	int	tank 1 pumps	1
+tu154ce/fuel/pump_tank1_2_work	int	tank 1 pumps	1
+tu154ce/fuel/pump_tank1_3_work	int	tank 1 pumps	1
+tu154ce/fuel/pump_tank1_4_work	int	tank 1 pumps	1
+tu154ce/fuel/reserv_trans	int	backup fuel transfer enabled	0
+tu154ce/fuel/auto_tanks_turn	int	active automatic fuel tanks. 0, 1 = inactive, 2, 3, 4	0
+tu154ce/fuel/auto_tank_level_2	int	tank 2 leveling. -1 = left, 0 = none, +1 = right	0
+tu154ce/fuel/auto_tank_level_3	int	tank 3 leveling. -1 = left, 0 = none, +1 = right	0															
+tu154ce/fuel/fire_vlv_open_1	float	fire shutoff valve open	1
+tu154ce/fuel/fire_vlv_open_2	float	fire shutoff valve open	1
+tu154ce/fuel/fire_vlv_open_3	float	fire shutoff valve open	1
+tu154ce/elec/fuel_pumps_115_1_cc	float	load on network 1 from fuel pumps	0
+tu154ce/elec/fuel_pumps_115_3_cc	float	load on network 3 from fuel pumps	0
+tu154ce/elec/fuel_pumps_27_cc	float	load on 27V network from fuel pumps	0
+tu154ce/hydro/gs_press_1	float	pressure in hydraulic system 1	0
+tu154ce/hydro/gs_press_2	float	pressure in hydraulic system 2	0
+tu154ce/hydro/gs_press_3	float	pressure in hydraulic system 3	0
+tu154ce/hydro/gs_press_4	float	pressure in emergency braking system	0
+tu154ce/hydro/gs_qty_1	float	oil quantity in system	55
+tu154ce/hydro/gs_qty_2	float	oil quantity in system	55
+tu154ce/hydro/gs_qty_3	float	oil quantity in system	49
+tu154ce/hydro/gs_qty_12_show	float	oil quantity in hydraulic tank	48
+tu154ce/hydro/gs_qty_3_show	float	oil quantity in hydraulic tank	24
+tu154ce/hydro/gs_pump_2_cc	float	current of hydraulic pump station	0
+tu154ce/hydro/gs_pump_3_cc	float	current of hydraulic pump station	0
+tu154ce/hydro/gs_bak_qty_1	float	oil quantity in tank	17.17
+tu154ce/hydro/gs_bak_qty_2	float	oil quantity in tank	17.17
+tu154ce/hydro/gs_bak_qty_3	float	oil quantity in tank	23.8
+tu154ce/bleed/air_usage_L	float	air consumption left	0
+tu154ce/bleed/air_usage_R	float	air consumption right	0
+tu154ce/bleed/eng_airvalve_1	float	engine bleed valve open	1
+tu154ce/bleed/eng_airvalve_2	float	engine bleed valve open	1
+tu154ce/bleed/eng_airvalve_3	float	engine bleed valve open	1
+tu154ce/bleed/hot_tube_t	float	hot air pipe temperature	100
+tu154ce/bleed/door_heat_tube_t	float	door heating pipe temperature	80
+tu154ce/bleed/cockpit_tube_t	float	cockpit air pipe temperature	30
+tu154ce/bleed/cabin1_tube_t	float	cabin 1 air pipe temperature	30
+tu154ce/bleed/cabin2_tube_t	float	cabin 2 air pipe temperature	30
+tu154ce/bleed/cold_tube1_t	float	cold air pipe 1 temperature	30
+tu154ce/bleed/cold_tube2_t	float	cold air pipe 2 temperature	30
+tu154ce/bleed/cockpit_temp	float	cockpit temperature	20
+tu154ce/bleed/cabin_1_temp	float	cabin 1 temperature	20
+tu154ce/bleed/cabin_2_temp	float	cabin 2 temperature	20
+tu154ce/start/starter_pressure	float	pressure in start system	0
+tu154ce/start/apd_working_1	int	APD system operation	0
+tu154ce/start/apd_working_2	int	APD system operation	0
+tu154ce/start/apd_working_3	int	APD system operation	0
+tu154ce/start/start_sys_work	int	start system operation	0
+tu154ce/start/fuel_in_1	int	fuel supplied by start system	1
+tu154ce/start/fuel_in_2	int	fuel supplied by start system	1
+tu154ce/start/fuel_in_3	int	fuel supplied by start system	1
+tu154ce/trimmers/int_pitch_trim	float	elevator trim position	0
+tu154ce/trimmers/int_roll_trim	float	aileron trim position	0
+tu154ce/trimmers/int_yaw_trim	float	rudder trim position	0
+tu154ce/controls/control_force_pos	float	elevator control loader position. 0 - off, 1 - on	0
+tu154ce/controls/control_force_pos_rud	float	rudder control loader position. 0 - off, 1 - on	0	
+tu154ce/fire/ext_used_1	int	fire extinguisher used	0
+tu154ce/fire/ext_used_2	int	fire extinguisher used	0
+tu154ce/fire/ext_used_3	int	fire extinguisher used	0
+tu154ce/fire/ng_used	int	fire suppression NG used	0
+tu154ce/fire/valve_open_1	int	fire extinguishing valve engine 1	0
+tu154ce/fire/valve_open_2	int	fire extinguishing valve engine 2	0
+tu154ce/fire/valve_open_3	int	fire extinguishing valve engine 3	0
+tu154ce/fire/valve_open_4	int	fire extinguishing valve APU	0
+tu154ce/fire/fire_siren	int	fire siren active	0
+tu154ce/fire/engine_fire_state_1	int	engine state. 0 = normal, 1 = overheat, 2 = fire	0
+tu154ce/fire/engine_fire_state_2	int	engine state. 0 = normal, 1 = overheat, 2 = fire	0
+tu154ce/fire/engine_fire_state_3	int	engine state. 0 = normal, 1 = overheat, 2 = fire	0
+tu154ce/fire/engine_fire_state_4	int	APU state. 0 = normal, 1 = overheat, 2 = fire	0
+tu154ce/fire/engine_fuel_cut_1	int	engine 1 fuel shutoff	0
+tu154ce/fire/engine_fuel_cut_2	int	engine 2 fuel shutoff	0
+tu154ce/fire/engine_fuel_cut_3	int	engine 3 fuel shutoff	0
+tu154ce/fire/fire_detected	int	fire detected	0
+tu154ce/fire/fire_sys_cc	float	current consumption by fire protection system	0
+tu154ce/antiice/wing_heat_t	float	wing heating temperature	15
+tu154ce/antiice/stab_heat_t	float	stabilizer heating temperature	15
+tu154ce/antiice/ice_detected	int	ice detected	0
+tu154ce/antiice/ice_detect_ok	int	ice detection system operational	0
+tu154ce/antiice/wing_heating	int	wing heating active	1
+tu154ce/antiice/slat_heating	int	slat heating active	1
+tu154ce/antiice/ai_27_L_cc	float	current load on left 27V anti-ice system	0
+tu154ce/antiice/ai_27_R_cc	float	current load on right 27V anti-ice system	0
+tu154ce/antiice/ai_115_1_cc	float	current load on 115V anti-ice bus 1	0
+tu154ce/antiice/ai_115_2_cc	float	current load on 115V anti-ice bus 2	0
+tu154ce/antiice/ai_115_3_cc	float	current load on 115V anti-ice bus 3	0
+tu154ce/antiice/eng_heat_open_1	int	engine 1 anti-ice valve open	0
+tu154ce/antiice/eng_heat_open_2	int	engine 2 anti-ice valve open	0
+tu154ce/antiice/eng_heat_open_3	int	engine 3 anti-ice valve open	0
+tu154ce/msrp/msrp_power int     MSRP power supply for clock indicator            1
+tu154ce/msrp/msrp_recording          int     MSRP recording power    1
+tu154ce/msrp/msrp_27_L_cc            float   current consumption on MSRP 27V left bus          0
+tu154ce/msrp/msrp_27_R_cc            float   current consumption on MSRP 27V right bus         0
+tu154ce/control/ctr_27_L_cc          float   control system current on 27V left bus            0
+tu154ce/control/ctr_27_R_cc          float   control system current on 27V right bus           0
+tu154ce/control/ctr_115_1_cc         float   control system current on 115V bus 1 0
+tu154ce/control/ctr_115_2_cc         float   control system current on 115V bus 2 0
+tu154ce/control/ctr_115_3_cc         float   control system current on 115V bus 3 0
+tu154ce/control/ctr_36L_cc           float   control system current on 36V left bus            0
+tu154ce/control/ctr_36R_cc           float   control system current on 36V right bus           0
+tu154ce/auasp/alpha_critical         int     AUASP signal for critical angle of attack         0
+tu154ce/auasp/gforce_critical        int     AUASP signal for critical G-load     0
+tu154ce/gyro/mgv_contr_roll          float   control gyroscope roll          0
+tu154ce/gyro/mgv_contr_pitch         float   control gyroscope pitch         0
+tu154ce/gyro/mgv_contr_flag          int     MGV control gyroscope failure flag   0
+tu154ce/bkk/left_roll_big            int     BKK signal: excessive left bank 0
+tu154ce/bkk/right_roll_big           int     BKK signal: excessive right bank     0
+tu154ce/bkk/mgv_contr_fail           int     BKK signal: MGV control failure 0
+tu154ce/bkk/no_contr_ag int     BKK signal: no AG control       0
+tu154ce/bkk/pkp_fail_left            int     BKK signal: left PKP failure    0
+tu154ce/bkk/pkp_fail_right           int     BKK signal: right PKP failure   0
+tu154ce/bkk/pkp_roll_left            float   PKP roll angle on left MGV      0
+tu154ce/bkk/pkp_roll_right           float   PKP roll angle on right MGV     0
+tu154ce/bkk/pkp_left_power_cc        float   current consumption by left PKP 0
+tu154ce/bkk/pkp_right_power_cc       float   current consumption by right PKP     0
+tu154ce/bkk/mgv_ctr_power_cc         float   current consumption by MGV control   0
+tu154ce/gyro/ahz_pitch_int_L         float   pitch angle from left gyroscope     0
+tu154ce/gyro/ahz_pitch_int_R         float   pitch angle from right gyroscope    0
+
+tu154ce/tcas/range_set  int     TCAS display range. 0=3nm, 1=5nm, ..., 3=15nm             3
+tu154ce/tcas/mode_set   int     TCAS mode. -1=test, 0=standby, 1=alt off, ..., 4=TARA     4
+tu154ce/tcas/screen_mode            int     TCAS screen mode. -1=error, 0=transponder code, ...       0
+tu154ce/tcas/level_mode             int     TCAS vertical display level. 1=above, 0=norm, -1=below     0
+tu154ce/tcas/fl_mode   int     TCAS flight level mode. 0=absolute, 1=relative             0
+tu154ce/tcas/flt_id    int     TCAS flight ID. 0=cover, 1=show/change code   0
+tu154ce/tcas/ra_scale_set           int     TCAS RA scale set. 0=none  0
+tu154ce/tcas/traffic_det            int     TCAS traffic alerts active (yellow/red) 0
+tu154ce/svs/altitude   float   SVS reported altitude      0
+tu154ce/svs/machno     float   SVS reported Mach number   0
+tu154ce/svs/true_airspeed           float   SVS reported true airspeed (TAS)        0
+tu154ce/svs/power_27cc float   SVS power consumption on 27V            0
+tu154ce/svs/power_36cc float   SVS power consumption on 36V            0
+tu154ce/svs/power_115cc             float   SVS power consumption on 115V           0
+tu154ce/elec/auasp_pow27_cc         float   AUASP power consumption on 27V          0
+tu154ce/elec/auasp_pow115_cc        float   AUASP power consumption on 115V         0
+tu154ce/elec/rv5_left_cc            float   RV-5 left unit power consumption        0
+tu154ce/elec/rv5_right_cc           float   RV-5 right unit power consumption       0
+
+tu154ce/misc/rv5_alt_left           float   altitude on left altimeter (RV-5)       0
+tu154ce/misc/rv5_alt_right          float   altitude on right altimeter (RV-5)      0
+tu154ce/misc/rv5_dh_signal_left     int     DH (Decision Height) signal left        0
+tu154ce/misc/rv5_dh_signal_right    int     DH (Decision Height) signal right       0
+tu154ce/taws/mode_set  int     TAWS display mode. 0=off, 1=terrain map, ..., 4=boot       1
+tu154ce/taws/distance_set           int     TAWS display range. 0=10km, ..., 6=640km 0
+tu154ce/taws/taws_cc   float   TAWS system power consumption            0
+tu154ce/taws/taws_message           int     TAWS alert message. 0=none, 1=Pull Up, ..., 13=GS          0
+tu154ce/taws/taws_english           int     TAWS language. 0=Russian, 1=English      0
+tu154ce/taws/gs_msg_int             float   Glideslope signal interval      5
+tu154ce/taws/gs_msg_vol             float   Glideslope signal volume        1
+tu154ce/taws/taws_alt_left          int     compare left altimeter to TAWS          0
+tu154ce/taws/taws_alt_right         int     compare right altimeter to TAWS         0
+tu154ce/tks/course_mk_1         float   course to MK5     0  
+tu154ce/tks/course_mk_2         float   course to MK5     0  
+tu154ce/tks/course_ga_1         float   course to GA1     0  
+tu154ce/tks/course_ga_2         float   course to GA1     0  
+tu154ce/tks/course_bgmk_1       float   course to BGMK1   0  
+tu154ce/tks/course_bgmk_2       float   course to BGMK1   0  
+tu154ce/tks/course_gpk          float   resulting TKS course from GPK  0  
+tu154ce/tks/course_gmk          float   resulting TKS course from GMK  0  
+tu154ce/tks/fail_left           int     failure flag (left TKS system) 0  
+tu154ce/tks/fail_right          int     failure flag (right TKS system)     0  
+
+tu154ce/nvu/diss_wind_course    float   wind direction from DISS       0  
+tu154ce/nvu/diss_wind_spd       float   wind speed from DISS           0  
+tu154ce/nvu/diss_groundspeed    float   ground speed from DISS         0  
+tu154ce/nvu/diss_slip_angle     float   drift (slip) angle from DISS   0  
+tu154ce/nvu/diss_mode           int     DISS mode: 0 = off, 1 = working, 2 = memory       1  
+
+tu154ce/rsbn/distance           float   geometric distance from RSBN beacon 0  
+tu154ce/rsbn/azimuth            float   azimuth from RSBN beacon       0  
+
+tu154ce/radio/adf_bear_1        float   ADF bearing 1 (direction to NDB)    0  
+tu154ce/radio/adf_bear_2        float   ADF bearing 2 (direction to NDB)    0  
+tu154ce/radio/vor_bear_1        float   VOR bearing 1     0  
+tu154ce/radio/vor_bear_2        float   VOR bearing 2     0  
+tu154ce/radio/vor_dme_1         float   distance to VOR 1 (DME)        0  
+tu154ce/radio/vor_dme_2         float   distance to VOR 2 (DME)        0  
+
+tu154ce/radio/nav1_cs           float   NAV1 course deviation          0  
+tu154ce/radio/nav1_gs           float   NAV1 glideslope deviation      0  
+tu154ce/radio/nav2_cs           float   NAV2 course deviation          0  
+tu154ce/radio/nav2_gs           float   NAV2 glideslope deviation      0  
+tu154ce/radio/nav1_cs_flag      int     NAV1 course flag  0  
+tu154ce/radio/nav2_cs_flag      int     NAV2 course flag  0  
+tu154ce/radio/nav1_gs_flag      int     NAV1 glideslope flag           0  
+tu154ce/radio/nav2_gs_flag      int     NAV2 glideslope flag           0  
+
+tu154ce/nvu/current_Z1          float   current Z1 coordinate (NVU)    0  
+tu154ce/nvu/current_S1          float   current S1 coordinate (NVU)    0
+tu154ce/nvu/next_Z1            float   next Z1 coordinate (NVU)           0
+tu154ce/nvu/next_S1            float   next S1 coordinate (NVU)           0
+tu154ce/nvu/current_Z2         float   current Z2 coordinate (NVU)        0
+tu154ce/nvu/current_S2         float   current S2 coordinate (NVU)        0
+tu154ce/nvu/next_Z2            float   next Z2 coordinate (NVU)           0
+tu154ce/nvu/next_S2            float   next S2 coordinate (NVU)           0
+tu154ce/nvu/zpu1  float   ZPU1 coordinate (Z2)  0
+tu154ce/nvu/zpu2  float   ZPU2 coordinate (S2)  0
+tu154ce/nvu/nvu_mode           int     NVU mode: 0=off, 1=ready, 2=dead reckoning, 3=correction   1
+tu154ce/nvu/nvu_active         int     active NVU set: 1 or 2     1
+tu154ce/nvu/nvu_res_course     float   NVU calculated flight course       0
+tu154ce/nvu/nvu_res_z          float   deviation from NVU course          0
+tu154ce/nvu/nvu_changing_ort   int     changing coordinate checkpoint (ORT)    0
+tu154ce/nvu/nvu_fail           int     NVU failure or system insufficient 0
+tu154ce/absu/roll_main_mode     int     ABSU primary roll mode: 0=off, 1=manual, 2=stabilized           1
+tu154ce/absu/pitch_main_mode    int     ABSU primary pitch mode: 0=off, 1=manual, 2=stabilized          1
+tu154ce/absu/roll_sub_mode      int     ABSU roll submode: 0=off, 1=stabilized, 2=ZK, 3=NVU, 4=AZ1, 5=AZ2, 6=approach   0
+tu154ce/absu/pitch_sub_mode     int     ABSU pitch submode: 0=off, 1=stabilized, 2=V, 3=M, 4=H, 5=glide, 6=go-around   0
+tu154ce/absu/contr_pitch        float   PA56 rod deflection (pitch)      0
+tu154ce/absu/contr_roll         float   PA56 rod deflection (roll)       0
+tu154ce/absu/contr_yaw          float   PA56 rod deflection (yaw)        0
+tu154ce/bkk/bkk_pitch           float   resulting pitch from BKK         0
+tu154ce/bkk/bkk_roll            float   resulting roll from BKK          0
+tu154ce/absu/absu_pitch_trimm   int     ABSU trim command: +1=up, -1=down             0
+tu154ce/absu/rud_1_spd          float   change rate of lever position (rudder 1)      0
+tu154ce/absu/rud_2_spd          float   change rate of lever position (rudder 2)      0
+tu154ce/absu/rud_3_spd          float   change rate of lever position (rudder 3)      0
+tu154ce/absu/absu_roll_ind      float   ABSU roll director indication    0
+tu154ce/absu/absu_pitch_ind     float   ABSU pitch director indication   0
+tu154ce/absu/absu_roll_flag     int     roll director flag       1
+tu154ce/absu/absu_pitch_flag    int     pitch director flag      1
+tu154ce/absu/absu_pnp_mode_1    int     PNP indicator mode: 0=off, 1=NVU, 2=VOR1, 3=VOR2, 4=PS            0
+tu154ce/absu/absu_pnp_mode_2    int     PNP indicator mode: 0=off, 1=NVU, 2=VOR1, 3=VOR2, 4=PS            0
+tu154ce/absu/stu_mode           int     Autothrottle mode: 0=off, 1=on, 2=ready, 3=stabilized, 4=go-around  0
+tu154ce/absu/toga_comm          int     Go-around mode command           0
+tu154ce/absu_at_dif_left        float   speed delta for display (left PKP)            0
+tu154ce/absu_at_dif_right       float   speed delta for display (right PKP)           0
+tu154ce/absu_course_out         int     course deviation beyond limits   0
+tu154ce/absu_gs_out             int     glideslope deviation beyond limits            0
+tu154ce/absu_power_cc           float   current consumption of ABSU      0
+tu154ce/absu_at_power_cc        float   current consumption of ABSU autothrottle      0
+tu154ce/absu_use_second_nav     int     ABSU switched to second navigation source     0
+tu154ce/absu/damp_roll_lamp        int     lamp signal: roll damper failure 0
+tu154ce/absu/damp_pitch_lamp       int     lamp signal: pitch damper failure     0
+tu154ce/absu/damp_yaw_lamp         int     lamp signal: yaw damper failure  0
+tu154ce/absu/roll_contr_lamp       int     lamp signal: roll control failure     0
+tu154ce/absu/pitch_contr_lamp      int     lamp signal: pitch control failure    0
+tu154ce/absu/man_roll_lamp         int     lamp signal: manual roll control required          0
+tu154ce/absu/man_pitch_lamp        int     lamp signal: manual pitch control required         0
+tu154ce/absu/man_toga_lamp         int     lamp signal: manual TOGA control required          0
+tu154ce/absu/triangle_lamp_signal  int     lamp signal: triangle (general warning)            0
+tu154ce/absu/absu_fail_signal      int     ABSU failure siren signal        0
+tu154ce/kln90/kln_course           float   KLN-90 desired course (LZP)      0
+tu154ce/kln90/kln_dev float   KLN-90 deviation from course, miles   0
+tu154ce/kln90/kln_flag             int     KLN-90 course flag. 0=no flag, 1=flag 0
+tu154ce/radio/vhf1_cc         float   power consumption of VHF radio 1   0  
+tu154ce/radio/vhf2_cc         float   power consumption of VHF radio 2   0  
+tu154ce/tks/km5_1_cc          float   power consumption of KM-5 system 1 0  
+tu154ce/tks/km5_2_cc          float   power consumption of KM-5 system 2 0  
+tu154ce/tks/ga_1_cc           float   power consumption of GA system 1   0  
+tu154ce/tks/ga_2_cc           float   power consumption of GA system 2   0  
+tu154ce/tks/ga_heat_cc        float   power consumption of GA heater    0  
+tu154ce/tks/bgmk_1_cc         float   power consumption of BGMK 1        0  
+tu154ce/tks/bgmk_2_cc         float   power consumption of BGMK 2        0  
+tu154ce/tks/ush_cc            float   power consumption of USH system    0  
+tu154ce/ahz/agr_cc            float   power consumption of AGR system    0  
+tu154ce/nvu/nvu_cc            float   power consumption of NVU system    0  
+tu154ce/radio/ark15_L_cc      float   power consumption of ARK-15 (left) 0  
+tu154ce/radio/ark15_R_cc      float   power consumption of ARK-15 (right)     0  
+tu154ce/nvu/diss_cc           float   power consumption of DISS system   0  
+tu154ce/radio/nav1_pow_cc     float   power consumption of KursMP1 (NAV1)     0  
+tu154ce/radio/nav2_pow_cc     float   power consumption of KursMP2 (NAV2)     0  
+tu154ce/radio/radar_cc        float   power consumption of weather radar (Groza)           0  
+tu154ce/radio/rsbn_cc         float   power consumption of RSBN system   0
+tu154ce/payload/crew_num         int     cockpit crew count   3
+tu154ce/payload/zone_1           int     passengers in cabin zone 1        9
+tu154ce/payload/zone_2           int     passengers in cabin zone 2       22
+tu154ce/payload/cabin_num        int     cabin crew count     4
+tu154ce/payload/zone_4           int     passengers in cabin zone 4       24
+tu154ce/payload/zone_5           int     passengers in cabin zone 5       21
+tu154ce/payload/zone_6           int     passengers in cabin zone 6        7
+tu154ce/payload/cargo_1          int     cargo compartment 1 load (kg)  2500
+tu154ce/payload/cargo_2          int     cargo compartment 2 load (kg)  1200
+tu154ce/payload/kitchens         int     galley equipment/catering weight (kg)        300
+tu154ce/payload/various          int     miscellaneous payload (kg)       50
+tu154ce/payload/main_dist        int     distance to main destination airport (km)   1000
+tu154ce/payload/alt_dist         int     distance to alternate airport (km)           500
+tu154ce/payload/main_fl          int     cruise flight level to destination           380
+tu154ce/payload/alt_fl           int     cruise flight level to alternate             320
+tu154ce/payload/nav_fuel         int     fuel reserve for navigation (kg)            2500
+tu154ce/payload/taxi_fuel        int     taxi fuel (kg)      100
+tu154ce/payload/tank_1           int     fuel in tank 1 (kg)             3300
+tu154ce/payload/tank_4           int     fuel in tank 4 (kg)           0
+tu154ce/payload/tank_2L          int     fuel in left tank 2 (kg)        1500
+tu154ce/payload/tank_2R          int     fuel in right tank 2 (kg)       1500
+tu154ce/payload/tank_3L          int     fuel in left tank 3 (kg)        3225
+tu154ce/payload/tank_3R          int     fuel in right tank 3 (kg)       3225
+tu154ce/payload/load_fuel_btn    int     load fuel button pressed      0
+tu154ce/payload/load_fast_btn    int     fast load button pressed      0
+tu154ce/payload/load_slow_btn   int     slow load button pressed       0
+tu154ce/payload/paylod_set      float   target payload mass to be loaded (kg)            0
+tu154ce/payload/cg_set          float   target CG position to be set (%)    0
+tu154ce/checklist/side             int     active checklist side. 0=before TO, 1=approach     0
+tu154ce/checklist/fishka_1..20     int     card position: 0=left, 1=right       1
+tu154ce/panels/show_load_panel        int     show load management panel            0
+tu154ce/panels/show_absu_panel        int     show ABSU control panel  0
+tu154ce/panels/show_ohvd_panel        int     show overhead panel 0
+tu154ce/panels/show_nvu_panel         int     show NVU panel      0
+tu154ce/panels/show_checklist_panel   int     show checklist panel     0
+tu154ce/panels/show_ground_panel      int     show ground operations panel          0
+tu154ce/panels/show_phone             int     show phone panel    0
+tu154ce/panels/show_cam  int     show camera panel   0
+tu154ce/panels/show_palette           int     show payload palette panel            0
+tu154ce/panels/show_fail_panel        int     show system failure panel             0
+tu154ce/misc/cg_pos_actual      float   current center of gravity position (%)         0
+tu154ce/misc/weight_actual      float   current aircraft weight (kg) 0
+tu154ce/anim/rain_glass_1           float   base intensity of rain mask on glass 1            0
+tu154ce/anim/rain_glass_2           float   base intensity of rain mask on glass 2            0
+
+tu154ce/anim/rain_glass_1_w_1_L     float   rain mask intensity sector 1, left window 1       0
+tu154ce/anim/rain_glass_1_w_2_L     float   rain mask intensity sector 2, left window 1       0
+tu154ce/anim/rain_glass_1_w_3_L     float   rain mask intensity sector 3, left window 1       0
+tu154ce/anim/rain_glass_1_w_4_L     float   rain mask intensity sector 4, left window 1       0
+tu154ce/anim/rain_glass_1_w_5_L     float   rain mask intensity sector 5, left window 1       0
+
+tu154ce/anim/rain_glass_2_w_1_L     float   rain mask intensity sector 1, left window 2       0
+tu154ce/anim/rain_glass_2_w_2_L     float   rain mask intensity sector 2, left window 2       0
+tu154ce/anim/rain_glass_2_w_3_L     float   rain mask intensity sector 3, left window 2       0
+tu154ce/anim/rain_glass_2_w_4_L     float   rain mask intensity sector 4, left window 2       0
+tu154ce/anim/rain_glass_2_w_5_L     float   rain mask intensity sector 5, left window 2       0
+tu154ce/anim/rain_glass_1_w_1_R     float   rain mask intensity sector 1, right window 1      0
+tu154ce/anim/rain_glass_1_w_2_R     float   rain mask intensity sector 2, right window 1      0
+tu154ce/anim/rain_glass_1_w_3_R     float   rain mask intensity sector 3, right window 1      0
+tu154ce/anim/rain_glass_1_w_4_R     float   rain mask intensity sector 4, right window 1      0
+tu154ce/anim/rain_glass_1_w_5_R     float   rain mask intensity sector 5, right window 1      0
+
+tu154ce/anim/rain_glass_2_w_1_R     float   rain mask intensity sector 1, right window 2      0
+tu154ce/anim/rain_glass_2_w_2_R     float   rain mask intensity sector 2, right window 2      0
+tu154ce/anim/rain_glass_2_w_3_R     float   rain mask intensity sector 3, right window 2      0
+tu154ce/anim/rain_glass_2_w_4_R     float   rain mask intensity sector 4, right window 2      0
+tu154ce/anim/rain_glass_2_w_5_R     float   rain mask intensity sector 5, right window 2      0
+tu154ce/anim/net_rain_ratio       float   actual amount of precipitation on windows       0
+tu154ce/misc/water_level          float   water level (general system variable)           0
+tu154ce/gauges/alt/vbe_flightlevel_left   float   set altitude on VBE (left altimeter)    0
+tu154ce/gauges/alt/vbe_flightlevel_right  float   set altitude on VBE (right altimeter)   0
+tu154ce/gauges/vvi_left      float   vertical speed indicator (left)         0
+tu154ce/gauges/vvi_right     float   vertical speed indicator (right)        0
+
+tu154ce/brakes/int_brakes_L       float   actual brake position (left) 0
+tu154ce/brakes/int_brakes_R       float   actual brake position (right)     0
+tu154ce/SC/control_thro_other     int     another person is controlling throttles         0
+tu154ce/SC/yoke_pitch_ratio       float   pitch control input (yoke)    0
+tu154ce/SC/yoke_roll_ratio        float   roll control input (yoke)     0
+tu154ce/SC/yoke_heading_ratio     float   rudder control input (pedals) 0
+
+tu154ce/SC/engine/ENGN_thro_0     float   throttle position engine 1    0
+tu154ce/SC/engine/ENGN_thro_1     float   throttle position engine 2    0
+tu154ce/SC/engine/ENGN_thro_2     float   throttle position engine 3    0
+
+tu154ce/SC/engine/ENGN_propmode_0 float   reverse thrust control engine 1    0
+tu154ce/SC/engine/ENGN_propmode_2 float   reverse thrust control engine 3    0
+
+tu154ce/SC/gear/tire_steer_command_deg   float   nosewheel steering angle command (deg)  0
+
+tu154ce/SC/controls/l_brake_add   float   left brake input 0
+tu154ce/SC/controls/r_brake_add   float   right brake input             0
+tu154ce/SC/brakes/int_brakes_L    float   brake control (left)          0
+tu154ce/SC/brakes/int_brakes_R    float   brake control (right)         0
+tu154ce/SC/controls/parkbrake     float   parking brake position        0
+tu154ce/speeds/v1_15 int     V1 speed for 15° flaps        0
+tu154ce/speeds/vr_15 int     VR speed for 15° flaps        0
+tu154ce/speeds/v2_15 int     V2 speed for 15° flaps        0
+tu154ce/speeds/v1_28 int     V1 speed for 28° flaps        0
+tu154ce/speeds/vr_28 int     VR speed for 28° flaps        0
+tu154ce/speeds/v2_28 int     V2 speed for 28° flaps        0
+tu154ce/checklist/checklist_selected   int     selected checklist index 0
+tu154ce/checklist/to_ready             int     takeoff config light ON  0
+tu154ce/sound/reset_crew         int     reset crew voices 0    
+tu154ce/SC/GNS430_dtk            float   desired track to waypoint (GNS430) 0
+tu154ce/SC/GNS430_dev float   course deviation from DTK (GNS430) 0
+tu154ce/SC/GNS430_flag int     GNS430 flag (signal lost / invalid) 0
+
+
+
+
+
+
+
+

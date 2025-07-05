@@ -99,32 +99,52 @@ defineProperty("failures_enabled", globalPropertyi("tu154ce/failures/failures_en
 defineProperty("ismaster", globalPropertyf("scp/api/ismaster"))         -- Master. 0 = plugin not found, 1 = slave 2 = master
 defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
+-- sound trigger datarefs (only define if available)
+local long_horn = nil
+local short_horn = nil
+local flaps_horn = nil
+local srd_horn = nil
 
-long_horn = globalPropertyia("tu154ce/sound/long_horn")
-short_horn = globalPropertyia("tu154ce/sound/short_horn")
-absu_alarm = globalPropertyi("tu154ce/sound/absu_alarm")
-overspeed = globalPropertyi("tu154ce/sound/overspeed")
-rv5_alarm = globalPropertyi("tu154ce/sound/rad_alt")
-vbe_alarm = globalPropertyi("tu154ce/sound/vbe")
+if findDataRef("tu154ce/sound/long_horn") then
+    long_horn = globalPropertyia("tu154ce/sound/long_horn")
+end
 
-flaps_horn = globalPropertyia("tu154ce/sound/flaps")
-srd_horn = globalPropertyia("tu154ce/sound/srd")
+if findDataRef("tu154ce/sound/short_horn") then
+    short_horn = globalPropertyia("tu154ce/sound/short_horn")
+end
 
--- sound sources
---if xplane_version < 120000 then
-local absu_sound = loadSample('Custom Sounds/short_speaker.wav') --
-local long_speaker = loadSample('Custom Sounds/long_speaker.wav')
-local inverters = loadSample('Custom Sounds/inverters.wav')      --
-local long_sirena = loadSample('Custom Sounds/long_siren.wav')
-local short_sirena = loadSample('Custom Sounds/short_siren.wav')
-local bell = loadSample('Custom Sounds/mrp_bell.wav')             --
-local rv5_tone = loadSample('Custom Sounds/rv5_tone.wav')         --
-local lights_noise = loadSample('Custom Sounds/lights_noise.wav') --
-local air_cond_noise = loadSample('Custom Sounds/air_noise.wav')  --
-local taxi_noise = loadSample('Custom Sounds/roll_inn.wav')       --
+if findDataRef("tu154ce/sound/flaps") then
+    flaps_horn = globalPropertyi("tu154ce/sound/flaps")
+end
 
-local flaps_sound = loadSample('Custom Sounds/flaps_hnd.wav')     --
---end
+if findDataRef("tu154ce/sound/srd") then
+    srd_horn = globalPropertyi("tu154ce/sound/srd")
+end
+
+-- individual sound state flags (assumed to always exist)
+local absu_alarm = globalPropertyi("tu154ce/sound/absu_alarm")
+local overspeed = globalPropertyi("tu154ce/sound/overspeed")
+local rv5_alarm = globalPropertyi("tu154ce/sound/rad_alt")
+local vbe_alarm = globalPropertyi("tu154ce/sound/vbe")
+
+-- sound samples
+local absu_sound       = loadSample('Custom Sounds/short_speaker.wav')   -- short tone speaker (ABSU)
+local long_speaker     = loadSample('Custom Sounds/long_speaker.wav')    -- long tone speaker
+local inverters        = loadSample('Custom Sounds/inverters.wav')       -- inverter hum
+local long_sirena      = loadSample('Custom Sounds/long_siren.wav')      -- long warning siren
+local short_sirena     = loadSample('Custom Sounds/short_siren.wav')     -- short warning siren
+local bell             = loadSample('Custom Sounds/mrp_bell.wav')        -- bell (MRP)
+local rv5_tone         = loadSample('Custom Sounds/rv5_tone.wav')        -- tone for RV-5 radar altimeter
+local lights_noise     = loadSample('Custom Sounds/lights_noise.wav')    -- cockpit lighting electric noise
+local air_cond_noise   = loadSample('Custom Sounds/air_noise.wav')       -- air conditioning background noise
+local taxi_noise       = loadSample('Custom Sounds/roll_inn.wav')        -- taxi/rolling interior noise
+local flaps_sound      = loadSample('Custom Sounds/flaps_hnd.wav')       -- flap handle sound
+
+
+
+
+
+
 
 
 

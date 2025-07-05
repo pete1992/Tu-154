@@ -67,10 +67,14 @@ defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flig
 -- default sim APU
 defineProperty("APU_generator_on", globalPropertyi("sim/cockpit2/electrical/APU_generator_on")) -- boolean	APU generator is turned on, 0 or 1.
 defineProperty("APU_starter_switch", globalPropertyi("sim/cockpit2/electrical/APU_starter_switch")) -- boolean	APU power switch, 0 is off, 1 is on, 2 is start-er-up!
-defineProperty("APU_N1_percent", globalPropertyi("sim/cockpit2/electrical/APU_N1_percent")) -- percent	N1 of the APU
+defineProperty("APU_N1_percent", globalPropertyf("sim/cockpit2/electrical/APU_N1_percent")) -- percent	N1 of the APU
 defineProperty("APU_running", globalPropertyi("sim/cockpit2/electrical/APU_running")) -- boolean	APU actually running, 0 or 1.
 
-defineProperty("acf_has_APU_switch", globalPropertyi("sim/aircraft/overflow/acf_has_APU_switch")) -- 
+-- only define if available
+if findDataRef("sim/cockpit/engine/APU_switch") then
+    defineProperty("has_apu_switch", globalPropertyi("sim/cockpit/engine/APU_switch"))
+end
+--defineProperty("acf_has_APU_switch", globalPropertyi("sim/aircraft/overflow/acf_has_APU_switch")) -- 
 defineProperty("rel_APU_press", globalPropertyi("sim/operation/failures/rel_APU_press")) -- 
 defineProperty("bleed_air_mode", globalPropertyi("sim/cockpit2/pressurization/actuators/bleed_air_mode")) -- Bleed air mode, 0=of, 1=left,2=both,3=right,4=apu,5=auto
 
