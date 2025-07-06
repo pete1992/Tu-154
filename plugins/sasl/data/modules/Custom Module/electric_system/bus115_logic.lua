@@ -37,318 +37,120 @@
 -- like:  (bus24_volt > 13 and pos125_on) or bus115_volt > 110
 
 
--- gen parameters
-defineProperty("gen1_volt_bus", globalPropertyf("tu154ce/elec/gen1_volt"))  -- generator voltage, initial 28.5v
-defineProperty("gen2_volt_bus", globalPropertyf("tu154ce/elec/gen2_volt"))
-defineProperty("gen3_volt_bus", globalPropertyf("tu154ce/elec/gen3_volt"))
-defineProperty("gen4_volt_bus", globalPropertyf("tu154ce/elec/gen4_volt"))
-defineProperty("gpu_volt_bus", globalPropertyf("tu154ce/elec/gpu_volt"))
+
+-- this is logic of 115/200 V buses
+
+-- Generator outputs (voltage datarefs)
+defineProperty("gen1_volt_bus",  globalPropertyf("tu154ce/elec/gen1_volt"))  -- Generator 1 voltage (nominal 28.5 V)
+defineProperty("gen2_volt_bus",  globalPropertyf("tu154ce/elec/gen2_volt"))  -- Generator 2 voltage
+defineProperty("gen3_volt_bus",  globalPropertyf("tu154ce/elec/gen3_volt"))  -- Generator 3 voltage
+defineProperty("gen4_volt_bus",  globalPropertyf("tu154ce/elec/gen4_volt"))  -- APU generator voltage
+defineProperty("gpu_volt_bus",   globalPropertyf("tu154ce/elec/gpu_volt"))   -- GPU generator voltage
+
+-- Generator online flags (1 if supplying bus)
+defineProperty("gen1_work_bus",  globalPropertyi("tu154ce/elec/gen1_work"))  -- Gen 1 on bus
+defineProperty("gen2_work_bus",  globalPropertyi("tu154ce/elec/gen2_work"))  -- Gen 2 on bus
+defineProperty("gen3_work_bus",  globalPropertyi("tu154ce/elec/gen3_work"))  -- Gen 3 on bus
+defineProperty("gen4_work_bus",  globalPropertyi("tu154ce/elec/gen4_work"))  -- APU gen on bus
+defineProperty("gpu_work_bus",   globalPropertyi("tu154ce/elec/gpu_work"))   -- GPU on bus
+
+-- Bus voltage sensors
+defineProperty("bus115_1_volt",  globalPropertyf("tu154ce/elec/bus115_1_volt"))   -- Bus 1 voltage
+defineProperty("bus115_2_volt",  globalPropertyf("tu154ce/elec/bus115_2_volt"))   -- Bus 2 voltage
+defineProperty("bus115_3_volt",  globalPropertyf("tu154ce/elec/bus115_3_volt"))   -- Bus 3 voltage
+
+-- Emergency bus voltages mirror main buses
+defineProperty("bus115_em_1_volt", globalPropertyf("tu154ce/elec/bus115_em_1_volt")) -- Emergency Bus 1
+defineProperty("bus115_em_2_volt", globalPropertyf("tu154ce/elec/bus115_em_2_volt")) -- Emergency Bus 2
+
+-- Bus current draws (from devices)
+defineProperty("bus115_1_amp",   globalPropertyf("tu154ce/elec/bus115_1_amp"))     -- Bus 1 current draw
+defineProperty("bus115_2_amp",   globalPropertyf("tu154ce/elec/bus115_2_amp"))     -- Bus 2 current draw
+defineProperty("bus115_3_amp",   globalPropertyf("tu154ce/elec/bus115_3_amp"))     -- Bus 3 current draw
+defineProperty("bus115_em_1_amp", globalPropertyf("tu154ce/elec/bus115_em_1_amp")) -- Emerg Bus 1 draw
+defineProperty("bus115_em_2_amp", globalPropertyf("tu154ce/elec/bus115_em_2_amp")) -- Emerg Bus 2 draw
+
+-- Generator load outputs (amperage)
+defineProperty("gen1_amp",       globalPropertyf("tu154ce/elec/gen1_amp"))       -- Gen 1 load
+defineProperty("gen2_amp",       globalPropertyf("tu154ce/elec/gen2_amp"))       -- Gen 2 load
+defineProperty("gen3_amp",       globalPropertyf("tu154ce/elec/gen3_amp"))       -- Gen 3 load
+defineProperty("gen4_amp",       globalPropertyf("tu154ce/elec/gen4_amp"))       -- APU gen load
+defineProperty("gpu_amp",        globalPropertyf("tu154ce/elec/gpu_amp"))        -- GPU load
+
+-- Flight loop timing
+defineProperty("frame_time",     globalPropertyf("tu154ce/time/frame_time"))     -- Flight frame time
+
+-- Smart Copilot
+defineProperty("ismaster",       globalPropertyf("scp/api/ismaster"))            -- Master flag: 0=none,1=slave,2=master
 
 
-defineProperty("gen1_work_bus", globalPropertyi("tu154ce/elec/gen1_work"))  -- generators connected to the busses and working
-defineProperty("gen2_work_bus", globalPropertyi("tu154ce/elec/gen2_work"))
-defineProperty("gen3_work_bus", globalPropertyi("tu154ce/elec/gen3_work"))
-defineProperty("gen4_work_bus", globalPropertyi("tu154ce/elec/gen4_work"))
-defineProperty("gpu_work_bus", globalPropertyi("tu154ce/elec/gpu_work"))
+-- map generators to their DataRefs
+local gens = {
+  gen1 = { work="gen1_work_bus", volt="gen1_volt_bus", amp="gen1_amp" },
+  gen2 = { work="gen2_work_bus", volt="gen2_volt_bus", amp="gen2_amp" },
+  gen3 = { work="gen3_work_bus", volt="gen3_volt_bus", amp="gen3_amp" },
+  apu  = { work="gen4_work_bus", volt="gen4_volt_bus", amp="gen4_amp" },
+  gpu  = { work="gpu_work_bus",  volt="gpu_volt_bus",  amp="gpu_amp" },
+}
 
--- bus parameters
-defineProperty("bus115_1_volt", globalPropertyf("tu154ce/elec/bus115_1_volt"))
-defineProperty("bus115_2_volt", globalPropertyf("tu154ce/elec/bus115_2_volt"))
-defineProperty("bus115_3_volt", globalPropertyf("tu154ce/elec/bus115_3_volt"))
+-- define main buses and their source priority + emergency-amp DataRefs
+local busDefs = {
+  {
+    volt  = "bus115_1_volt", amp   = "bus115_1_amp",
+    emVolt= "bus115_em_1_volt", emAmp = "bus115_em_1_amp",
+    order = {"gen1","gen2","gen3","apu","gpu"}
+  },
+  {
+    volt  = "bus115_2_volt", amp   = "bus115_2_amp",
+    emVolt= "bus115_em_2_volt", emAmp = "bus115_em_2_amp",
+    order = {"gen2","gen1","gen3","apu","gpu"}
+  },
+  {
+    volt  = "bus115_3_volt", amp   = "bus115_3_amp",
+    emVolt= nil,             emAmp = nil,
+    order = {"gen3","gen2","gen1","apu","gpu"}
+  },
+}
 
-defineProperty("bus115_em_1_volt", globalPropertyf("tu154ce/elec/bus115_em_1_volt"))
-defineProperty("bus115_em_2_volt", globalPropertyf("tu154ce/elec/bus115_em_2_volt"))
+-- cache locals
+local get, set = get, set
+local ipairs, pairs = ipairs, pairs
 
-defineProperty("bus115_1_amp", globalPropertyf("tu154ce/elec/bus115_1_amp"))
-defineProperty("bus115_2_amp", globalPropertyf("tu154ce/elec/bus115_2_amp"))
-defineProperty("bus115_3_amp", globalPropertyf("tu154ce/elec/bus115_3_amp"))
-
-defineProperty("bus115_em_1_amp", globalPropertyf("tu154ce/elec/bus115_em_1_amp"))
-defineProperty("bus115_em_2_amp", globalPropertyf("tu154ce/elec/bus115_em_2_amp"))
-
--- results
-defineProperty("gen1_amp", globalPropertyf("tu154ce/elec/gen1_amp"))
-defineProperty("gen2_amp", globalPropertyf("tu154ce/elec/gen2_amp"))
-defineProperty("gen3_amp", globalPropertyf("tu154ce/elec/gen3_amp"))
-defineProperty("gen4_amp", globalPropertyf("tu154ce/elec/gen4_amp"))
-defineProperty("gpu_amp", globalPropertyf("tu154ce/elec/gpu_amp"))
-
--- time
-defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
+-- pick the first available source from a priority list
+local function pickSource(order)
+  for _, name in ipairs(order) do
+    if get(gens[name].work) == 1 then
+      return get(gens[name].volt), name
+    end
+  end
+  return 0, nil
+end
 
 function update()
-	
-	if get(frame_time) > 0 then
-	
-		-- voltages of busses
-		local bus1_volt = 0
-		local bus2_volt = 0
-		local bus3_volt = 0
-		
-		local bus_em_1_volt = 0
-		local bus_em_2_volt = 0
-		
-		-- currents on busses
-		local bus1_amp = get(bus115_1_amp)
-		local bus2_amp = get(bus115_2_amp)
-		local bus3_amp = get(bus115_3_amp)
-		
-		local bus_em1_amp = get(bus115_em_1_amp)
-		local bus_em2_amp = get(bus115_em_2_amp)
-		
-		-- generators parameters
-		local gen1_work = get(gen1_work_bus) == 1
-		local gen2_work = get(gen2_work_bus) == 1
-		local gen3_work = get(gen3_work_bus) == 1
-		local gen4_work = get(gen4_work_bus) == 1
-		local gpu_work = get(gpu_work_bus) == 1
-		
-		local gen1_volt = get(gen1_volt_bus)
-		local gen2_volt = get(gen2_volt_bus)
-		local gen3_volt = get(gen3_volt_bus)
-		local gen4_volt = get(gen4_volt_bus)
-		local gpu_volt = get(gpu_volt_bus)
-		
-		-- set voltages and currents to buses according to working generators
-		if gen1_work and gen2_work and gen3_work then -- all 3 gens work. APU and GPU doesn't matter
-			bus1_volt = gen1_volt
-			bus2_volt = gen2_volt
-			bus3_volt = gen3_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, bus1_amp)
-			set(gen2_amp, bus2_amp)
-			set(gen3_amp, bus3_amp)
-			set(gen4_amp, 0)
-			set(gpu_amp, 0)
-		elseif gen2_work and gen3_work then -- gen 2 and 3 works. APU and GPU doesn't matter
-			bus1_volt = gen2_volt
-			bus2_volt = gen2_volt
-			bus3_volt = gen3_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, bus2_amp + bus1_amp)
-			set(gen3_amp, bus3_amp)
-			set(gen4_amp, 0)
-			set(gpu_amp, 0)	
-		elseif gen1_work and gen3_work and gpu_work then -- gen 1 and 3 works. GPU works too. APU doesn't matter
-			bus1_volt = gen1_volt
-			bus2_volt = gpu_volt
-			bus3_volt = gen3_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, bus1_amp)
-			set(gen2_amp, 0)
-			set(gen3_amp, bus3_amp)
-			set(gen4_amp, 0)
-			set(gpu_amp, bus2_amp)
-		elseif gen1_work and gen3_work then -- gen 1 and 3 works. GPU disconnected. APU doesn't matter
-			bus1_volt = gen1_volt
-			bus2_volt = gen1_volt
-			bus3_volt = gen3_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, bus1_amp + bus2_amp)
-			set(gen2_amp, 0)
-			set(gen3_amp, bus3_amp)
-			set(gen4_amp, 0)
-			set(gpu_amp, 0)	
-		elseif gen1_work and gen2_work  and gpu_work  then -- gen 1 and 2 works. GPU works too. APU doesn't matter
-			bus1_volt = gen1_volt
-			bus2_volt = gen2_volt
-			bus3_volt = gpu_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, bus1_amp)
-			set(gen2_amp, bus2_amp)
-			set(gen3_amp, 0)
-			set(gen4_amp, 0)
-			set(gpu_amp, bus3_amp)	
-		elseif gen1_work and gen2_work then -- gen 1 and 2 works. GPU disconnected. APU doesn't matter
-			bus1_volt = gen1_volt
-			bus2_volt = gen2_volt
-			bus3_volt = gen2_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, bus1_amp )
-			set(gen2_amp, bus2_amp + bus3_amp)
-			set(gen3_amp, 0)
-			set(gen4_amp, 0)
-			set(gpu_amp, 0)	
-		elseif gen1_work and gen4_work then -- gen 1 and APU works. GPU ignored.
-			bus1_volt = gen1_volt
-			bus2_volt = gen4_volt
-			bus3_volt = gen1_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, bus1_amp + bus3_amp)
-			set(gen2_amp, 0)
-			set(gen3_amp, 0)
-			set(gen4_amp, bus2_amp)
-			set(gpu_amp, 0)	
-		elseif gen2_work and gen4_work then -- gen 2 and APU works. GPU ignored.
-			bus1_volt = gen2_volt
-			bus2_volt = gen4_volt
-			bus3_volt = gen2_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, bus1_amp + bus3_amp)
-			set(gen3_amp, 0)
-			set(gen4_amp, bus2_amp)
-			set(gpu_amp, 0)	
-		elseif gen3_work and gen4_work then -- gen 3 and APU works. GPU ignored.
-			bus1_volt = gen3_volt
-			bus2_volt = gen4_volt
-			bus3_volt = gen3_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, 0)
-			set(gen3_amp, bus1_amp + bus3_amp)
-			set(gen4_amp, bus2_amp)
-			set(gpu_amp, 0)
-		elseif gen1_work and gpu_work then -- gen 1 works. GPU connected
-			bus1_volt = gen1_volt
-			bus2_volt = gpu_volt
-			bus3_volt = gpu_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, bus1_amp)
-			set(gen2_amp, 0)
-			set(gen3_amp, 0)
-			set(gen4_amp, 0)
-			set(gpu_amp, bus2_amp + bus3_amp)	
-		elseif gen2_work and gpu_work then -- gen 2 works. GPU connected
-			bus1_volt = gpu_volt
-			bus2_volt = gen2_volt
-			bus3_volt = gpu_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, bus2_amp)
-			set(gen3_amp, 0)
-			set(gen4_amp, 0)
-			set(gpu_amp, bus1_amp + bus3_amp)	
-		elseif gen3_work and gpu_work then -- gen 3 works. GPU connected
-			bus1_volt = gpu_volt
-			bus2_volt = gpu_volt
-			bus3_volt = gen3_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, 0)
-			set(gen3_amp, bus3_amp)
-			set(gen4_amp, 0)
-			set(gpu_amp, bus1_amp + bus2_amp)	
-		elseif gen1_work then -- gen 1 works. GPU and APU disconnected
-			bus1_volt = gen1_volt
-			bus2_volt = 0
-			bus3_volt = gen1_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, bus1_amp + bus3_amp)
-			set(gen2_amp, 0)
-			set(gen3_amp, 0)
-			set(gen4_amp, 0)
-			set(gpu_amp, 0)	
-		elseif gen2_work then -- gen 2 works. GPU and APU disconnected
-			bus1_volt = gen2_volt
-			bus2_volt = 0
-			bus3_volt = gen2_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, bus1_amp + bus3_amp)
-			set(gen3_amp, 0)
-			set(gen4_amp, 0)
-			set(gpu_amp, 0)	
-		elseif gen3_work then -- gen 3 works. GPU and APU disconnected
-			bus1_volt = gen3_volt
-			bus2_volt = 0
-			bus3_volt = gen3_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, 0)
-			set(gen3_amp, bus1_amp + bus3_amp)
-			set(gen4_amp, 0)
-			set(gpu_amp, 0)	
-		elseif gen4_work and gpu_work then -- APU and GPU connected. generators are OFF or failed.
-			bus1_volt = gen4_volt
-			bus2_volt = gen4_volt
-			bus3_volt = gpu_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, 0)
-			set(gen3_amp, 0)
-			set(gen4_amp, bus1_amp + bus2_amp)
-			set(gpu_amp, bus3_amp)		
-		elseif gpu_work then -- GPU connected. generators are OFF or failed.
-			bus1_volt = gpu_volt
-			bus2_volt = gpu_volt
-			bus3_volt = gpu_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, 0)
-			set(gen3_amp, 0)
-			set(gen4_amp, 0)
-			set(gpu_amp, bus1_amp + bus2_amp + bus3_amp)		
-		elseif gen4_work then -- GPU connected. generators are OFF or failed.
-			bus1_volt = gen4_volt
-			bus2_volt = gen4_volt
-			bus3_volt = gen4_volt
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, 0)
-			set(gen3_amp, 0)
-			set(gen4_amp, bus1_amp + bus2_amp + bus3_amp)
-			set(gpu_amp, 0)
-		else
-			bus1_volt = 0
-			bus2_volt = 0
-			bus3_volt = 0
-			bus_em_1_volt = bus1_volt
-			bus_em_2_volt = bus3_volt
-			-- set currents
-			set(gen1_amp, 0)
-			set(gen2_amp, 0)
-			set(gen3_amp, 0)
-			set(gen4_amp, 0)
-			set(gpu_amp, 0)		
-		end
-		
-		
-		-- set results
-		set(bus115_1_volt, bus1_volt)
-		set(bus115_2_volt, bus2_volt)
-		set(bus115_3_volt, bus3_volt)
-		
-		set(bus115_em_1_volt, bus_em_1_volt)
-		set(bus115_em_2_volt, bus_em_2_volt)
+  -- only master calculation 
+  if get(ismaster) ~= 1 then return end
+  if get(frame_time) <= 0 then return end
 
-	end
 
+  for _, g in pairs(gens) do
+    set(g.amp, 0)
+  end
+
+  for _, bus in ipairs(busDefs) do
+    local v, src = pickSource(bus.order)
+    set(bus.volt, v)
+    if bus.emVolt then set(bus.emVolt, v) end
+
+    local load_main = get(bus.amp)
+    local load_em   = bus.emAmp and get(bus.emAmp) or 0
+    local totalLoad = load_main + load_em
+
+    if src then
+      set(gens[src].amp,
+          get(gens[src].amp) + totalLoad
+      )
+    end
+  end
 end
+
+

@@ -7,7 +7,7 @@ defineProperty("gpu_work_anim", globalPropertyf("tu154ce/anim/gpu_work"))  --
 defineProperty("gpu_volt", globalPropertyf("tu154ce/elec/gpu_volt"))
 defineProperty("gpu_amp", globalPropertyf("tu154ce/elec/gpu_amp"))
 defineProperty("gpu_overload", globalPropertyi("tu154ce/elec/gpu_overload"))
-defineProperty("gpu_on", globalPropertyi("tu154ce/switchers/eng/gpu_on")) -- выключатель РАП
+defineProperty("gpu_on", globalPropertyi("tu154ce/switchers/eng/gpu_on")) -- GPU on
 
 defineProperty("gpu_work_bus", globalPropertyi("tu154ce/elec/gpu_work"))
 
@@ -145,29 +145,43 @@ function update()
 			set(gpu_overload, 0)
 		end
 
-		if get(xplane_version) < 120000 then
-			-- set sounds
-			if work_timer > 0 and work_timer < 1 and not isSamplePlaying(gpu_start_out) and present == 1 then
-				if get(xplane_version) < 120000 then playSample(gpu_start_out, false) end
-				if get(xplane_version) < 120000 then playSample(gpu_start_inn, false) end
-				if get(xplane_version) < 120000 then stopSample(gpu_run_out) end
-				if get(xplane_version) < 120000 then stopSample(gpu_run_inn) end
-			elseif work_timer == 1 and not isSamplePlaying(gpu_run_out) then
-				if get(xplane_version) < 120000 then playSample(gpu_run_out, true) end
-				if get(xplane_version) < 120000 then playSample(gpu_run_inn, true) end
-			elseif work_timer > 0 and work_timer < 1 and not isSamplePlaying(gpu_stop_out) and present == 0 then
-				if get(xplane_version) < 120000 then playSample(gpu_stop_out, false) end
-				if get(xplane_version) < 120000 then playSample(gpu_stop_inn, false) end
-				if get(xplane_version) < 120000 then stopSample(gpu_start_out) end
-				if get(xplane_version) < 120000 then stopSample(gpu_run_out) end
-				if get(xplane_version) < 120000 then stopSample(gpu_start_inn) end
-				if get(xplane_version) < 120000 then stopSample(gpu_run_inn) end
-			elseif work_timer == 0 then
-				if get(xplane_version) < 120000 then stopSample(gpu_start_out) end
-				if get(xplane_version) < 120000 then stopSample(gpu_start_inn) end
-				if get(xplane_version) < 120000 then stopSample(gpu_run_out) end
-				if get(xplane_version) < 120000 then stopSample(gpu_run_inn) end
-			end
+		local version = get(xplane_version)
+if version < 120000 then
+  -- GPU sound logic for X-Plane < 12.000
+  if work_timer > 0 and work_timer < 1 then
+    if present == 1 and not isSamplePlaying(gpu_start_out) then
+      -- start sequence in
+      playSample(gpu_start_out, false)
+      playSample(gpu_start_inn, false)
+      -- ensure run samples are stopped
+      stopSample(gpu_run_out)
+      stopSample(gpu_run_inn)
+    elseif present == 0 and not isSamplePlaying(gpu_stop_out) then
+      -- shutdown sequence in
+      playSample(gpu_stop_out, false)
+      playSample(gpu_stop_inn, false)
+      -- stop any start/run samples
+      stopSample(gpu_start_out)
+      stopSample(gpu_start_inn)
+      stopSample(gpu_run_out)
+      stopSample(gpu_run_inn)
+    end
+
+  elseif work_timer == 1 then
+    -- running
+    if not isSamplePlaying(gpu_run_out) then
+      playSample(gpu_run_out, true)
+      playSample(gpu_run_inn, true)
+    end
+
+  elseif work_timer == 0 then
+    -- fully stopped
+    stopSample(gpu_start_out)
+    stopSample(gpu_start_inn)
+    stopSample(gpu_run_out)
+    stopSample(gpu_run_inn)
+  end
+end
 
 			-- set effects to external GPU sound
 			local camera_distance = math.sqrt(((get(view_x) - get(local_x)) ^ 2) + ((get(view_y) - get(local_y)) ^ 2) +
@@ -199,7 +213,6 @@ function update()
 			setSampleGain(gpu_start_inn, 2000 * (1 - external))
 			setSampleGain(gpu_run_inn, 2000 * (1 - external))
 			setSampleGain(gpu_stop_inn, 2000 * (1 - external))
-			--setSampleGain(prop_out_1, prop_loud_1 * (external + window_open * (1 - external)) * N1 * dist_coef) -- example
 		end
 	else
 		work_timer = 0
@@ -210,11 +223,12 @@ function update()
 		set(gpu_overload, 0)
 		set(gpu_work_bus, 0)
 
-		if get(xplane_version) < 120000 then
-			if get(xplane_version) < 120000 then stopSample(gpu_run_out) end
-			if get(xplane_version) < 120000 then stopSample(gpu_start_out) end
-			if get(xplane_version) < 120000 then stopSample(gpu_stop_out) end
-		end
+		local ver = get(xplane_version)
+			if ver < 120000 then
+			  stopSample(gpu_run_out)
+			  stopSample(gpu_start_out)
+			  stopSample(gpu_stop_out)
+			end
 		-- unload sounds
 
 

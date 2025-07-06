@@ -1,26 +1,22 @@
 -- this is logic for all electrical system's failures
 
 -- define properties for fails
-defineProperty("bat_fail_1", globalPropertyi("tu154ce/failures/bat_1_fail")) -- отказ батареи
-defineProperty("bat_fail_2", globalPropertyi("tu154ce/failures/bat_2_fail")) -- отказ батареи
-defineProperty("bat_fail_3", globalPropertyi("tu154ce/failures/bat_3_fail")) -- отказ батареи
-defineProperty("bat_fail_4", globalPropertyi("tu154ce/failures/bat_4_fail")) -- отказ батареи
-
-defineProperty("bat_1_kz", globalPropertyi("tu154ce/failures/bat_1_kz")) -- тепловой разгон
-defineProperty("bat_2_kz", globalPropertyi("tu154ce/failures/bat_2_kz")) -- тепловой разгон
-defineProperty("bat_3_kz", globalPropertyi("tu154ce/failures/bat_3_kz")) -- тепловой разгон
-defineProperty("bat_4_kz", globalPropertyi("tu154ce/failures/bat_4_kz")) -- тепловой разгон
-
-defineProperty("vu1_fail", globalPropertyi("tu154ce/failures/vu1_fail")) -- отказ ВУ
-defineProperty("vu2_fail", globalPropertyi("tu154ce/failures/vu2_fail")) -- отказ ВУ
-defineProperty("vu3_fail", globalPropertyi("tu154ce/failures/vu3_fail")) -- отказ ВУ
-
-defineProperty("tr1_fail", globalPropertyi("tu154ce/failures/tr1_fail")) -- отказ ТР1
-defineProperty("tr2_fail", globalPropertyi("tu154ce/failures/tr2_fail")) -- отказ ТР2
-defineProperty("pts250_1_fail", globalPropertyi("tu154ce/failures/pts250_1_fail")) -- отказ ПТС250
-defineProperty("pts250_2_fail", globalPropertyi("tu154ce/failures/pts250_2_fail")) -- отказ ПТС250
+defineProperty("bat_fail_1", globalPropertyi("tu154ce/failures/bat_1_fail")) 
+defineProperty("bat_fail_2", globalPropertyi("tu154ce/failures/bat_2_fail")) 
+defineProperty("bat_fail_3", globalPropertyi("tu154ce/failures/bat_3_fail"))
+defineProperty("bat_fail_4", globalPropertyi("tu154ce/failures/bat_4_fail"))
+defineProperty("bat_1_kz", globalPropertyi("tu154ce/failures/bat_1_kz")) 
+defineProperty("bat_2_kz", globalPropertyi("tu154ce/failures/bat_2_kz")) 
+defineProperty("bat_3_kz", globalPropertyi("tu154ce/failures/bat_3_kz")) 
+defineProperty("bat_4_kz", globalPropertyi("tu154ce/failures/bat_4_kz")) 
+defineProperty("vu1_fail", globalPropertyi("tu154ce/failures/vu1_fail")) 
+defineProperty("vu2_fail", globalPropertyi("tu154ce/failures/vu2_fail"))
+defineProperty("vu3_fail", globalPropertyi("tu154ce/failures/vu3_fail"))
+defineProperty("tr1_fail", globalPropertyi("tu154ce/failures/tr1_fail"))
+defineProperty("tr2_fail", globalPropertyi("tu154ce/failures/tr2_fail"))
+defineProperty("pts250_1_fail", globalPropertyi("tu154ce/failures/pts250_1_fail"))
+defineProperty("pts250_2_fail", globalPropertyi("tu154ce/failures/pts250_2_fail")) 
 defineProperty("inv115_fail", globalPropertyf("tu154ce/failures/inv115_fail"))
-
 defineProperty("sim_gen1_fail", globalPropertyi("sim/operation/failures/rel_genera0"))
 defineProperty("sim_gen2_fail", globalPropertyi("sim/operation/failures/rel_genera1"))
 defineProperty("sim_gen3_fail", globalPropertyi("sim/operation/failures/rel_genera2"))
@@ -32,9 +28,9 @@ defineProperty("sim_gen3_fail", globalPropertyi("sim/operation/failures/rel_gene
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
 defineProperty("failures_enabled", globalPropertyi("tu154ce/failures/failures_enabled"))
 
-defineProperty("vu1_amp", globalPropertyf("tu154ce/elec/vu1_amp")) -- работа ВУ
-defineProperty("vu2_amp", globalPropertyf("tu154ce/elec/vu2_amp")) -- работа ВУ
-defineProperty("vu3_amp", globalPropertyf("tu154ce/elec/vu_res_amp")) -- работа ВУ
+defineProperty("vu1_amp", globalPropertyf("tu154ce/elec/vu1_amp")) 
+defineProperty("vu2_amp", globalPropertyf("tu154ce/elec/vu2_amp")) 
+defineProperty("vu3_amp", globalPropertyf("tu154ce/elec/vu_res_amp"))
 
 -- Smart Copilot
 defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
@@ -104,7 +100,10 @@ if MASTER then
 		
 		
 		-- set failures for VUs
-		-- 300а должно сжечь ВУ за 3 минуты (180 сек). ток более 400А - 5 сек.
+		-- 300 A will burn out a VU in 3 minutes (180 s); 
+		-- current above 400 A will do so in 5 seconds
+
+
 		local vu_amp_1 = get(vu1_amp)
 		if vu_amp_1 > 300 then vu_timer_1 = vu_timer_1 + passed * (vu_amp_1 - 297.5) * 0.4
 		elseif vu_timer_1 > 0 then vu_timer_1 = vu_timer_1 - passed * 3

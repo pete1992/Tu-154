@@ -4,10 +4,10 @@ defineProperty("have_pedals", globalPropertyi("tu154ce/have_pedals"))
 
 
 -- hydro
-defineProperty("gs_press_1", globalPropertyf("tu154ce/hydro/gs_press_1")) -- давление в ГС1
-defineProperty("gs_press_2", globalPropertyf("tu154ce/hydro/gs_press_2")) -- давление в ГС2
-defineProperty("gs_press_3", globalPropertyf("tu154ce/hydro/gs_press_3")) -- давление в ГС3
-defineProperty("gs_press_4", globalPropertyf("tu154ce/hydro/gs_press_4")) -- давление в ГС4
+defineProperty("gs_press_1", globalPropertyf("tu154ce/hydro/gs_press_1")) -- Pressure in hydraulic system 1
+defineProperty("gs_press_2", globalPropertyf("tu154ce/hydro/gs_press_2")) -- Pressure in hydraulic system 2
+defineProperty("gs_press_3", globalPropertyf("tu154ce/hydro/gs_press_3")) -- Pressure in hydraulic system 3
+defineProperty("gs_press_4", globalPropertyf("tu154ce/hydro/gs_press_4")) -- Pressure in hydraulic system 4
 
 -- time
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
@@ -22,36 +22,31 @@ defineProperty("parkbrake_2", globalPropertyf("sim/cockpit2/controls/parking_bra
 --defineProperty("l_brake_add", globalPropertyf("tu154ce/SC/controls/l_brake_add")) 
 --defineProperty("r_brake_add", globalPropertyf("tu154ce/SC/controls/r_brake_add")) 
 --defineProperty("parkbrake", globalPropertyf("tu154ce/SC/controls/parkbrake")) 
+--defineProperty("l_brake_add_2", globalPropertyf("sim/cockpit2/controls/left_brake_ratio")) -- Left Brake
+--defineProperty("r_brake_add_2", globalPropertyf("sim/cockpit2/controls/right_brake_ratio")) -- Right Brake
+--defineProperty("parkbrake_2", globalPropertyf("sim/cockpit2/controls/parking_brake_ratio")) -- Parking Brake
 
-
-
---[[
-defineProperty("l_brake_add_2", globalPropertyf("sim/cockpit2/controls/left_brake_ratio")) -- Left Brake
-defineProperty("r_brake_add_2", globalPropertyf("sim/cockpit2/controls/right_brake_ratio")) -- Right Brake
-defineProperty("parkbrake_2", globalPropertyf("sim/cockpit2/controls/parking_brake_ratio")) -- Parking Brake
---]]
 
 -- controls
 defineProperty("gear_blocks", globalPropertyf("tu154ce/anim/gear_blocks")) -- Parking Brake
 
-defineProperty("brake_emerg", globalPropertyf("tu154ce/controlls/brake_emerg")) -- аварийный тормоз
-defineProperty("brake_emerg_L", globalPropertyf("tu154ce/controlls/brake_emerg_L")) -- аварийный тормоз
-defineProperty("brake_emerg_R", globalPropertyf("tu154ce/controlls/brake_emerg_R")) -- аварийный тормоз
+defineProperty("brake_emerg", globalPropertyf("tu154ce/controlls/brake_emerg"))     -- Emergency brake (overall)
+defineProperty("brake_emerg_L", globalPropertyf("tu154ce/controlls/brake_emerg_L")) -- Emergency brake (left wheel)
+defineProperty("brake_emerg_R", globalPropertyf("tu154ce/controlls/brake_emerg_R")) -- Emergency brake (right wheel)
 
 
 -- sim/cockpit2/controls/parking_brake_ratio
 
 -- animation
-defineProperty("parking_brake", globalPropertyi("tu154ce/controll/parking_brake")) -- ручка фиксации тормоза
+defineProperty("parking_brake", globalPropertyi("tu154ce/controll/parking_brake")) -- Parking brake lever state
 
-defineProperty("brake_L", globalPropertyf("tu154ce/controlls/brake_L")) -- 
-defineProperty("brake_R", globalPropertyf("tu154ce/controlls/brake_R")) -- 
+defineProperty("brake_L", globalPropertyf("tu154ce/controlls/brake_L"))           -- Left brake input (pedals + logic)
+defineProperty("brake_R", globalPropertyf("tu154ce/controlls/brake_R"))           -- Right brake input (pedals + logic)
 
-defineProperty("int_brakes_L", globalPropertyf("tu154ce/brakes/int_brakes_L")) -- реальное положение тормоза
-defineProperty("int_brakes_R", globalPropertyf("tu154ce/brakes/int_brakes_R")) -- реальное положение тормоза
+defineProperty("int_brakes_L", globalPropertyf("tu154ce/brakes/int_brakes_L"))    -- Actual brake force applied (left)
+defineProperty("int_brakes_R", globalPropertyf("tu154ce/brakes/int_brakes_R"))    -- Actual brake force applied (right)
 
---defineProperty("int_brakes_L", globalPropertyf("tu154ce/SC/brakes/int_brakes_L")) 
---defineProperty("int_brakes_R", globalPropertyf("tu154ce/SC/brakes/int_brakes_R")) 
+
 
 -- sim/operation/override/override_gearbrake
 defineProperty("overr", globalPropertyi("sim/operation/override/override_gearbrake")) -- 
@@ -63,20 +58,20 @@ defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have 
 
 
 -- failures
-defineProperty("brake_heat_left", globalPropertyf("tu154ce/failures/brake_heat_left")) -- Температура тормозов
-defineProperty("brake_heat_right", globalPropertyf("tu154ce/failures/brake_heat_right")) -- Температура тормозов
-defineProperty("brake_runtime_left", globalPropertyf("tu154ce/failures/brake_runtime_left")) -- Наработка тормозных колодок
-defineProperty("brake_runtime_right", globalPropertyf("tu154ce/failures/brake_runtime_right")) -- Наработка тормозных колодок
+defineProperty("brake_heat_left", globalPropertyf("tu154ce/failures/brake_heat_left"))       -- Left brake temperature
+defineProperty("brake_heat_right", globalPropertyf("tu154ce/failures/brake_heat_right"))     -- Right brake temperature
+defineProperty("brake_runtime_left", globalPropertyf("tu154ce/failures/brake_runtime_left")) -- Left brake pad wear (runtime)
+defineProperty("brake_runtime_right", globalPropertyf("tu154ce/failures/brake_runtime_right")) -- Right brake pad wear (runtime)
 
-defineProperty("rel_lbrakes", globalPropertyi("sim/operation/failures/rel_lbrakes")) -- Отказ тормозов
-defineProperty("rel_rbrakes", globalPropertyi("sim/operation/failures/rel_rbrakes")) -- Отказ тормозов
+defineProperty("rel_lbrakes", globalPropertyi("sim/operation/failures/rel_lbrakes"))         -- Simulated failure: left brakes
+defineProperty("rel_rbrakes", globalPropertyi("sim/operation/failures/rel_rbrakes"))         -- Simulated failure: right brakes
 
 defineProperty("failures_enabled", globalPropertyi("tu154ce/failures/failures_enabled"))
 
 -- enviroment
 defineProperty("speed", globalPropertyf("sim/flightmodel/position/groundspeed"))
 defineProperty("thermo", globalPropertyf("sim/cockpit2/temperature/outside_air_temp_degc")) -- outside temperature
-defineProperty("gear_vent_set", globalPropertyi("tu154ce/switchers/eng/gear_fan")) -- вентиляция шасси
+defineProperty("gear_vent_set", globalPropertyi("tu154ce/switchers/eng/gear_fan")) -- Gear Fan
 
 defineProperty("gear2_deflect", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]"))  -- vertical deflection of left gear
 defineProperty("gear3_deflect", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]"))  -- vertical deflection of right gear
@@ -102,32 +97,21 @@ local termo_coef = {
 -- sim/joystick/joystick_axis_assignments
 
 
+-- Legacy axis reset logic (potentially unsafe – left for debugging)
+-- local axies_asgn = {}
+-- for i = 0, 500 do
+--     axies_asgn[i+1] = globalProperty("sim/joystick/joystick_axis_assignments["..i.."]") -- 
+-- end
 
---[[
+-- local axies_val = {}
+-- for i = 0, 500 do
+--     axies_val[i+1] = globalProperty("sim/joystick/joystick_axis_values["..i.."]")
+-- end
 
--- create tables of axies
-local axies_asgn = {}
-for i = 0, 500 do
-
-	axies_asgn[i+1] = globalProperty("sim/joystick/joystick_axis_assignments["..i.."]") -- 
-
-end
-
-local axies_val = {}
-for i = 0, 500 do
-
-	axies_val[i+1] = globalProperty("sim/joystick/joystick_axis_values["..i.."]") -- 
-
-end
-
-local axies_inv = {}
-for i = 0, 500 do
-
-	axies_inv[i+1] = globalProperty("sim/joystick/joystick_axis_reverse["..i.."]") -- 
-
-end
-
---]]
+-- local axies_inv = {}
+-- for i = 0, 500 do
+--     axies_inv[i+1] = globalProperty("sim/joystick/joystick_axis_reverse["..i.."]") -- 
+-- end
 
 local joy_work_L = globalProperty("sim/joystick/joy_mapped_axis_avail[6]")
 local joy_work_R = globalProperty("sim/joystick/joy_mapped_axis_avail[7]")
@@ -140,30 +124,22 @@ local joy_value_R = globalProperty("sim/joystick/joy_mapped_axis_value[7]")
 local left_pedal_num = nil
 local right_pedal_num = nil
 
---[[
-local function find_pedals()
-	
-	
-	
-	for i = 0, 500 do
-		
-		local assign = get(axies_asgn[i+1])
-		
-		if not left_pedal_num and assign == 6 then 
-			left_pedal_num = i+1 
-			--print("left "..left_pedal_num) 
-		end
-		if not right_pedal_num and assign == 7 then 
-			right_pedal_num = i+1 
-			--print("right "..right_pedal_num) 
-		end
+-- Legacy axis reset logic (potentially unsafe – left for debugging)
+-- local function find_pedals()
+-- 	for i = 0, 500 do
+-- 		local assign = get(axies_asgn[i+1])
+-- 		if not left_pedal_num and assign == 6 then 
+-- 			left_pedal_num = i+1 
+-- 			--print("left "..left_pedal_num) 
+-- 		end
+-- 		if not right_pedal_num and assign == 7 then 
+-- 			right_pedal_num = i+1 
+-- 			--print("right "..right_pedal_num) 
+-- 		end
+-- 		if left_pedal_num ~= nil and right_pedal_num ~= nil then break end
+-- 	end
+-- end
 
-		if left_pedal_num ~= nil and right_pedal_num ~= nil then break end
-	end
-	
-
-end
---]]
 
 
 
@@ -264,11 +240,9 @@ end
 registerCommandHandler(park_brk_reg_comm, 0, park_brk_reg_hnd)
 
 
---[[
-sim/flight_controls/left_brake                     Hold brake left.
-sim/flight_controls/right_brake                    Hold brake right.
 
---]]
+--sim/flight_controls/left_brake                     Hold brake left.
+--sim/flight_controls/right_brake                    Hold brake right.
 
 local left_brk_cmd = findCommand("sim/flight_controls/left_brake")
 local right_brk_cmd = findCommand("sim/flight_controls/right_brake")
@@ -308,14 +282,14 @@ registerCommandHandler(right_brk_cmd, 0, right_brk_cmd_hnd)
 
 
 
--- сделать переменную для рычага парковки. завязать ее на команды.
--- сделать переменную для колодок шасси
--- считать тормоз для левого и правого шасси исходя из положения педалей, парковочного рычага и аварийных рычагов.
--- считать суммарный тормоз с учетом блоков.
--- в сим пишем:
--- на отдельные колеса результат тормозов от педалей, рычагов, парковочного рычага
--- на парковочный тормоз пишем колодки шасси
--- добавить обработчики команд торможения
+-- Create a variable for the parking brake lever and link it to commands
+-- Create a variable for the wheel chocks
+-- Calculate brake force for left and right gear based on pedal position, parking brake lever, and emergency levers
+-- Calculate total brake force considering wheel chocks
+-- In the sim, write:
+-- brake results from pedals, levers, and parking brake lever to the respective wheels
+-- write wheel chocks state to parking brake dataref
+-- add handlers for brake commands
 
 
 
@@ -345,31 +319,38 @@ function update()
 	local brake_1 = get(joy_value_L)
 	local brake_2 = get(joy_value_R)
 	
-	--[[
-	-- define numbers of pedal axies, if any
-	axisCheckTimer = axisCheckTimer + passed
-	if axisCheckTimer > 5 then
-		left_pedal_num = nil
-		right_pedal_num = nil
-		
-		--if get(have_pedals) == 1 then find_pedals() end
-		find_pedals()
-		axisCheckTimer = 0
-	end
+	-- axisCheckTimer = axisCheckTimer + passed
+-- Legacy axis reset logic (potentially unsafe – left for debugging)
+-- if axisCheckTimer > 5 then
+-- 	left_pedal_num = nil
+-- 	right_pedal_num = nil
 	
+-- 	-- If pedals are enabled, search for pedal axes
+-- 	if get(have_pedals) == 1 then find_pedals() end
+	
+-- 	-- Fallback: always attempt to find pedals again
+-- 	find_pedals()
+	
+-- 	axisCheckTimer = 0
+-- end
 
-	-- read value of axies
-	if left_pedal_num then 
-		brake_1 = get(axies_val[left_pedal_num]) 
-		if get(axies_inv[left_pedal_num]) == 1 then brake_1 = 1 - brake_1 end
-	
-	end
-	if right_pedal_num then 
-		brake_2 = get(axies_val[right_pedal_num]) 
-		if get(axies_inv[right_pedal_num]) == 1 then brake_2 = 1 - brake_2 end
-	end
-	
-	--]]
+-- -- Read brake value from left pedal axis if assigned
+-- if left_pedal_num then 
+-- 	brake_1 = get(axies_val[left_pedal_num]) 
+-- 	-- Invert if axis is set to reversed
+-- 	if get(axies_inv[left_pedal_num]) == 1 then 
+-- 		brake_1 = 1 - brake_1 
+-- 	end
+-- end
+
+-- -- Read brake value from right pedal axis if assigned
+-- if right_pedal_num then 
+-- 	brake_2 = get(axies_val[right_pedal_num]) 
+-- 	-- Invert if axis is set to reversed
+-- 	if get(axies_inv[right_pedal_num]) == 1 then 
+-- 		brake_2 = 1 - brake_2 
+-- 	end
+-- end
 
 	
 	
@@ -382,7 +363,7 @@ function update()
 	local e_brake = get(brake_emerg)
 	
 	-- reset pedals, when park brake released
-	if (park_lever_last ~= park_lvr and park_lvr == 0) --[[ or (e_brake_last ~= e_brake and e_brake < 0.05) --]] then 
+	if (park_lever_last ~= park_lvr and park_lvr == 0) then 
 		brake_1 = 0
 		brake_2 = 0
 	end	
@@ -517,27 +498,23 @@ end
 	set(brake_L, math.max(left_blake, brake_1, park_lvr))
 	set(brake_R, math.max(right_blake, brake_2, park_lvr))
 	
-	
-
-	
---[[	
+	-- Legacy axis reset logic (potentially unsafe – left for debugging)
 	-- reset all axies
-	if get(have_pedals) == 1 then 
-		resetTimer = resetTimer + passed
-	else
-		resetTimer = 0
-	end
-	
-	if resetTimer > 5 then
-		for i = 0, 500 do
-			--print(get(axies_asgn[i+1]))
-			
-			set(axies_asgn[i+1], 0)
-			set(axies_inv[i+1], 0)
-		end
-		resetTimer = 0
-	end
---]]	
+	-- if get(have_pedals) == 1 then 
+-- 	resetTimer = resetTimer + passed
+-- else
+-- 	resetTimer = 0
+-- end
+
+-- if resetTimer > 5 then
+-- 	for i = 0, 500 do
+-- 		-- print(get(axies_asgn[i+1]))
+-- 		set(axies_asgn[i+1], 0)
+-- 		set(axies_inv[i+1], 0)
+-- 	end
+-- 	resetTimer = 0
+-- end
+
 	
 end
 

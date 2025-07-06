@@ -1,47 +1,47 @@
 -- this is APU calculations
 
 -- controls
-defineProperty("apu_main_switch", globalPropertyi("tu154ce/switchers/eng/apu_main_switch")) -- выключатель ВСУ
-defineProperty("apu_start_mode", globalPropertyi("tu154ce/switchers/eng/apu_start_mode")) -- режим запуска ВСУ
-defineProperty("apu_air_bleed", globalPropertyi("tu154ce/switchers/eng/apu_air_bleed")) -- переключение заслонки отбора воздуха. -1 - закрыть, 0 - нейтр, +1 - открыть
-defineProperty("apu_start", globalPropertyi("tu154ce/buttons/eng/apu_start")) -- кнопка старта ВСУ
-defineProperty("apu_stop", globalPropertyi("tu154ce/buttons/eng/apu_stop")) -- кнопка стоп ВСУ
+defineProperty("apu_main_switch", globalPropertyi("tu154ce/switchers/eng/apu_main_switch")) -- APU main switch
+defineProperty("apu_start_mode", globalPropertyi("tu154ce/switchers/eng/apu_start_mode")) -- APU start mode selector
+defineProperty("apu_air_bleed", globalPropertyi("tu154ce/switchers/eng/apu_air_bleed")) -- APU bleed air flap position: -1 = closed, 0 = neutral, +1 = open
+defineProperty("apu_start", globalPropertyi("tu154ce/buttons/eng/apu_start")) -- APU start button
+defineProperty("apu_stop", globalPropertyi("tu154ce/buttons/eng/apu_stop")) -- APU stop button
 
 -- internal DataRefs
-defineProperty("apu_n1", globalPropertyf("tu154ce/eng/apu_n1")) -- обороты ВСУ
-defineProperty("apu_oil_t", globalPropertyf("tu154ce/eng/apu_oil_t")) -- температура масла ВСУ
-defineProperty("apu_oil_q", globalPropertyf("tu154ce/eng/apu_oil_q")) -- количество масла ВСУ
-defineProperty("apu_oil_p", globalPropertyf("tu154ce/eng/apu_oil_p")) -- давление масла ВС
-defineProperty("apu_egt", globalPropertyf("tu154ce/eng/apu_egt")) -- температура выходных газов ВСУ
+defineProperty("apu_n1", globalPropertyf("tu154ce/eng/apu_n1")) -- APU N1 RPM
+defineProperty("apu_oil_t", globalPropertyf("tu154ce/eng/apu_oil_t")) -- APU oil temperature
+defineProperty("apu_oil_q", globalPropertyf("tu154ce/eng/apu_oil_q")) -- APU oil quantity
+defineProperty("apu_oil_p", globalPropertyf("tu154ce/eng/apu_oil_p")) -- APU oil pressure
+defineProperty("apu_egt", globalPropertyf("tu154ce/eng/apu_egt")) -- APU exhaust gas temperature
 
-defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- напряжение сети 27
-defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- напряжение сети 27
-defineProperty("gen4_amp_bus", globalPropertyf("tu154ce/elec/gen4_amp"))
+defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- Left 27V bus voltage
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- Right 27V bus voltage
+defineProperty("gen4_amp_bus", globalPropertyf("tu154ce/elec/gen4_amp")) -- Generator 4 amperage
 
-defineProperty("apu_system_on", globalPropertyi("tu154ce/eng/apu_system_on"))
+defineProperty("apu_system_on", globalPropertyi("tu154ce/eng/apu_system_on")) -- APU system status
 
-defineProperty("apu_fuel_last", globalPropertyf("tu154ce/eng/apu_fuel_last")) -- остаток топлива в двигателе
+defineProperty("apu_fuel_last", globalPropertyf("tu154ce/eng/apu_fuel_last")) -- APU remaining fuel
 
 -- fuel weight in tank 1
-defineProperty("tank1_w", globalProperty("sim/flightmodel/weight/m_fuel[0]")) -- fuel weight
+defineProperty("tank1_w", globalProperty("sim/flightmodel/weight/m_fuel[0]")) -- Fuel weight in tank 1
 
 -- results
-defineProperty("apu_air_press", globalPropertyf("tu154ce/eng/apu_air_press")) -- давление воздуха для запуска двигателей
-defineProperty("apu_air_doors", globalPropertyf("tu154ce/eng/apu_air_doors")) -- положение створок для накачки воздуха
-defineProperty("apu_fuel_p", globalPropertyf("tu154ce/eng/apu_fuel_p")) -- давление топлива ВСУ
+defineProperty("apu_air_press", globalPropertyf("tu154ce/eng/apu_air_press")) -- Air pressure from APU for engine start
+defineProperty("apu_air_doors", globalPropertyf("tu154ce/eng/apu_air_doors")) -- APU air intake flap position
+defineProperty("apu_fuel_p", globalPropertyf("tu154ce/eng/apu_fuel_p")) -- APU fuel pressure
 
-defineProperty("apu_start_bus", globalPropertyf("tu154ce/elec/apu_start_bus")) -- напряжение в сети ВСУ
-defineProperty("apu_start_cc", globalPropertyf("tu154ce/elec/apu_start_cc")) -- потребление тока стартером ВСУ
-defineProperty("apu_start_seq", globalPropertyi("tu154ce/elec/apu_start_seq")) -- идет процесс запуска ВСУ
-defineProperty("fuel_pumps_27_cc", globalPropertyf("tu154ce/elec/fuel_pumps_27_cc")) -- нагрузка на сеть 27в от топливных насосо
+defineProperty("apu_start_bus", globalPropertyf("tu154ce/elec/apu_start_bus")) -- Voltage in APU power bus
+defineProperty("apu_start_cc", globalPropertyf("tu154ce/elec/apu_start_cc")) -- APU starter current consumption
+defineProperty("apu_start_seq", globalPropertyi("tu154ce/elec/apu_start_seq")) -- APU start sequence in progress
+defineProperty("fuel_pumps_27_cc", globalPropertyf("tu154ce/elec/fuel_pumps_27_cc")) -- 27V fuel pump current draw
 
-defineProperty("apu_doors", globalPropertyf("tu154ce/anim/apu_doors")) -- положение створок ВСУ. 0 - закрыты, 1 - открыты.
+defineProperty("apu_doors", globalPropertyf("tu154ce/anim/apu_doors")) -- APU flap position: 0 = closed, 1 = open
 
-defineProperty("apu_burn_fuel", globalPropertyf("tu154ce/elec/apu_burning_fuel")) -- ВСУ работает и сжигает топливо
+defineProperty("apu_burn_fuel", globalPropertyf("tu154ce/elec/apu_burning_fuel")) -- APU is running and burning fuel
 
 -- engine #2 bleed
-defineProperty("eng_airvalve_2", globalPropertyf("tu154ce/bleed/eng_airvalve_2")) -- открытие отбора воздуха от двигателя
-defineProperty("rpm_high_2", globalPropertyf("tu154ce/gauges/engine/rpm_high_2")) -- обороты турбины высокого давления №2
+defineProperty("eng_airvalve_2", globalPropertyf("tu154ce/bleed/eng_airvalve_2")) -- Engine #2 bleed air valve position
+defineProperty("rpm_high_2", globalPropertyf("tu154ce/gauges/engine/rpm_high_2")) -- Engine #2 high pressure turbine RPM
 
 
 -- time
@@ -53,7 +53,8 @@ defineProperty("msl_alt", globalPropertyf("sim/flightmodel/position/elevation"))
 defineProperty("baro_press", globalPropertyf("sim/weather/barometer_sealevel_inhg"))  -- pressure at sea level in.Hg
 
 
-defineProperty("reset_state",globalPropertyi("tu154ce/reset_state")) -- сброс состояния самолета
+defineProperty("reset_state",globalPropertyi("tu154ce/reset_state")) 
+-- reset state
 
 -- Smart Copilot
 defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
@@ -61,14 +62,14 @@ defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have 
 
 
 -- failures
-defineProperty("apu_start_fail",globalPropertyi("tu154ce/failures/apu_start_fail")) -- отказ стартера
-defineProperty("apu_gen_fail",globalPropertyi("tu154ce/failures/apu_gen_fail")) -- отказ генератора
-defineProperty("apu_runtime",globalPropertyf("tu154ce/failures/apu_runtime")) -- время наработки
-defineProperty("apu_fail_oilt",globalPropertyi("tu154ce/failures/apu_fail_oilt")) -- отказ по температуре масла
-defineProperty("apu_fail_egt",globalPropertyi("tu154ce/failures/apu_fail_egt")) -- отказ по ТВГ
-defineProperty("apu_fail_fuel_left",globalPropertyi("tu154ce/failures/apu_fail_fuel_left")) -- отказ пр остатку топлива в камере при запуске
-defineProperty("apu_fail",globalPropertyi("tu154ce/failures/apu_fail")) -- отказ по наработке
-defineProperty("apu_press_fail", globalPropertyi("tu154ce/failures/apu_press_fail")) -- отказ отбора воздуха от двигателя
+defineProperty("apu_start_fail", globalPropertyi("tu154ce/failures/apu_start_fail")) -- APU starter failure  
+defineProperty("apu_gen_fail", globalPropertyi("tu154ce/failures/apu_gen_fail")) -- APU generator failure  
+defineProperty("apu_runtime", globalPropertyf("tu154ce/failures/apu_runtime")) -- APU runtime hours  
+defineProperty("apu_fail_oilt", globalPropertyi("tu154ce/failures/apu_fail_oilt")) -- APU oil temperature failure  
+defineProperty("apu_fail_egt", globalPropertyi("tu154ce/failures/apu_fail_egt")) -- APU EGT failure  
+defineProperty("apu_fail_fuel_left", globalPropertyi("tu154ce/failures/apu_fail_fuel_left")) -- APU start failure due to insufficient fuel in chamber  
+defineProperty("apu_fail", globalPropertyi("tu154ce/failures/apu_fail")) -- APU failure due to excessive runtime  
+defineProperty("apu_press_fail", globalPropertyi("tu154ce/failures/apu_press_fail")) -- APU bleed air valve failure
 
 defineProperty("failures_enabled", globalPropertyi("tu154ce/failures/failures_enabled"))
 
@@ -159,20 +160,20 @@ function update()
 		
 	local passed = get(frame_time)
 	-- set the power
-	--[[
+	
 	-- reset failures
-	if get(reset_state) == 1 and not reset then
-		set(apu_fail_fuel_left, 0)
-		set(apu_fail_egt, 0)
-		set(apu_fail_oilt, 0)
-		
-		apu_fail_last_fuel = 1
-		apu_fail_EGT = 1
-		apu_fail_OIL_T = 1
-		
-		print("APU failures reset")
-	end
-	--]]
+	-- if get(reset_state) == 1 and not reset then
+--     set(apu_fail_fuel_left, 0)
+--     set(apu_fail_egt, 0)
+--     set(apu_fail_oilt, 0)
+--     
+--     apu_fail_last_fuel = 1
+--     apu_fail_EGT = 1
+--     apu_fail_OIL_T = 1
+--     
+--     print("APU failures reset")
+-- end
+	
 	
 	-- sync data
 	RPM = get(apu_n1)

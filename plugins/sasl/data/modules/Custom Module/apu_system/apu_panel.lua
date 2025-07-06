@@ -1,65 +1,60 @@
 -- this is an APU panel
 -- gauges and controlls
-defineProperty("apu_main_switch", globalPropertyi("tu154ce/switchers/eng/apu_main_switch")) -- выключатель ВСУ
-defineProperty("apu_start_mode", globalPropertyi("tu154ce/switchers/eng/apu_start_mode")) -- режим запуска ВСУ
-defineProperty("apu_air_bleed", globalPropertyi("tu154ce/switchers/eng/apu_air_bleed")) -- переключение заслонки отбора воздуха. -1 - закрыть, 0 - нейтр, +1 - открыть
-defineProperty("apu_start", globalPropertyi("tu154ce/buttons/eng/apu_start")) -- кнопка старта ВСУ
-defineProperty("apu_stop", globalPropertyi("tu154ce/buttons/eng/apu_stop")) -- кнопка стоп ВСУ
+defineProperty("apu_main_switch", globalPropertyi("tu154ce/switchers/eng/apu_main_switch")) -- APU main switch
+defineProperty("apu_start_mode", globalPropertyi("tu154ce/switchers/eng/apu_start_mode")) -- APU start mode
+defineProperty("apu_air_bleed", globalPropertyi("tu154ce/switchers/eng/apu_air_bleed")) -- Air bleed valve control. -1 = closed, 0 = neutral, +1 = open
+defineProperty("apu_start", globalPropertyi("tu154ce/buttons/eng/apu_start")) -- APU start button
+defineProperty("apu_stop", globalPropertyi("tu154ce/buttons/eng/apu_stop")) -- APU stop button
 
-
-defineProperty("apu_rpm", globalPropertyf("tu154ce/gauges/eng/apu_rpm")) -- обороты ВСУ. 0-100%
-defineProperty("apu_egt_gau", globalPropertyf("tu154ce/gauges/eng/apu_egt")) -- ТВГ ВСУ. 0 - 900 C
-defineProperty("apu_oil_temp", globalPropertyf("tu154ce/gauges/eng/apu_oil_temp")) -- температура масла ВСУ -50 - 150 C
-
-
-
+defineProperty("apu_rpm", globalPropertyf("tu154ce/gauges/eng/apu_rpm")) -- APU RPM. 0–100%
+defineProperty("apu_egt_gau", globalPropertyf("tu154ce/gauges/eng/apu_egt")) -- APU EGT. 0–900°C
+defineProperty("apu_oil_temp", globalPropertyf("tu154ce/gauges/eng/apu_oil_temp")) -- APU oil temperature -50 to 150°C
 
 -- lamps
-defineProperty("low_oil", globalPropertyf("tu154ce/lights/apu/low_oil")) -- масла мало
-defineProperty("low_oil_press", globalPropertyf("tu154ce/lights/apu/low_oil_press")) -- Р масла
-defineProperty("high_temp", globalPropertyf("tu154ce/lights/apu/high_temp")) -- предельная температура
-defineProperty("high_rpm", globalPropertyf("tu154ce/lights/apu/high_rpm")) -- предельные обороты
-defineProperty("pta6_fail", globalPropertyf("tu154ce/lights/apu/pta6_fail")) -- ПТА 6А неисправн
-defineProperty("doors_open", globalPropertyf("tu154ce/lights/apu/doors_open")) -- створки открыты
-defineProperty("fuel_press", globalPropertyf("tu154ce/lights/apu/fuel_press")) -- Р топлива
-defineProperty("start_ready", globalPropertyf("tu154ce/lights/apu/start_ready")) -- Готов к запуску
-defineProperty("work_mode", globalPropertyf("tu154ce/lights/apu/work_mode")) -- Выход на режим
-defineProperty("start_apu", globalPropertyf("tu154ce/lights/apu/start_apu")) -- запусти ВСУ
-
+defineProperty("low_oil", globalPropertyf("tu154ce/lights/apu/low_oil")) -- Low oil quantity
+defineProperty("low_oil_press", globalPropertyf("tu154ce/lights/apu/low_oil_press")) -- Low oil pressure
+defineProperty("high_temp", globalPropertyf("tu154ce/lights/apu/high_temp")) -- Overtemperature
+defineProperty("high_rpm", globalPropertyf("tu154ce/lights/apu/high_rpm")) -- Overspeed
+defineProperty("pta6_fail", globalPropertyf("tu154ce/lights/apu/pta6_fail")) -- PTA-6A failure
+defineProperty("doors_open", globalPropertyf("tu154ce/lights/apu/doors_open")) -- APU doors open
+defineProperty("fuel_press", globalPropertyf("tu154ce/lights/apu/fuel_press")) -- Fuel pressure
+defineProperty("start_ready", globalPropertyf("tu154ce/lights/apu/start_ready")) -- Ready to start
+defineProperty("work_mode", globalPropertyf("tu154ce/lights/apu/work_mode")) -- Operating mode active
+defineProperty("start_apu", globalPropertyf("tu154ce/lights/apu/start_apu")) -- Start the APU
 
 -- internal datarefs
-defineProperty("apu_n1", globalPropertyf("tu154ce/eng/apu_n1")) -- обороты ВСУ
-defineProperty("apu_oil_t", globalPropertyf("tu154ce/eng/apu_oil_t")) -- температура масла ВСУ
-defineProperty("apu_oil_q", globalPropertyf("tu154ce/eng/apu_oil_q")) -- количество масла ВСУ
-defineProperty("apu_oil_p", globalPropertyf("tu154ce/eng/apu_oil_p")) -- давление масла ВС
-defineProperty("apu_egt", globalPropertyf("tu154ce/eng/apu_egt")) -- температура выходных газов ВСУ
-defineProperty("apu_air_press", globalPropertyf("tu154ce/eng/apu_air_press")) -- давление воздуха для запуска двигателей
+defineProperty("apu_n1", globalPropertyf("tu154ce/eng/apu_n1")) -- APU RPM
+defineProperty("apu_oil_t", globalPropertyf("tu154ce/eng/apu_oil_t")) -- APU oil temperature
+defineProperty("apu_oil_q", globalPropertyf("tu154ce/eng/apu_oil_q")) -- APU oil quantity
+defineProperty("apu_oil_p", globalPropertyf("tu154ce/eng/apu_oil_p")) -- APU oil pressure
+defineProperty("apu_egt", globalPropertyf("tu154ce/eng/apu_egt")) -- APU exhaust gas temperature
+defineProperty("apu_air_press", globalPropertyf("tu154ce/eng/apu_air_press")) -- APU air pressure for engine start
 
-defineProperty("apu_air_doors", globalPropertyf("tu154ce/eng/apu_air_doors")) -- положение створок для накачки воздуха
-defineProperty("apu_fuel_p", globalPropertyf("tu154ce/eng/apu_fuel_p")) -- давление топлива ВСУ
+defineProperty("apu_air_doors", globalPropertyf("tu154ce/eng/apu_air_doors")) -- APU air doors position
+defineProperty("apu_fuel_p", globalPropertyf("tu154ce/eng/apu_fuel_p")) -- APU fuel pressure
 
-defineProperty("apu_start_bus", globalPropertyf("tu154ce/elec/apu_start_bus")) -- напряжение в сети ВСУ
-defineProperty("apu_start_cc", globalPropertyf("tu154ce/elec/apu_start_cc")) -- потребление тока стартером ВСУ
-defineProperty("apu_start_seq", globalPropertyi("tu154ce/elec/apu_start_seq")) -- идет процесс запуска ВСУ
+defineProperty("apu_start_bus", globalPropertyf("tu154ce/elec/apu_start_bus")) -- APU electrical bus voltage
+defineProperty("apu_start_cc", globalPropertyf("tu154ce/elec/apu_start_cc")) -- APU starter current consumption
+defineProperty("apu_start_seq", globalPropertyi("tu154ce/elec/apu_start_seq")) -- APU start sequence status
 
-defineProperty("apu_doors", globalPropertyf("tu154ce/anim/apu_doors")) -- положение створок ВСУ. 0 - закрыты, 1 - открыты.
+defineProperty("apu_doors", globalPropertyf("tu154ce/anim/apu_doors")) -- APU doors position. 0 = closed, 1 = open
 
-defineProperty("cockpit_window_left", globalPropertyf("tu154ce/anim/cockpit_window_left")) -- открытие форточки
-defineProperty("cockpit_window_right", globalPropertyf("tu154ce/anim/cockpit_window_right")) -- открытие форточки
+defineProperty("cockpit_window_left", globalPropertyf("tu154ce/anim/cockpit_window_left")) -- Left cockpit window open
+defineProperty("cockpit_window_right", globalPropertyf("tu154ce/anim/cockpit_window_right")) -- Right cockpit window open
 
 -- other sources
-defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- напряжение сети 27
-defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- напряжение сети 27
+defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- 27V electrical bus voltage (left)
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- 27V electrical bus voltage (right)
 
-defineProperty("outside_air_temp", globalPropertyf("sim/cockpit2/temperature/outside_air_temp_degc")) -- 
+defineProperty("outside_air_temp", globalPropertyf("sim/cockpit2/temperature/outside_air_temp_degc")) -- Outside air temperature in °C
 
 -- lamp sources
-defineProperty("test_lamps", globalPropertyi("tu154ce/buttons/lamp_test_apu")) -- кнопка проверки ламп панели ВСУ
-defineProperty("day_night_set", globalPropertyf("tu154ce/lights/day_night_set")) -- переключатель день - ночь. 0 - день, 1 - ночь. приглушает яркость сигнальных ламп.
-defineProperty("gear_vent_set", globalPropertyi("tu154ce/switchers/eng/gear_fan")) -- вентиляция шасси
+defineProperty("test_lamps", globalPropertyi("tu154ce/buttons/lamp_test_apu")) -- APU panel lamp test button
+defineProperty("day_night_set", globalPropertyf("tu154ce/lights/day_night_set")) -- Day/night switch. 0 = day, 1 = night (dims indicator lamps)
+defineProperty("gear_vent_set", globalPropertyi("tu154ce/switchers/eng/gear_fan")) -- Gear ventilation switch
 
--- enviroment
-defineProperty("external_view", globalPropertyi("sim/graphics/view/view_is_external"))
+-- environment
+defineProperty("external_view", globalPropertyi("sim/graphics/view/view_is_external")) -- External camera view active
 
 -- time
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
@@ -89,13 +84,13 @@ defineProperty("view_z", globalPropertyf("sim/graphics/view/view_z")) -- camera 
 
 
 -- failures
-defineProperty("apu_start_fail",globalPropertyi("tu154ce/failures/apu_start_fail")) -- отказ стартера
-defineProperty("apu_gen_fail",globalPropertyi("tu154ce/failures/apu_gen_fail")) -- отказ генератора
-defineProperty("apu_fail_oilt",globalPropertyi("tu154ce/failures/apu_fail_oilt")) -- отказ по температуре масла
-defineProperty("apu_fail_egt",globalPropertyi("tu154ce/failures/apu_fail_egt")) -- отказ по ТВГ
-defineProperty("apu_fail_fuel_left",globalPropertyi("tu154ce/failures/apu_fail_fuel_left")) -- отказ пр остатку топлива в камере при запуске
-defineProperty("apu_fail",globalPropertyi("tu154ce/failures/apu_fail")) -- отказ по наработке
-defineProperty("apu_press_fail", globalPropertyi("tu154ce/failures/apu_press_fail")) -- отказ отбора воздуха от двигателя
+defineProperty("apu_start_fail", globalPropertyi("tu154ce/failures/apu_start_fail")) -- Starter failure
+defineProperty("apu_gen_fail", globalPropertyi("tu154ce/failures/apu_gen_fail")) -- Generator failure
+defineProperty("apu_fail_oilt", globalPropertyi("tu154ce/failures/apu_fail_oilt")) -- Oil temperature failure
+defineProperty("apu_fail_egt", globalPropertyi("tu154ce/failures/apu_fail_egt")) -- EGT failure
+defineProperty("apu_fail_fuel_left", globalPropertyi("tu154ce/failures/apu_fail_fuel_left")) -- Failure due to residual fuel in combustion chamber at startup
+defineProperty("apu_fail", globalPropertyi("tu154ce/failures/apu_fail")) -- Failure due to service life
+defineProperty("apu_press_fail", globalPropertyi("tu154ce/failures/apu_press_fail")) -- Air bleed failure from engine
 
 
 include("smooth_light.lua")
@@ -280,10 +275,19 @@ local function lamps()
 	work_mode_brt = math.max(work_mode_brt * lamps_brt, test_btn)
 	set(work_mode, smooth_light(work_mode_brt, get(work_mode)))
 
-	local start_apu_brt = 0
-	if rpm < 92 and get(gear_vent_set) == 1 then start_apu_brt = 1 end
-	start_apu_brt = math.max(start_apu_brt * lamps_brt, test_btn) -- вентиляция щасси и когда ВСУ выклчюено.
-	set(start_apu, smooth_light(start_apu_brt, get(start_apu)))
+	-- Initialize brightness value for the APU START lamp
+local start_apu_brt = 0
+
+-- If the APU RPM is below 92 and the gear ventilation switch is active, turn on the brightness
+if rpm < 92 and get(gear_vent_set) == 1 then
+	start_apu_brt = 1
+end
+
+-- Determine final brightness: either based on dimmer knob (lamps_brt) or test button (test_btn)
+start_apu_brt = math.max(start_apu_brt * lamps_brt, test_btn)
+
+-- Set the smoothed brightness value to the lamp
+set(start_apu, smooth_light(start_apu_brt, get(start_apu)))
 
 end
 

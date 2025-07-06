@@ -23,11 +23,15 @@ defineProperty("gen4_overload", globalPropertyf("tu154ce/elec/gen4_overload"))
 defineProperty("gpu_overload", globalPropertyi("tu154ce/elec/gpu_overload"))
 
 -- controls
-defineProperty("gen_1_on", globalPropertyi("tu154ce/switchers/eng/gen_1_on")) -- выключатель генератора 1. -1 - проверка, 0 - выкл, +1 - вкл
-defineProperty("gen_2_on", globalPropertyi("tu154ce/switchers/eng/gen_2_on")) -- выключатель генератора 1. -1 - проверка, 0 - выкл, +1 - вкл
-defineProperty("gen_3_on", globalPropertyi("tu154ce/switchers/eng/gen_3_on")) -- выключатель генератора 1. -1 - проверка, 0 - выкл, +1 - вкл
-defineProperty("apu_gen_on", globalPropertyi("tu154ce/switchers/eng/apu_gen_on")) -- выключатель ген ВСУ
-defineProperty("gpu_on_sw", globalPropertyi("tu154ce/switchers/eng/gpu_on")) -- выключатель РАП
+defineProperty("gen_1_on", globalPropertyi("tu154ce/switchers/eng/gen_1_on")) -- Generator switch 1. -1 = test, 0 = off, +1 = on
+
+defineProperty("gen_2_on", globalPropertyi("tu154ce/switchers/eng/gen_2_on")) -- Generator switch 2. -1 = test, 0 = off, +1 = on
+
+defineProperty("gen_3_on", globalPropertyi("tu154ce/switchers/eng/gen_3_on")) -- Generator switch 3. -1 = test, 0 = off, +1 = on
+
+defineProperty("apu_gen_on", globalPropertyi("tu154ce/switchers/eng/apu_gen_on")) -- APU generator switch. -1 = test, 0 = off, +1 = on
+
+defineProperty("gpu_on_sw", globalPropertyi("tu154ce/switchers/eng/gpu_on")) -- GPU switch (ground power unit). 0 = off, 1 = on
 
 defineProperty("gen1_work", globalPropertyf("tu154ce/elec/gen1_work"))  -- generators connected to the busses and working
 defineProperty("gen2_work", globalPropertyf("tu154ce/elec/gen2_work"))
@@ -140,55 +144,88 @@ local MASTER = get(ismaster) ~= 1
 		local gen3_fail = get(sim_gen3_fail) == 6 or get(gen3_overload) == 1
 		local gen4_fail = get(gen4_overload) == 1 or get(apu_gen_fail) == 1
 
-		-- calculations for generator 1
-		local gen_work_1 = 0
-		if math.abs(gen_on1) * DC * eng1_work == 1 then gen_1_counter = gen_1_counter + passed * 0.5
-		else gen_1_counter = 0 end
-				
-		if gen_1_counter > 1 then 
-			gen_1_counter = 1
-			gen_work_1 = 1
-		end
-		
-		--print(gen_work_1, gen_on1, DC, eng1_work, gen_1_counter)
-		
-		local gen1_volt = (119 - gen1_amp / 100) * math.abs(gen_on1) * gen_work_1   -- calculate voltage of generator depending on it's load and engine work
-		if gen1_fail then gen1_volt = 0 end -- check failure
-		set(gen1_volt_bus, gen1_volt) -- set result
-		
-		if gen1_volt > 110 and gen_on1 == 1 then set(gen1_work, 1) else set(gen1_work, 0) end
 
-		-- calculations for generator 2
-		local gen_work_2 = 0
-		if math.abs(gen_on2) * DC * eng2_work == 1 then gen_2_counter = gen_2_counter + passed * 0.5
-		else gen_2_counter = 0 end
-		
-		if gen_2_counter > 1 then 
-			gen_2_counter = 1
-			gen_work_2 = 1
-		end
-		
-		local gen2_volt = (119 - gen2_amp / 100) * math.abs(gen_on2) * gen_work_2   -- calculate voltage of generator depending on it's load and engine work
-		if gen2_fail then gen2_volt = 0 end -- check failure
-		set(gen2_volt_bus, gen2_volt) -- set result
-		
-		if gen2_volt > 110 and gen_on2 == 1 then set(gen2_work, 1) else set(gen2_work, 0) end
+-- ========== Generator 1 ==========
+-- Initialize generator 1 logic state
+local gen_work_1 = 0
 
-		-- calculations for generator 3
-		local gen_work_3 = 0
-		if math.abs(gen_on3) * DC * eng3_work == 1 then gen_3_counter = gen_3_counter + passed * 0.5
-		else gen_3_counter = 0 end
-		
-		if gen_3_counter > 1 then 
-			gen_3_counter = 1
-			gen_work_3 = 1
-		end
-		
-		local gen3_volt = (119 - gen3_amp / 100) * math.abs(gen_on3) * gen_work_3   -- calculate voltage of generator depending on it's load and engine work
-		if gen3_fail then gen3_volt = 0 end -- check failure
-		set(gen3_volt_bus, gen3_volt) -- set resultt	
-		
-		if gen3_volt > 110 and gen_on3 == 1 then set(gen3_work, 1) else set(gen3_work, 0) end
+-- Check if generator 1 is enabled and engine 1 is running
+if math.abs(gen_on1) * eng1_work == 1 then
+	gen_1_counter = gen_1_counter + passed * 1.0 -- increment stability timer
+else
+	gen_1_counter = 0 -- reset if not active
+end
+
+-- If generator has been active for > 0.5 seconds, consider it working
+if gen_1_counter > 0.5 then
+	gen_1_counter = 1
+	gen_work_1 = 1
+end
+
+-- Calculate output voltage with load adjustment and DC condition
+local gen1_volt = (122 - gen1_amp / 500) * math.abs(gen_on1) * DC * gen_work_1
+
+-- Enforce minimum voltage
+if gen1_volt < 108 then gen1_volt = 108 end
+
+-- Disable voltage in case of failure
+if gen1_fail then gen1_volt = 0 end
+
+-- Apply calculated voltage to the bus
+set(gen1_volt_bus, gen1_volt)
+
+-- Set generator 1 operational flag
+if gen1_volt > 110 and gen_on1 == 1 then
+	set(gen1_work, 1)
+else
+	set(gen1_work, 0)
+end
+
+-- ========== Generator 2 ==========
+local gen_work_2 = 0
+if math.abs(gen_on2) * DC * eng2_work == 1 then
+	gen_2_counter = gen_2_counter + passed * 1.0
+else
+	gen_2_counter = 0
+end
+if gen_2_counter > 0.5 then
+	gen_2_counter = 1
+	gen_work_2 = 1
+end
+local gen2_volt = (122 - gen2_amp / 500) * math.abs(gen_on2) * DC * gen_work_2
+if gen2_volt < 108 then gen2_volt = 108 end
+if gen2_fail then gen2_volt = 0 end
+set(gen2_volt_bus, gen2_volt)
+if gen2_volt > 110 and gen_on2 == 1 then
+	set(gen2_work, 1)
+else
+	set(gen2_work, 0)
+end
+
+-- ========== Generator 3 ==========
+local gen_work_3 = 0
+if math.abs(gen_on3) * DC * eng3_work == 1 then
+	gen_3_counter = gen_3_counter + passed * 1.0
+else
+	gen_3_counter = 0
+end
+if gen_3_counter > 0.5 then
+	gen_3_counter = 1
+	gen_work_3 = 1
+end
+local gen3_volt = (122 - gen3_amp / 500) * math.abs(gen_on3) * DC * gen_work_3
+if gen3_volt < 108 then gen3_volt = 108 end
+if gen3_fail then gen3_volt = 0 end
+set(gen3_volt_bus, gen3_volt)
+if gen3_volt > 110 and gen_on3 == 1 then
+	set(gen3_work, 1)
+else
+	set(gen3_work, 0)
+end
+
+
+
+
 
 		-- calculations for generator 4 (APU)
 		if get(apu_gen_on) * DC * eng4_work == 1 then apu_gen_counter = apu_gen_counter + passed * 0.5
@@ -199,7 +236,8 @@ local MASTER = get(ismaster) ~= 1
 			gen_on4 = 1
 		end
 		
-		local gen4_volt = (119 - gen4_amp / 100) * gen_on4  -- calculate voltage of generator depending on it's load and engine work
+		local gen4_volt = (122 - gen4_amp / 500) * gen_on4  -- calculate voltage of generator depending on it's load and engine work
+		if gen4_volt < 108 then gen4_volt = 108 end
 		if gen4_fail then gen4_volt = 0 end -- check failure
 		set(gen4_volt_bus, gen4_volt) -- set result		
 		
@@ -235,7 +273,7 @@ local MASTER = get(ismaster) ~= 1
 		if ovrld_count_4 > 5 then set(gen4_overload, 1)
 		elseif gen_on4 == 0 then set(gen4_overload, 0) end
 		
-		--print(ovrld_count_1, "  ", ovrld_count_2, "  ", ovrld_count_3)
+		
 		
 		-- set simulator's generators status
 		if gen1_volt * gen_on1 > 0 then 
@@ -261,7 +299,5 @@ local MASTER = get(ismaster) ~= 1
 		else 
 			set(sim_gen4_on, 0)
 		end
-
 	end
-	
 end

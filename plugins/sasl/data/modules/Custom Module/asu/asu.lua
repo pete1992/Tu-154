@@ -1,9 +1,9 @@
-rpm = globalPropertyf("tu154ce/asu/rpm") -- обороты ТА-6А
-air_press = globalPropertyf("tu154ce/asu/press")
-work = globalPropertyi("tu154ce/asu/work")
-sim_period = globalPropertyf("sim/operation/misc/frame_rate_period")
-GS = globalPropertyf("sim/flightmodel/position/groundspeed") -- ground speed
-show = globalPropertyf("tu154ce/anim/asu_show")
+rpm = globalPropertyf("tu154ce/asu/rpm") -- TA-6A APU RPM
+air_press = globalPropertyf("tu154ce/asu/press") -- TA-6A APU air pressure
+work = globalPropertyi("tu154ce/asu/work") -- TA-6A APU active flag
+sim_period = globalPropertyf("sim/operation/misc/frame_rate_period") -- Simulation frame time (sec)
+GS = globalPropertyf("sim/flightmodel/position/groundspeed") -- Ground speed (m/s)
+show = globalPropertyf("tu154ce/anim/asu_show") -- TA-6A APU visibility animation
 
 bleed_valve = false
 components = {

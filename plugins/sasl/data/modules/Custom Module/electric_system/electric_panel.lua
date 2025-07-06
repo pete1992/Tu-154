@@ -1,51 +1,51 @@
 -- this is electric panel. here we have controls and indicators for electric system
 -- controls on panel
-defineProperty("gpu_on", globalPropertyi("tu154ce/switchers/eng/gpu_on")) -- выключатель РАП
-defineProperty("apu_gen_on", globalPropertyi("tu154ce/switchers/eng/apu_gen_on")) -- выключатель ген ВСУ
-defineProperty("bus115_volt_sel", globalPropertyi("tu154ce/switchers/eng/bus115_volt_sel")) -- переключатель источника вольтметра
-defineProperty("bus115_volt_phase_sel", globalPropertyi("tu154ce/switchers/eng/bus115_volt_phase_sel")) -- переключатель источника вольтметра
-defineProperty("bus115_amp_sel", globalPropertyi("tu154ce/switchers/eng/bus115_amp_sel")) -- переключатель источника амерметра
-defineProperty("bus115_amp_phase_sel", globalPropertyi("tu154ce/switchers/eng/bus115_amp_phase_sel")) -- переключатель источника амерметра
+defineProperty("gpu_on", globalPropertyi("tu154ce/switchers/eng/gpu_on"))               -- GPU power switch
+defineProperty("apu_gen_on", globalPropertyi("tu154ce/switchers/eng/apu_gen_on"))         -- APU generator switch
+defineProperty("bus115_volt_sel", globalPropertyi("tu154ce/switchers/eng/bus115_volt_sel"))         -- 115 V voltmeter source selector
+defineProperty("bus115_volt_phase_sel", globalPropertyi("tu154ce/switchers/eng/bus115_volt_phase_sel")) -- 115 V voltmeter phase selector
+defineProperty("bus115_amp_sel", globalPropertyi("tu154ce/switchers/eng/bus115_amp_sel"))           -- 115 V ammeter source selector
+defineProperty("bus115_amp_phase_sel", globalPropertyi("tu154ce/switchers/eng/bus115_amp_phase_sel"))   -- 115 V ammeter phase selector
 
-defineProperty("gen_1_on", globalPropertyi("tu154ce/switchers/eng/gen_1_on")) -- выключатель генератора 1. -1 - проверка, 0 - выкл, +1 - вкл
-defineProperty("gen_2_on", globalPropertyi("tu154ce/switchers/eng/gen_2_on")) -- выключатель генератора 1. -1 - проверка, 0 - выкл, +1 - вкл
-defineProperty("gen_3_on", globalPropertyi("tu154ce/switchers/eng/gen_3_on")) -- выключатель генератора 1. -1 - проверка, 0 - выкл, +1 - вкл
+defineProperty("gen_1_on", globalPropertyi("tu154ce/switchers/eng/gen_1_on"))             -- Generator 1 switch: -1 = test, 0 = off, +1 = on
+defineProperty("gen_2_on", globalPropertyi("tu154ce/switchers/eng/gen_2_on"))             -- Generator 2 switch: -1 = test, 0 = off, +1 = on
+defineProperty("gen_3_on", globalPropertyi("tu154ce/switchers/eng/gen_3_on"))             -- Generator 3 switch: -1 = test, 0 = off, +1 = on
 
-defineProperty("emerg_inv115", globalPropertyi("tu154ce/switchers/eng/emerg_inv115")) -- аварийн. преобраз 115в
-defineProperty("emerg_inv115_cap", globalPropertyi("tu154ce/switchers/eng/emerg_inv115_cap")) -- аварийн. преобраз 115в
+defineProperty("emerg_inv115", globalPropertyi("tu154ce/switchers/eng/emerg_inv115"))     -- Emergency 115 V inverter switch
+defineProperty("emerg_inv115_cap", globalPropertyi("tu154ce/switchers/eng/emerg_inv115_cap")) -- Emergency 115 V inverter capacitor switch
 
-defineProperty("bus36_volt_sel", globalPropertyi("tu154ce/switchers/eng/bus36_volt_sel")) -- переключатель вольтметра 36в
-defineProperty("pts250_sel", globalPropertyi("tu154ce/switchers/eng/pts250_sel")) -- переключатель ПТС250. 0 - №1, 1 - №2
-defineProperty("bus36_tr_left_to_right", globalPropertyi("tu154ce/switchers/eng/bus36_tr_left_to_right")) -- лев сеть на тр2. 0 - авто, 1 - ручное
-defineProperty("bus36_tr_right_to_left", globalPropertyi("tu154ce/switchers/eng/bus36_tr_right_to_left")) -- прав сеть на тр1
-defineProperty("pts250_on", globalPropertyi("tu154ce/switchers/eng/pts250_on")) -- выключатель ПТС250
-defineProperty("pts250_mode", globalPropertyi("tu154ce/switchers/eng/pts250_mode")) -- режим ПТС250. авто - ручное
-defineProperty("pts250_on_cap", globalPropertyi("tu154ce/switchers/eng/pts250_on_cap")) -- выключатель ПТС250
-defineProperty("pts250_mode_cap", globalPropertyi("tu154ce/switchers/eng/pts250_mode_cap")) -- режим ПТС250. авто - ручное
+defineProperty("bus36_volt_sel", globalPropertyi("tu154ce/switchers/eng/bus36_volt_sel")) -- 36 V voltmeter source selector
+defineProperty("pts250_sel", globalPropertyi("tu154ce/switchers/eng/pts250_sel"))         -- PTS-250 selector: 0 = unit 1, 1 = unit 2
+defineProperty("bus36_tr_left_to_right", globalPropertyi("tu154ce/switchers/eng/bus36_tr_left_to_right")) -- Left 36 V transformer to right bus: 0 = auto, 1 = manual
+defineProperty("bus36_tr_right_to_left", globalPropertyi("tu154ce/switchers/eng/bus36_tr_right_to_left")) -- Right 36 V transformer to left bus: 0 = auto, 1 = manual
+defineProperty("pts250_on", globalPropertyi("tu154ce/switchers/eng/pts250_on"))           -- PTS-250 power switch
+defineProperty("pts250_mode", globalPropertyi("tu154ce/switchers/eng/pts250_mode"))       -- PTS-250 mode: 0 = auto, 1 = manual
+defineProperty("pts250_on_cap", globalPropertyi("tu154ce/switchers/eng/pts250_on_cap"))   -- PTS-250 power switch (cap)
+defineProperty("pts250_mode_cap", globalPropertyi("tu154ce/switchers/eng/pts250_mode_cap")) -- PTS-250 mode switch (cap)
 
-defineProperty("bus27_volt_sel", globalPropertyi("tu154ce/switchers/eng/bus27_volt_sel")) -- переключатель вольтметра 27в
-defineProperty("bus27_amp1_sel", globalPropertyi("tu154ce/switchers/eng/bus27_amp1_sel")) -- переключатель амперметра 27в
-defineProperty("bus27_amp2_sel", globalPropertyi("tu154ce/switchers/eng/bus27_amp2_sel")) -- переключатель амперметра 27в
+defineProperty("bus27_volt_sel", globalPropertyi("tu154ce/switchers/eng/bus27_volt_sel")) -- 27 V voltmeter source selector
+defineProperty("bus27_amp1_sel", globalPropertyi("tu154ce/switchers/eng/bus27_amp1_sel")) -- 27 V ammeter 1 source selector
+defineProperty("bus27_amp2_sel", globalPropertyi("tu154ce/switchers/eng/bus27_amp2_sel")) -- 27 V ammeter 2 source selector
 
-defineProperty("bus27_connect", globalPropertyi("tu154ce/switchers/eng/bus27_connect")) -- соединение сетей 27в
-defineProperty("bus27_connect_cap", globalPropertyi("tu154ce/switchers/eng/bus27_connect_cap")) -- соединение сетей 27в
-defineProperty("bus27_vu1", globalPropertyi("tu154ce/switchers/eng/bus27_vu1")) -- ВУ1. -1 - резерв, 0 - выкл, +1 - вкл.
-defineProperty("bus27_vu2", globalPropertyi("tu154ce/switchers/eng/bus27_vu2")) -- ВУ2. -1 - резерв, 0 - выкл, +1 - вкл.
-defineProperty("bat1_on", globalPropertyi("tu154ce/switchers/eng/bat1_on")) -- батарея 1
-defineProperty("bat2_on", globalPropertyi("tu154ce/switchers/eng/bat2_on")) -- батарея 2
-defineProperty("bat3_on", globalPropertyi("tu154ce/switchers/eng/bat3_on")) -- батарея 3
-defineProperty("bat4_on", globalPropertyi("tu154ce/switchers/eng/bat4_on")) -- батарея 4
+defineProperty("bus27_connect", globalPropertyi("tu154ce/switchers/eng/bus27_connect"))   -- Tie-in switch for 27 V buses
+defineProperty("bus27_connect_cap", globalPropertyi("tu154ce/switchers/eng/bus27_connect_cap")) -- Tie-in switch for 27 V buses (cap)
+defineProperty("bus27_vu1", globalPropertyi("tu154ce/switchers/eng/bus27_vu1"))           -- IDG 1 switch: -1 = reserve, 0 = off, +1 = on
+defineProperty("bus27_vu2", globalPropertyi("tu154ce/switchers/eng/bus27_vu2"))           -- IDG 2 switch: -1 = reserve, 0 = off, +1 = on
+defineProperty("bat1_on", globalPropertyi("tu154ce/switchers/eng/bat1_on"))               -- Battery 1 switch
+defineProperty("bat2_on", globalPropertyi("tu154ce/switchers/eng/bat2_on"))               -- Battery 2 switch
+defineProperty("bat3_on", globalPropertyi("tu154ce/switchers/eng/bat3_on"))               -- Battery 3 switch
+defineProperty("bat4_on", globalPropertyi("tu154ce/switchers/eng/bat4_on"))               -- Battery 4 switch
 
--- gauges
-defineProperty("bus115_freq", globalPropertyf("tu154ce/gauges/eng/bus115_freq")) -- частотомер сети 115в - угол
-defineProperty("bus115_volt", globalPropertyf("tu154ce/gauges/eng/bus115_volt")) -- вольтметр сети 115в - угол
-defineProperty("bus115_amp", globalPropertyf("tu154ce/gauges/eng/bus115_amp")) -- амерметр сети 115в - угол
+-- Gauges
+defineProperty("bus115_freq", globalPropertyf("tu154ce/gauges/eng/bus115_freq"))          -- 115 V frequency gauge (needle angle)
+defineProperty("bus115_volt", globalPropertyf("tu154ce/gauges/eng/bus115_volt"))          -- 115 V voltmeter (needle angle)
+defineProperty("bus115_amp", globalPropertyf("tu154ce/gauges/eng/bus115_amp"))            -- 115 V ammeter (needle angle)
 
-defineProperty("bus36_volt", globalPropertyf("tu154ce/gauges/eng/bus36_volt")) -- вольтметр сети 36в - угол
+defineProperty("bus36_volt", globalPropertyf("tu154ce/gauges/eng/bus36_volt"))            -- 36 V voltmeter (needle angle)
 
-defineProperty("bus27_volt", globalPropertyf("tu154ce/gauges/eng/bus27_volt")) -- вольтметр сети 36в - угол
-defineProperty("bus27_amp1", globalPropertyf("tu154ce/gauges/eng/bus27_amp1")) -- вольтметр сети 36в - угол
-defineProperty("bus27_amp2", globalPropertyf("tu154ce/gauges/eng/bus27_amp2")) -- вольтметр сети 36в - угол
+defineProperty("bus27_volt", globalPropertyf("tu154ce/gauges/eng/bus27_volt"))            -- 27 V voltmeter (needle angle)
+defineProperty("bus27_amp1", globalPropertyf("tu154ce/gauges/eng/bus27_amp1"))            -- 27 V ammeter 1 (needle angle)
+defineProperty("bus27_amp2", globalPropertyf("tu154ce/gauges/eng/bus27_amp2"))            -- 27 V ammeter 2 (needle angle)
 
 -- other datarefs
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
@@ -63,10 +63,10 @@ defineProperty("bat_amp_2", globalPropertyf("tu154ce/elec/bat_amp_2"))
 defineProperty("bat_amp_3", globalPropertyf("tu154ce/elec/bat_amp_3"))
 defineProperty("bat_amp_4", globalPropertyf("tu154ce/elec/bat_amp_4"))
 
-defineProperty("bat_amp_cc_1", globalPropertyf("tu154ce/elec/bat_cc_1")) -- ток заряда батареи
-defineProperty("bat_amp_cc_2", globalPropertyf("tu154ce/elec/bat_cc_2")) -- ток заряда батареи
-defineProperty("bat_amp_cc_3", globalPropertyf("tu154ce/elec/bat_cc_3")) -- ток заряда батареи
-defineProperty("bat_amp_cc_4", globalPropertyf("tu154ce/elec/bat_cc_4")) -- ток заряда батареи
+defineProperty("bat_amp_cc_1", globalPropertyf("tu154ce/elec/bat_cc_1")) -- battery 1 charge current
+defineProperty("bat_amp_cc_2", globalPropertyf("tu154ce/elec/bat_cc_2")) -- battery 2 charge current
+defineProperty("bat_amp_cc_3", globalPropertyf("tu154ce/elec/bat_cc_3")) -- battery 3 charge current
+defineProperty("bat_amp_cc_4", globalPropertyf("tu154ce/elec/bat_cc_4")) -- battery 4 charge current
 
 defineProperty("vu1_amp", globalPropertyf("tu154ce/elec/vu1_amp"))
 defineProperty("vu2_amp", globalPropertyf("tu154ce/elec/vu2_amp"))
@@ -102,56 +102,54 @@ defineProperty("gen4_amp", globalPropertyf("tu154ce/elec/gen4_amp"))
 defineProperty("gpu_amp", globalPropertyf("tu154ce/elec/gpu_amp"))
 
 -- lamps
-defineProperty("lamp_apu_gen_on", globalPropertyf("tu154ce/lights/small/apu_gen_on")) -- РАП подключен
-defineProperty("bus_npk_1", globalPropertyf("tu154ce/lights/small/bus_npk_1")) -- сети НПК лев на 3
-defineProperty("bus_npk_2", globalPropertyf("tu154ce/lights/small/bus_npk_2")) -- сети НПК прав на 1
-defineProperty("emerg_inv_115", globalPropertyf("tu154ce/lights/small/emerg_inv_115")) -- аварийный преобразов. 115в
+defineProperty("lamp_apu_gen_on", globalPropertyf("tu154ce/lights/small/apu_gen_on")) -- APU generator connected
+defineProperty("bus_npk_1", globalPropertyf("tu154ce/lights/small/bus_npk_1")) -- left NPK bus to position 3
+defineProperty("bus_npk_2", globalPropertyf("tu154ce/lights/small/bus_npk_2")) -- right NPK bus to position 1
+defineProperty("emerg_inv_115", globalPropertyf("tu154ce/lights/small/emerg_inv_115")) -- emergency 115 V inverter
 
-defineProperty("gen_fail_1", globalPropertyf("tu154ce/lights/small/gen_fail_1")) -- генератор не работает
-defineProperty("gen_fail_2", globalPropertyf("tu154ce/lights/small/gen_fail_2")) -- генератор не работает
-defineProperty("gen_fail_3", globalPropertyf("tu154ce/lights/small/gen_fail_3")) -- генератор не работает
+defineProperty("gen_fail_1", globalPropertyf("tu154ce/lights/small/gen_fail_1")) -- generator 1 failure
+defineProperty("gen_fail_2", globalPropertyf("tu154ce/lights/small/gen_fail_2")) -- generator 2 failure
+defineProperty("gen_fail_3", globalPropertyf("tu154ce/lights/small/gen_fail_3")) -- generator 3 failure
 
-defineProperty("bus_connected", globalPropertyf("tu154ce/lights/small/bus_connected")) -- сети соединены
-defineProperty("left_bus_use_bat", globalPropertyf("tu154ce/lights/small/left_bus_use_bat")) -- левая сеть от батарей
-defineProperty("right_bus_use_bat", globalPropertyf("tu154ce/lights/small/right_bus_use_bat")) -- правая сеть от батарей
+defineProperty("bus_connected", globalPropertyf("tu154ce/lights/small/bus_connected")) -- buses tied together
+defineProperty("left_bus_use_bat", globalPropertyf("tu154ce/lights/small/left_bus_use_bat")) -- left bus powered by batteries
+defineProperty("right_bus_use_bat", globalPropertyf("tu154ce/lights/small/right_bus_use_bat")) -- right bus powered by batteries
 
-defineProperty("turn_off_bat_1", globalPropertyf("tu154ce/lights/small/turn_off_bat_1")) -- выключи батарею
-defineProperty("turn_off_bat_3", globalPropertyf("tu154ce/lights/small/turn_off_bat_3")) -- выключи батарею
-defineProperty("turn_off_bat_2", globalPropertyf("tu154ce/lights/small/turn_off_bat_2")) -- выключи батарею
-defineProperty("turn_off_bat_4", globalPropertyf("tu154ce/lights/small/turn_off_bat_4")) -- выключи батарею
+defineProperty("turn_off_bat_1", globalPropertyf("tu154ce/lights/small/turn_off_bat_1")) -- turn off battery 1
+defineProperty("turn_off_bat_3", globalPropertyf("tu154ce/lights/small/turn_off_bat_3")) -- turn off battery 3
+defineProperty("turn_off_bat_2", globalPropertyf("tu154ce/lights/small/turn_off_bat_2")) -- turn off battery 2
+defineProperty("turn_off_bat_4", globalPropertyf("tu154ce/lights/small/turn_off_bat_4")) -- turn off battery 4
 
-defineProperty("vu_on_1", globalPropertyf("tu154ce/lights/small/vu_on_1")) -- ВУ1
-defineProperty("vu_on_2", globalPropertyf("tu154ce/lights/small/vu_on_2")) -- ВУ2
-defineProperty("left_bus_on_tr2", globalPropertyf("tu154ce/lights/small/left_bus_on_tr2")) -- левая сеть на тр 2
-defineProperty("right_bus_on_tr1", globalPropertyf("tu154ce/lights/small/right_bus_on_tr1")) -- правая сеть на тр 1
-defineProperty("pts250_n1", globalPropertyf("tu154ce/lights/small/pts250_n1")) -- ПТС 250 не работает
-defineProperty("pts250_n2", globalPropertyf("tu154ce/lights/small/pts250_n2")) -- ПТС 250 на сеть
+defineProperty("vu_on_1", globalPropertyf("tu154ce/lights/small/vu_on_1")) -- IDG 1 online
+defineProperty("vu_on_2", globalPropertyf("tu154ce/lights/small/vu_on_2")) -- IDG 2 online
+defineProperty("left_bus_on_tr2", globalPropertyf("tu154ce/lights/small/left_bus_on_tr2")) -- left bus fed by TR2
+defineProperty("right_bus_on_tr1", globalPropertyf("tu154ce/lights/small/right_bus_on_tr1")) -- right bus fed by TR1
+defineProperty("pts250_n1", globalPropertyf("tu154ce/lights/small/pts250_n1")) -- PTS-250 1 offline
+defineProperty("pts250_n2", globalPropertyf("tu154ce/lights/small/pts250_n2")) -- PTS-250 2 online
 
--- lamps sources
-defineProperty("test_lamps", globalPropertyi("tu154ce/buttons/lamp_test_apu")) -- кнопка првоерки ламп панели ВСУ
+defineProperty("test_lamps", globalPropertyi("tu154ce/buttons/lamp_test_apu")) -- APU panel lamp test button
 
 defineProperty("gpu_work_bus", globalPropertyf("tu154ce/elec/gpu_work"))
 defineProperty("inv115_fail", globalPropertyf("tu154ce/failures/inv115_fail"))
 
-
 defineProperty("buses_connected", globalPropertyf("tu154ce/elec/bus_connected"))
 
-defineProperty("bus27_source_left", globalPropertyf("tu154ce/elec/bus27_source_left")) -- источник сети. 0 - ничего. 1 - ВУ1, 2 - ВУрезерв, 3 - батареи 1 и 3, 6 - соседняя сеть
-defineProperty("bus27_source_right", globalPropertyf("tu154ce/elec/bus27_source_right")) -- источник сети. 0 - ничего. 1 - ВУ2, 2 - ВУрезерв, 3 - батареи 2 и 4, 6 - соседняя сеть
+defineProperty("bus27_source_left", globalPropertyf("tu154ce/elec/bus27_source_left")) -- source of left 27 V bus (0=none,1=IDG1,2=IDG3,3=batteries 1+3,6=other bus)
+defineProperty("bus27_source_right", globalPropertyf("tu154ce/elec/bus27_source_right")) -- source of right 27 V bus (0=none,1=IDG2,2=IDG3,3=batteries 2+4,6=other bus)
 
-defineProperty("vu_res_to_L", globalPropertyi("tu154ce/elec/vu_res_to_L")) -- резервное ВУ подключено на лев сеть
-defineProperty("vu_res_to_R", globalPropertyi("tu154ce/elec/vu_res_to_R")) -- резервное ВУ подключено на прав сеть
+defineProperty("vu_res_to_L", globalPropertyi("tu154ce/elec/vu_res_to_L")) -- reserve IDG feeding left bus
+defineProperty("vu_res_to_R", globalPropertyi("tu154ce/elec/vu_res_to_R")) -- reserve IDG feeding right bus
 
-defineProperty("bus36_src_L", globalPropertyi("tu154ce/elec/bus36_src_L")) --  источник левой сети. 0 = ТР1, 1 = ТР2
-defineProperty("bus36_src_R", globalPropertyi("tu154ce/elec/bus36_src_R")) -- источник правой сети. 0 = ТР2, 1 = ТР1
+defineProperty("bus36_src_L", globalPropertyi("tu154ce/elec/bus36_src_L")) -- left 36 V bus source (0=TR1,1=TR2)
+defineProperty("bus36_src_R", globalPropertyi("tu154ce/elec/bus36_src_R")) -- right 36 V bus source (0=TR2,1=TR1)
 
-defineProperty("bus36_pts1_work", globalPropertyi("tu154ce/elec/bus36_pts1_work")) -- ПТС250 1 работает
-defineProperty("bus36_pts2_work", globalPropertyi("tu154ce/elec/bus36_pts2_work")) -- ПТС250 2 работает
+defineProperty("bus36_pts1_work", globalPropertyi("tu154ce/elec/bus36_pts1_work")) -- PTS-250 1 operating
+defineProperty("bus36_pts2_work", globalPropertyi("tu154ce/elec/bus36_pts2_work")) -- PTS-250 2 operating
 
-defineProperty("bat_therm_1", globalPropertyf("tu154ce/elec/bat_therm_1")) -- температурыа батаре
-defineProperty("bat_therm_2", globalPropertyf("tu154ce/elec/bat_therm_2")) -- температурыа батаре
-defineProperty("bat_therm_3", globalPropertyf("tu154ce/elec/bat_therm_3")) -- температурыа батаре
-defineProperty("bat_therm_4", globalPropertyf("tu154ce/elec/bat_therm_4")) -- температурыа батаре
+defineProperty("bat_therm_1", globalPropertyf("tu154ce/elec/bat_therm_1")) -- battery 1 temperature
+defineProperty("bat_therm_2", globalPropertyf("tu154ce/elec/bat_therm_2")) -- battery 2 temperature
+defineProperty("bat_therm_3", globalPropertyf("tu154ce/elec/bat_therm_3")) -- battery 3 temperature
+defineProperty("bat_therm_4", globalPropertyf("tu154ce/elec/bat_therm_4")) -- battery 4 temperature
 
 -- engines
 defineProperty("eng1_N1", globalProperty("sim/flightmodel/engine/ENGN_N1_[0]")) -- engine 1 rpm
@@ -161,6 +159,7 @@ defineProperty("eng3_N1", globalProperty("sim/flightmodel/engine/ENGN_N1_[2]")) 
 defineProperty("sim_avionics", globalPropertyi("sim/cockpit2/switches/avionics_power_on")) -- default sim avionics switcher
 
 include("smooth_light.lua")
+
 -- sounds
 local rotary_sound = loadSample('Custom Sounds/plastic_switch.wav')
 local switcher_sound = loadSample('Custom Sounds/metal_switch.wav')
@@ -225,7 +224,6 @@ local function voltmetr115()
 	if v115_sw ~= v115_sw_last or phaseSel_115 ~= phaseSel_115_last then
 		volt115_timer = 0
 		freq115_timer = 0
-		--[[if get(xplane_version) < 120000 then playSample(rotary_sound, false) end]]
 	end
 	
 	v115_sw_last = v115_sw
@@ -310,7 +308,6 @@ local function ampermeter115()
 	-- play sound and reset timers
 	if ampSel_115 ~= ampSel_115_last or ampPhaseSel_115 ~= ampPhaseSel_115_last then
 		amp115_timer = 0
-		--[[if get(xplane_version) < 120000 then playSample(rotary_sound, false) end]]
 	end	
 	ampSel_115_last = ampSel_115
 	ampPhaseSel_115_last = ampPhaseSel_115
@@ -366,7 +363,6 @@ local function voltmeter36()
 	-- play sound and reset timers
 	if volSel_36 ~= volSel_36_last then
 		volt36_timer = 0
-		--[[if get(xplane_version) < 120000 then playSample(rotary_sound, false) end]]
 	end	
 	
 	local volt36_angle = -120
@@ -443,15 +439,15 @@ local function bus27_gaug()
 	-- play sounds and reset timers
 	if volSel_27 ~= volSel_27_last then
 		volt27_timer = 0
-		--[[if get(xplane_version) < 120000 then playSample(rotary_sound, false) end]]
+		
 	end
 	if ampSel_27_1 ~= ampSel_27_1_last then
 		amp27_1_timer = 0
-		--[[if get(xplane_version) < 120000 then playSample(rotary_sound, false) end]]
+		
 	end
 	if ampSel_27_2 ~= ampSel_27_2_last then
 		amp27_2_timer = 0
-		--[[if get(xplane_version) < 120000 then playSample(rotary_sound, false) end]]
+		
 	end
 	
 	volSel_27_last = volSel_27
@@ -750,6 +746,4 @@ function update()
 	else
 		set(sim_avionics, 0)
 	end
-	
-
 end
