@@ -1,17 +1,17 @@
 -- this is starting logic
 
 -- controls
-defineProperty("starter_cap", globalPropertyi("tu154ce/switchers/eng/starter_cap")) -- крышка панели запуска
-defineProperty("starter_switch", globalPropertyi("tu154ce/switchers/eng/starter_switch")) -- выключатель запуска
-defineProperty("starter_eng_select", globalPropertyi("tu154ce/switchers/eng/starter_eng_select")) -- выбор двигателя
-defineProperty("starter_mode", globalPropertyi("tu154ce/switchers/eng/starter_mode")) -- режим запуска
+defineProperty("starter_cap", globalPropertyi("tu154ce/switchers/eng/starter_cap")) -- starter panel cover
+defineProperty("starter_switch", globalPropertyi("tu154ce/switchers/eng/starter_switch")) -- starter switch
+defineProperty("starter_eng_select", globalPropertyi("tu154ce/switchers/eng/starter_eng_select")) -- engine selector
+defineProperty("starter_mode", globalPropertyi("tu154ce/switchers/eng/starter_mode")) -- start mode
 
-defineProperty("starter_start", globalPropertyi("tu154ce/buttons/eng/starter_start")) -- кнопка запуска
-defineProperty("starter_stop", globalPropertyi("tu154ce/buttons/eng/starter_stop")) -- преркащения запуска
+defineProperty("starter_start", globalPropertyi("tu154ce/buttons/eng/starter_start")) -- start button
+defineProperty("starter_stop", globalPropertyi("tu154ce/buttons/eng/starter_stop")) -- stop start sequence
 
-defineProperty("flight_start_1", globalPropertyi("tu154ce/buttons/eng/flight_start_1")) -- запуск в полете
-defineProperty("flight_start_2", globalPropertyi("tu154ce/buttons/eng/flight_start_2")) -- запуск в полете
-defineProperty("flight_start_3", globalPropertyi("tu154ce/buttons/eng/flight_start_3")) -- запуск в полете
+defineProperty("flight_start_1", globalPropertyi("tu154ce/buttons/eng/flight_start_1")) -- in-flight engine start 1
+defineProperty("flight_start_2", globalPropertyi("tu154ce/buttons/eng/flight_start_2")) -- in-flight engine start 2
+defineProperty("flight_start_3", globalPropertyi("tu154ce/buttons/eng/flight_start_3")) -- in-flight engine start 3
 
 -- default datarefs and commands
 defineProperty("sim_igniter1", globalProperty("sim/cockpit2/engine/actuators/igniter_on[0]")) -- igniters on/off
@@ -37,59 +37,57 @@ starter_3 = findCommand("sim/starters/engage_starter_3")  -- simulator command f
 
 
 -- sources
-defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- напряжение сети 27
-defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- напряжение сети 27
+defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- voltage of left 27V bus
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- voltage of right 27V bus
 
-defineProperty("apu_air_doors", globalPropertyf("tu154ce/eng/apu_air_doors")) -- положение створок для накачки воздуха
-defineProperty("apu_n1", globalPropertyf("tu154ce/eng/apu_n1")) -- обороты ВСУ
+defineProperty("apu_air_doors", globalPropertyf("tu154ce/eng/apu_air_doors")) -- position of APU air intake doors
+defineProperty("apu_n1", globalPropertyf("tu154ce/eng/apu_n1")) -- APU N1 speed in percent
 
-defineProperty("eng_rpm1", globalProperty("sim/flightmodel/engine/ENGN_N2_[0]"))   
-defineProperty("eng_rpm2", globalProperty("sim/flightmodel/engine/ENGN_N2_[1]"))
-defineProperty("eng_rpm3", globalProperty("sim/flightmodel/engine/ENGN_N2_[2]"))
+defineProperty("eng_rpm1", globalProperty("sim/flightmodel/engine/ENGN_N2_[0]"))   -- N2 RPM of engine 1
+defineProperty("eng_rpm2", globalProperty("sim/flightmodel/engine/ENGN_N2_[1]"))   -- N2 RPM of engine 2
+defineProperty("eng_rpm3", globalProperty("sim/flightmodel/engine/ENGN_N2_[2]"))   -- N2 RPM of engine 3
 
-defineProperty("eng_work1", globalProperty("sim/flightmodel2/engines/engine_is_burning_fuel[0]"))
-defineProperty("eng_work2", globalProperty("sim/flightmodel2/engines/engine_is_burning_fuel[1]"))
-defineProperty("eng_work3", globalProperty("sim/flightmodel2/engines/engine_is_burning_fuel[2]"))
+defineProperty("eng_work1", globalProperty("sim/flightmodel2/engines/engine_is_burning_fuel[0]")) -- engine 1 fuel burn status (1 = running)
+defineProperty("eng_work2", globalProperty("sim/flightmodel2/engines/engine_is_burning_fuel[1]")) -- engine 2 fuel burn status (1 = running)
+defineProperty("eng_work3", globalProperty("sim/flightmodel2/engines/engine_is_burning_fuel[2]")) -- engine 3 fuel burn status (1 = running)
 
-defineProperty("eng_airvalve_1", globalPropertyf("tu154ce/bleed/eng_airvalve_1")) -- открытие отбора воздуха от двигателя
-defineProperty("eng_airvalve_2", globalPropertyf("tu154ce/bleed/eng_airvalve_2")) -- открытие отбора воздуха от двигателя
-defineProperty("eng_airvalve_3", globalPropertyf("tu154ce/bleed/eng_airvalve_3")) -- открытие отбора воздуха от двигателя
+defineProperty("eng_airvalve_1", globalPropertyf("tu154ce/bleed/eng_airvalve_1")) -- bleed air valve position for engine 1
+defineProperty("eng_airvalve_2", globalPropertyf("tu154ce/bleed/eng_airvalve_2")) -- bleed air valve position for engine 2
+defineProperty("eng_airvalve_3", globalPropertyf("tu154ce/bleed/eng_airvalve_3")) -- bleed air valve position for engine 3
 
-defineProperty("tank1_1", globalPropertyi("tu154ce/fuel/pump_tank1_1_work"))
-defineProperty("tank1_2", globalPropertyi("tu154ce/fuel/pump_tank1_2_work"))
-defineProperty("tank1_3", globalPropertyi("tu154ce/fuel/pump_tank1_3_work"))
-defineProperty("tank1_4", globalPropertyi("tu154ce/fuel/pump_tank1_4_work"))
+defineProperty("tank1_1", globalPropertyi("tu154ce/fuel/pump_tank1_1_work")) -- tank 1.1 pump status
+defineProperty("tank1_2", globalPropertyi("tu154ce/fuel/pump_tank1_2_work")) -- tank 1.2 pump status
+defineProperty("tank1_3", globalPropertyi("tu154ce/fuel/pump_tank1_3_work")) -- tank 1.3 pump status
+defineProperty("tank1_4", globalPropertyi("tu154ce/fuel/pump_tank1_4_work")) -- tank 1.4 pump status
 
-defineProperty("auto_tanks_turn", globalPropertyi("tu154ce/fuel/auto_tanks_turn")) -- 0 = none, 1 = 2, 2 = 2+3, 3 = 3, 4 = 4
-defineProperty("fuel_flow_mode", globalPropertyi("tu154ce/switchers/fuel/fuel_flow_mode")) -- режим расходомера. ручное - автомат
-
+defineProperty("auto_tanks_turn", globalPropertyi("tu154ce/fuel/auto_tanks_turn")) -- automatic tank switching: 0 = none, 1 = 2, 2 = 2+3, 3 = 3, 4 = 4
+defineProperty("fuel_flow_mode", globalPropertyi("tu154ce/switchers/fuel/fuel_flow_mode")) -- fuel flow mode: 0 = manual, 1 = auto
 
 -- caps
-defineProperty("engine_caps", globalPropertyi("tu154ce/anim/engine_caps"))  -- чехлы и крышки
-
+defineProperty("engine_caps", globalPropertyi("tu154ce/anim/engine_caps")) -- engine intake covers and protection caps
 
 -- time
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
 defineProperty("sim_run_time", globalPropertyf("sim/time/total_running_time_sec")) -- sim time
 
 -- results
-defineProperty("starter_pressure", globalPropertyf("tu154ce/start/starter_pressure")) -- двление в системе запуска
+defineProperty("starter_pressure", globalPropertyf("tu154ce/start/starter_pressure")) -- pressure in the engine start system
 
-defineProperty("apd_working_1", globalPropertyf("tu154ce/start/apd_working_1")) -- работа системы запуска
-defineProperty("apd_working_2", globalPropertyf("tu154ce/start/apd_working_2")) -- работа системы запуска
-defineProperty("apd_working_3", globalPropertyf("tu154ce/start/apd_working_3")) -- работа системы запуска
+defineProperty("apd_working_1", globalPropertyf("tu154ce/start/apd_working_1")) -- starter system active (engine 1)
+defineProperty("apd_working_2", globalPropertyf("tu154ce/start/apd_working_2")) -- starter system active (engine 2)
+defineProperty("apd_working_3", globalPropertyf("tu154ce/start/apd_working_3")) -- starter system active (engine 3)
 
-defineProperty("start_sys_work", globalPropertyf("tu154ce/start/start_sys_work")) -- работа системы запуска
+defineProperty("start_sys_work", globalPropertyf("tu154ce/start/start_sys_work")) -- general start system power available
 
-defineProperty("fuel_in_1", globalPropertyi("tu154ce/start/fuel_in_1")) -- подача топлива от системы запуска
-defineProperty("fuel_in_2", globalPropertyi("tu154ce/start/fuel_in_2")) -- подача топлива от системы запуска
-defineProperty("fuel_in_3", globalPropertyi("tu154ce/start/fuel_in_3")) -- подача топлива от системы запуска
+defineProperty("fuel_in_1", globalPropertyi("tu154ce/start/fuel_in_1")) -- fuel delivery to engine 1 from start system
+defineProperty("fuel_in_2", globalPropertyi("tu154ce/start/fuel_in_2")) -- fuel delivery to engine 2 from start system
+defineProperty("fuel_in_3", globalPropertyi("tu154ce/start/fuel_in_3")) -- fuel delivery to engine 3 from start system
 
 
 -------------
-starter_torq = globalPropertyf("sim/aircraft/engine/acf_starter_torque_ratio") -- мощность стартера. 0.18 для нормального запуска
-defineProperty("starter_rpm", globalPropertyf("sim/aircraft/engine/acf_starter_max_rpm_ratio")) -- макс обороты стартера 0-1
-defineProperty("jet_spoolup_time", globalPropertyf("sim/aircraft/engine/acf_spooltime_jet")) -- время раскрутки двигателя. 5 сек по дефолту
+starter_torq = globalPropertyf("sim/aircraft/engine/acf_starter_torque_ratio") -- starter torque ratio 
+defineProperty("starter_rpm", globalPropertyf("sim/aircraft/engine/acf_starter_max_rpm_ratio")) -- max starter RPM (0.0–1.0 normalized)
+defineProperty("jet_spoolup_time", globalPropertyf("sim/aircraft/engine/acf_spooltime_jet")) -- engine spool-up time in seconds (default: 5)
 
 
 -- Smart Copilot
@@ -107,7 +105,7 @@ defineProperty("apu_bleed", globalPropertyf("sim/cockpit2/bleedair/actuators/apu
 
 
 -- XP 11.10 fix
-defineProperty("sim_vers", globalPropertyi("sim/version/xplane_internal_version")) -- версия сима
+defineProperty("sim_vers", globalPropertyi("sim/version/xplane_internal_version"))
 
 asu_press = globalPropertyf("tu154ce/asu/press")
 
@@ -119,18 +117,18 @@ bleed_available_right = globalPropertyf("sim/cockpit2/bleedair/indicators/bleed_
 --		set(starter_torq, 0.2)
 --	end
 --end
-set(starter_torq, 0.18)
-set(jet_spoolup_time, 5)
-set(starter_rpm, 0.24)
+set(starter_torq, 0.48)
+set(jet_spoolup_time, 4.5)
+set(starter_rpm, 0.30)
 
 
 
 
 
---[[
-sim/aircraft/engine/acf_starter_torque_ratio	float	y	Ratio	This is the ratio of the engine's maximum torque that the starter applies at its design RPM.
-sim/aircraft/engine/acf_starter_max_rpm_ratio	float	y	Ratio	This is the ratio of the engine's max RPM that the starter can spin the engine up to before it loses torque.
---]]
+-
+-- sim/aircraft/engine/acf_starter_torque_ratio	float	y	Ratio	This is the ratio of the engine's maximum torque that the starter applies at its design RPM.
+-- sim/aircraft/engine/acf_starter_max_rpm_ratio	float	y	Ratio	This is the ratio of the engine's max RPM that the starter can spin the engine up to before it loses torque.
+
 
 local time_last = get(sim_run_time)  -- time for previous frame
 

@@ -264,16 +264,16 @@ function update()
 	if pos_L < 0.9 then rot_L = -11 end
 	if pos_R < 0.9 then rot_R = -11 end
 	
-	--[[
-	if get(replay_mode) ~= 0 then
+	
+--	if get(replay_mode) ~= 0 then
 		if pos_L < 0.9 or defl_L < 0.001 then rot_L = -11 end
-		if pos_R < 0.9 or defl_R < 0.001 then rot_R = -11 end
+	--	if pos_R < 0.9 or defl_R < 0.001 then rot_R = -11 end
 		
-		if defl_L >= 0.001 then rot_L = -stuff_angle end
-		if defl_R >= 0.001 then rot_R = -stuff_angle end
+	--	if defl_L >= 0.001 then rot_L = -stuff_angle end
+	--	if defl_R >= 0.001 then rot_R = -stuff_angle end
 		
-	end
-	--]]
+	--end
+	
 	--print(pos_L, "  ", pos_R)
 	
 	-- using Eagle Claw
@@ -551,18 +551,6 @@ function update()
 	set(cockpit_table_1, table_pos_L)
 	set(cockpit_table_2, table_pos_R)
 	
-	
 	-- reverse handle
 	set(reverse_mid, (get(revers_L) + get(revers_R))/2)
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 end

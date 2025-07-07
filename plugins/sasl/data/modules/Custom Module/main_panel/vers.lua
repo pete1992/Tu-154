@@ -1,4 +1,4 @@
-print("Tu154 v2.0.6")
+print("Tu154 v2.0.7")
 
 --defineProperty("mem", globalPropertyf("sim/private/stats/lua/total_bytes_alloc_maximum")) -- memory count
 

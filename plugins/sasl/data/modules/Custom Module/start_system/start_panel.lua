@@ -1,43 +1,44 @@
 -- this is start-up panel
 
 -- controls and gauges
-defineProperty("starter_press", globalPropertyf("tu154ce/gauges/eng/starter_press")) -- давление в системе запуска
+defineProperty("starter_press", globalPropertyf("tu154ce/gauges/eng/starter_press")) -- pressure gauge for engine start system
 
-defineProperty("starter_cap", globalPropertyi("tu154ce/switchers/eng/starter_cap")) -- крышка панели запуска
-defineProperty("starter_switch", globalPropertyi("tu154ce/switchers/eng/starter_switch")) -- выключатель запуска
-defineProperty("starter_eng_select", globalPropertyi("tu154ce/switchers/eng/starter_eng_select")) -- выбор двигателя
-defineProperty("starter_mode", globalPropertyi("tu154ce/switchers/eng/starter_mode")) -- режим запуска
+defineProperty("starter_cap", globalPropertyi("tu154ce/switchers/eng/starter_cap")) -- starter panel cover (safety flap)
+defineProperty("starter_switch", globalPropertyi("tu154ce/switchers/eng/starter_switch")) -- main starter system switch
+defineProperty("starter_eng_select", globalPropertyi("tu154ce/switchers/eng/starter_eng_select")) -- engine selector for startup (1–3)
+defineProperty("starter_mode", globalPropertyi("tu154ce/switchers/eng/starter_mode")) -- startup mode selector (manual or auto)
 
-defineProperty("starter_start", globalPropertyi("tu154ce/buttons/eng/starter_start")) -- кнопка запуска
-defineProperty("starter_stop", globalPropertyi("tu154ce/buttons/eng/starter_stop")) -- преркащения запуска
+defineProperty("starter_start", globalPropertyi("tu154ce/buttons/eng/starter_start")) -- engine start button
+defineProperty("starter_stop", globalPropertyi("tu154ce/buttons/eng/starter_stop")) -- stop/start interruption button
 
-defineProperty("flight_start_1", globalPropertyi("tu154ce/buttons/eng/flight_start_1")) -- запуск в полете
-defineProperty("flight_start_2", globalPropertyi("tu154ce/buttons/eng/flight_start_2")) -- запуск в полете
-defineProperty("flight_start_3", globalPropertyi("tu154ce/buttons/eng/flight_start_3")) -- запуск в полете
+defineProperty("flight_start_1", globalPropertyi("tu154ce/buttons/eng/flight_start_1")) -- in-flight engine start (engine 1)
+defineProperty("flight_start_2", globalPropertyi("tu154ce/buttons/eng/flight_start_2")) -- in-flight engine start (engine 2)
+defineProperty("flight_start_3", globalPropertyi("tu154ce/buttons/eng/flight_start_3")) -- in-flight engine start (engine 3)
 
-defineProperty("reserv_pump_test", globalPropertyi("tu154ce/buttons/eng/reserv_pump_test")) -- проверка резерв топл насоса
+defineProperty("reserv_pump_test", globalPropertyi("tu154ce/buttons/eng/reserv_pump_test")) -- test button for fuel reserve pump
 
 
 
 -- lamps
-defineProperty("apd_work_1", globalPropertyf("tu154ce/lights/small/apd_work_1")) -- АПД работает
-defineProperty("apd_work_2", globalPropertyf("tu154ce/lights/small/apd_work_2")) -- АПД работает
-defineProperty("apd_work_3", globalPropertyf("tu154ce/lights/small/apd_work_3")) -- АПД работает
+defineProperty("apd_work_1", globalPropertyf("tu154ce/lights/small/apd_work_1")) -- APD status lamp: active (engine 1)
+defineProperty("apd_work_2", globalPropertyf("tu154ce/lights/small/apd_work_2")) -- APD status lamp: active (engine 2)
+defineProperty("apd_work_3", globalPropertyf("tu154ce/lights/small/apd_work_3")) -- APD status lamp: active (engine 3)
 
 
 -- sources
-defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- напряжение сети 27
-defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- напряжение сети 27
-defineProperty("bus36_volt_left", globalPropertyf("tu154ce/elec/bus36_volt_left")) -- напряжение сети 36в лев
-defineProperty("bus36_volt_right", globalPropertyf("tu154ce/elec/bus36_volt_right")) -- напряжение сети 36в лев
+defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- voltage on 27 V left bus
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- voltage on 27 V right bus
+defineProperty("bus36_volt_left", globalPropertyf("tu154ce/elec/bus36_volt_left")) -- voltage on 36 V left bus
+defineProperty("bus36_volt_right", globalPropertyf("tu154ce/elec/bus36_volt_right")) -- voltage on 36 V right bus
+
 -- time
-defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- time passed per frame (in seconds)
 
-defineProperty("starter_pressure", globalPropertyf("tu154ce/start/starter_pressure")) -- двление в системе запуска
+defineProperty("starter_pressure", globalPropertyf("tu154ce/start/starter_pressure")) -- current pressure in start air system
 
-defineProperty("apd_working_1", globalPropertyf("tu154ce/start/apd_working_1")) -- работа системы запуска
-defineProperty("apd_working_2", globalPropertyf("tu154ce/start/apd_working_2")) -- работа системы запуска
-defineProperty("apd_working_3", globalPropertyf("tu154ce/start/apd_working_3")) -- работа системы запуска
+defineProperty("apd_working_1", globalPropertyf("tu154ce/start/apd_working_1")) -- startup system active (engine 1)
+defineProperty("apd_working_2", globalPropertyf("tu154ce/start/apd_working_2")) -- startup system active (engine 2)
+defineProperty("apd_working_3", globalPropertyf("tu154ce/start/apd_working_3")) -- startup system active (engine 3)
 
 include("smooth_light.lua")
 
