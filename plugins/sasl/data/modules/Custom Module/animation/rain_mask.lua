@@ -1,196 +1,120 @@
--- this is rain logic
+-- rain_mask.lua (optimized)
+-- Manages rain/snow accumulation and wipes on cockpit glass sectors
 
--- dataRefs
-defineProperty("wiper_angle_left", globalPropertyf("tu154ce/anim/wiper_angle_left"))
-defineProperty("wiper_angle_right", globalPropertyf("tu154ce/anim/wiper_angle_right"))
-
--- enviroment
-defineProperty("actual_rain", globalPropertyf("sim/weather/precipitation_on_aircraft_ratio"))
-
-defineProperty("net_rain_ratio", globalPropertyf("tu154ce/anim/net_rain_ratio"))
-
-
+-- DataRefs
+defineProperty("wiper_angle_left",   globalPropertyf("tu154ce/anim/wiper_angle_left"))
+defineProperty("wiper_angle_right",  globalPropertyf("tu154ce/anim/wiper_angle_right"))
+defineProperty("actual_rain",        globalPropertyf("sim/weather/precipitation_on_aircraft_ratio"))
+defineProperty("net_rain_ratio",     globalPropertyf("tu154ce/anim/net_rain_ratio"))
 defineProperty("indicated_airspeed", globalPropertyf("sim/flightmodel/position/indicated_airspeed"))
-defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
-
-defineProperty("thermo", globalPropertyf("sim/cockpit2/temperature/outside_air_temp_degc")) -- outside temperature
-
+defineProperty("frame_time",         globalPropertyf("tu154ce/time/frame_time"))
+defineProperty("thermo",             globalPropertyf("sim/cockpit2/temperature/outside_air_temp_degc"))
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+defineProperty("ismaster",           globalPropertyf("scp/api/ismaster"))
+defineProperty("hascontrol_1",       globalPropertyf("scp/api/hascontrol_1"))
 
-
-
--- create properties for main masks
-local mask = {}
-for i = 1, 2 do
-	mask[i] = globalPropertyf("tu154ce/anim/rain_glass_"..i)
+-- Create main masks
+local mask = {
+    globalPropertyf("tu154ce/anim/rain_glass_1"),
+    globalPropertyf("tu154ce/anim/rain_glass_2")
+}
+-- Create sector masks per side and mask index
+local sectors = { L={}, R={} }
+for i=1,2 do
+    sectors.L[i] = {}
+    sectors.R[i] = {}
+    for y=1,5 do
+        sectors.L[i][y] = globalPropertyf(string.format("tu154ce/anim/rain_glass_%d_w_%d_L", i, y))
+        sectors.R[i][y] = globalPropertyf(string.format("tu154ce/anim/rain_glass_%d_w_%d_R", i, y))
+    end
 end
 
+-- State tables
+local mask_val = {0,0}
+local sector_val = { L={ {0,0,0,0,0}, {0,0,0,0,0} }, R={ {0,0,0,0,0}, {0,0,0,0,0} } }
+local wiper_last = { L=get(wiper_angle_left), R=get(wiper_angle_right) }
 
--- create properties for sectors. i = mask num, y = sector num
-local wiper_mask_L = {}
-local wiper_mask_R = {}
-for i = 1, 2 do
-	table.insert(wiper_mask_L, {})
-	table.insert(wiper_mask_R, {})
-	for y = 1, 5 do
-		table.insert(wiper_mask_L[i], globalPropertyf("tu154ce/anim/rain_glass_"..i.."_w_"..y.."_L"))
-		table.insert(wiper_mask_R[i], globalPropertyf("tu154ce/anim/rain_glass_"..i.."_w_"..y.."_R"))
-	end
+-- Config
+local function clamp(v,a,b) return v<a and a or v>b and b or v end
+local APPEAR_BASE = 0.05
+local IAS_FACTOR  = 0.0005
+local MAX_SLIDE   = 0.5
+
+-- Calculates appearance speed for rain(1)/snow(2)
+local function compute_speed(precip, ias, temp, idx)
+    local base = math.min(APPEAR_BASE + math.abs(ias)*IAS_FACTOR, MAX_SLIDE)
+    local sign = (precip - base)
+    if idx==1 and temp<0 then -- rain freezes => hide
+        sign = -math.min(0.01 + math.abs(ias)*IAS_FACTOR, MAX_SLIDE)
+    elseif idx==2 and temp>0 then -- snow melts => hide
+        sign = -math.min(0.01 + math.abs(ias)*IAS_FACTOR, MAX_SLIDE)*0.5
+    end
+    -- scale factors: rain=0.3, snow=0.1
+    return sign * (idx==1 and 0.3 or 0.1)
 end
-
-
--- create tables
-local mask_tbl = {}
-for i = 1, 2 do
-	mask_tbl[i] = 0
-end
-
-local wiper_mask_tbl_L = {}
-local wiper_mask_tbl_R = {}
-for i = 1, 2 do
-	table.insert(wiper_mask_tbl_L, {})
-	table.insert(wiper_mask_tbl_R, {})
-	for y = 1, 5 do
-		table.insert(wiper_mask_tbl_L[i], 0)
-		table.insert(wiper_mask_tbl_R[i], 0)
-	end
-end
-
-
-
-local appear_spd = {[1] = 0, [2] = 0} -- 1 for rain, 2 for snow
-
-
-
-local wiper_L_last = get(wiper_angle_left)
-local wiper_R_last = get(wiper_angle_right)
-
 
 function update()
-	
-	local passed = get(frame_time)
-	
-local MASTER = get(ismaster) ~= 1	
-	
+    local dt     = get(frame_time)
+    local precip = get(net_rain_ratio)
+    local ias    = get(indicated_airspeed)
+    local temp   = get(thermo)
+    -- Update networked rain if master
+    if get(ismaster)~=1 then
+        set(net_rain_ratio, get(actual_rain))
+    end
 
-if MASTER then		
-	set(net_rain_ratio, get(actual_rain))
-end	
-	
-	local precip_lvl = get(net_rain_ratio)
-	local IAS = get(indicated_airspeed)
-	local temperature = get(thermo)
+    -- Wiper angles
+    local wL, wR = get(wiper_angle_left), get(wiper_angle_right)
 
-	appear_spd[1] = (precip_lvl - math.min(0.05 + math.abs(IAS) * 0.0005, 0.5)) * 0.3 -- positive to appear, negative to hide
-	if temperature < 0 then appear_spd[1] = -math.min(0.01 + math.abs(IAS) * 0.0005, 0.5) end
+    for i=1,2 do
+        -- appearance speed per mask
+        local spd = compute_speed(precip, ias, temp, i)
+        -- update main mask
+        mask_val[i] = clamp(mask_val[i] + dt*spd, 0, 1)
+        set(mask[i], mask_val[i])
 
-	appear_spd[2] = (precip_lvl - math.min(0.05 + math.abs(IAS) * 0.0005, 0.5)) * 0.1 -- positive to appear, negative to hide
-	if temperature > 0 then appear_spd[2] = -math.min(0.01 + math.abs(IAS) * 0.0005, 0.5) * 0.5 end
-	
-	
-	
-	local wiper_L = get(wiper_angle_left)
-	local wiper_R = get(wiper_angle_right)
+        -- update each sector
+        for y=1,5 do
+            -- appear/disappear
+            sector_val.L[i][y] = clamp(sector_val.L[i][y] + dt*spd, 0, 1)
+            sector_val.R[i][y] = clamp(sector_val.R[i][y] + dt*spd, 0, 1)
+            -- wipe sweep: clear when wiper crosses sector band
+            local function wipe_clear(cur, last, tbl)
+                local low = 2 + (y*12 - 12)
+                local high = 12*y
+                if (cur~=last) and ( (cur>low and cur<high) or (last>low and last<high) ) then
+                    tbl[i][y] = 0
+                end
+            end
+            wipe_clear(wL, wiper_last.L, sector_val.L)
+            wipe_clear(wR, wiper_last.R, sector_val.R)
+            -- commit values
+            set(sectors.L[i][y], sector_val.L[i][y])
+            set(sectors.R[i][y], sector_val.R[i][y])
+        end
+    end
 
-	
-	
-	-- make drops appear or disappear on glass
-	-- mask 1 for rain, mask 2 - for snow
-	
-	for i = 1, 2 do
-		
-
-		mask_tbl[i] = mask_tbl[i] + passed * appear_spd[i]
-		if mask_tbl[i] > 1 then mask_tbl[i] = 1
-		elseif mask_tbl[i] < 0 then mask_tbl[i] = 0 end
-			
-		set(mask[i], mask_tbl[i])
-
-		-- added sectors here
-		for y = 1, 5 do
-			-- make drops appear
-			wiper_mask_tbl_L[i][y] = wiper_mask_tbl_L[i][y] + passed * appear_spd[i]
-			if wiper_mask_tbl_L[i][y] > 1 then wiper_mask_tbl_L[i][y] = 1
-			elseif wiper_mask_tbl_L[i][y] < 0 then wiper_mask_tbl_L[i][y] = 0 end
-				
-			-- remove drops by wiper
-			if wiper_L ~= wiper_L_last then -- wiper moves
-				if wiper_L < 12 * y and wiper_L > 2 + (y*12 - 12) then wiper_mask_tbl_L[i][y] = 0 end 
-				if wiper_L_last < 12 * y and wiper_L_last > 2 + (y*12 - 12) then wiper_mask_tbl_L[i][y] = 0 end 
-			end
-				
-			if wiper_L > wiper_L_last then -- wiper goes forward
-				if wiper_L > 12 * y and wiper_L_last < 2 + (y*12 - 12) then wiper_mask_tbl_L[i][y] = 0 end 
-			elseif wiper_L < wiper_L_last then -- wiper goes back
-				if wiper_L_last > 12 * y and wiper_L < 2 + (y*12 - 12) then wiper_mask_tbl_L[i][y] = 0 end 
-			end
-				
-			--if wiper_L < 12 * y and wiper_L > 2 + (y*12 - 12) then wiper_mask_tbl_L[i][y] = 0 end
-				
-				
-			set(wiper_mask_L[i][y], wiper_mask_tbl_L[i][y])	
-				
-				
-				
-			wiper_mask_tbl_R[i][y] = wiper_mask_tbl_R[i][y] + passed * appear_spd[i]
-			if wiper_mask_tbl_R[i][y] > 1 then wiper_mask_tbl_R[i][y] = 1
-			elseif wiper_mask_tbl_R[i][y] < 0 then wiper_mask_tbl_R[i][y] = 0 end
-				
-			-- remove drops by wiper
-			if wiper_R ~= wiper_R_last then -- wiper moves
-				if wiper_R < 12 * y and wiper_R > 2 + (y*12 - 12) then wiper_mask_tbl_R[i][y] = 0 end 
-				if wiper_R_last < 12 * y and wiper_R_last > 2 + (y*12 - 12) then wiper_mask_tbl_R[i][y] = 0 end 
-			end
-				
-			if wiper_R > wiper_R_last then -- wiper goes forward
-				if wiper_R > 12 * y and wiper_R_last < 2 + (y*12 - 12) then wiper_mask_tbl_R[i][y] = 0 end 
-			elseif wiper_R < wiper_R_last then -- wiper goes back
-				if wiper_R_last > 12 * y and wiper_R < 2 + (y*12 - 12) then wiper_mask_tbl_R[i][y] = 0 end 
-			end
-				
-			set(wiper_mask_R[i][y], wiper_mask_tbl_R[i][y])	
-				
-		end		
-		
-
-		
-	end
-	
-	wiper_L_last = wiper_L
-	wiper_R_last = wiper_R
-
-
-
-
-
+    -- store last wiper positions
+    wiper_last.L = wL
+    wiper_last.R = wR
 end
 
 
 
 
 --[[
-
 tu154ce/anim/rain_glass_1
 tu154ce/anim/rain_glass_2
-
-
-
 tu154ce/anim/rain_glass_1_w_1_L
 tu154ce/anim/rain_glass_1_w_2_L
 tu154ce/anim/rain_glass_1_w_3_L
 tu154ce/anim/rain_glass_1_w_4_L
 tu154ce/anim/rain_glass_1_w_5_L
-
 tu154ce/anim/rain_glass_2_w_1_L
 tu154ce/anim/rain_glass_2_w_2_L
 tu154ce/anim/rain_glass_2_w_3_L
 tu154ce/anim/rain_glass_2_w_4_L
 tu154ce/anim/rain_glass_2_w_5_L
-
-
-
 tu154ce/anim/rain_glass_1_w_1_R
 tu154ce/anim/rain_glass_1_w_2_R
 tu154ce/anim/rain_glass_1_w_3_R
@@ -202,8 +126,4 @@ tu154ce/anim/rain_glass_2_w_2_R
 tu154ce/anim/rain_glass_2_w_3_R
 tu154ce/anim/rain_glass_2_w_4_R
 tu154ce/anim/rain_glass_2_w_5_R
-
-
-
-
 --]]
