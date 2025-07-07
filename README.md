@@ -3,8 +3,7 @@
   <a href="https://github.com/pete1992/Tu-154">
     <img src="https://user-images.githubusercontent.com/4706357/192863670-7191a7d1-cb96-4934-aa3d-3c4820709644.png" alt="Logo" width="512" height="288">
   </a>  <h1 align="center">Tu-154M Community Edition – Continuation Project</h1>  <p align="left">
-    An open continuation of Felis' legendary Tu-154M Airplane for X-Plane. This is the continuation attempt from the community project<br />
-    Keeping this iconic aircraft alive in X-Plane 12 and beyond.
+    An open continuation of Felis' legendary Tu-154M for X-Plane – a community-driven effort to keep this iconic aircraft flying in X-Plane 12 and beyond.<br />
   </p>
 </div>
 
