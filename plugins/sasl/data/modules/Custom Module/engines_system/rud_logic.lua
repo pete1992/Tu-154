@@ -353,12 +353,6 @@ function update()
 	local thro_high_3 = line(virtual_rud_3_act, 0, 0.35, 1, 1.1)
 
 if XP11 then
-	--[[
-	thro_high_1 = line(virtual_rud_1_act, 0, 0.54, 1, 1.1)
-	thro_high_2 = line(virtual_rud_2_act, 0, 0.54, 1, 1.1)
-	thro_high_3 = line(virtual_rud_3_act, 0, 0.54, 1, 1.1)
-	--]]
-	
 	thro_high_1 = line(virtual_rud_1_act, 0, 0.525, 1, 1.07)
 	thro_high_2 = line(virtual_rud_2_act, 0, 0.525, 1, 1.07)
 	thro_high_3 = line(virtual_rud_3_act, 0, 0.525, 1, 1.07)

@@ -117,17 +117,20 @@ bleed_available_right = globalPropertyf("sim/cockpit2/bleedair/indicators/bleed_
 --		set(starter_torq, 0.2)
 --	end
 --end
+
+-- sim/aircraft/engine/acf_starter_torque_ratio	float	y	Ratio	This is the ratio of the engine's maximum torque that the starter applies at its design RPM.
 set(starter_torq, 0.48)
 set(jet_spoolup_time, 4.5)
+-- sim/aircraft/engine/acf_starter_max_rpm_ratio	float	y	Ratio	This is the ratio of the engine's max RPM that the starter can spin the engine up to before it loses torque.
 set(starter_rpm, 0.30)
 
 
 
 
 
--
--- sim/aircraft/engine/acf_starter_torque_ratio	float	y	Ratio	This is the ratio of the engine's maximum torque that the starter applies at its design RPM.
--- sim/aircraft/engine/acf_starter_max_rpm_ratio	float	y	Ratio	This is the ratio of the engine's max RPM that the starter can spin the engine up to before it loses torque.
+
+
+
 
 
 local time_last = get(sim_run_time)  -- time for previous frame

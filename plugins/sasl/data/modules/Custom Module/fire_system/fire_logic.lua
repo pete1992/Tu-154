@@ -11,52 +11,51 @@ defineProperty("sim_engine_ext2", globalProperty("sim/cockpit2/engine/actuators/
 defineProperty("sim_engine_ext3", globalProperty("sim/cockpit2/engine/actuators/fire_extinguisher_on[2]"))  -- right engine fire extinguiher
 
 -- controls
-defineProperty("lamp_test", globalPropertyi("tu154ce/buttons/lamp_test_fire_panel")) -- кнопка проверки ламп на пожарной панели	0
-defineProperty("smoke_test", globalPropertyi("tu154ce/buttons/eng/smoke_test")) -- проверка датчиков дыма
-defineProperty("ext_test", globalPropertyi("tu154ce/buttons/eng/ext_test")) -- проверка огнетушителей
+defineProperty("lamp_test", globalPropertyi("tu154ce/buttons/lamp_test_fire_panel")) -- lamp test
+defineProperty("smoke_test", globalPropertyi("tu154ce/buttons/eng/smoke_test")) -- smoke test
+defineProperty("ext_test", globalPropertyi("tu154ce/buttons/eng/ext_test")) -- extinguisher test
 
 
-defineProperty("fire_ext_1", globalPropertyi("tu154ce/buttons/eng/fire_ext_1")) -- очередь тушения пожара
-defineProperty("fire_ext_2", globalPropertyi("tu154ce/buttons/eng/fire_ext_2")) -- очередь тушения пожара
-defineProperty("fire_ext_3", globalPropertyi("tu154ce/buttons/eng/fire_ext_3")) -- очередь тушения пожара
-defineProperty("cold_eng_1", globalPropertyi("tu154ce/buttons/eng/cold_eng_1")) -- подача хладона
-defineProperty("cold_eng_2", globalPropertyi("tu154ce/buttons/eng/cold_eng_2")) -- подача хладона
-defineProperty("cold_eng_3", globalPropertyi("tu154ce/buttons/eng/cold_eng_3")) -- подача хладона
-defineProperty("cold_apu", globalPropertyi("tu154ce/buttons/eng/cold_apu")) -- подача хладона
-defineProperty("neutral_gas", globalPropertyi("tu154ce/buttons/eng/neutral_gas")) -- нейтральный газ
+defineProperty("fire_ext_1", globalPropertyi("tu154ce/buttons/eng/fire_ext_1")) -- fire extinguisher 1
+defineProperty("fire_ext_2", globalPropertyi("tu154ce/buttons/eng/fire_ext_2")) -- fire extinguisher 2
+defineProperty("fire_ext_3", globalPropertyi("tu154ce/buttons/eng/fire_ext_3")) -- fire extinguisher 3
+defineProperty("cold_eng_1", globalPropertyi("tu154ce/buttons/eng/cold_eng_1")) -- cold eng 1
+defineProperty("cold_eng_2", globalPropertyi("tu154ce/buttons/eng/cold_eng_2")) -- cold eng 2
+defineProperty("cold_eng_3", globalPropertyi("tu154ce/buttons/eng/cold_eng_3")) -- cold eng 3
+defineProperty("cold_apu", globalPropertyi("tu154ce/buttons/eng/cold_apu")) -- cold apu
+defineProperty("neutral_gas", globalPropertyi("tu154ce/buttons/eng/neutral_gas")) -- neutral gas
 
-defineProperty("fire_sensor_sel", globalPropertyi("tu154ce/switchers/eng/fire_sensor_sel")) -- выбор группы датчиков
-defineProperty("fire_place_sel", globalPropertyi("tu154ce/switchers/eng/fire_place_sel")) -- выбор отсека
+defineProperty("fire_sensor_sel", globalPropertyi("tu154ce/switchers/eng/fire_sensor_sel")) -- fire sensor select 
+defineProperty("fire_place_sel", globalPropertyi("tu154ce/switchers/eng/fire_place_sel")) -- fire place set 
 
-defineProperty("fire_main_switch", globalPropertyi("tu154ce/switchers/eng/fire_main_switch")) -- выключатель пожарной системы
-defineProperty("fire_buzzer", globalPropertyi("tu154ce/switchers/eng/fire_buzzer")) -- пожарная сирена
+defineProperty("fire_main_switch", globalPropertyi("tu154ce/switchers/eng/fire_main_switch")) -- fire main switch 
+defineProperty("fire_buzzer", globalPropertyi("tu154ce/switchers/eng/fire_buzzer")) -- fire buzzer
 
 -- power
 defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left"))
 defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right"))
 
-defineProperty("fire_sys_cc", globalPropertyf("tu154ce/fire/fire_sys_cc")) -- потребление тока пожарной системой
+defineProperty("fire_sys_cc", globalPropertyf("tu154ce/fire/fire_sys_cc")) -- fire system
 
 
 
 -- results
-defineProperty("ext_used_1", globalPropertyi("tu154ce/fire/ext_used_1")) -- огнетушитель использован
-defineProperty("ext_used_2", globalPropertyi("tu154ce/fire/ext_used_2")) -- огнетушитель использован
-defineProperty("ext_used_3", globalPropertyi("tu154ce/fire/ext_used_3")) -- огнетушитель использован
+defineProperty("ext_used_1", globalPropertyi("tu154ce/fire/ext_used_1")) -- extinguisher used 1
+defineProperty("ext_used_2", globalPropertyi("tu154ce/fire/ext_used_2")) -- extinguisher used 2
+defineProperty("ext_used_3", globalPropertyi("tu154ce/fire/ext_used_3")) -- extinguisher used 3
 
-defineProperty("ng_used", globalPropertyi("tu154ce/fire/ng_used")) -- НГ использован
-
-defineProperty("valve_open_1", globalPropertyi("tu154ce/fire/valve_open_1")) -- кран тушения двиг 1
-defineProperty("valve_open_2", globalPropertyi("tu154ce/fire/valve_open_2")) -- кран тушения двиг 2
-defineProperty("valve_open_3", globalPropertyi("tu154ce/fire/valve_open_3")) -- кран тушения двиг 3
-defineProperty("valve_open_4", globalPropertyi("tu154ce/fire/valve_open_4")) -- кран тушения ВСУ
+defineProperty("ng_used", globalPropertyi("tu154ce/fire/ng_used")) -- ng used
+defineProperty("valve_open_1", globalPropertyi("tu154ce/fire/valve_open_1")) -- valve open 1
+defineProperty("valve_open_2", globalPropertyi("tu154ce/fire/valve_open_2")) -- valve open 2
+defineProperty("valve_open_3", globalPropertyi("tu154ce/fire/valve_open_3")) -- valve open 3
+defineProperty("valve_open_4", globalPropertyi("tu154ce/fire/valve_open_4")) -- valve open 4
 
 defineProperty("engine_fire_state_1", globalPropertyi("tu154ce/fire/engine_fire_state_1")) -- состояние двигателя. 0 - норм, 1 - перегрев, 2 - пожар
 defineProperty("engine_fire_state_2", globalPropertyi("tu154ce/fire/engine_fire_state_2")) -- состояние двигателя. 0 - норм, 1 - перегрев, 2 - пожар
 defineProperty("engine_fire_state_3", globalPropertyi("tu154ce/fire/engine_fire_state_3")) -- состояние двигателя. 0 - норм, 1 - перегрев, 2 - пожар
 defineProperty("engine_fire_state_4", globalPropertyi("tu154ce/fire/engine_fire_state_4")) -- состояние ВСУ. 0 - норм, 1 - перегрев, 2 - пожар
 
-defineProperty("fire_detected", globalPropertyi("tu154ce/fire/fire_detected")) -- обнаружен пожар
+defineProperty("fire_detected", globalPropertyi("tu154ce/fire/fire_detected")) -- fire detected
 
 defineProperty("fire_siren", globalPropertyi("tu154ce/fire/fire_siren")) -- работа сирены
 
@@ -243,8 +242,8 @@ if MASTER then
 		if fire_3 then set(engine_fire_state_3, 2)
 		else set(engine_fire_state_3, 0) end
 		
-		--[[if fire_4 then set(engine_fire_state_4, 2)
-		else set(engine_fire_state_4, 0) end--]]
+	--	if fire_4 then set(engine_fire_state_4, 2)
+	--	else set(engine_fire_state_4, 0) end
 		
 		set(fire_sys_cc, 0.8)
 	else

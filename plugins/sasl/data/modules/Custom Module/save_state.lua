@@ -1,16 +1,18 @@
 -- this is safe state script
 
 
-defineProperty("reset_state",globalPropertyi("tu154ce/reset_state")) -- сброс состояния самолета
-defineProperty("save_state", globalPropertyi("tu154ce/save_state")) -- принудительное сохранение состояния самолета
+-- this is safe state script
+
+defineProperty("reset_state", globalPropertyi("tu154ce/reset_state")) -- reset aircraft state
+defineProperty("save_state", globalPropertyi("tu154ce/save_state")) -- force save aircraft state
 
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
 
-defineProperty("starter_torq", globalPropertyf("sim/aircraft/engine/acf_starter_torque_ratio")) -- мощность стартера. 0.18 для нормального запуска
+defineProperty("starter_torq", globalPropertyf("sim/aircraft/engine/acf_starter_torque_ratio")) -- starter torque. 0.18 is normal for engine start
 
-defineProperty("hardware_cockpit", globalPropertyi("tu154ce/hardware_cockpit")) -- Самолет подготовлен для железного кокпита
---defineProperty("payload", globalPropertyf("sim/flightmodel/weight/m_fixed"))  -- payload weight, kg
---defineProperty("CG_load", globalPropertyf("sim/flightmodel/misc/cgz_ref_to_default")) -- Center of Gravity reference to default, m
+defineProperty("hardware_cockpit", globalPropertyi("tu154ce/hardware_cockpit")) -- aircraft prepared for hardware cockpit
+--defineProperty("payload", globalPropertyf("sim/flightmodel/weight/m_fixed"))  -- payload weight, kg [DEPRECATED]
+--defineProperty("CG_load", globalPropertyf("sim/flightmodel/misc/cgz_ref_to_default")) -- Center of Gravity reference to default, m [DEPRECATED]
 defineProperty("fuel_q_1", globalProperty("sim/flightmodel/weight/m_fuel[0]")) -- fuel quantity for tank 1
 defineProperty("fuel_q_4", globalProperty("sim/flightmodel/weight/m_fuel[1]")) -- fuel quantity for tank 4
 defineProperty("fuel_q_2R", globalProperty("sim/flightmodel/weight/m_fuel[2]")) -- fuel quantity for tank 2R
@@ -18,153 +20,152 @@ defineProperty("fuel_q_2L", globalProperty("sim/flightmodel/weight/m_fuel[3]")) 
 defineProperty("fuel_q_3R", globalProperty("sim/flightmodel/weight/m_fuel[4]")) -- fuel quantity for tank 3R
 defineProperty("fuel_q_3L", globalProperty("sim/flightmodel/weight/m_fuel[5]")) -- fuel quantity for tank 3L
 
-defineProperty("hide_rus_objects", globalPropertyi("tu154ce/lang/hide_rus_objects")) -- спрятать русские объекты кабины
-defineProperty("hide_eng_objects", globalPropertyi("tu154ce/lang/hide_eng_objects")) -- спрятать английские объекты кабины
+defineProperty("hide_rus_objects", globalPropertyi("tu154ce/lang/hide_rus_objects")) -- hide Russian cockpit objects
+defineProperty("hide_eng_objects", globalPropertyi("tu154ce/lang/hide_eng_objects")) -- hide English cockpit objects
 
-defineProperty("sounds_voulme", globalPropertyi("tu154ce/sounds_voulme")) -- общая громкость звуков
-defineProperty("enable_crew_vo", globalPropertyi("tu154ce/sounds/enable_crew_vo")) -- включены фразы екипажа
+defineProperty("sounds_voulme", globalPropertyi("tu154ce/sounds_voulme")) -- overall sound volume
+defineProperty("enable_crew_vo", globalPropertyi("tu154ce/sounds/enable_crew_vo")) -- crew voice phrases enabled
 
-defineProperty("failures_enabled", globalPropertyi("tu154ce/failures/failures_enabled")) -- отказы включены
-defineProperty("have_pedals", globalPropertyi("tu154ce/have_pedals"))
-defineProperty("show_gns", globalPropertyi("tu154ce/anim/show_gns"))
-defineProperty("show_RXP",globalPropertyi("tu154ce/anim/RXP"))
+defineProperty("failures_enabled", globalPropertyi("tu154ce/failures/failures_enabled")) -- failures enabled
+defineProperty("have_pedals", globalPropertyi("tu154ce/have_pedals")) -- hardware pedals installed
+defineProperty("show_gns", globalPropertyi("tu154ce/anim/show_gns")) -- show GNS unit
+defineProperty("show_RXP", globalPropertyi("tu154ce/anim/RXP")) -- show RXP unit
 
-defineProperty("pnp_1_crs", globalPropertyf("tu154ce/gauges/compas/pkp_obs_set_L"))
-defineProperty("pnp_2_crs", globalPropertyf("tu154ce/gauges/compas/pkp_obs_set_R"))
+defineProperty("pnp_1_crs", globalPropertyf("tu154ce/gauges/compas/pkp_obs_set_L")) -- PKP OBS set (captain)
+defineProperty("pnp_2_crs", globalPropertyf("tu154ce/gauges/compas/pkp_obs_set_R")) -- PKP OBS set (copilot)
 
-defineProperty("pnp_1_obs", globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_L"))
-defineProperty("pnp_2_obs", globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_R"))
+defineProperty("pnp_1_obs", globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_L")) -- PKP helper course (captain)
+defineProperty("pnp_2_obs", globalPropertyf("tu154ce/gauges/compas/pkp_helper_course_R")) -- PKP helper course (copilot)
 
-defineProperty("ark_1_channel", globalPropertyi("tu154ce/switchers/ovhd/ark_1_channel"))
-defineProperty("ark_1_hundr_left", globalPropertyi("tu154ce/switchers/ovhd/ark_1_hundr_left"))
-defineProperty("ark_1_tens_left", globalPropertyi("tu154ce/switchers/ovhd/ark_1_tens_left"))
-defineProperty("ark_1_ones_left", globalPropertyi("tu154ce/switchers/ovhd/ark_1_ones_left"))
-defineProperty("ark_1_hundr_right", globalPropertyi("tu154ce/switchers/ovhd/ark_1_hundr_right"))
-defineProperty("ark_1_tens_right", globalPropertyi("tu154ce/switchers/ovhd/ark_1_tens_right"))
-defineProperty("ark_1_ones_right", globalPropertyi("tu154ce/switchers/ovhd/ark_1_ones_right"))
+defineProperty("ark_1_channel", globalPropertyi("tu154ce/switchers/ovhd/ark_1_channel")) -- ARK-1 channel selector
+defineProperty("ark_1_hundr_left", globalPropertyi("tu154ce/switchers/ovhd/ark_1_hundr_left")) -- ARK-1 hundreds (left)
+defineProperty("ark_1_tens_left", globalPropertyi("tu154ce/switchers/ovhd/ark_1_tens_left")) -- ARK-1 tens (left)
+defineProperty("ark_1_ones_left", globalPropertyi("tu154ce/switchers/ovhd/ark_1_ones_left")) -- ARK-1 units (left)
+defineProperty("ark_1_hundr_right", globalPropertyi("tu154ce/switchers/ovhd/ark_1_hundr_right")) -- ARK-1 hundreds (right)
+defineProperty("ark_1_tens_right", globalPropertyi("tu154ce/switchers/ovhd/ark_1_tens_right")) -- ARK-1 tens (right)
+defineProperty("ark_1_ones_right", globalPropertyi("tu154ce/switchers/ovhd/ark_1_ones_right")) -- ARK-1 units (right)
 
-defineProperty("ark_2_channel", globalPropertyi("tu154ce/switchers/ovhd/ark_2_channel"))
-defineProperty("ark_2_hundr_left", globalPropertyi("tu154ce/switchers/ovhd/ark_2_hundr_left"))
-defineProperty("ark_2_tens_left", globalPropertyi("tu154ce/switchers/ovhd/ark_2_tens_left"))
-defineProperty("ark_2_ones_left", globalPropertyi("tu154ce/switchers/ovhd/ark_2_ones_left"))
-defineProperty("ark_2_hundr_right", globalPropertyi("tu154ce/switchers/ovhd/ark_2_hundr_right"))
-defineProperty("ark_2_tens_right", globalPropertyi("tu154ce/switchers/ovhd/ark_2_tens_right"))
-defineProperty("ark_2_ones_right", globalPropertyi("tu154ce/switchers/ovhd/ark_2_ones_right"))
+defineProperty("ark_2_channel", globalPropertyi("tu154ce/switchers/ovhd/ark_2_channel")) -- ARK-2 channel selector
+defineProperty("ark_2_hundr_left", globalPropertyi("tu154ce/switchers/ovhd/ark_2_hundr_left")) -- ARK-2 hundreds (left)
+defineProperty("ark_2_tens_left", globalPropertyi("tu154ce/switchers/ovhd/ark_2_tens_left")) -- ARK-2 tens (left)
+defineProperty("ark_2_ones_left", globalPropertyi("tu154ce/switchers/ovhd/ark_2_ones_left")) -- ARK-2 units (left)
+defineProperty("ark_2_hundr_right", globalPropertyi("tu154ce/switchers/ovhd/ark_2_hundr_right")) -- ARK-2 hundreds (right)
+defineProperty("ark_2_tens_right", globalPropertyi("tu154ce/switchers/ovhd/ark_2_tens_right")) -- ARK-2 tens (right)
+defineProperty("ark_2_ones_right", globalPropertyi("tu154ce/switchers/ovhd/ark_2_ones_right")) -- ARK-2 units (right)
 
-defineProperty("vd15_pressure_left", globalPropertyf("tu154ce/gauges/alt/vd15_pressure_left")) -- давление на ВД15 КВС
-defineProperty("vd15_pressure_right", globalPropertyf("tu154ce/gauges/alt/vd15_pressure_right")) -- давление на ВД15 2П
-defineProperty("vd15_pressure_eng", globalPropertyf("tu154ce/gauges/alt/vd15_pressure_eng")) -- давление на ВД15 БИ
-defineProperty("uvid_pressure_knob", globalPropertyf("tu154ce/gauges/alt/uvid_pressure_knob"))  -- ручка установки давления
+defineProperty("vd15_pressure_left", globalPropertyf("tu154ce/gauges/alt/vd15_pressure_left")) -- VD-15 pressure (captain)
+defineProperty("vd15_pressure_right", globalPropertyf("tu154ce/gauges/alt/vd15_pressure_right")) -- VD-15 pressure (copilot)
+defineProperty("vd15_pressure_eng", globalPropertyf("tu154ce/gauges/alt/vd15_pressure_eng")) -- VD-15 pressure (engineer)
+defineProperty("uvid_pressure_knob", globalPropertyf("tu154ce/gauges/alt/uvid_pressure_knob")) -- UVID pressure adjustment knob
 
-defineProperty("tks_lat_set", globalPropertyf("tu154ce/rotary/ovhd/tks_lat_set"))
+defineProperty("tks_lat_set", globalPropertyf("tu154ce/rotary/ovhd/tks_lat_set")) -- TKS rotary set (latitude)
 
 -- failures
-defineProperty("ppd_3_heat_fail", globalPropertyi("tu154ce/antiice/ppd_3_heat_fail"))
+defineProperty("ppd_3_heat_fail", globalPropertyi("tu154ce/antiice/ppd_3_heat_fail")) -- PPD-3 heating failure
 
-defineProperty("rel_ice_inlet_heat1", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat"))
-defineProperty("rel_ice_inlet_heat2", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat2"))
-defineProperty("rel_ice_inlet_heat3", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat3"))
+defineProperty("rel_ice_inlet_heat1", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat")) -- engine 1 anti-ice inlet failure
+defineProperty("rel_ice_inlet_heat2", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat2")) -- engine 2 anti-ice inlet failure
+defineProperty("rel_ice_inlet_heat3", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat3")) -- engine 3 anti-ice inlet failure
 
-defineProperty("rel_ice_pitot_heat1", globalPropertyi("sim/operation/failures/rel_ice_pitot_heat1"))
-defineProperty("rel_ice_pitot_heat2", globalPropertyi("sim/operation/failures/rel_ice_pitot_heat2"))
+defineProperty("rel_ice_pitot_heat1", globalPropertyi("sim/operation/failures/rel_ice_pitot_heat1")) -- pitot tube heating failure (left)
+defineProperty("rel_ice_pitot_heat2", globalPropertyi("sim/operation/failures/rel_ice_pitot_heat2")) -- pitot tube heating failure (right)
 
-defineProperty("rel_ice_surf_heat", globalPropertyi("sim/operation/failures/rel_ice_surf_heat"))
-defineProperty("rel_ice_surf_heat2", globalPropertyi("sim/operation/failures/rel_ice_surf_heat2"))
+defineProperty("rel_ice_surf_heat", globalPropertyi("sim/operation/failures/rel_ice_surf_heat")) -- surface anti-ice heating failure
+defineProperty("rel_ice_surf_heat2", globalPropertyi("sim/operation/failures/rel_ice_surf_heat2")) -- surface anti-ice heating failure (2)
 
-defineProperty("rio_fail", globalPropertyi("tu154ce/failures/rio_fail"))
+defineProperty("rio_fail", globalPropertyi("tu154ce/failures/rio_fail")) -- RIO failure
 
-defineProperty("window_heat_fail_1", globalPropertyi("tu154ce/failures/window_heat_fail_1"))
-defineProperty("window_heat_fail_2", globalPropertyi("tu154ce/failures/window_heat_fail_2"))
-defineProperty("window_heat_fail_3", globalPropertyi("tu154ce/failures/window_heat_fail_3"))
+defineProperty("window_heat_fail_1", globalPropertyi("tu154ce/failures/window_heat_fail_1")) -- window heating failure 1
+defineProperty("window_heat_fail_2", globalPropertyi("tu154ce/failures/window_heat_fail_2")) -- window heating failure 2
+defineProperty("window_heat_fail_3", globalPropertyi("tu154ce/failures/window_heat_fail_3")) -- window heating failure 3
 
-defineProperty("apu_start_fail",globalPropertyi("tu154ce/failures/apu_start_fail")) -- отказ стартера
-defineProperty("apu_runtime",globalPropertyf("tu154ce/failures/apu_runtime")) -- время наработки
-defineProperty("apu_fail",globalPropertyi("tu154ce/failures/apu_fail")) -- отказ по наработке
-defineProperty("apu_press_fail", globalPropertyi("tu154ce/failures/apu_press_fail")) -- отказ отбора воздуха от двигателя
+defineProperty("apu_start_fail", globalPropertyi("tu154ce/failures/apu_start_fail")) -- APU starter failure
+defineProperty("apu_runtime", globalPropertyf("tu154ce/failures/apu_runtime")) -- APU operating time
+defineProperty("apu_fail", globalPropertyi("tu154ce/failures/apu_fail")) -- APU failure due to runtime
+defineProperty("apu_press_fail", globalPropertyi("tu154ce/failures/apu_press_fail")) -- APU air bleed valve failure
 
+defineProperty("brake_runtime_left", globalPropertyf("tu154ce/failures/brake_runtime_left")) -- brake pad wear (left)
+defineProperty("brake_runtime_right", globalPropertyf("tu154ce/failures/brake_runtime_right")) -- brake pad wear (right)
 
-defineProperty("brake_runtime_left", globalPropertyf("tu154ce/failures/brake_runtime_left")) -- Наработка тормозных колодок
-defineProperty("brake_runtime_right", globalPropertyf("tu154ce/failures/brake_runtime_right")) -- Наработка тормозных колодок
+defineProperty("rel_lbrakes", globalPropertyi("sim/operation/failures/rel_lbrakes")) -- left brake failure
+defineProperty("rel_rbrakes", globalPropertyi("sim/operation/failures/rel_rbrakes")) -- right brake failure
 
-defineProperty("rel_lbrakes", globalPropertyi("sim/operation/failures/rel_lbrakes")) -- Отказ тормозов
-defineProperty("rel_rbrakes", globalPropertyi("sim/operation/failures/rel_rbrakes")) -- Отказ тормозов
+defineProperty("ail_fail_left", globalPropertyi("tu154ce/failures/ail_fail_left")) -- left aileron failure
+defineProperty("ail_fail_right", globalPropertyi("tu154ce/failures/ail_fail_right")) -- right aileron failure
 
-defineProperty("ail_fail_left", globalPropertyi("tu154ce/failures/ail_fail_left")) -- 
-defineProperty("ail_fail_right", globalPropertyi("tu154ce/failures/ail_fail_right")) -- 
+defineProperty("fail_spoil_inn_left", globalPropertyi("tu154ce/failures/fail_spoil_inn_left")) -- inner left spoiler failure
+defineProperty("fail_spoil_inn_right", globalPropertyi("tu154ce/failures/fail_spoil_inn_right")) -- inner right spoiler failure
+defineProperty("fail_spoil_mid_left", globalPropertyi("tu154ce/failures/fail_spoil_mid_left")) -- middle left spoiler failure
+defineProperty("fail_spoil_mid_right", globalPropertyi("tu154ce/failures/fail_spoil_mid_right")) -- middle right spoiler failure
+defineProperty("fail_spoil_out_left", globalPropertyi("tu154ce/failures/fail_spoil_out_left")) -- outer left spoiler failure
+defineProperty("fail_spoil_out_right", globalPropertyi("tu154ce/failures/fail_spoil_out_right")) -- outer right spoiler failure
 
-defineProperty("fail_spoil_inn_left", globalPropertyi("tu154ce/failures/fail_spoil_inn_left")) -- 
-defineProperty("fail_spoil_inn_right", globalPropertyi("tu154ce/failures/fail_spoil_inn_right")) -- 
-defineProperty("fail_spoil_mid_left", globalPropertyi("tu154ce/failures/fail_spoil_mid_left")) -- 
-defineProperty("fail_spoil_mid_right", globalPropertyi("tu154ce/failures/fail_spoil_mid_right")) -- 
-defineProperty("fail_spoil_out_left", globalPropertyi("tu154ce/failures/fail_spoil_out_left")) -- 
-defineProperty("fail_spoil_out_right", globalPropertyi("tu154ce/failures/fail_spoil_out_right")) -- 
+defineProperty("rudder_fail", globalPropertyi("tu154ce/failures/rudder_fail")) -- rudder failure
+defineProperty("elev_fail_left", globalPropertyi("tu154ce/failures/elev_fail_left")) -- left elevator failure
+defineProperty("elev_fail_right", globalPropertyi("tu154ce/failures/elev_fail_right")) -- right elevator failure
 
-defineProperty("rudder_fail", globalPropertyi("tu154ce/failures/rudder_fail")) -- 
-defineProperty("elev_fail_left", globalPropertyi("tu154ce/failures/elev_fail_left")) -- 
-defineProperty("elev_fail_right", globalPropertyi("tu154ce/failures/elev_fail_right")) -- 
+defineProperty("rel_trim_rud", globalPropertyi("sim/operation/failures/rel_trim_rud")) -- rudder trim failure
+defineProperty("rel_trim_ail", globalPropertyi("sim/operation/failures/rel_trim_ail")) -- aileron trim failure
+defineProperty("rel_trim_elv", globalPropertyi("sim/operation/failures/rel_trim_elv")) -- elevator trim failure
+defineProperty("trim_emerg_elv_fail", globalPropertyi("tu154ce/failures/trim_emerg_elv_fail")) -- emergency elevator trim failure
 
-defineProperty("rel_trim_rud", globalPropertyi("sim/operation/failures/rel_trim_rud")) -- 
-defineProperty("rel_trim_ail", globalPropertyi("sim/operation/failures/rel_trim_ail")) -- 
-defineProperty("rel_trim_elv", globalPropertyi("sim/operation/failures/rel_trim_elv")) -- 
-defineProperty("trim_emerg_elv_fail", globalPropertyi("tu154ce/failures/trim_emerg_elv_fail")) --
+defineProperty("flap_fail_left", globalPropertyi("tu154ce/failures/flap_fail_left")) -- left flap failure
+defineProperty("flap_fail_right", globalPropertyi("tu154ce/failures/flap_fail_right")) -- right flap failure
 
-defineProperty("flap_fail_left", globalPropertyi("tu154ce/failures/flap_fail_left")) -- 
-defineProperty("flap_fail_right", globalPropertyi("tu154ce/failures/flap_fail_right")) -- 
+defineProperty("stab_eng_fail", globalPropertyi("tu154ce/failures/stab_eng_fail")) -- stabilizer actuator failure
+defineProperty("stab_automatic_fail", globalPropertyi("tu154ce/failures/stab_automatic_fail")) -- automatic stabilizer failure
+defineProperty("slats_fail", globalPropertyi("tu154ce/failures/slats_fail")) -- slats failure
 
-defineProperty("stab_eng_fail", globalPropertyi("tu154ce/failures/stab_eng_fail")) -- 
-defineProperty("stab_automatic_fail", globalPropertyi("tu154ce/failures/stab_automatic_fail")) -- 
-defineProperty("slats_fail", globalPropertyi("tu154ce/failures/slats_fail")) -- 
+defineProperty("retract1_fail", globalPropertyi("sim/operation/failures/rel_lagear1")) -- main gear #1 retraction failure
+defineProperty("retract2_fail", globalPropertyi("sim/operation/failures/rel_lagear2")) -- main gear #2 retraction failure
+defineProperty("retract3_fail", globalPropertyi("sim/operation/failures/rel_lagear3")) -- main gear #3 retraction failure
+defineProperty("actuator_fail", globalPropertyi("sim/operation/failures/rel_gear_act")) -- actuator failure (workaround for bugs)
 
-defineProperty("retract1_fail", globalPropertyi("sim/operation/failures/rel_lagear1")) -- fail of retract gear
-defineProperty("retract2_fail", globalPropertyi("sim/operation/failures/rel_lagear2")) -- fail of retract gear
-defineProperty("retract3_fail", globalPropertyi("sim/operation/failures/rel_lagear3")) -- fail of retract gear
-defineProperty("actuator_fail", globalPropertyi("sim/operation/failures/rel_gear_act")) -- actuator fail. bugs workaround
+defineProperty("rel_genera0", globalPropertyi("sim/operation/failures/rel_genera0")) -- generator #1 failure
+defineProperty("rel_genera1", globalPropertyi("sim/operation/failures/rel_genera1")) -- generator #2 failure
+defineProperty("rel_genera2", globalPropertyi("sim/operation/failures/rel_genera2")) -- generator #3 failure
+defineProperty("apu_gen_fail", globalPropertyi("tu154ce/failures/apu_gen_fail")) -- APU generator failure
 
-defineProperty("rel_genera0", globalPropertyi("sim/operation/failures/rel_genera0"))
-defineProperty("rel_genera1", globalPropertyi("sim/operation/failures/rel_genera1"))
-defineProperty("rel_genera2", globalPropertyi("sim/operation/failures/rel_genera2"))
-defineProperty("apu_gen_fail", globalPropertyi("tu154ce/failures/apu_gen_fail"))
+defineProperty("vu1_fail", globalPropertyi("tu154ce/failures/vu1_fail")) -- VU1 generator failure
+defineProperty("vu2_fail", globalPropertyi("tu154ce/failures/vu2_fail")) -- VU2 generator failure
+defineProperty("vu3_fail", globalPropertyi("tu154ce/failures/vu3_fail")) -- VU3 generator failure
 
-defineProperty("vu1_fail", globalPropertyi("tu154ce/failures/vu1_fail"))
-defineProperty("vu2_fail", globalPropertyi("tu154ce/failures/vu2_fail"))
-defineProperty("vu3_fail", globalPropertyi("tu154ce/failures/vu3_fail"))
+defineProperty("tr1_fail", globalPropertyi("tu154ce/failures/tr1_fail")) -- transformer rectifier 1 failure
+defineProperty("tr2_fail", globalPropertyi("tu154ce/failures/tr2_fail")) -- transformer rectifier 2 failure
 
-defineProperty("tr1_fail", globalPropertyi("tu154ce/failures/tr1_fail"))
-defineProperty("tr2_fail", globalPropertyi("tu154ce/failures/tr2_fail"))
+defineProperty("pts250_1_fail", globalPropertyi("tu154ce/failures/pts250_1_fail")) -- PTS-250 unit 1 failure
+defineProperty("pts250_2_fail", globalPropertyi("tu154ce/failures/pts250_2_fail")) -- PTS-250 unit 2 failure
+defineProperty("inv115_fail", globalPropertyi("tu154ce/failures/inv115_fail")) -- 115V inverter failure
 
-defineProperty("pts250_1_fail", globalPropertyi("tu154ce/failures/pts250_1_fail"))
-defineProperty("pts250_2_fail", globalPropertyi("tu154ce/failures/pts250_2_fail"))
-defineProperty("inv115_fail", globalPropertyi("tu154ce/failures/inv115_fail"))
+defineProperty("bat_1_fail", globalPropertyi("tu154ce/failures/bat_1_fail")) -- battery 1 failure
+defineProperty("bat_2_fail", globalPropertyi("tu154ce/failures/bat_2_fail")) -- battery 2 failure
+defineProperty("bat_3_fail", globalPropertyi("tu154ce/failures/bat_3_fail")) -- battery 3 failure
+defineProperty("bat_4_fail", globalPropertyi("tu154ce/failures/bat_4_fail")) -- battery 4 failure
 
-defineProperty("bat_1_fail", globalPropertyi("tu154ce/failures/bat_1_fail"))
-defineProperty("bat_2_fail", globalPropertyi("tu154ce/failures/bat_2_fail"))
-defineProperty("bat_3_fail", globalPropertyi("tu154ce/failures/bat_3_fail"))
-defineProperty("bat_4_fail", globalPropertyi("tu154ce/failures/bat_4_fail"))
+defineProperty("bat_1_kz", globalPropertyi("tu154ce/failures/bat_1_kz")) -- battery 1 thermal runaway
+defineProperty("bat_2_kz", globalPropertyi("tu154ce/failures/bat_2_kz")) -- battery 2 thermal runaway
+defineProperty("bat_3_kz", globalPropertyi("tu154ce/failures/bat_3_kz")) -- battery 3 thermal runaway
+defineProperty("bat_4_kz", globalPropertyi("tu154ce/failures/bat_4_kz")) -- battery 4 thermal runaway
 
-defineProperty("bat_1_kz", globalPropertyi("tu154ce/failures/bat_1_kz"))
-defineProperty("bat_2_kz", globalPropertyi("tu154ce/failures/bat_2_kz"))
-defineProperty("bat_3_kz", globalPropertyi("tu154ce/failures/bat_3_kz"))
-defineProperty("bat_4_kz", globalPropertyi("tu154ce/failures/bat_4_kz"))
+defineProperty("rel_engfai0", globalPropertyi("sim/operation/failures/rel_engfai0")) -- engine 1 failure
+defineProperty("rel_engfai1", globalPropertyi("sim/operation/failures/rel_engfai1")) -- engine 2 failure
+defineProperty("rel_engfai2", globalPropertyi("sim/operation/failures/rel_engfai2")) -- engine 3 failure
 
-defineProperty("rel_engfai0", globalPropertyi("sim/operation/failures/rel_engfai0"))
-defineProperty("rel_engfai1", globalPropertyi("sim/operation/failures/rel_engfai1"))
-defineProperty("rel_engfai2", globalPropertyi("sim/operation/failures/rel_engfai2"))
+defineProperty("engine_runtime_1", globalPropertyf("tu154ce/failures/engine_runtime_1")) -- engine 1 operating time
+defineProperty("engine_runtime_2", globalPropertyf("tu154ce/failures/engine_runtime_2")) -- engine 2 operating time
+defineProperty("engine_runtime_3", globalPropertyf("tu154ce/failures/engine_runtime_3")) -- engine 3 operating time
 
-defineProperty("engine_runtime_1", globalPropertyf("tu154ce/failures/engine_runtime_1"))
-defineProperty("engine_runtime_2", globalPropertyf("tu154ce/failures/engine_runtime_2"))
-defineProperty("engine_runtime_3", globalPropertyf("tu154ce/failures/engine_runtime_3"))
+defineProperty("eng_fuel_pmp_fail_1", globalPropertyi("tu154ce/failures/eng_fuel_pmp_fail_1")) -- engine 1 fuel pump failure
+defineProperty("eng_fuel_pmp_fail_2", globalPropertyi("tu154ce/failures/eng_fuel_pmp_fail_2")) -- engine 2 fuel pump failure
+defineProperty("eng_fuel_pmp_fail_3", globalPropertyi("tu154ce/failures/eng_fuel_pmp_fail_3")) -- engine 3 fuel pump failure
 
-defineProperty("eng_fuel_pmp_fail_1", globalPropertyi("tu154ce/failures/eng_fuel_pmp_fail_1"))
-defineProperty("eng_fuel_pmp_fail_2", globalPropertyi("tu154ce/failures/eng_fuel_pmp_fail_2"))
-defineProperty("eng_fuel_pmp_fail_3", globalPropertyi("tu154ce/failures/eng_fuel_pmp_fail_3"))
+defineProperty("engn_oil_qty_1", globalPropertyf("tu154ce/failures/engn_oil_qty_1")) -- engine 1 oil quantity
+defineProperty("engn_oil_qty_2", globalPropertyf("tu154ce/failures/engn_oil_qty_2")) -- engine 2 oil quantity
+defineProperty("engn_oil_qty_3", globalPropertyf("tu154ce/failures/engn_oil_qty_3")) -- engine 3 oil quantity
 
-defineProperty("engn_oil_qty_1", globalPropertyf("tu154ce/failures/engn_oil_qty_1")) 
-defineProperty("engn_oil_qty_2", globalPropertyf("tu154ce/failures/engn_oil_qty_2")) 
-defineProperty("engn_oil_qty_3", globalPropertyf("tu154ce/failures/engn_oil_qty_3"))
-
-defineProperty("engn_oil_leak_1", globalPropertyi("tu154ce/failures/engn_oil_leak_1"))
-defineProperty("engn_oil_leak_2", globalPropertyi("tu154ce/failures/engn_oil_leak_2"))
-defineProperty("engn_oil_leak_3", globalPropertyi("tu154ce/failures/engn_oil_leak_3"))
+defineProperty("engn_oil_leak_1", globalPropertyi("tu154ce/failures/engn_oil_leak_1")) -- engine 1 oil leak
+defineProperty("engn_oil_leak_2", globalPropertyi("tu154ce/failures/engn_oil_leak_2")) -- engine 2 oil leak
+defineProperty("engn_oil_leak_3", globalPropertyi("tu154ce/failures/engn_oil_leak_3")) -- engine 3 oil leak
 
 defineProperty("rel_oilpmp0", globalPropertyi("sim/operation/failures/rel_oilpmp0"))
 defineProperty("rel_oilpmp1", globalPropertyi("sim/operation/failures/rel_oilpmp1"))
@@ -221,47 +222,46 @@ defineProperty("hydro_pump_fail_3", globalPropertyi("tu154ce/failures/hydro_pump
 defineProperty("hydro_elec_fail_2", globalPropertyi("tu154ce/failures/hydro_elec_fail_2"))
 defineProperty("hydro_elec_fail_3", globalPropertyi("tu154ce/failures/hydro_elec_fail_3"))
 
-defineProperty("gs_qty_1", globalPropertyf("tu154ce/hydro/gs_qty_1")) -- остаток масла в системе
-defineProperty("gs_qty_2", globalPropertyf("tu154ce/hydro/gs_qty_2")) -- остаток масла в системе
-defineProperty("gs_qty_3", globalPropertyf("tu154ce/hydro/gs_qty_3")) -- остаток масла в системе
+ldefineProperty("gs_qty_1", globalPropertyf("tu154ce/hydro/gs_qty_1")) -- hydraulic oil quantity (system 1)
+defineProperty("gs_qty_2", globalPropertyf("tu154ce/hydro/gs_qty_2")) -- hydraulic oil quantity (system 2)
+defineProperty("gs_qty_3", globalPropertyf("tu154ce/hydro/gs_qty_3")) -- hydraulic oil quantity (system 3)
 
+defineProperty("tth_left_fail", globalPropertyi("tu154ce/failures/tth_left_fail")) -- left turbocooler failure
+defineProperty("tth_right_fail", globalPropertyi("tu154ce/failures/tth_right_fail")) -- right turbocooler failure
 
-defineProperty("tth_left_fail", globalPropertyi("tu154ce/failures/tth_left_fail")) -- отказ турбохолодильника
-defineProperty("tth_right_fail", globalPropertyi("tu154ce/failures/tth_right_fail")) -- отказ турбохолодильника
+defineProperty("airbleed_1", globalPropertyi("tu154ce/failures/airbleed_1")) -- engine 1 bleed air failure
+defineProperty("airbleed_2", globalPropertyi("tu154ce/failures/airbleed_2")) -- engine 2 bleed air failure
+defineProperty("airbleed_3", globalPropertyi("tu154ce/failures/airbleed_3")) -- engine 3 bleed air failure
 
-defineProperty("airbleed_1", globalPropertyi("tu154ce/failures/airbleed_1")) -- отказ отбора воздуха от двигателя
-defineProperty("airbleed_2", globalPropertyi("tu154ce/failures/airbleed_2")) -- отказ отбора воздуха от двигателя
-defineProperty("airbleed_3", globalPropertyi("tu154ce/failures/airbleed_3")) -- отказ отбора воздуха от двигателя
+defineProperty("psvp_fail_left", globalPropertyi("tu154ce/failures/psvp_fail_left")) -- left PSVP (air conditioning unit) failure
+defineProperty("psvp_fail_right", globalPropertyi("tu154ce/failures/psvp_fail_right")) -- right PSVP (air conditioning unit) failure
+defineProperty("sard_valve_fail", globalPropertyi("tu154ce/failures/sard_valve_fail")) -- exhaust valve failure
 
-defineProperty("psvp_fail_left", globalPropertyi("tu154ce/failures/psvp_fail_left")) -- отказ ПСВП
-defineProperty("psvp_fail_right", globalPropertyi("tu154ce/failures/psvp_fail_right")) -- отказ ПСВП
-defineProperty("sard_valve_fail", globalPropertyi("tu154ce/failures/sard_valve_fail")) -- отказ выпускного клапана
+defineProperty("lan_lamp_fail_FL", globalPropertyi("tu154ce/failures/lan_lamp_fail_FL")) -- left front landing light failure
+defineProperty("lan_lamp_fail_FR", globalPropertyi("tu154ce/failures/lan_lamp_fail_FR")) -- right front landing light failure
+defineProperty("lan_lamp_fail_WL", globalPropertyi("tu154ce/failures/lan_lamp_fail_WL")) -- left wing landing light failure
+defineProperty("lan_lamp_fail_WR", globalPropertyi("tu154ce/failures/lan_lamp_fail_WR")) -- right wing landing light failure
+defineProperty("rel_lites_nav", globalPropertyi("sim/operation/failures/rel_lites_nav")) -- navigation light failure
+defineProperty("rel_lites_beac", globalPropertyi("sim/operation/failures/rel_lites_beac")) -- beacon light failure
 
-defineProperty("lan_lamp_fail_FL", globalPropertyi("tu154ce/failures/lan_lamp_fail_FL")) -- отказ передней левой фары
-defineProperty("lan_lamp_fail_FR", globalPropertyi("tu154ce/failures/lan_lamp_fail_FR")) -- отказ передней правой фары
-defineProperty("lan_lamp_fail_WL", globalPropertyi("tu154ce/failures/lan_lamp_fail_WL")) -- отказ крыльевой левой фары
-defineProperty("lan_lamp_fail_WR", globalPropertyi("tu154ce/failures/lan_lamp_fail_WR")) -- отказ крыльевой правой фары
-defineProperty("rel_lites_nav", globalPropertyi("sim/operation/failures/rel_lites_nav")) -- отказ на огней
-defineProperty("rel_lites_beac", globalPropertyi("sim/operation/failures/rel_lites_beac")) -- отказ на огней
+defineProperty("main_alarm_fail", globalPropertyi("tu154ce/failures/main_alarm_fail")) -- main siren failure
+defineProperty("speaker_alarm_fail", globalPropertyi("tu154ce/failures/speaker_alarm_fail")) -- alarm speaker failure
 
-defineProperty("main_alarm_fail", globalPropertyi("tu154ce/failures/main_alarm_fail")) -- отказ сирены
-defineProperty("speaker_alarm_fail", globalPropertyi("tu154ce/failures/speaker_alarm_fail")) -- отказ сирены
+defineProperty("absu_ra56_roll_fail", globalPropertyi("tu154ce/failures/absu_ra56_roll_fail")) -- RA-56 roll channel failure
+defineProperty("absu_ra56_pitch_fail", globalPropertyi("tu154ce/failures/absu_ra56_pitch_fail")) -- RA-56 pitch channel failure
+defineProperty("absu_ra56_yaw_fail", globalPropertyi("tu154ce/failures/absu_ra56_yaw_fail")) -- RA-56 yaw channel failure
 
-defineProperty("absu_ra56_roll_fail", globalPropertyi("tu154ce/failures/absu_ra56_roll_fail")) -- отказ ra56
-defineProperty("absu_ra56_pitch_fail", globalPropertyi("tu154ce/failures/absu_ra56_pitch_fail")) -- отказ ra56
-defineProperty("absu_ra56_yaw_fail", globalPropertyi("tu154ce/failures/absu_ra56_yaw_fail")) -- отказ ra56
+defineProperty("absu_at1_fail", globalPropertyi("tu154ce/failures/absu_at1_fail")) -- autothrottle channel 1 failure
+defineProperty("absu_at2_fail", globalPropertyi("tu154ce/failures/absu_at2_fail")) -- autothrottle channel 2 failure
 
-defineProperty("absu_at1_fail", globalPropertyi("tu154ce/failures/absu_at1_fail")) -- отказ AT
-defineProperty("absu_at2_fail", globalPropertyi("tu154ce/failures/absu_at2_fail")) -- отказ AT
-
-defineProperty("absu_damp_roll_fail", globalPropertyi("tu154ce/failures/absu_damp_roll_fail")) -- отказ демперов крена
-defineProperty("absu_damp_pitch_fail", globalPropertyi("tu154ce/failures/absu_damp_pitch_fail")) -- отказ демперов тангажа
-defineProperty("absu_damp_yaw_fail", globalPropertyi("tu154ce/failures/absu_damp_yaw_fail")) -- отказ демперов курса
-defineProperty("absu_contr_roll_fail", globalPropertyi("tu154ce/failures/absu_contr_roll_fail")) -- отказ бокового управления
-defineProperty("absu_contr_pitch_fail", globalPropertyi("tu154ce/failures/absu_contr_pitch_fail")) -- отказ продольного управления
-defineProperty("absu_calc_toga_fail", globalPropertyi("tu154ce/failures/absu_calc_toga_fail")) -- отказ вычислителя УХОД
-defineProperty("absu_calc_roll_fail", globalPropertyi("tu154ce/failures/absu_calc_roll_fail")) -- отказ бокового канала СТУ
-defineProperty("absu_calc_pitch_fail", globalPropertyi("tu154ce/failures/absu_calc_pitch_fail")) -- отказ продольного канала СТУ
+defineProperty("absu_damp_roll_fail", globalPropertyi("tu154ce/failures/absu_damp_roll_fail")) -- roll damper failure
+defineProperty("absu_damp_pitch_fail", globalPropertyi("tu154ce/failures/absu_damp_pitch_fail")) -- pitch damper failure
+defineProperty("absu_damp_yaw_fail", globalPropertyi("tu154ce/failures/absu_damp_yaw_fail")) -- yaw damper failure
+defineProperty("absu_contr_roll_fail", globalPropertyi("tu154ce/failures/absu_contr_roll_fail")) -- lateral control failure
+defineProperty("absu_contr_pitch_fail", globalPropertyi("tu154ce/failures/absu_contr_pitch_fail")) -- longitudinal control failure
+defineProperty("absu_calc_toga_fail", globalPropertyi("tu154ce/failures/absu_calc_toga_fail")) -- TOGA calculator failure
+defineProperty("absu_calc_roll_fail", globalPropertyi("tu154ce/failures/absu_calc_roll_fail")) -- roll channel calculation failure
+defineProperty("absu_calc_pitch_fail", globalPropertyi("tu154ce/failures/absu_calc_pitch_fail")) -- pitch channel calculation failure
 
 
 defineProperty("diss_fail", globalPropertyi("tu154ce/failures/diss_fail")) --
