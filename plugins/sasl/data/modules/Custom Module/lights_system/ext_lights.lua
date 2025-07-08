@@ -5,8 +5,8 @@ defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_righ
 
 defineProperty("bus115_1_volt", globalPropertyf("tu154ce/elec/bus115_1_volt"))
 
-defineProperty("ext_light_cc_left", globalPropertyf("tu154ce/elec/ext_light_cc_left"))-- нагрузка на левую сеть
-defineProperty("ext_light_cc_right", globalPropertyf("tu154ce/elec/ext_light_cc_right"))-- нагрузка на правую сеть
+defineProperty("ext_light_cc_left", globalPropertyf("tu154ce/elec/ext_light_cc_left")) -- exterior light left
+defineProperty("ext_light_cc_right", globalPropertyf("tu154ce/elec/ext_light_cc_right")) -- exterior light right
 
 
 -- lights result
@@ -37,13 +37,13 @@ defineProperty("sim_landing", globalPropertyi("sim/cockpit/electrical/landing_li
 defineProperty("light_open_left", globalPropertyf("tu154ce/anim/light_open_left")) -- light open
 defineProperty("light_open_right", globalPropertyf("tu154ce/anim/light_open_right")) -- light open
 
-defineProperty("white_light_left", globalPropertyi("tu154ce/lights/white_light_left")) -- светимость левого белого огня на крыле
-defineProperty("white_light_right", globalPropertyi("tu154ce/lights/white_light_right")) -- светимость правого белого огня на крыле
-defineProperty("beacon_light_B", globalPropertyi("tu154ce/lights/beacon_light_B")) -- светимость красного маяка
-defineProperty("beacon_light_T", globalPropertyi("tu154ce/lights/beacon_light_T")) -- светимость красного маяка
+defineProperty("white_light_left", globalPropertyi("tu154ce/lights/white_light_left")) -- light left
+defineProperty("white_light_right", globalPropertyi("tu154ce/lights/white_light_right")) -- light right 
+defineProperty("beacon_light_B", globalPropertyi("tu154ce/lights/beacon_light_B")) -- beacon light back 
+defineProperty("beacon_light_T", globalPropertyi("tu154ce/lights/beacon_light_T")) -- beacon light tail
 
-defineProperty("gear_defl", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]")) -- просадка шасси
-defineProperty("deploy_ratio_1", globalProperty("sim/flightmodel2/gear/deploy_ratio[0]")) -- выпуск шасси 1
+defineProperty("gear_defl", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]"))
+defineProperty("deploy_ratio_1", globalProperty("sim/flightmodel2/gear/deploy_ratio[0]"))
 
 
 
@@ -53,8 +53,8 @@ defineProperty("lamp_deploy_WL", globalProperty("sim/aircraft/parts/acf_gear_dep
 defineProperty("lamp_deploy_WR", globalProperty("sim/aircraft/parts/acf_gear_deploy[6]"))  -- deploy of right wing lamp
 
 -- controls
-defineProperty("nav_lights_set", globalPropertyf("tu154ce/lights/nav_lights_set")) -- выключатель нав огней
-defineProperty("strobe_set", globalPropertyf("tu154ce/lights/strobe_set")) -- выключатель красных маяков
+defineProperty("nav_lights_set", globalPropertyf("tu154ce/lights/nav_lights_set")) -- nav light set
+defineProperty("strobe_set", globalPropertyf("tu154ce/lights/strobe_set")) -- strobe light set
 defineProperty("wing_light_left_set", globalPropertyf("tu154ce/lights/wing_light_left_set")) -- выключатель подсвета порогов и крыла
 defineProperty("wing_light_right_set", globalPropertyf("tu154ce/lights/wing_light_right_set")) -- выключатель подсвета порогов и крыла
 defineProperty("tail_light_set", globalPropertyf("tu154ce/lights/tail_light_set")) -- выключатель подсвета хвоста

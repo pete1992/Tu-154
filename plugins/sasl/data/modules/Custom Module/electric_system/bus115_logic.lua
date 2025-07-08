@@ -40,117 +40,116 @@
 
 -- this is logic of 115/200 V buses
 
--- Generator outputs (voltage datarefs)
-defineProperty("gen1_volt_bus",  globalPropertyf("tu154ce/elec/gen1_volt"))  -- Generator 1 voltage (nominal 28.5 V)
-defineProperty("gen2_volt_bus",  globalPropertyf("tu154ce/elec/gen2_volt"))  -- Generator 2 voltage
-defineProperty("gen3_volt_bus",  globalPropertyf("tu154ce/elec/gen3_volt"))  -- Generator 3 voltage
-defineProperty("gen4_volt_bus",  globalPropertyf("tu154ce/elec/gen4_volt"))  -- APU generator voltage
-defineProperty("gpu_volt_bus",   globalPropertyf("tu154ce/elec/gpu_volt"))   -- GPU generator voltage
+-- bus_logic.lua (optimized)
+-- Handles 115 V and emergency buses and distributes currents to generators
 
--- Generator online flags (1 if supplying bus)
-defineProperty("gen1_work_bus",  globalPropertyi("tu154ce/elec/gen1_work"))  -- Gen 1 on bus
-defineProperty("gen2_work_bus",  globalPropertyi("tu154ce/elec/gen2_work"))  -- Gen 2 on bus
-defineProperty("gen3_work_bus",  globalPropertyi("tu154ce/elec/gen3_work"))  -- Gen 3 on bus
-defineProperty("gen4_work_bus",  globalPropertyi("tu154ce/elec/gen4_work"))  -- APU gen on bus
-defineProperty("gpu_work_bus",   globalPropertyi("tu154ce/elec/gpu_work"))   -- GPU on bus
+-- Batch define DataRefs
+local function defineProps(defs)
+    for _, d in ipairs(defs) do
+        defineProperty(d[1], d[3](d[2]))
+    end
+end
 
--- Bus voltage sensors
-defineProperty("bus115_1_volt",  globalPropertyf("tu154ce/elec/bus115_1_volt"))   -- Bus 1 voltage
-defineProperty("bus115_2_volt",  globalPropertyf("tu154ce/elec/bus115_2_volt"))   -- Bus 2 voltage
-defineProperty("bus115_3_volt",  globalPropertyf("tu154ce/elec/bus115_3_volt"))   -- Bus 3 voltage
+defineProps({
+    -- generator voltages
+    {"gen1_volt_bus",  "tu154ce/elec/gen1_volt",        globalPropertyf},
+    {"gen2_volt_bus",  "tu154ce/elec/gen2_volt",        globalPropertyf},
+    {"gen3_volt_bus",  "tu154ce/elec/gen3_volt",        globalPropertyf},
+    {"gen4_volt_bus",  "tu154ce/elec/gen4_volt",        globalPropertyf},
+    {"gpu_volt_bus",   "tu154ce/elec/gpu_volt",         globalPropertyf},
+    -- generator online flags
+    {"gen1_work_bus",  "tu154ce/elec/gen1_work",        globalPropertyi},
+    {"gen2_work_bus",  "tu154ce/elec/gen2_work",        globalPropertyi},
+    {"gen3_work_bus",  "tu154ce/elec/gen3_work",        globalPropertyi},
+    {"gen4_work_bus",  "tu154ce/elec/gen4_work",        globalPropertyi},
+    {"gpu_work_bus",   "tu154ce/elec/gpu_work",         globalPropertyi},
+    -- bus voltages
+    {"bus115_1_volt",  "tu154ce/elec/bus115_1_volt",    globalPropertyf},
+    {"bus115_2_volt",  "tu154ce/elec/bus115_2_volt",    globalPropertyf},
+    {"bus115_3_volt",  "tu154ce/elec/bus115_3_volt",    globalPropertyf},
+    {"bus115_em_1_volt","tu154ce/elec/bus115_em_1_volt",globalPropertyf},
+    {"bus115_em_2_volt","tu154ce/elec/bus115_em_2_volt",globalPropertyf},
+    -- bus currents
+    {"bus115_1_amp",   "tu154ce/elec/bus115_1_amp",      globalPropertyf},
+    {"bus115_2_amp",   "tu154ce/elec/bus115_2_amp",      globalPropertyf},
+    {"bus115_3_amp",   "tu154ce/elec/bus115_3_amp",      globalPropertyf},
+    {"bus115_em_1_amp","tu154ce/elec/bus115_em_1_amp",  globalPropertyf},
+    {"bus115_em_2_amp","tu154ce/elec/bus115_em_2_amp",  globalPropertyf},
+    -- generator loads
+    {"gen1_amp",       "tu154ce/elec/gen1_amp",         globalPropertyf},
+    {"gen2_amp",       "tu154ce/elec/gen2_amp",         globalPropertyf},
+    {"gen3_amp",       "tu154ce/elec/gen3_amp",         globalPropertyf},
+    {"gen4_amp",       "tu154ce/elec/gen4_amp",         globalPropertyf},
+    {"gpu_amp",        "tu154ce/elec/gpu_amp",          globalPropertyf},
+    -- timing & control
+    {"frame_time",     "tu154ce/time/frame_time",       globalPropertyf},
+    {"ismaster",       "scp/api/ismaster",              globalPropertyf},
+})
 
--- Emergency bus voltages mirror main buses
-defineProperty("bus115_em_1_volt", globalPropertyf("tu154ce/elec/bus115_em_1_volt")) -- Emergency Bus 1
-defineProperty("bus115_em_2_volt", globalPropertyf("tu154ce/elec/bus115_em_2_volt")) -- Emergency Bus 2
-
--- Bus current draws (from devices)
-defineProperty("bus115_1_amp",   globalPropertyf("tu154ce/elec/bus115_1_amp"))     -- Bus 1 current draw
-defineProperty("bus115_2_amp",   globalPropertyf("tu154ce/elec/bus115_2_amp"))     -- Bus 2 current draw
-defineProperty("bus115_3_amp",   globalPropertyf("tu154ce/elec/bus115_3_amp"))     -- Bus 3 current draw
-defineProperty("bus115_em_1_amp", globalPropertyf("tu154ce/elec/bus115_em_1_amp")) -- Emerg Bus 1 draw
-defineProperty("bus115_em_2_amp", globalPropertyf("tu154ce/elec/bus115_em_2_amp")) -- Emerg Bus 2 draw
-
--- Generator load outputs (amperage)
-defineProperty("gen1_amp",       globalPropertyf("tu154ce/elec/gen1_amp"))       -- Gen 1 load
-defineProperty("gen2_amp",       globalPropertyf("tu154ce/elec/gen2_amp"))       -- Gen 2 load
-defineProperty("gen3_amp",       globalPropertyf("tu154ce/elec/gen3_amp"))       -- Gen 3 load
-defineProperty("gen4_amp",       globalPropertyf("tu154ce/elec/gen4_amp"))       -- APU gen load
-defineProperty("gpu_amp",        globalPropertyf("tu154ce/elec/gpu_amp"))        -- GPU load
-
--- Flight loop timing
-defineProperty("frame_time",     globalPropertyf("tu154ce/time/frame_time"))     -- Flight frame time
-
--- Smart Copilot
-defineProperty("ismaster",       globalPropertyf("scp/api/ismaster"))            -- Master flag: 0=none,1=slave,2=master
-
-
--- map generators to their DataRefs
+-- Map each generator to its DataRefs
 local gens = {
-  gen1 = { work="gen1_work_bus", volt="gen1_volt_bus", amp="gen1_amp" },
-  gen2 = { work="gen2_work_bus", volt="gen2_volt_bus", amp="gen2_amp" },
-  gen3 = { work="gen3_work_bus", volt="gen3_volt_bus", amp="gen3_amp" },
-  apu  = { work="gen4_work_bus", volt="gen4_volt_bus", amp="gen4_amp" },
-  gpu  = { work="gpu_work_bus",  volt="gpu_volt_bus",  amp="gpu_amp" },
+    gen1 = { work="gen1_work_bus", volt="gen1_volt_bus", amp="gen1_amp" },
+    gen2 = { work="gen2_work_bus", volt="gen2_volt_bus", amp="gen2_amp" },
+    gen3 = { work="gen3_work_bus", volt="gen3_volt_bus", amp="gen3_amp" },
+    apu  = { work="gen4_work_bus", volt="gen4_volt_bus", amp="gen4_amp" },
+    gpu  = { work="gpu_work_bus",  volt="gpu_volt_bus",  amp="gpu_amp" },
 }
 
--- define main buses and their source priority + emergency-amp DataRefs
+-- Define main buses with their priority order and emergency branches
 local busDefs = {
-  {
-    volt  = "bus115_1_volt", amp   = "bus115_1_amp",
-    emVolt= "bus115_em_1_volt", emAmp = "bus115_em_1_amp",
-    order = {"gen1","gen2","gen3","apu","gpu"}
-  },
-  {
-    volt  = "bus115_2_volt", amp   = "bus115_2_amp",
-    emVolt= "bus115_em_2_volt", emAmp = "bus115_em_2_amp",
-    order = {"gen2","gen1","gen3","apu","gpu"}
-  },
-  {
-    volt  = "bus115_3_volt", amp   = "bus115_3_amp",
-    emVolt= nil,             emAmp = nil,
-    order = {"gen3","gen2","gen1","apu","gpu"}
-  },
+    {
+        volt   = "bus115_1_volt", amp   = "bus115_1_amp",
+        emVolt = "bus115_em_1_volt", emAmp = "bus115_em_1_amp",
+        order  = {"gen1","gen2","gen3","apu","gpu"},
+    },
+    {
+        volt   = "bus115_2_volt", amp   = "bus115_2_amp",
+        emVolt = "bus115_em_2_volt", emAmp = "bus115_em_2_amp",
+        order  = {"gen2","gen1","gen3","apu","gpu"},
+    },
+    {
+        volt   = "bus115_3_volt", amp   = "bus115_3_amp",
+        emVolt = nil,            emAmp = nil,
+        order  = {"gen3","gen2","gen1","apu","gpu"},
+    },
 }
 
--- cache locals
+-- Locals for performance
 local get, set = get, set
 local ipairs, pairs = ipairs, pairs
 
--- pick the first available source from a priority list
+-- Pick the first online generator in priority list
 local function pickSource(order)
-  for _, name in ipairs(order) do
-    if get(gens[name].work) == 1 then
-      return get(gens[name].volt), name
+    for _, name in ipairs(order) do
+        if get(gens[name].work) == 1 then
+            return get(gens[name].volt), name
+        end
     end
-  end
-  return 0, nil
+    return 0, nil
 end
 
 function update()
-  -- only master calculation 
-  if get(ismaster) ~= 1 then return end
-  if get(frame_time) <= 0 then return end
+    -- Only master updates
+    if get(ismaster) ~= 1 then return end
+    if get(frame_time) <= 0 then return end
 
-
-  for _, g in pairs(gens) do
-    set(g.amp, 0)
-  end
-
-  for _, bus in ipairs(busDefs) do
-    local v, src = pickSource(bus.order)
-    set(bus.volt, v)
-    if bus.emVolt then set(bus.emVolt, v) end
-
-    local load_main = get(bus.amp)
-    local load_em   = bus.emAmp and get(bus.emAmp) or 0
-    local totalLoad = load_main + load_em
-
-    if src then
-      set(gens[src].amp,
-          get(gens[src].amp) + totalLoad
-      )
+    -- Reset generator loads
+    for _, g in pairs(gens) do
+        set(g.amp, 0)
     end
-  end
+
+    -- Distribute bus currents to active generators
+    for _, bus in ipairs(busDefs) do
+        local voltage, src = pickSource(bus.order)
+        set(bus.volt, voltage)
+        if bus.emVolt then set(bus.emVolt, voltage) end
+
+        local mainLoad = get(bus.amp)
+        local emLoad   = bus.emAmp and get(bus.emAmp) or 0
+        local total    = mainLoad + emLoad
+
+        if src then
+            set(gens[src].amp, get(gens[src].amp) + total)
+        end
+    end
 end
-
-
