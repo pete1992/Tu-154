@@ -1,31 +1,48 @@
-Meet the legendary Tu154M! 
-From its first flight in 1968 this aircraft became the most popular in USSR and in surround countries. There were 918 aircrafts built and some of them still remain in service all over the world.
+Meet the legendary Tu-154M!
 
-This model represents the most detailed simulation of the real Tu154 with all of its systems, performance and flight dynamics. 
-It is made of documents, blueprints, videos and personal consultations of many people, including pilots, engineers and ground stuff. 
-As the reference, the real Tu154M reg. No 85748 from Belavia Airlines was used. 
+From its first flight in 1968, this aircraft became the most popular jetliner in the USSR and many neighboring countries. A total of 918 were built, and some are still in service worldwide.
 
-Right now the model has some neat features:
-- fully functional 3D cockpit
-- fully animated external model with ground stuff
-- dynamic HDR lighting
-- working TCAS with TA/RA mode
-- working EGPWS with "Terrain ahead" warning mode
-- most complicated systems, made as close to real ones as possible
-- resizible 2D panels
+This model represents the most detailed simulation of the real Tu-154, with accurate systems, performance, and flight dynamics. The development draws on documents, blueprints, videos, and direct consultation with pilots, engineers, and ground personnel. As a reference, the real Tu-154M reg. No. 85748 from Belavia Airlines was used.
 
-In future there will also be:
-- SmartCopilot compatibility and profile
-- Crew voices
-- Failures
+Current features:
+
+  -  Fully functional 3D cockpit
+  -  Fully animated external model with ground support equipment
+  -  Dynamic HDR lighting
+  -  TCAS with TA/RA mode
+  -  EGPWS with "Terrain ahead" warning
+  -  Highly accurate and complex systems, simulated as close to reality as possible
+  -  Resizable 2D panels
+
+Project enhancements and ongoing work:
+
+Complete English documentation and comments: All system DataRefs, custom scripts, and code comments are systematically translated from Russian to clear, technical English. This includes electrical, hydraulic, fuel, anti-ice, engine, alarm, checklist, payload, panel, and all custom failure DataRefs, as well as cockpit and panel logic. This is done to further the accesibility for dev´s who don´t speak Russian.  
+System-by-system Lua refactoring: Every Lua script is currenty being rewritten for compatibility with the latest SASL 3.19 plugin and X-Plane 12, using modern, modular, and optimized coding practices.
+This will improve the code performance and enhance the stability.
+Extensive developer documentation: All DataRefs are being cross-checked, clarified, and structured for a future-proof developer environment, allowing easy expansion and troubleshooting by the community.
+Accurate electrical and power logic: The entire electrical system, including all bus logic (27V, 36V, 115V), generator, battery, and transformer behavior, has been redesigned and re-validated based on real-world documentation, enabling advanced failure modes and realistic power consumption modeling.
+Custom failures and safe state logic: Engine, APU, anti-ice, and avionics failures have been reworked to reflect real Tu-154M behavior, with detailed logic for thermal, electrical, and procedural faults.
+SmartCopilot-ready logic: All system scripts are continuously reviewed and updated to ensure compatibility with SmartCopilot multi-crew operations, supporting master/slave data sync and cross-network flight.
+Modern code standards: All code now uses structured batch DataRef definitions, avoids block comments, and features unified technical comments in English.
+Open, modular, and community-oriented: The codebase is continuously improved for maintainability, with every DataRef and system mapped, named, and documented for ease of use and transparency.
+
+Planned for the future:
+
+  -  SmartCopilot profiles and full multi-crew compatibility
+  -  Additional failures and abnormal procedures
+  -  Full interactive manuals and checklists
+
+
+Special thanks to:
+
+  -  Felis, the original author of the Tu-154M project, for his years of dedicated work, accuracy, and for open-sourcing the aircraft and its systems.
+  -  Unicode4all, who took over as lead developer and maintainer for the Community Edition, coordinating the migration to X-Plane 12 and modern SASL, managing the English documentation, 
+     and driving community contributions.
+  -  Belavia staff for providing extensive documentation, photos, and videos of this exact aircraft.
+  -  Andrey Belov for ground vehicle models.
 
 
 
 
-Thanx to Belavia stuff, that provided a lot of documents, photos and videos about this exact aircraft.
-Also thanx to Andrey Belov, that provided ground cars models.
-
-
-System requirements: X-plane 10 64 bit only.
 
 
