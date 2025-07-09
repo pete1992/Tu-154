@@ -1,38 +1,40 @@
 -- this is the MSRP panel
 
--- lights
-defineProperty("msrp_mlp_main", globalPropertyf("tu154ce/lights/small/msrp_mlp_main")) -- МСРП. МЛП ОСН
-defineProperty("msrp_mlp_aux", globalPropertyf("tu154ce/lights/small/msrp_mlp_aux")) -- МСРП. МЛП ДОП
-defineProperty("msrp_up2", globalPropertyf("tu154ce/lights/small/msrp_up2")) -- МСРП. УП2
-defineProperty("msrp_mars", globalPropertyf("tu154ce/lights/small/msrp_mars")) -- МСРП. МАРС
+-- MSRP (Flight Data Recorder) and MARS Panel DataRefs
 
--- buttons
-defineProperty("lamp_test_msrp", globalPropertyf("tu154ce/buttons/lamp_test_msrp")) -- кнопка проверки ламп МСРП
+-- Indicator lamps (MSRP)
+defineProperty("msrp_mlp_main", globalPropertyf("tu154ce/lights/small/msrp_mlp_main")) -- MSRP: Main MLP indicator lamp
+defineProperty("msrp_mlp_aux",  globalPropertyf("tu154ce/lights/small/msrp_mlp_aux"))  -- MSRP: Auxiliary MLP indicator lamp
+defineProperty("msrp_up2",      globalPropertyf("tu154ce/lights/small/msrp_up2"))      -- MSRP: UP2 indicator lamp
+defineProperty("msrp_mars",     globalPropertyf("tu154ce/lights/small/msrp_mars"))     -- MSRP: MARS indicator lamp
 
--- controlls
-defineProperty("msrp_date_ten", globalPropertyi("tu154ce/switchers/eng/msrp_date_ten")) -- МРСП дата число десятки
-defineProperty("msrp_date_one", globalPropertyi("tu154ce/switchers/eng/msrp_date_one")) -- МРСП дата число единицы
-defineProperty("msrp_month_ten", globalPropertyi("tu154ce/switchers/eng/msrp_month_ten")) -- МРСП дата месяц десятки
-defineProperty("msrp_month_one", globalPropertyi("tu154ce/switchers/eng/msrp_month_one")) -- МРСП дата месяц единицы
-defineProperty("msrp_year_ten", globalPropertyi("tu154ce/switchers/eng/msrp_year_ten")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_year_one", globalPropertyi("tu154ce/switchers/eng/msrp_year_one")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_route_hun", globalPropertyi("tu154ce/switchers/eng/msrp_route_hun")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_route_ten", globalPropertyi("tu154ce/switchers/eng/msrp_route_ten")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_route_one", globalPropertyi("tu154ce/switchers/eng/msrp_route_one")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_mlp_1", globalPropertyi("tu154ce/switchers/eng/msrp_mlp_1")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_mlp_2", globalPropertyi("tu154ce/switchers/eng/msrp_mlp_2")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_night_day", globalPropertyi("tu154ce/switchers/eng/msrp_night_day")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_main_switch", globalPropertyi("tu154ce/switchers/eng/msrp_main_switch")) -- кнопка проверки ламп МСРП
+-- Test button
+defineProperty("lamp_test_msrp", globalPropertyf("tu154ce/buttons/lamp_test_msrp"))    -- MSRP: lamp test button
 
-defineProperty("mars_on", globalPropertyi("tu154ce/switchers/ovhd/mars_on")) --  МАРС
+-- Date/Route/MLP/Mode controls
+defineProperty("msrp_date_ten",     globalPropertyi("tu154ce/switchers/eng/msrp_date_ten"))     -- MSRP: date tens digit
+defineProperty("msrp_date_one",     globalPropertyi("tu154ce/switchers/eng/msrp_date_one"))     -- MSRP: date ones digit
+defineProperty("msrp_month_ten",    globalPropertyi("tu154ce/switchers/eng/msrp_month_ten"))    -- MSRP: month tens digit
+defineProperty("msrp_month_one",    globalPropertyi("tu154ce/switchers/eng/msrp_month_one"))    -- MSRP: month ones digit
+defineProperty("msrp_year_ten",     globalPropertyi("tu154ce/switchers/eng/msrp_year_ten"))     -- MSRP: year tens digit
+defineProperty("msrp_year_one",     globalPropertyi("tu154ce/switchers/eng/msrp_year_one"))     -- MSRP: year ones digit
+defineProperty("msrp_route_hun",    globalPropertyi("tu154ce/switchers/eng/msrp_route_hun"))    -- MSRP: route hundreds digit
+defineProperty("msrp_route_ten",    globalPropertyi("tu154ce/switchers/eng/msrp_route_ten"))    -- MSRP: route tens digit
+defineProperty("msrp_route_one",    globalPropertyi("tu154ce/switchers/eng/msrp_route_one"))    -- MSRP: route ones digit
+defineProperty("msrp_mlp_1",        globalPropertyi("tu154ce/switchers/eng/msrp_mlp_1"))        -- MSRP: MLP channel 1 selector
+defineProperty("msrp_mlp_2",        globalPropertyi("tu154ce/switchers/eng/msrp_mlp_2"))        -- MSRP: MLP channel 2 selector
+defineProperty("msrp_night_day",    globalPropertyi("tu154ce/switchers/eng/msrp_night_day"))    -- MSRP: night/day mode switch
+defineProperty("msrp_main_switch",  globalPropertyi("tu154ce/switchers/eng/msrp_main_switch"))  -- MSRP: main power switch
 
+-- MARS system
+defineProperty("mars_on", globalPropertyi("tu154ce/switchers/ovhd/mars_on")) -- MARS: main power switch
 
+-- Power sources
+defineProperty("bus27_volt_left",  globalPropertyf("tu154ce/elec/bus27_volt_left"))  -- 27 V DC left bus voltage
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- 27 V DC right bus voltage
 
--- other sources
-defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- напряжение сети 27
-defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- напряжение сети 27
-
-defineProperty("msrp_recording", globalPropertyi("tu154ce/msrp/msrp_recording")) -- МСРП в режиме записи
+-- Recording state
+defineProperty("msrp_recording", globalPropertyi("tu154ce/msrp/msrp_recording"))     -- MSRP: recording mode flag
 
 
 -- time
@@ -73,19 +75,15 @@ local function set_date()
 	
 	local date_ten = math.floor(system_date.day/10)
 	local date_one = system_date.day - date_ten * 10
-	
 	local month_ten = math.floor(system_date.month/10)
 	local month_one = system_date.month - month_ten * 10
-	
 	local year_thou = math.floor(system_date.year/1000)
 	local year_hun = math.floor((system_date.year - year_thou*1000)/100)
 	local year_ten = math.floor((system_date.year - year_thou*1000 - year_hun*100)/10)
 	local year_one = system_date.year - year_thou*1000 - year_hun*100 - year_ten*10
-	
 	local route_hun = get(msrp_route_hun)
 	local route_ten = get(msrp_route_ten)
 	local route_one = get(msrp_route_one)
-	
 	local flightNum = route_hun*100 + route_ten*10 + route_one
 	
 	
@@ -119,43 +117,33 @@ local function set_date()
 	
 	set(msrp_date_ten, date_ten)
 	set(msrp_date_one, date_one)
-	
 	set(msrp_month_ten, month_ten)
 	set(msrp_month_one, month_one)
-	
 	set(msrp_year_ten, year_ten)
 	set(msrp_year_one, year_one)
-	
 	set(msrp_route_hun, route_hun)
 	set(msrp_route_ten, route_ten)
 	set(msrp_route_one, route_one)
-	
-	
-	
-	
-	
 end
 
 
-set_date() -- set rotary digits once
+set_date()
 
-local msrp_date_ten_last = get(msrp_date_ten)
-local msrp_date_one_last = get(msrp_date_one)
-local msrp_month_ten_last = get(msrp_month_ten)
-local msrp_month_one_last = get(msrp_month_one)
-local msrp_year_ten_last = get(msrp_year_ten)
-local msrp_year_one_last = get(msrp_year_one)
-local msrp_route_hun_last = get(msrp_route_hun)
-local msrp_route_ten_last = get(msrp_route_ten)
-local msrp_route_one_last = get(msrp_route_one)
-
-local msrp_mlp_1_last = get(msrp_mlp_1)
-local msrp_mlp_2_last = get(msrp_mlp_2)
-local msrp_night_day_last = get(msrp_night_day)
-local msrp_main_switch_last = get(msrp_main_switch)
-local mars_on_last = get(mars_on)
-
-local lamp_test_msrp_last = get(lamp_test_msrp)
+	local msrp_date_ten_last = get(msrp_date_ten)
+	local msrp_date_one_last = get(msrp_date_one)
+	local msrp_month_ten_last = get(msrp_month_ten)
+	local msrp_month_one_last = get(msrp_month_one)
+	local msrp_year_ten_last = get(msrp_year_ten)
+	local msrp_year_one_last = get(msrp_year_one)
+	local msrp_route_hun_last = get(msrp_route_hun)
+	local msrp_route_ten_last = get(msrp_route_ten)
+	local msrp_route_one_last = get(msrp_route_one)
+	local msrp_mlp_1_last = get(msrp_mlp_1)
+	local msrp_mlp_2_last = get(msrp_mlp_2)
+	local msrp_night_day_last = get(msrp_night_day)
+	local msrp_main_switch_last = get(msrp_main_switch)
+	local mars_on_last = get(mars_on)
+	local lamp_test_msrp_last = get(lamp_test_msrp)
 
 local function check_controls()
 
@@ -205,7 +193,6 @@ local function check_controls()
 	msrp_route_hun_last = msrp_route_hun_sw
 	msrp_route_ten_last = msrp_route_ten_sw
 	msrp_route_one_last = msrp_route_one_sw
-	
 	msrp_mlp_1_last = msrp_mlp_1_sw
 	msrp_mlp_2_last = msrp_mlp_2_sw
 	msrp_night_day_last = msrp_night_day_sw
@@ -214,12 +201,6 @@ local function check_controls()
 	
 	
 	lamp_test_msrp_last = lamp_test_msrp_sw
-	
-	
-	--------------------
-	-- limit controls --
-
-
 	
 	while msrp_date_ten_sw > 9 do
 		msrp_date_ten_sw = msrp_date_ten_sw - 10
@@ -231,7 +212,6 @@ local function check_controls()
 	
 	set(msrp_date_ten, msrp_date_ten_sw)
 	
-	--
 	while msrp_date_one_sw > 9 do
 		msrp_date_one_sw = msrp_date_one_sw - 10
 	end
@@ -242,7 +222,6 @@ local function check_controls()
 	
 	set(msrp_date_one, msrp_date_one_sw)	
 	
-	--
 	while msrp_month_ten_sw > 9 do
 		msrp_month_ten_sw = msrp_month_ten_sw - 10
 	end
@@ -253,7 +232,6 @@ local function check_controls()
 	
 	set(msrp_month_ten, msrp_month_ten_sw)		
 	
-	--
 	while msrp_month_one_sw > 9 do
 		msrp_month_one_sw = msrp_month_one_sw - 10
 	end
@@ -264,7 +242,6 @@ local function check_controls()
 	
 	set(msrp_month_one, msrp_month_one_sw)		
 	
-	--
 	while msrp_year_ten_sw > 9 do
 		msrp_year_ten_sw = msrp_year_ten_sw - 10
 	end
@@ -274,8 +251,7 @@ local function check_controls()
 	end
 	
 	set(msrp_year_ten, msrp_year_ten_sw)		
-	
-	--
+
 	while msrp_year_one_sw > 9 do
 		msrp_year_one_sw = msrp_year_one_sw - 10
 	end
@@ -286,8 +262,6 @@ local function check_controls()
 	
 	set(msrp_year_one, msrp_year_one_sw)	
 	
-	
-	--
 	while msrp_route_hun_sw > 9 do
 		msrp_route_hun_sw = msrp_route_hun_sw - 10
 	end
@@ -298,7 +272,6 @@ local function check_controls()
 	
 	set(msrp_route_hun, msrp_route_hun_sw)	
 	
-	--
 	while msrp_route_ten_sw > 9 do
 		msrp_route_ten_sw = msrp_route_ten_sw - 10
 	end
@@ -309,7 +282,6 @@ local function check_controls()
 	
 	set(msrp_route_ten, msrp_route_ten_sw)		
 	
-	--
 	while msrp_route_one_sw > 9 do
 		msrp_route_one_sw = msrp_route_one_sw - 10
 	end
@@ -319,11 +291,6 @@ local function check_controls()
 	end
 	
 	set(msrp_route_one, msrp_route_one_sw)		
-	
-	
-	
-	
-
 end
 
 
@@ -384,17 +351,12 @@ local function lamps()
 	
 	local msrp_mlp_main_brt = math.max(mlp_1_brt * lamps_brt, test_btn)
 	set(msrp_mlp_main, smooth_light(msrp_mlp_main_brt, get(msrp_mlp_main)))
-	
 	local msrp_mlp_aux_brt = math.max(mlp_2_brt * lamps_brt, test_btn) 
 	set(msrp_mlp_aux, smooth_light(msrp_mlp_aux_brt, get(msrp_mlp_aux)))
-	
 	local msrp_up2_brt = math.max(lamps_brt, test_btn) 
 	set(msrp_up2, smooth_light(msrp_up2_brt, get(msrp_up2)))
-	
 	local msrp_mars_brt = math.max(get(mars_on) * lamps_brt, test_btn)
 	set(msrp_mars, smooth_light(msrp_mars_brt, get(msrp_mars)))
-	
-	
 end
 
 

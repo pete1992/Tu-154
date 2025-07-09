@@ -1,147 +1,111 @@
 -- this is MSRP recording logic
 
 -- power and controls
-defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- напряжение сети 27
-defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- напряжение сети 27
+-- Power and Controls for MSRP (Flight Data Recorder Panel)
 
-defineProperty("msrp_recording", globalPropertyi("tu154ce/msrp/msrp_recording")) -- МСРП в режиме записи
-
-defineProperty("msrp_date_ten", globalPropertyf("tu154ce/switchers/eng/msrp_date_ten")) -- МРСП дата число десятки
-defineProperty("msrp_date_one", globalPropertyf("tu154ce/switchers/eng/msrp_date_one")) -- МРСП дата число единицы
-defineProperty("msrp_month_ten", globalPropertyf("tu154ce/switchers/eng/msrp_month_ten")) -- МРСП дата месяц десятки
-defineProperty("msrp_month_one", globalPropertyf("tu154ce/switchers/eng/msrp_month_one")) -- МРСП дата месяц единицы
-defineProperty("msrp_year_ten", globalPropertyf("tu154ce/switchers/eng/msrp_year_ten")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_year_one", globalPropertyf("tu154ce/switchers/eng/msrp_year_one")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_route_hun", globalPropertyf("tu154ce/switchers/eng/msrp_route_hun")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_route_ten", globalPropertyf("tu154ce/switchers/eng/msrp_route_ten")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_route_one", globalPropertyf("tu154ce/switchers/eng/msrp_route_one")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_mlp_1", globalPropertyf("tu154ce/switchers/eng/msrp_mlp_1")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_mlp_2", globalPropertyf("tu154ce/switchers/eng/msrp_mlp_2")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_night_day", globalPropertyf("tu154ce/switchers/eng/msrp_night_day")) -- кнопка проверки ламп МСРП
-defineProperty("msrp_main_switch", globalPropertyf("tu154ce/switchers/eng/msrp_main_switch")) -- главный выключатель
-
-
-
--- new sources
-
-
+-- Power source (27V DC bus voltages)
+defineProperty("bus27_volt_left",  globalPropertyf("tu154ce/elec/bus27_volt_left"))   -- 27 V DC left bus voltage
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right"))  -- 27 V DC right bus voltage
+-- MSRP Recording state
+defineProperty("msrp_recording", globalPropertyi("tu154ce/msrp/msrp_recording"))      -- MSRP: recording mode flag
+-- Date selector controls (MSRP)
+defineProperty("msrp_date_ten",   globalPropertyf("tu154ce/switchers/eng/msrp_date_ten"))   -- MSRP: day tens digit selector
+defineProperty("msrp_date_one",   globalPropertyf("tu154ce/switchers/eng/msrp_date_one"))   -- MSRP: day ones digit selector
+defineProperty("msrp_month_ten",  globalPropertyf("tu154ce/switchers/eng/msrp_month_ten"))  -- MSRP: month tens digit selector
+defineProperty("msrp_month_one",  globalPropertyf("tu154ce/switchers/eng/msrp_month_one"))  -- MSRP: month ones digit selector
+defineProperty("msrp_year_ten",   globalPropertyf("tu154ce/switchers/eng/msrp_year_ten"))   -- MSRP: year tens digit selector
+defineProperty("msrp_year_one",   globalPropertyf("tu154ce/switchers/eng/msrp_year_one"))   -- MSRP: year ones digit selector
+-- Route selector controls (MSRP)
+defineProperty("msrp_route_hun",  globalPropertyf("tu154ce/switchers/eng/msrp_route_hun"))  -- MSRP: route hundreds digit selector
+defineProperty("msrp_route_ten",  globalPropertyf("tu154ce/switchers/eng/msrp_route_ten"))  -- MSRP: route tens digit selector
+defineProperty("msrp_route_one",  globalPropertyf("tu154ce/switchers/eng/msrp_route_one"))  -- MSRP: route ones digit selector
+-- MLP channel selectors & main switch
+defineProperty("msrp_mlp_1",      globalPropertyf("tu154ce/switchers/eng/msrp_mlp_1"))      -- MSRP: MLP channel 1 selector
+defineProperty("msrp_mlp_2",      globalPropertyf("tu154ce/switchers/eng/msrp_mlp_2"))      -- MSRP: MLP channel 2 selector
+-- Night/Day mode & main power
+defineProperty("msrp_night_day",  globalPropertyf("tu154ce/switchers/eng/msrp_night_day"))  -- MSRP: night/day mode switch
+defineProperty("msrp_main_switch",globalPropertyf("tu154ce/switchers/eng/msrp_main_switch"))-- MSRP: main power switch
 defineProperty("total_flight_time_sec", globalPropertyf("sim/time/total_flight_time_sec"))
-
 defineProperty("zulu_time_hours", globalPropertyf("sim/cockpit2/clock_timer/zulu_time_hours"))
 defineProperty("zulu_time_minutes", globalPropertyf("sim/cockpit2/clock_timer/zulu_time_minutes"))
 defineProperty("zulu_time_seconds", globalPropertyf("sim/cockpit2/clock_timer/zulu_time_seconds"))
-
 defineProperty("latitude", globalPropertyf("sim/flightmodel/position/latitude")) -- degrees	The latitude of the aircraft
 defineProperty("longitude", globalPropertyf("sim/flightmodel/position/longitude")) -- degrees The longitude of the aircraft
 defineProperty("true_crs", globalPropertyf("sim/flightmodel/position/true_psi")) -- degrees True course of the aircraft
 defineProperty("MSL", globalPropertyf("sim/flightmodel/position/elevation")) -- altitude MSL
-
-
-
-defineProperty("mgv_pitch", globalPropertyf("tu154ce/gyro/mgv_contr_pitch")) -- тангаж на АГР + нос вверх
-defineProperty("mgv_roll", globalPropertyf("tu154ce/gyro/mgv_contr_roll")) -- крен на АГР + в право
-defineProperty("sideslip_degrees", globalPropertyf("sim/cockpit2/gauges/indicators/sideslip_degrees"))
-
-defineProperty("yoke_pitch", globalPropertyf("tu154ce/controlls/yoke_pitch")) -- поворот штурвала ко тангажу
-defineProperty("yoke_roll", globalPropertyf("tu154ce/controlls/yoke_roll")) -- поворот штурвала ко тангажу
-defineProperty("pedals_turn", globalPropertyf("tu154ce/controlls/pedals")) -- поворот штурвала ко тангажу
-
-defineProperty("int_pitch_trim", globalPropertyf("tu154ce/trimmers/int_pitch_trim")) -- положение триммера руля высоты
-defineProperty("int_roll_trim", globalPropertyf("tu154ce/trimmers/int_roll_trim")) -- положение триммера элеронов
-defineProperty("int_yaw_trim", globalPropertyf("tu154ce/trimmers/int_yaw_trim")) -- положение триммера руля направления
-
-defineProperty("stab_ind", globalPropertyf("tu154ce/gauges/misc/stab_ind")) -- индикатор положения стаб
-defineProperty("flap_left_ind", globalPropertyf("tu154ce/gauges/misc/flap_left_ind")) -- индикатор положения стаб
-defineProperty("flap_right_ind", globalPropertyf("tu154ce/gauges/misc/flap_right_ind")) -- индикатор положения стаб
+-- MGV gyro/AGR feedback
+defineProperty("mgv_pitch", globalPropertyf("tu154ce/gyro/mgv_contr_pitch"))    -- MGV: pitch signal (AGR) – nose up positive
+defineProperty("mgv_roll",  globalPropertyf("tu154ce/gyro/mgv_contr_roll"))     -- MGV: roll signal (AGR) – right wing down positive
+-- Sideslip
+defineProperty("sideslip_degrees", globalPropertyf("sim/cockpit2/gauges/indicators/sideslip_degrees")) -- Sideslip angle (degrees)
+-- Flight control positions
+defineProperty("yoke_pitch",   globalPropertyf("tu154ce/controlls/yoke_pitch"))  -- Yoke pitch deflection (nose up positive)
+defineProperty("yoke_roll",    globalPropertyf("tu154ce/controlls/yoke_roll"))   -- Yoke roll deflection (right wing down positive)
+defineProperty("pedals_turn",  globalPropertyf("tu154ce/controlls/pedals"))      -- Rudder pedal deflection (right positive)
+-- Trim positions (internal)
+defineProperty("int_pitch_trim", globalPropertyf("tu154ce/trimmers/int_pitch_trim")) -- Elevator trim position (internal logic)
+defineProperty("int_roll_trim",  globalPropertyf("tu154ce/trimmers/int_roll_trim"))  -- Aileron trim position (internal logic)
+defineProperty("int_yaw_trim",   globalPropertyf("tu154ce/trimmers/int_yaw_trim"))   -- Rudder trim position (internal logic)
+-- Indicators (panel gauges)
+defineProperty("stab_ind",        globalPropertyf("tu154ce/gauges/misc/stab_ind"))         -- Stabilizer position indicator
+defineProperty("flap_left_ind",   globalPropertyf("tu154ce/gauges/misc/flap_left_ind"))    -- Left flap position indicator
+defineProperty("flap_right_ind",  globalPropertyf("tu154ce/gauges/misc/flap_right_ind"))   -- Right flap position indicator
 defineProperty("slats", globalPropertyf("sim/flightmodel2/controls/slat1_deploy_ratio")) -- slats position. this one works too
-
-defineProperty("ail_L", globalPropertyf("sim/flightmodel/controls/wing3l_ail1def")) -- aileron left Degrees, positive is trailing-edge down. +- 20
-defineProperty("ail_R", globalPropertyf("sim/flightmodel/controls/wing3r_ail1def")) -- aileron right Degrees, positive is trailing-edge down. +- 20
-
+defineProperty("ail_L", globalPropertyf("sim/flightmodel/controls/wing3l_ail1def")) -- aileron left Degrees, positive is trailing-edge down
+defineProperty("ail_R", globalPropertyf("sim/flightmodel/controls/wing3r_ail1def")) -- aileron right Degrees, positive is trailing-edge down
 defineProperty("elevator_L", globalPropertyf("sim/flightmodel/controls/hstab1_elv1def")) -- Degrees, positive is trailing-edge down.
 defineProperty("elevator_R", globalPropertyf("sim/flightmodel/controls/hstab2_elv1def")) -- Degrees, positive is trailing-edge down.
-
 defineProperty("rudder", globalPropertyf("sim/flightmodel/controls/vstab2_rud1def")) -- degrees, positive is trailing-edge left
-
 --defineProperty("speedbrake_ratio", globalPropertyf("sim/cockpit2/controls/speedbrake_ratio")) -- sim speedbrake lever
-
 -- spoilers
 defineProperty("spd_brk_inn_L", globalPropertyf("sim/flightmodel/controls/wing1l_spo1def")) -- inner speedbrake left Degrees
 defineProperty("spd_brk_inn_R", globalPropertyf("sim/flightmodel/controls/wing1r_spo1def")) -- inner speedbrake right Degrees
-
 defineProperty("spd_brk_mid_L", globalPropertyf("sim/flightmodel/controls/wing2l_spo2def")) -- middle speedbrake left Degrees
 defineProperty("spd_brk_mid_R", globalPropertyf("sim/flightmodel/controls/wing2r_spo2def")) -- middle speedbrake right Degrees
-
 defineProperty("roll_spoil_L", globalPropertyf("sim/flightmodel/controls/wing2l_spo1def")) -- roll spoiler left Degrees
 defineProperty("roll_spoil_R", globalPropertyf("sim/flightmodel/controls/wing2r_spo1def")) -- roll spoiler right Degrees
-
-
 defineProperty("msl_alt", globalPropertyf("sim/flightmodel/position/elevation"))  -- phisical altitude MSL. meters
 defineProperty("msl_press", globalPropertyf("sim/weather/barometer_sealevel_inhg"))  -- pressire at sea level in.Hg
-defineProperty("rv5_alt", globalPropertyf("tu154ce/misc/rv5_alt_left"))  -- высота на левом высотомере
-defineProperty("vvi", globalPropertyf("sim/cockpit2/gauges/indicators/vvi_fpm_pilot")) -- vertical speed in ft/min
-defineProperty("aoa_ind", globalPropertyf("tu154ce/gauges/misc/aoa_ind")) -- индикатор угла атаки
-defineProperty("gforce_ind", globalPropertyf("tu154ce/gauges/misc/gforce_ind")) -- индикатор макс перегрузки
+defineProperty("rv5_alt",    globalPropertyf("tu154ce/misc/rv5_alt_left"))   -- Altitude on left RV5 altimeter (meters)
+defineProperty("vvi",        globalPropertyf("sim/cockpit2/gauges/indicators/vvi_fpm_pilot")) -- Vertical speed indicator (feet per minute)
+defineProperty("aoa_ind",    globalPropertyf("tu154ce/gauges/misc/aoa_ind")) -- Angle of attack indicator (degrees)
+defineProperty("gforce_ind", globalPropertyf("tu154ce/gauges/misc/gforce_ind")) -- G-load (max acceleration) indicator
 defineProperty("ias", globalPropertyf("sim/cockpit2/gauges/indicators/airspeed_kts_pilot"))
 defineProperty("mach_svs", globalPropertyf("tu154ce/svs/machno")) -- Mach number
-
-defineProperty("course_gpk", globalPropertyf("tu154ce/tks/course_gpk")) -- результирующий курс ТКС - ГПК
-defineProperty("course_gmk", globalPropertyf("tu154ce/tks/course_gmk")) -- результирующий курс ТКС - ГМК
-
-defineProperty("rpm_high_1", globalPropertyf("tu154ce/gauges/engine/rpm_high_1")) -- обороты турбины высокого давления №1
-defineProperty("rpm_high_2", globalPropertyf("tu154ce/gauges/engine/rpm_high_2")) -- обороты турбины высокого давления №2
-defineProperty("rpm_high_3", globalPropertyf("tu154ce/gauges/engine/rpm_high_3")) -- обороты турбины высокого давления №3
-
+defineProperty("course_gpk", globalPropertyf("tu154ce/tks/course_gpk")) -- TKS system: resulting magnetic course (GPK)
+defineProperty("course_gmk", globalPropertyf("tu154ce/tks/course_gmk")) -- TKS system: resulting gyro course (GMK)
+defineProperty("rpm_high_1", globalPropertyf("tu154ce/gauges/engine/rpm_high_1")) -- N2 (high-pressure turbine) RPM, engine 1
+defineProperty("rpm_high_2", globalPropertyf("tu154ce/gauges/engine/rpm_high_2")) -- N2 (high-pressure turbine) RPM, engine 2
+defineProperty("rpm_high_3", globalPropertyf("tu154ce/gauges/engine/rpm_high_3")) -- N2 (high-pressure turbine) RPM, engine 3
 defineProperty("ENGN_propmode_1", globalProperty("sim/flightmodel/engine/ENGN_propmode[0]"))
 defineProperty("ENGN_propmode_2", globalProperty("sim/flightmodel/engine/ENGN_propmode[1]"))
 defineProperty("ENGN_propmode_3", globalProperty("sim/flightmodel/engine/ENGN_propmode[2]"))
-
-
-defineProperty("fuel_flow_1", globalPropertyf("tu154ce/gauges/eng/fuel_flow_1")) -- расход топлива двиг 1
-defineProperty("fuel_flow_2", globalPropertyf("tu154ce/gauges/eng/fuel_flow_2")) -- расход топлива двиг 2
-defineProperty("fuel_flow_3", globalPropertyf("tu154ce/gauges/eng/fuel_flow_3")) -- расход топлива двиг 3
-
+defineProperty("fuel_flow_1", globalPropertyf("tu154ce/gauges/eng/fuel_flow_1")) -- engine 1 fuel flow rate
+defineProperty("fuel_flow_2", globalPropertyf("tu154ce/gauges/eng/fuel_flow_2")) -- engine 2 fuel flow rate
+defineProperty("fuel_flow_3", globalPropertyf("tu154ce/gauges/eng/fuel_flow_3")) -- engine 3 fuel flow rate
 defineProperty("m_total", globalPropertyf("sim/flightmodel/weight/m_total")) -- kgs	Total Weight
 defineProperty("m_fuel", globalPropertyf("sim/flightmodel/weight/m_fuel_total")) -- kgs	Fuel Tank Weight - for 9 tanks
-defineProperty("cg_pos_actual", globalPropertyf("tu154ce/misc/cg_pos_actual")) -- актуальное положение CG
-
-defineProperty("deflection_mtr_3", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]")) -- 
-
-defineProperty("roll_main_mode", globalPropertyi("tu154ce/absu/roll_main_mode")) -- основной режим АБСУ по крену. 0 - выкл, 1 - штурвальный - 2 - стаб
-defineProperty("pitch_main_mode", globalPropertyi("tu154ce/absu/pitch_main_mode")) -- основной режим АБСУ по тангажу. 0 - выкл, 1 - штурвальный - 2 - стаб
-defineProperty("stu_mode", globalPropertyi("tu154ce/absu/stu_mode")) -- режимы автомата тяги 0 - выкл, 1 - вкл, 2 - готов, 3 стаб, 4 - уход	
-
+defineProperty("cg_pos_actual", globalPropertyf("tu154ce/misc/cg_pos_actual")) -- current center of gravity (CG) position
+defineProperty("deflection_mtr_3", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]")) -- main gear #3 tire vertical deflection (meters)
+defineProperty("roll_main_mode", globalPropertyi("tu154ce/absu/roll_main_mode")) -- ABSU roll main mode: 0=off, 1=manual, 2=stabilized
+defineProperty("pitch_main_mode", globalPropertyi("tu154ce/absu/pitch_main_mode")) -- ABSU pitch main mode: 0=off, 1=manual, 2=stabilized
+defineProperty("stu_mode", globalPropertyi("tu154ce/absu/stu_mode")) -- ATS (automatic thrust) mode: 0=off, 1=on, 2=armed, 3=stabilized, 4=go-around
 defineProperty("deploy_ratio_1", globalProperty("sim/flightmodel2/gear/deploy_ratio[0]")) -- 
 defineProperty("deploy_ratio_2", globalProperty("sim/flightmodel2/gear/deploy_ratio[1]")) -- 
 defineProperty("deploy_ratio_3", globalProperty("sim/flightmodel2/gear/deploy_ratio[2]")) -- 
-
 defineProperty("outer_marker", globalPropertyi("sim/cockpit/misc/outer_marker_lit"))   -- runway markers
 defineProperty("middle_marker", globalPropertyi("sim/cockpit/misc/middle_marker_lit"))
 defineProperty("inner_marker", globalPropertyi("sim/cockpit/misc/inner_marker_lit"))
-
 defineProperty("nav_cs_flag", globalPropertyi("tu154ce/radio/nav1_cs_flag"))
 defineProperty("nav_gs_flag", globalPropertyi("tu154ce/radio/nav1_gs_flag"))
-
 defineProperty("nav_cs", globalPropertyf("tu154ce/radio/nav1_cs"))
 defineProperty("nav_gs", globalPropertyf("tu154ce/radio/nav1_gs"))
-
-
 defineProperty("wind_direction_degt", globalPropertyf("sim/weather/wind_direction_degt"))
 defineProperty("wind_speed_kt", globalPropertyf("sim/weather/wind_speed_kt"))
-
-
 -- currents
 defineProperty("msrp_27_L_cc", globalPropertyf("tu154ce/msrp/msrp_27_L_cc")) -- нагрузка на сеть
 defineProperty("msrp_27_R_cc", globalPropertyf("tu154ce/msrp/msrp_27_R_cc")) -- нагрузка на сеть
-
-
-
-
-
-
 defineProperty("msrp_power", globalPropertyi("tu154ce/msrp/msrp_power"))  -- MSRP power
-
-
 -- time
 defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- flight time
 
@@ -167,9 +131,6 @@ local function createFileName()
 	panel_numbers = date_ten .. date_one .."_".. month_ten .. month_one .."_".. year_ten .. year_one .."_".. route_hun .. route_ten .. route_one
 	
 	filename = sasl.getAircraftPath().."/black_box/".. panel_numbers .. ".bbox"
-	
-
-
 end
 
 createFileName()
@@ -216,15 +177,12 @@ function create_file()
 			savefile:write("Elevator R\t") -- 21
 			savefile:write("Rudder\t") -- 22
 			--savefile:write("Spoiler hnd\t") -- 23
-			
 			savefile:write("Spoiler OUT L\t") -- 23
 			savefile:write("Spoiler MID L\t") -- 23
 			savefile:write("Spoiler INN L\t") -- 23
-			
 			savefile:write("Spoiler OUT R\t") -- 23
 			savefile:write("Spoiler MID R\t") -- 23
 			savefile:write("Spoiler INN R\t") -- 23
-			
 			savefile:write("Baro alt\t") -- 24
 			savefile:write("Radio alt\t") -- 25
 			savefile:write("Vertical spd\t") -- 26
@@ -234,15 +192,12 @@ function create_file()
 			savefile:write("Mach No\t") -- 39
 			savefile:write("Mag CRS\t") -- 31
 			savefile:write("TKS CRS\t") -- 32
-			
 			savefile:write("ILS CRS\t") -- ILS Course
 			savefile:write("ILS GS\t") -- ILS GS
 			savefile:write("CRS Flag\t") -- CRS Flag
 			savefile:write("GS Flag\t") -- GS Flag
-			
 			savefile:write("Wind dir\t") -- Wind direction
 			savefile:write("Wind speed\t") -- Wind speed
-			
 			savefile:write("ENG 1 RPM\t") -- 33
 			savefile:write("ENG 2 RPM\t") -- 34
 			savefile:write("ENG 3 RPM\t") -- 35
@@ -259,10 +214,8 @@ function create_file()
 			savefile:write("ABSU AT mode\t") -- 46
 			savefile:write("Marker\t") -- 47 off, inn, mid, out
 			--savefile:write("ILS est\t") -- 48
-
 			savefile:write("\n") -- end of line
-		
-		savefile:write("2\t") -- variables units
+			savefile:write("2\t") -- variables units
 			savefile:write("sec\t") -- Sim time
 			savefile:write("HH:MM:SS\t") -- ZULU time
 			savefile:write("deg\t") -- Latitude
@@ -288,14 +241,12 @@ function create_file()
 			savefile:write("deg\t") -- Elevator R
 			savefile:write("deg\t") -- Rudder
 			--savefile:write("ratio\t") -- Spoiler hnd
-			
 			savefile:write("ratio\t") -- Spoiler hnd
 			savefile:write("ratio\t") -- Spoiler hnd
 			savefile:write("ratio\t") -- Spoiler hnd
 			savefile:write("ratio\t") -- Spoiler hnd
 			savefile:write("ratio\t") -- Spoiler hnd
 			savefile:write("ratio\t") -- Spoiler hnd
-			
 			savefile:write("m\t") -- Baro alt
 			savefile:write("m\t") -- Radio alt
 			savefile:write("m/s\t") -- Vertical spd
@@ -305,15 +256,12 @@ function create_file()
 			savefile:write("M\t") -- Mach No
 			savefile:write("deg\t") -- Mag CRS
 			savefile:write("deg\t") -- TKS CRS
-			
 			savefile:write("dot\t") -- ILS Course
 			savefile:write("dot\t") -- ILS GS
 			savefile:write("bool\t") -- CRS Flag
 			savefile:write("bool\t") -- GS Flag
-			
 			savefile:write("deg\t") -- Wind direction
 			savefile:write("km/h\t") -- Wind speed
-			
 			savefile:write("%\t") -- ENG 1 N1
 			savefile:write("%\t") -- ENG 2 N1
 			savefile:write("%\t") -- ENG 3 N1
@@ -323,18 +271,15 @@ function create_file()
 			savefile:write("kg\t") -- Total weight
 			savefile:write("%MAC\t") -- Total CG
 			savefile:write("kg\t") -- Total fuel
-			
 			savefile:write("bool\t") -- On Ground
 			savefile:write("bool\t") -- Gear Down
 			savefile:write("mode\t") -- ABSU Roll mode
 			savefile:write("mode\t") -- ABSU Pitch mode
 			savefile:write("mode\t") -- ABSU AT mode
 			savefile:write("mode\t") -- Marker
-			--savefile:write("bool\t") -- ILS est
-			
+			--savefile:write("bool\t") -- ILS est	
 			savefile:write("\n") -- end of line
-
-		savefile:write("3\t") -- Limits
+			savefile:write("3\t") -- Limits
 			savefile:write("0/0\t") -- Sim time
 			savefile:write("0/0\t") -- ZULU time
 			savefile:write("0/0\t") -- Latitude
@@ -360,14 +305,12 @@ function create_file()
 			savefile:write("-20/25\t") -- Elevator R
 			savefile:write("-25/25\t") -- Rudder
 			--savefile:write("0/1\t") -- Spoiler hnd
-			
 			savefile:write("0/1\t") -- Spoiler hnd
 			savefile:write("0/1\t") -- Spoiler hnd
 			savefile:write("0/1\t") -- Spoiler hnd
 			savefile:write("0/1\t") -- Spoiler hnd
 			savefile:write("0/1\t") -- Spoiler hnd
-			savefile:write("0/1\t") -- Spoiler hnd
-			
+			savefile:write("0/1\t") -- Spoiler hnd		
 			savefile:write("0/0\t") -- Baro alt
 			savefile:write("0/900\t") -- Radio alt
 			savefile:write("-30/30\t") -- Vertical spd
@@ -376,16 +319,13 @@ function create_file()
 			savefile:write("-100/600\t") -- Airspeed
 			savefile:write("-0.2/0.86\t") -- Mach No
 			savefile:write("0/0\t") -- Mag CRS
-			savefile:write("0/0\t") -- TKS CRS
-			
+			savefile:write("0/0\t") -- TKS CRS	
 			savefile:write("-1/1\t") -- ILS Course
 			savefile:write("-1/1\t") -- ILS GS
 			savefile:write("0/0\t") -- CRS Flag
 			savefile:write("0/0\t") -- GS Flag
-			
 			savefile:write("0/0\t") -- Wind direction
 			savefile:write("0/0\t") -- Wind speed
-			
 			savefile:write("40/96\t") -- ENG 1 N1
 			savefile:write("40/96\t") -- ENG 2 N1
 			savefile:write("40/96\t") -- ENG 3 N1
@@ -402,11 +342,8 @@ function create_file()
 			savefile:write("0/0\t") -- ABSU AT mode 
 			savefile:write("0/0\t") -- Marker
 			--savefile:write("0/0\t") -- ILS est
-
 			savefile:write("\n") -- end of line
-		
-		
-		savefile:write("4\t") -- Groups
+			savefile:write("4\t") -- Groups
 			savefile:write("time\t") -- Sim time
 			savefile:write("time\t") -- ZULU time
 			savefile:write("coordinates\t") -- Latitude
@@ -432,14 +369,12 @@ function create_file()
 			savefile:write("controls\t") -- Elevator R
 			savefile:write("controls\t") -- Rudder
 			--savefile:write("spoilers\t") -- Spoiler hnd
-			
 			savefile:write("spoilers\t") -- Spoiler hnd
 			savefile:write("spoilers\t") -- Spoiler hnd
 			savefile:write("spoilers\t") -- Spoiler hnd
 			savefile:write("spoilers\t") -- Spoiler hnd
 			savefile:write("spoilers\t") -- Spoiler hnd
 			savefile:write("spoilers\t") -- Spoiler hnd
-			
 			savefile:write("altitude\t") -- Baro alt
 			savefile:write("altitude\t") -- Radio alt
 			savefile:write("vertical speed\t") -- Vertical spd
@@ -448,16 +383,13 @@ function create_file()
 			savefile:write("airspeed\t") -- Airspeed
 			savefile:write("mach\t") -- Mach No
 			savefile:write("course\t") -- Mag CRS
-			savefile:write("course\t") -- TKS CRS
-			
+			savefile:write("course\t") -- TKS CRS	
 			savefile:write("ILS\t") -- ILS Course
 			savefile:write("ILS\t") -- ILS GS
 			savefile:write("ILS\t") -- CRS Flag
 			savefile:write("ILS\t") -- GS Flag
-			
 			savefile:write("course\t") -- Wind direction
 			savefile:write("wind speed\t") -- Wind speed
-			
 			savefile:write("engine RPM\t") -- ENG 1 N1
 			savefile:write("engine RPM\t") -- ENG 2 N1
 			savefile:write("engine RPM\t") -- ENG 3 N1
@@ -474,7 +406,6 @@ function create_file()
 			savefile:write("event\t") -- ABSU AT mode 
 			savefile:write("event\t") -- Marker
 			--savefile:write("event\t") -- ILS est
-
 			savefile:write("\n") -- end of line
 		
 		--savefile:write("#(sek)\tHH:MM:SS\t(deg)\t(deg)\t(deg)\t(m)\t(m)\t(km/h)\t(m/sek)\t(deg)\t(g)\t(mm)\t(deg)\t(mm)\t(deg)\t(deg)\t(deg)\t(deg)\t(deg)\t(rpm)\t(rpm)\t(t/hour)\t(deg)\t(deg)\n\n")
@@ -496,133 +427,139 @@ function write_file() -- write parameters to file
 	if savefile then
 		
 		savefile:write("9\t") -- recorded data
-			-- sim time
-			savefile:write(math.floor(get(total_flight_time_sec)*100)*0.01, "\t") 
-			
-			-- zulu time
-			local ZULU = get(zulu_time_hours)..":"..get(zulu_time_minutes)..":"..get(zulu_time_seconds)
-			savefile:write(ZULU.."\t") -- 2
-			
-			-- latitude
-			savefile:write(math.floor(get(latitude)*1000000)*0.000001, "\t") -- 3
-			
-			-- longtitude
-			savefile:write(math.floor(get(longitude)*1000000)*0.000001, "\t") -- 4
-			
-			-- True course
-			savefile:write(math.floor(get(true_crs)*100)*0.01, "\t") -- 4
-			
-			-- MSL
-			savefile:write(math.floor(get(MSL)*100)*0.01, "\t") -- 4
-			
-			-- pitch, roll, slip
-			local pitch = get(mgv_pitch)
-			if pitch > 0 then pitch = math.floor(pitch*100)*0.01
-			elseif pitch < 0 then pitch = math.ceil(pitch*100)*0.01 end
+		-- sim time
+		savefile:write(math.floor(get(total_flight_time_sec)*100)*0.01, "\t") 
 		
-			savefile:write(pitch, "\t")
-			
-			local roll = get(mgv_roll)
-			if roll > 0 then roll = math.floor(roll*100)*0.01
-			elseif roll < 0 then roll = math.ceil(roll*100)*0.01 end
-			
-			savefile:write(roll, "\t") 
-			
-			local slip = get(sideslip_degrees)
-			if slip > 0 then slip = math.floor(slip*100)*0.01
-			elseif slip < 0 then slip = math.ceil(slip*100)*0.01 end
-			
-			savefile:write(slip, "\t") 
-			
-			-- yoke pos
-			local Y_pitch = get(yoke_pitch)
-			if Y_pitch > 0 then Y_pitch = math.floor(Y_pitch*100)*0.01
-			elseif Y_pitch < 0 then Y_pitch = math.ceil(Y_pitch*100)*0.01 end
-			
-			savefile:write(Y_pitch, "\t") 
-			
-			local Y_roll = get(yoke_roll)
-			if Y_roll > 0 then Y_roll = math.floor(Y_roll*100)*0.01
-			elseif Y_roll < 0 then Y_roll = math.ceil(Y_roll*100)*0.01 end
-			
-			savefile:write(Y_roll, "\t")
-			
-			local Y_yaw = get(pedals_turn)
-			if Y_yaw > 0 then Y_yaw = math.floor(Y_yaw*100)*0.01
-			elseif Y_yaw < 0 then Y_yaw = math.ceil(Y_yaw*100)*0.01 end
-			
-			savefile:write(Y_yaw, "\t")
-			
-
-			-- trimmers
-			local T_pitch = get(int_pitch_trim)
-			if T_pitch > 0 then T_pitch = math.floor(T_pitch*100)*0.01
-			elseif T_pitch < 0 then T_pitch = math.ceil(T_pitch*100)*0.01 end
-			
-			savefile:write(T_pitch, "\t")
-			
-			local T_roll = get(int_roll_trim)
-			if T_roll > 0 then T_roll = math.floor(T_roll*100)*0.01
-			elseif T_roll < 0 then T_roll = math.ceil(T_roll*100)*0.01 end
-			
-			savefile:write(T_roll, "\t")
-			
-			local T_yaw = get(int_yaw_trim)
-			if T_yaw > 0 then T_yaw = math.floor(T_yaw*100)*0.01
-			elseif T_yaw < 0 then T_yaw = math.ceil(T_yaw*100)*0.01 end
-			
-			savefile:write(T_yaw, "\t")
-			
-			
-			-- mechanics
-			
-			savefile:write(math.floor(get(stab_ind)*100)*0.01 .."\t") 
-			
-			savefile:write(math.floor(get(flap_left_ind)*100)*0.01 .."\t") 
-			
-			savefile:write(math.floor(get(flap_right_ind)*100)*0.01 .."\t")
-			
-			savefile:write(math.floor(get(slats)*100)*0.22 .."\t")
-			
-			
-			-- controls
-			local AIL_L = get(ail_L)
-			if AIL_L > 0 then AIL_L = math.floor(AIL_L*100)*0.01
-			elseif AIL_L < 0 then AIL_L = math.ceil(AIL_L*100)*0.01 end
-			
-			savefile:write(AIL_L, "\t")
-			
-			local AIL_R = get(ail_R)
-			if AIL_R > 0 then AIL_R = math.floor(AIL_R*100)*0.01
-			elseif AIL_R < 0 then AIL_R = math.ceil(AIL_R*100)*0.01 end
-			
-			savefile:write(AIL_R, "\t")
-			
-			local ELEV_L = -get(elevator_L)
-			if ELEV_L > 0 then ELEV_L = math.floor(ELEV_L*100)*0.01
-			elseif ELEV_L < 0 then ELEV_L = math.ceil(ELEV_L*100)*0.01 end
-			
-			savefile:write(ELEV_L, "\t")
-			
-			local ELEV_R = -get(elevator_R)
-			if ELEV_R > 0 then ELEV_R = math.floor(ELEV_R*100)*0.01
-			elseif ELEV_R < 0 then ELEV_R = math.ceil(ELEV_R*100)*0.01 end
-			
-			savefile:write(ELEV_R, "\t")
-			
-			local RUDD = get(rudder)
-			if RUDD > 0 then RUDD = math.floor(RUDD*100)*0.01
-			elseif RUDD < 0 then RUDD = math.ceil(RUDD*100)*0.01 end
-			
-			savefile:write(RUDD, "\t")
-			
-			savefile:write(math.floor(get(roll_spoil_L)*100/20)*0.01 .."\t") -- spoilers OUT L
-			savefile:write(math.floor(get(spd_brk_mid_L)*100/45)*0.01 .."\t") -- spoilers MID L
-			savefile:write(math.floor(get(spd_brk_inn_L)*100/50)*0.01 .."\t") -- spoilers INN L
-			
-			savefile:write(math.floor(get(roll_spoil_R)*100/20)*0.01 .."\t") -- spoilers OUT R
-			savefile:write(math.floor(get(spd_brk_mid_R)*100/45)*0.01 .."\t") -- spoilers MID R
-			savefile:write(math.floor(get(spd_brk_inn_R)*100/50)*0.01 .."\t") -- spoilers INN R
+		-- zulu time
+		local ZULU = get(zulu_time_hours)..":"..get(zulu_time_minutes)..":"..get(zulu_time_seconds)
+		savefile:write(ZULU.."\t") -- 2
+		
+		-- latitude
+		savefile:write(math.floor(get(latitude)*1000000)*0.000001, "\t") -- 3
+		
+		-- longtitude
+		savefile:write(math.floor(get(longitude)*1000000)*0.000001, "\t") -- 4
+		
+		-- True course
+		savefile:write(math.floor(get(true_crs)*100)*0.01, "\t") -- 4
+		
+		-- MSL
+		savefile:write(math.floor(get(MSL)*100)*0.01, "\t") -- 4
+		
+		-- pitch, roll, slip
+		local pitch = get(mgv_pitch)
+		if pitch > 0 then pitch = math.floor(pitch*100)*0.01
+		elseif pitch < 0 then pitch = math.ceil(pitch*100)*0.01 end
+		
+		savefile:write(pitch, "\t")
+		
+		local roll = get(mgv_roll)
+		if roll > 0 then roll = math.floor(roll*100)*0.01
+		elseif roll < 0 then roll = math.ceil(roll*100)*0.01 end
+		
+		savefile:write(roll, "\t") 
+		
+		local slip = get(sideslip_degrees)
+		if slip > 0 then slip = math.floor(slip*100)*0.01
+		elseif slip < 0 then slip = math.ceil(slip*100)*0.01 end
+		
+		savefile:write(slip, "\t") 
+		
+		-- yoke pos
+		local Y_pitch = get(yoke_pitch)
+		if Y_pitch > 0 then Y_pitch = math.floor(Y_pitch*100)*0.01
+		elseif Y_pitch < 0 then Y_pitch = math.ceil(Y_pitch*100)*0.01 end
+		
+		savefile:write(Y_pitch, "\t") 
+		
+		local Y_roll = get(yoke_roll)
+		if Y_roll > 0 then Y_roll = math.floor(Y_roll*100)*0.01
+		elseif Y_roll < 0 then Y_roll = math.ceil(Y_roll*100)*0.01 end
+		
+		savefile:write(Y_roll, "\t")
+		
+		local Y_yaw = get(pedals_turn)
+		if Y_yaw > 0 then Y_yaw = math.floor(Y_yaw*100)*0.01
+		elseif Y_yaw < 0 then Y_yaw = math.ceil(Y_yaw*100)*0.01 end
+		
+		savefile:write(Y_yaw, "\t")
+		
+		
+		-- trimmers
+		local T_pitch = get(int_pitch_trim)
+		if T_pitch > 0 then T_pitch = math.floor(T_pitch*100)*0.01
+		elseif T_pitch < 0 then T_pitch = math.ceil(T_pitch*100)*0.01 end
+		
+		savefile:write(T_pitch, "\t")
+		
+		local T_roll = get(int_roll_trim)
+		if T_roll > 0 then T_roll = math.floor(T_roll*100)*0.01
+		elseif T_roll < 0 then T_roll = math.ceil(T_roll*100)*0.01 end
+		
+		savefile:write(T_roll, "\t")
+		
+		local T_yaw = get(int_yaw_trim)
+		if T_yaw > 0 then T_yaw = math.floor(T_yaw*100)*0.01
+		elseif T_yaw < 0 then T_yaw = math.ceil(T_yaw*100)*0.01 end
+		
+		savefile:write(T_yaw, "\t")
+		
+		
+		-- mechanics
+		
+		savefile:write(math.floor(get(stab_ind)*100)*0.01 .."\t") 
+		
+		savefile:write(math.floor(get(flap_left_ind)*100)*0.01 .."\t") 
+		
+		savefile:write(math.floor(get(flap_right_ind)*100)*0.01 .."\t")
+		
+		savefile:write(math.floor(get(slats)*100)*0.22 .."\t")
+		
+		
+		-- controls
+		local AIL_L = get(ail_L)
+		if AIL_L > 0 then AIL_L = math.floor(AIL_L*100)*0.01
+		elseif AIL_L < 0 then AIL_L = math.ceil(AIL_L*100)*0.01 end
+		
+		savefile:write(AIL_L, "\t")
+		
+		local AIL_R = get(ail_R)
+		if AIL_R > 0 then AIL_R = math.floor(AIL_R*100)*0.01
+		elseif AIL_R < 0 then AIL_R = math.ceil(AIL_R*100)*0.01 end
+		
+		savefile:write(AIL_R, "\t")
+		
+		local ELEV_L = -get(elevator_L)
+		if ELEV_L > 0 then ELEV_L = math.floor(ELEV_L*100)*0.01
+		elseif ELEV_L < 0 then ELEV_L = math.ceil(ELEV_L*100)*0.01 end
+		
+		savefile:write(ELEV_L, "\t")
+		
+		local ELEV_R = -get(elevator_R)
+		if ELEV_R > 0 then ELEV_R = math.floor(ELEV_R*100)*0.01
+		elseif ELEV_R < 0 then ELEV_R = math.ceil(ELEV_R*100)*0.01 end
+		
+		savefile:write(ELEV_R, "\t")
+		
+		local RUDD = get(rudder)
+		if RUDD > 0 then RUDD = math.floor(RUDD*100)*0.01
+		elseif RUDD < 0 then RUDD = math.ceil(RUDD*100)*0.01 end
+		
+		savefile:write(RUDD, "\t")
+		
+		savefile:write(math.floor(get(roll_spoil_L)*100/20)*0.01 .."\t") 
+		-- spoilers OUT L
+		savefile:write(math.floor(get(spd_brk_mid_L)*100/45)*0.01 .."\t") 
+		-- spoilers MID L
+		savefile:write(math.floor(get(spd_brk_inn_L)*100/50)*0.01 .."\t") 
+		-- spoilers INN L
+		
+		savefile:write(math.floor(get(roll_spoil_R)*100/20)*0.01 .."\t") 
+		-- spoilers OUT R
+		savefile:write(math.floor(get(spd_brk_mid_R)*100/45)*0.01 .."\t") 
+		-- spoilers MID R
+		savefile:write(math.floor(get(spd_brk_inn_R)*100/50)*0.01 .."\t") 
+		-- spoilers INN R
 			
 			
 			-- flight parameters
@@ -702,23 +639,16 @@ function write_file() -- write parameters to file
 			end
 			savefile:write(mark.."\t")
 			
-			-- ILS
-			--local ILS = bool2int(get(nav_cs_flag) == 0 and get(nav_gs_flag) == 0)
-			
-			--savefile:write(ILS.."\t") -- 46
-			
-			
-			
-			-- finish line
+		-- ILS
+		--local ILS = bool2int(get(nav_cs_flag) == 0 and get(nav_gs_flag) == 0)
+		
+		--savefile:write(ILS.."\t") -- 46
+		
+		
+		
+		-- finish line
 			
 			savefile:write("\n") -- end of line
-		
-		
-		
-		
-		
-		
-		
 		--savefile:write("\n")
 		savefile:close()
 		return true
@@ -768,13 +698,7 @@ function update()
 		set(msrp_27_L_cc, 0)
 		set(msrp_27_R_cc, 0)
 	end
-	
-	
-	
 	set(msrp_power, bool2int(power))
-	
-
-
 end
 
 

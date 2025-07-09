@@ -125,38 +125,29 @@ if MASTER then
 		
 	
 	
-	else
-		-- no failures enabled
-		fail_counter = 0
-		
-		set(bat_fail_1, 0)
-		set(bat_fail_2, 0)
-		set(bat_fail_3, 0)
-		set(bat_fail_4, 0)
-		
-		set(bat_1_kz, 0)
-		set(bat_2_kz, 0)
-		set(bat_3_kz, 0)
-		set(bat_4_kz, 0)
-		
-		set(vu1_fail, 0)
-		set(vu2_fail, 0)
-		set(vu3_fail, 0)
-		
-		set(tr1_fail, 0)
-		set(tr2_fail, 0)
-		set(pts250_1_fail, 0)
-		set(pts250_2_fail, 0)
-		set(inv115_fail, 0)
-		
-		set(sim_gen1_fail, 0)
-		set(sim_gen2_fail, 0)
-		set(sim_gen3_fail, 0)
+		else
+			-- no failures enabled
+			fail_counter = 0
+			set(bat_fail_1, 0)
+			set(bat_fail_2, 0)
+			set(bat_fail_3, 0)
+			set(bat_fail_4, 0)
+			set(bat_1_kz, 0)
+			set(bat_2_kz, 0)
+			set(bat_3_kz, 0)
+			set(bat_4_kz, 0)
+			set(vu1_fail, 0)
+			set(vu2_fail, 0)
+			set(vu3_fail, 0)
+			set(tr1_fail, 0)
+			set(tr2_fail, 0)
+			set(pts250_1_fail, 0)
+			set(pts250_2_fail, 0)
+			set(inv115_fail, 0)
+			set(sim_gen1_fail, 0)
+			set(sim_gen2_fail, 0)
+			set(sim_gen3_fail, 0)
 	
+		end
 	end
-	
-	
-	
-end
-
 end
