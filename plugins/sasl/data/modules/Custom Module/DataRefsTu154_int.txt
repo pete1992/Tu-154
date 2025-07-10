@@ -1,5 +1,5 @@
-tu154ce/lang/hide_rus_objects	int	hide Russian cockpit objects	0
-tu154ce/lang/hide_eng_objects	int	hide English cockpit objects	1
+tu154ce/lang/hide_rus_objects	int	hide Russian cockpit objects	1
+tu154ce/lang/hide_eng_objects	int	hide English cockpit objects	0
 tu154ce/have_pedals	int	pedals with brakes present	0
 tu154ce/sounds_voulme	int	master sound volume	1000
 tu154ce/elec/bat_volt_1	float	battery voltage 1	25
