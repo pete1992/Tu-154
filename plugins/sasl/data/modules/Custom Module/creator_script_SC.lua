@@ -15,8 +15,8 @@
 
 print("panel dir = ",sasl.getAircraftPath())
 
-local dataref_filename = sasl.getAircraftPath() .. "/Custom Avionics/DataRefsTu154_int.txt" -- path for source file
-local save_filename = sasl.getAircraftPath() .. "/Custom Avionics/dataref_creator_2.lua" -- path for output fils
+local dataref_filename = sasl.getAircraftPath() .. "/plugins/SASL/data/modules/Custom Module/DataRefsTu154_int.txt" -- path for source file
+local save_filename = sasl.getAircraftPath() .. "/plugins/SASL/data/modules/Custom Module/dataref_creator_2.lua" -- path for output fils
 
 local dataref_file = io.open(dataref_filename, "r") -- read the source file
 local save_file = io.open(save_filename, "w") -- save output file
