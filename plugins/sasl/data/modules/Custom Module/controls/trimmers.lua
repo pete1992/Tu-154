@@ -1,275 +1,213 @@
--- this is trimmers logic
+-- trimmers.lua
+-- Pitch, roll and yaw trimmer logic for Tu-154M
 
--- controls
-defineProperty("elev_trimm_sw", globalPropertyi("tu154ce/controll/elev_trimm_switcher")) -- ручка управления триммером РВ. -1 - пикирование, 0 - нейтр, +1 кабрирование
-defineProperty("ail_trimm_sw", globalPropertyi("tu154ce/controll/ail_trimm_sw")) -- переключатель триммера элеронов
-defineProperty("rudd_trimm_sw", globalPropertyi("tu154ce/controll/rudd_trimm_sw")) -- переключатель триммера РН
+-- Utility functions ------------------------------------------------------
+local function clamp(x, minv, maxv)
+    if x < minv then return minv end
+    if x > maxv then return maxv end
+    return x
+end
+local function bool2int(b) return b and 1 or 0 end
 
-defineProperty("emerg_elev_trimm", globalPropertyi("tu154ce/switchers/console/emerg_elev_trimm")) -- аварийное управление триммером
+-- Batch DataRef definitions ---------------------------------------------
+local props = {
+    -- Trim switches
+    {"elev_trimm_sw",       "tu154ce/controll/elev_trimm_switcher",   "i"},
+    {"ail_trimm_sw",        "tu154ce/controll/ail_trimm_sw",          "i"},
+    {"rudd_trimm_sw",       "tu154ce/controll/rudd_trimm_sw",         "i"},
+    {"emerg_elev_trimm",    "tu154ce/switchers/console/emerg_elev_trimm","i"},
+    {"absu_pitch_trimm",    "tu154ce/absu/absu_pitch_trimm",          "i"},
+    -- Trim positions
+    {"int_pitch_trim",      "tu154ce/trimmers/int_pitch_trim",        "f"},
+    {"int_roll_trim",       "tu154ce/trimmers/int_roll_trim",         "f"},
+    {"int_yaw_trim",        "tu154ce/trimmers/int_yaw_trim",          "f"},
+    -- ABSU modes
+    {"absu_roll_mode",      "tu154ce/gauges/console/absu_roll_mode",  "i"},
+    {"absu_pitch_mode",     "tu154ce/gauges/console/absu_pitch_mode", "i"},
+    -- Electrical power
+    {"bus27_volt_left",     "tu154ce/elec/bus27_volt_left",           "f"},
+    {"bus27_volt_right",    "tu154ce/elec/bus27_volt_right",          "f"},
+    {"bus36_volt_left",     "tu154ce/elec/bus36_volt_left",           "f"},
+    {"bus36_volt_right",    "tu154ce/elec/bus36_volt_right",          "f"},
+    {"frame_time",          "tu154ce/time/frame_time",                "f"},
+    -- Control-load indicators
+    {"ctr_27_L_cc",         "tu154ce/control/ctr_27_L_cc",            "f"},
+    {"ctr_27_R_cc",         "tu154ce/control/ctr_27_R_cc",            "f"},
+    {"ctr_36L_cc",          "tu154ce/control/ctr_36L_cc",             "f"},
+    {"ctr_36R_cc",          "tu154ce/control/ctr_36R_cc",             "f"},
+    -- SmartCopilot
+    {"ismaster",            "scp/api/ismaster",                       "f"},
+    {"hascontrol_1",        "scp/api/hascontrol_1",                   "f"},
+    -- Trim failures
+    {"rel_trim_rud",        "sim/operation/failures/rel_trim_rud",    "i"},
+    {"rel_trim_ail",        "sim/operation/failures/rel_trim_ail",    "i"},
+    {"rel_trim_elv",        "sim/operation/failures/rel_trim_elv",    "i"},
+    {"trim_emerg_elv_fail","tu154ce/failures/trim_emerg_elv_fail",   "i"},
+}
 
+for _, p in ipairs(props) do
+    if p[3] == "f" then
+        defineProperty(p[1], globalPropertyf(p[2]))
+    else
+        defineProperty(p[1], globalPropertyi(p[2]))
+    end
+end
 
-defineProperty("absu_pitch_trimm", globalPropertyi("tu154ce/absu/absu_pitch_trimm")) -- комманда триммеру от АБСУ. +1 = вверх, -1 = ввениз
+-- Sound samples ----------------------------------------------------------
+local snd_up    = loadSample('Custom Sounds/trimm_up.wav')
+local snd_down  = loadSample('Custom Sounds/trimm_down.wav')
+local snd_ctr   = loadSample('Custom Sounds/trimm_ctr.wav')
 
+-- Command bindings -------------------------------------------------------
+local cmd_pitch_up     = findCommand("sim/flight_controls/pitch_trim_up")
+local cmd_pitch_down   = findCommand("sim/flight_controls/pitch_trim_down")
+local cmd_pitch_center = findCommand("sim/flight_controls/pitch_trim_takeoff")
+local cmd_roll_left    = findCommand("sim/flight_controls/aileron_trim_left")
+local cmd_roll_right   = findCommand("sim/flight_controls/aileron_trim_right")
+local cmd_roll_center  = findCommand("sim/flight_controls/aileron_trim_center")
+local cmd_yaw_left     = findCommand("sim/flight_controls/rudder_trim_left")
+local cmd_yaw_right    = findCommand("sim/flight_controls/rudder_trim_right")
+local cmd_yaw_center   = findCommand("sim/flight_controls/rudder_trim_center")
 
--- results
-defineProperty("int_pitch_trim", globalPropertyf("tu154ce/trimmers/int_pitch_trim")) -- положение триммера руля высоты
-defineProperty("int_roll_trim", globalPropertyf("tu154ce/trimmers/int_roll_trim")) -- положение триммера элеронов
-defineProperty("int_yaw_trim", globalPropertyf("tu154ce/trimmers/int_yaw_trim")) -- положение триммера руля направления
+-- State variables --------------------------------------------------------
+local last_time       = get(frame_time)
+local last_pitch_pos  = get(int_pitch_trim)
+local last_roll_pos   = get(int_roll_trim)
+local last_yaw_pos    = get(int_yaw_trim)
 
-
-defineProperty("absu_roll_mode", globalPropertyi("tu154ce/gauges/console/absu_roll_mode")) -- режим работы АБСУ. 0 - выкл, 1 - штурвальный, 2 - стаб
-defineProperty("absu_pitch_mode", globalPropertyi("tu154ce/gauges/console/absu_pitch_mode")) -- режим работы АБСУ. 0 - выкл, 1 - штурвальный, 2 - стаб
-
-
-
-
--- power
-defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) -- напряжение сети 27
-defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) -- напряжение сети 27
-
-defineProperty("bus115_1_volt", globalPropertyf("tu154ce/elec/bus115_1_volt")) -- напряжение на сети 115в
-defineProperty("bus115_3_volt", globalPropertyf("tu154ce/elec/bus115_3_volt")) -- напряжение на сети 115в
-
-defineProperty("bus36_volt_left", globalPropertyf("tu154ce/elec/bus36_volt_left")) -- напряжение сети 36в лев
-defineProperty("bus36_volt_right", globalPropertyf("tu154ce/elec/bus36_volt_right")) -- напряжение сети 36в прав
-defineProperty("bus36_volt_pts250_1", globalPropertyf("tu154ce/elec/bus36_volt_pts250_1")) -- напряжение сети 36 ПТС 1
-defineProperty("bus36_volt_pts250_2", globalPropertyf("tu154ce/elec/bus36_volt_pts250_2")) -- напряжение сети 36 ПТС 2
-
-defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) -- time of frame
-
-defineProperty("ctr_27_L_cc", globalPropertyf("tu154ce/control/ctr_27_L_cc")) -- нагрузка на сеть
-defineProperty("ctr_27_R_cc", globalPropertyf("tu154ce/control/ctr_27_R_cc")) -- нагрузка на сеть
-
-defineProperty("ctr_36L_cc", globalPropertyf("tu154ce/control/ctr_36L_cc")) -- нагрузка на сеть
-defineProperty("ctr_36R_cc", globalPropertyf("tu154ce/control/ctr_36R_cc")) -- нагрузка на сеть
-
--- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
-
--- failures
-defineProperty("rel_trim_rud", globalPropertyi("sim/operation/failures/rel_trim_rud")) -- 
-defineProperty("rel_trim_ail", globalPropertyi("sim/operation/failures/rel_trim_ail")) -- 
-defineProperty("rel_trim_elv", globalPropertyi("sim/operation/failures/rel_trim_elv")) -- 
-defineProperty("trim_emerg_elv_fail", globalPropertyi("tu154ce/failures/trim_emerg_elv_fail")) --
-
-
--- sound
-local trimm_up = loadSample('Custom Sounds/trimm_up.wav')
-local trimm_down = loadSample('Custom Sounds/trimm_down.wav')
-local trimm_ctr = loadSample('Custom Sounds/trimm_ctr.wav')
-
-local pitch_trim_power = true
-local roll_trim_power = true
-local yaw_trim_power = true
-
-
-local trimm_pitch_last = 0
-local trimm_roll_last = 0
-local trimm_yaw_last = 0
-
-
+-- Main update function ---------------------------------------------------
 function update()
-	local MASTER = get(ismaster) ~= 1
-	
-	-- initial
-	local passed = get(frame_time)
-	local power_27_L = bool2int(get(bus27_volt_left) > 13)
-	local power_27_R = bool2int(get(bus27_volt_right) > 13)
-	local power36_L = bool2int(get(bus36_volt_left) > 30)
-	local power36_R = bool2int(get(bus36_volt_right) > 30)
-	
-	local CC_27L = get(ctr_27_L_cc)
-	local CC_27R = get(ctr_27_R_cc)
-	
-	local elev_tr_sw = get(elev_trimm_sw)
-	local emer_tr_sw = get(emerg_elev_trimm)
-	local absu_tr_pt = get(absu_pitch_trimm)
-	
-	if get(absu_pitch_mode) == 2 then
-		elev_tr_sw = 0
-		emer_tr_sw = 0
-	end
-	
-	-- pitch trimmer --
-	local pitch_trim_eng = 2 -- working engines for trim. can add failures here
-	local pitch_trim_pos = get(int_pitch_trim)
-	local pitch_trimm_work = bool2int(get(rel_trim_elv) ~= 6)
-	if pitch_trim_pos >= 0 then 
-		pitch_trim_pos = pitch_trim_pos + elev_tr_sw * passed * power_27_L * power_27_R * (power36_L + power36_R) * pitch_trim_eng * 0.015 * pitch_trimm_work
-		pitch_trim_pos = pitch_trim_pos + absu_tr_pt * passed * power_27_L * power_27_R * (power36_L + power36_R) * pitch_trim_eng * 0.005 * pitch_trimm_work
-		pitch_trim_pos = pitch_trim_pos + emer_tr_sw * passed * power_27_L * power36_L * 0.03 * (1 - get(trim_emerg_elv_fail))
-	else 
-		pitch_trim_pos = pitch_trim_pos + elev_tr_sw * passed * power_27_L * power_27_R * (power36_L + power36_R) * pitch_trim_eng * 0.015 * 1.25 * pitch_trimm_work
-		pitch_trim_pos = pitch_trim_pos + absu_tr_pt * passed * power_27_L * power_27_R * (power36_L + power36_R) * pitch_trim_eng * 0.005 * 1.25 * pitch_trimm_work
-		pitch_trim_pos = pitch_trim_pos + emer_tr_sw * passed * power_27_L * power36_L * 0.03 * 1.25 * (1 - get(trim_emerg_elv_fail))
-	end
-	
-	if pitch_trim_pos > 0.60 then pitch_trim_pos = 0.60
-	elseif pitch_trim_pos < -0.60 then pitch_trim_pos = -0.60 end
+    -- Delta-time
+    local now = get(frame_time)
+    local dt  = now - last_time
+    last_time = now
+    if dt <= 0 then return end
 
-if MASTER then	
-	set(int_pitch_trim, pitch_trim_pos)
-end
+    -- SmartCopilot master or absent → allow writes
+    local sc     = get(ismaster)
+    local MASTER = (sc == 2) or (sc == 0)
 
-	if pitch_trim_pos ~= trimm_pitch_last then
-		set(ctr_36L_cc, power36_L)
-		set(ctr_36R_cc, power36_R)
-	else
-		set(ctr_36L_cc, 0)
-		set(ctr_36R_cc, 0)
-	end
-	
-	trimm_pitch_last = pitch_trim_pos
-	
-	
-	-- roll trimmer --
-	local roll_trim_pos = get(int_roll_trim) + get(ail_trimm_sw) * passed * power_27_L * 0.02 * bool2int(get(rel_trim_ail) ~= 6)
+    -- Cache power and switches
+    local p27L       = bool2int(get(bus27_volt_left)  > 13)
+    local p27R       = bool2int(get(bus27_volt_right) > 13)
+    local p36L       = bool2int(get(bus36_volt_left)  > 30)
+    local p36R       = bool2int(get(bus36_volt_right) > 30)
+    local sw_el      = get(elev_trimm_sw)
+    local sw_ail     = get(ail_trimm_sw)
+    local sw_rud     = get(rudd_trimm_sw)
+    local sw_em      = get(emerg_elev_trimm)
+    local absu_p     = get(absu_pitch_trimm)
+    local absu_pmode = get(absu_pitch_mode)
+    local absu_rmode = get(absu_roll_mode)
+    local trimOK_el  = bool2int(get(rel_trim_elv) ~= 6)
+    local trimOK_ail = bool2int(get(rel_trim_ail) ~= 6)
+    local trimOK_rud = bool2int(get(rel_trim_rud) ~= 6)
 
-	if roll_trim_pos > 0.24 then roll_trim_pos = 0.24
-	elseif roll_trim_pos < -0.24 then roll_trim_pos = -0.24 end
+    -- Reset CC indicators
+    set(ctr_36L_cc, 0); set(ctr_36R_cc, 0)
+    set(ctr_27_L_cc, 0); set(ctr_27_R_cc, 0)
 
-if MASTER then	
-	set(int_roll_trim, roll_trim_pos)
-end
-
-	if roll_trim_pos ~= trimm_roll_last then
-		set(ctr_27_L_cc, CC_27L + 3)
-	end
-	
-	
-	trimm_roll_last = roll_trim_pos
-	
-	
-	-- yaw trimmer --
-	local yaw_trim_pos = get(int_yaw_trim) + get(rudd_trimm_sw) * passed * power_27_R * 0.02 * bool2int(get(rel_trim_rud) ~= 6)
-	
-	if yaw_trim_pos > 0.2 then yaw_trim_pos = 0.2
-	elseif yaw_trim_pos < -0.2 then yaw_trim_pos = -0.2 end
-
-if MASTER then	
-	set(int_yaw_trim, yaw_trim_pos)
-end
-	
-	if yaw_trim_pos ~= trimm_yaw_last then
-		set(ctr_27_R_cc, CC_27R + 3)
-	end
-	
-	trimm_yaw_last = yaw_trim_pos
-
-
-end
-
-
-
--- turn pitch trimmer UP
-pitch_UP_comm = findCommand("sim/flight_controls/pitch_trim_up")
-function pitch_UP_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		set(elev_trimm_sw, 1)
-		if 0 == phase then if get(xplane_version) < 120000 then playSample(trimm_up, false) end end
-	else
-		set(elev_trimm_sw, 0)
-		if get(xplane_version) < 120000 then playSample(trimm_ctr, false) end
+    -- Pitch trimmer -------------------------------------------------------
+    if absu_pmode == 2 then sw_el, sw_em = 0, 0 end  -- ABSU stab mode disables manual trim
+    local base  = p27L * p27R * (p36L + p36R)
+    local pos   = get(int_pitch_trim)
+    local rate  = 2 * 0.015 * (pos < 0 and 1.25 or 1)
+    local delta = (sw_el + absu_p * 0.333 + sw_em * 2) * rate * base * dt * trimOK_el
+    pos = clamp(pos + delta, -0.6, 0.6)
+    if MASTER then set(int_pitch_trim, pos) end
+    if pos ~= last_pitch_pos then
+        set(ctr_36L_cc, p36L); set(ctr_36R_cc, p36R)
+        playSample(delta > 0 and snd_up or snd_down, false)
     end
-return 0
-end
-registerCommandHandler(pitch_UP_comm, 0, pitch_UP_hnd)
+    last_pitch_pos = pos
 
--- turn pitch trimmer DOWN
-pitch_DOWN_comm = findCommand("sim/flight_controls/pitch_trim_down")
-function pitch_DOWN_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		set(elev_trimm_sw, -1)
-		if 0 == phase then if get(xplane_version) < 120000 then playSample(trimm_down, false) end end
-	else
-		set(elev_trimm_sw, 0)
-		if get(xplane_version) < 120000 then playSample(trimm_ctr, false) end
+    -- Roll trimmer --------------------------------------------------------
+    if absu_rmode == 2 then sw_ail = 0 end  -- ABSU roll mode disables manual trim
+    local pos_r  = get(int_roll_trim)
+    local delta_r= sw_ail * 0.02 * p27L * trimOK_ail * dt
+    pos_r = clamp(pos_r + delta_r, -0.24, 0.24)
+    if MASTER then set(int_roll_trim, pos_r) end
+    if pos_r ~= last_roll_pos then
+        set(ctr_27_L_cc, 3)
+        playSample(delta_r > 0 and snd_up or snd_down, false)
     end
-return 0
-end
-registerCommandHandler(pitch_DOWN_comm, 0, pitch_DOWN_hnd)
+    last_roll_pos = pos_r
 
--- turn pitch trimmer CENTER
-pitch_TO_comm = findCommand("sim/flight_controls/pitch_trim_takeoff")
-function pitch_TO_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		if pitch_trim_power then set(int_pitch_trim, 0)  end
+    -- Yaw trimmer ---------------------------------------------------------
+    local pos_y  = get(int_yaw_trim)
+    local delta_y= sw_rud * 0.02 * p27R * trimOK_rud * dt
+    pos_y = clamp(pos_y + delta_y, -0.2, 0.2)
+    if MASTER then set(int_yaw_trim, pos_y) end
+    if pos_y ~= last_yaw_pos then
+        set(ctr_27_R_cc, 3)
+        playSample(delta_y > 0 and snd_up or snd_down, false)
     end
-return 0
+    last_yaw_pos = pos_y
 end
-registerCommandHandler(pitch_TO_comm, 0, pitch_TO_hnd)
 
-
-
-
--- turn roll trimmer LEFT
-roll_LEFT_comm = findCommand("sim/flight_controls/aileron_trim_left")
-function roll_LEFT_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		set(ail_trimm_sw, -1)
-	else
-		set(ail_trimm_sw, 0)
+-- Command handlers -------------------------------------------------------
+local function pitch_up_handler(phase)
+    if phase < 2 then
+        set(elev_trimm_sw,  1)
+        if phase == 0 then playSample(snd_up, false) end
+    else
+        set(elev_trimm_sw,  0)
+        playSample(snd_ctr, false)
     end
-return 0
+    return 0
 end
-registerCommandHandler(roll_LEFT_comm, 0, roll_LEFT_hnd)
-
--- turn roll trimmer RIGHT
-roll_RIGHT_comm = findCommand("sim/flight_controls/aileron_trim_right")
-function roll_RIGHT_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		set(ail_trimm_sw, 1)
-	else
-		set(ail_trimm_sw, 0)
+local function pitch_down_handler(phase)
+    if phase < 2 then
+        set(elev_trimm_sw, -1)
+        if phase == 0 then playSample(snd_down, false) end
+    else
+        set(elev_trimm_sw,  0)
+        playSample(snd_ctr, false)
     end
-return 0
+    return 0
 end
-registerCommandHandler(roll_RIGHT_comm, 0, roll_RIGHT_hnd)
-
--- turn roll trimmer CTR
-roll_CTR_comm = findCommand("sim/flight_controls/aileron_trim_center")
-function roll_CTR_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		if roll_trim_power then set(int_roll_trim, 0) end
-    end
-return 0
+local function pitch_center_handler(phase)
+    if phase < 2 then set(int_pitch_trim, 0) end
+    return 0
 end
-registerCommandHandler(roll_CTR_comm, 0, roll_CTR_hnd)
 
-
-
-
--- turn yaw trimmer LEFT
-yaw_LEFT_comm = findCommand("sim/flight_controls/rudder_trim_left")
-function yaw_LEFT_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		set(rudd_trimm_sw, -1)
-	else
-		set(rudd_trimm_sw, 0)
-    end
-return 0
+local function roll_left_handler(phase)
+    set(ail_trimm_sw, phase < 2 and -1 or 0)
+    if phase == 0 then playSample(snd_down, false) end
+    return 0
 end
-registerCommandHandler(yaw_LEFT_comm, 0, yaw_LEFT_hnd)
-
--- turn yaw trimmer RIGHT
-yaw_RIGHT_comm = findCommand("sim/flight_controls/rudder_trim_right")
-function yaw_RIGHT_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		set(rudd_trimm_sw, 1)
-	else
-		set(rudd_trimm_sw, 0)
-    end
-return 0
+local function roll_right_handler(phase)
+    set(ail_trimm_sw, phase < 2 and  1 or 0)
+    if phase == 0 then playSample(snd_up, false) end
+    return 0
 end
-registerCommandHandler(yaw_RIGHT_comm, 0, yaw_RIGHT_hnd)
-
--- turn yaw trimmer CTR
-yaw_CTR_comm = findCommand("sim/flight_controls/rudder_trim_center")
-function yaw_CTR_hnd(phase)  -- for all commands phase equals: 0 on press; 1 while holding; 2 on release
-	if (1 == phase or 0 == phase) then
-		if yaw_trim_power then set(int_yaw_trim, 0) end
-    end
-return 0
+local function roll_center_handler(phase)
+    if phase < 2 then set(int_roll_trim, 0); playSample(snd_ctr, false) end
+    return 0
 end
-registerCommandHandler(yaw_CTR_comm, 0, yaw_CTR_hnd)
+
+local function yaw_left_handler(phase)
+    set(rudd_trimm_sw, phase < 2 and -1 or 0)
+    if phase == 0 then playSample(snd_down, false) end
+    return 0
+end
+local function yaw_right_handler(phase)
+    set(rudd_trimm_sw, phase < 2 and  1 or 0)
+    if phase == 0 then playSample(snd_up, false) end
+    return 0
+end
+local function yaw_center_handler(phase)
+    if phase < 2 then set(int_yaw_trim, 0); playSample(snd_ctr, false) end
+    return 0
+end
+
+-- Register command handlers -----------------------------------------------
+registerCommandHandler(cmd_pitch_up,     0, pitch_up_handler)
+registerCommandHandler(cmd_pitch_down,   0, pitch_down_handler)
+registerCommandHandler(cmd_pitch_center, 0, pitch_center_handler)
+registerCommandHandler(cmd_roll_left,    0, roll_left_handler)
+registerCommandHandler(cmd_roll_right,   0, roll_right_handler)
+registerCommandHandler(cmd_roll_center,  0, roll_center_handler)
+registerCommandHandler(cmd_yaw_left,     0, yaw_left_handler)
+registerCommandHandler(cmd_yaw_right,    0, yaw_right_handler)
+registerCommandHandler(cmd_yaw_center,   0, yaw_center_handler)
