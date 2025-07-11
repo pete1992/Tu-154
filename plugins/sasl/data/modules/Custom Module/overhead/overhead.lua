@@ -2,7 +2,6 @@
 -- Handles all overhead switches, caps, buttons, state resets, and sound feedback
 
 -- Helper functions
--- Helper functions
 local function bool2int(v) return v and 1 or 0 end
 
 local function defineProps(defs)
