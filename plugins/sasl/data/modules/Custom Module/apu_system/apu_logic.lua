@@ -1,21 +1,58 @@
--- apu_logic.lua (optimized, reviewed)
--- Handles Tu-154M APU start/stop, air doors, fuel/oil/EGT, failures. SASL 3.19+
+-- apu_logic.lua (robust SASL 3.19+)
+-- Handles Tu-154M APU start/stop, air doors, fuel/oil/EGT, failures.
 
--- Batch property definition utility
-local defineBatch = function(defs)
-    for _, d in ipairs(defs) do defineProperty(d[1], d[3](d[2])) end
+-- Helper: Ensure all custom DataRefs exist (create if missing)
+-- 1. Nur eigene Custom DataRefs bei Bedarf initialisieren
+createGlobalPropertyf("apu_fuel_last", 0)
+createGlobalPropertyf("outside_temp", 0)
+createGlobalPropertyf("tu154ce/eng/apu_egt", 0)
+createGlobalPropertyf("tu154ce/eng/apu_oil_t", 0)
+createGlobalPropertyf("tu154ce/eng/apu_oil_q", 0)
+createGlobalPropertyf("tu154ce/eng/apu_oil_p", 0)
+createGlobalPropertyf("tu154ce/eng/apu_n1", 0)
+createGlobalPropertyf("tu154ce/eng/apu_doors", 0)
+createGlobalPropertyf("tu154ce/eng/apu_air_doors", 0)
+
+-- 2. Batch DataRef definition (Property binding)
+local function defineBatch(defs)
+    for _, d in ipairs(defs) do
+        _G[d[1]] = defineProperty(d[1], d[3](d[2]))
+    end
 end
 
--- DataRef definitions
-local prop_defs = {
-    -- [ ... wie in deinem Code ... ]
-}
-defineBatch(prop_defs)
+defineBatch({
+    {"apu_egt",           "tu154ce/eng/apu_egt",           globalPropertyf},
+    {"apu_oil_t",         "tu154ce/eng/apu_oil_t",         globalPropertyf},
+    {"apu_oil_q",         "tu154ce/eng/apu_oil_q",         globalPropertyf},
+    {"apu_oil_p",         "tu154ce/eng/apu_oil_p",         globalPropertyf},
+    {"apu_n1",            "tu154ce/eng/apu_n1",            globalPropertyf},
+    {"apu_doors",         "tu154ce/eng/apu_doors",         globalPropertyf},
+    {"apu_air_doors",     "tu154ce/eng/apu_air_doors",     globalPropertyf},
+    {"apu_main_switch",   "tu154ce/switchers/apu_main",    globalPropertyi},
+    {"bus27_L",           "tu154ce/elec/bus27_volt_left",  globalPropertyf},
+    {"bus27_R",           "tu154ce/elec/bus27_volt_right", globalPropertyf},
+    {"apu_fuel_last",     "apu_fuel_last",                 globalPropertyf},
+    {"outside_temp",      "outside_temp",                  globalPropertyf},
+    {"apu_air_bleed",     "tu154ce/eng/apu_air_bleed",     globalPropertyi},
+    {"fail_press",        "tu154ce/failures/apu_press_fail",globalPropertyi},
+    {"apu_start_mode",    "tu154ce/elec/apu_start_seq",    globalPropertyi},
+    {"apu_stop",          "tu154ce/elec/apu_stop",         globalPropertyi},
+    {"apu_fuel_p",        "tu154ce/eng/apu_fuel_p",        globalPropertyf},
+    {"apu_system_on",     "tu154ce/eng/apu_system_on",     globalPropertyi},
+    {"tank1_w",           "tu154ce/fuel/tank1_w",          globalPropertyf},
+    {"apu_start_seq",     "tu154ce/elec/apu_start_seq",    globalPropertyi},
+    {"fail_enabled",      "tu154ce/failures/failures_enabled", globalPropertyi},
+    {"apu_runtime",       "tu154ce/failures/apu_runtime",  globalPropertyf},
+    {"frame_time",        "tu154ce/time/frame_time",       globalPropertyf}
+})
 
--- State
+-- Ab hier kommt dein Modulcode...
+
+
+-- State table
 local state = {
-    RPM = 0,
-    oil_q = 1,
+    RPM = get(apu_n1),
+    oil_q = get(apu_oil_q),
     egt = get(apu_egt),
     temp_oil = get(apu_oil_t),
     temp_eg = get(outside_temp),
@@ -45,7 +82,7 @@ local start_tbl = {{0,10}, {20,5}, {1000,0}}
 local fuel_tbl  = {{0,0}, {30,30}, {1000,0}}
 
 function update()
-    local dt = get(frame_time)
+    local dt = get(globalPropertyf("tu154ce/time/frame_time"))
     -- Only run on master (not SmartCopilot slave)
     local master = get(globalPropertyf("scp/api/ismaster")) ~= 1
     if not master then return end
@@ -56,6 +93,7 @@ function update()
     state.temp_oil  = get(apu_oil_t)
     state.egt       = get(apu_egt)
     state.bleed_pos = get(apu_air_doors)
+    state.fuel_last = get(apu_fuel_last)
 
     local busL, busR = get(bus27_L), get(bus27_R)
 
@@ -121,3 +159,5 @@ function update()
         set(apu_start_seq, 0)
     end
 end
+
+

@@ -1,6 +1,6 @@
 [KLN90B INFO]: Initializing...
 [KLN90B INFO]: [DISPLAY] Monitor 0: 0, 0, 1920, 1080
-[KLN90B INFO]: Path to module: C:\Program Files (x86)/Steam/steamapps/common/X-Plane 12/Aircraft/Tu154_Felis_open/plugins/KLN90B/data/modules/main.lua
+[KLN90B INFO]: Path to module: G:\X-Plane 12/Aircraft/Laminar Research/Tu-154M/plugins/KLN90B/data/modules/main.lua
 [KLN90B INFO]: Loading module...
 [KLN90B INFO]: [LUA]: loading	module
 [KLN90B INFO]: [LUA]: "module"	This is KLN90B for Tu-154M, v1.0.0

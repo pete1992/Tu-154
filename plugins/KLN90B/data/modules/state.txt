@@ -1,4 +1,6 @@
 state = {
+    ['legacyPopups'] = {
+    };
     ['contextWindows'] = {
         ['KLN90B'] = {
             ['visible'] = false;
@@ -24,7 +26,5 @@ state = {
                 [4] = 4096;
             };
         };
-    };
-    ['legacyPopups'] = {
     };
 };

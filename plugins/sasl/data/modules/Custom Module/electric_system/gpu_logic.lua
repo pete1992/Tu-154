@@ -82,159 +82,147 @@ local function unloadSounds()
 end
 
 function update()
-	local passed = get(frame_time)
-	local external = get(external_view) -- 0 = inside, 1 = external
+    local passed = get(frame_time)
+    local external = get(external_view) -- 0 = inside, 1 = external
 
-	-- check if GPU can be conected
-	local present = get(gpu_present)
-	if math.abs(get(GS)) > 0.1 then
-		gpu_eject_timer = gpu_eject_timer + passed
-	else
-		gpu_eject_timer = 0
-	end
-
-
-	if gpu_eject_timer < 1 then
-		if present == 1 then
-			work_timer = work_timer + passed * 0.25 -- 3 sec for start
-		else
-			work_timer = work_timer - passed * 0.1 -- 10 sec for stop
-			set(gpu_overload, 0)           -- reset overload flag
-		end
-		-- set limits and working parameters
-		if work_timer > 1 then
-			work_timer = 1
-			if get(DC_27_volt1) > 13 or get(DC_27_volt2) > 13 then
-				set(gpu_volt, 115 * (1 - get(gpu_overload)))
-			else
-				set(gpu_volt, 0)
-			end
-		elseif work_timer < 0 then
-			work_timer = 0
-			set(gpu_volt, 0)
-		elseif work_timer < 0.9 then
-			set(gpu_volt, 0)
-		end
-		set(gpu_work_anim, work_timer) -- set animation
-
-		-- connect GPU to the bus
-		if get(gpu_on) == 1 then
-			gpu_connect_timer = gpu_connect_timer + passed
-			if gpu_connect_timer >= 1 then
-				if work_timer == 1 and get(gpu_overload) ~= 1 then
-					set(gpu_work_bus, 1)
-				else
-					set(gpu_work_bus, 0)
-				end
-				gpu_connect_timer = 1
-			else
-				set(gpu_work_bus, 0)
-			end
-		else
-			set(gpu_work_bus, 0)
-			gpu_connect_timer = 0
-		end
-
-
-
-
-		-- set overload flag and reset it when GPU is disconnected
-		if get(gpu_amp) > 500 then
-			set(gpu_overload, 1)
-		elseif get(gpu_on) == 0 then
-			set(gpu_overload, 0)
-		end
-
-		local version = get(xplane_version)
-if version < 120000 then
-  -- GPU sound logic for X-Plane < 12.000
-  if work_timer > 0 and work_timer < 1 then
-    if present == 1 and not isSamplePlaying(gpu_start_out) then
-      -- start sequence in
-      playSample(gpu_start_out, false)
-      playSample(gpu_start_inn, false)
-      -- ensure run samples are stopped
-      stopSample(gpu_run_out)
-      stopSample(gpu_run_inn)
-    elseif present == 0 and not isSamplePlaying(gpu_stop_out) then
-      -- shutdown sequence in
-      playSample(gpu_stop_out, false)
-      playSample(gpu_stop_inn, false)
-      -- stop any start/run samples
-      stopSample(gpu_start_out)
-      stopSample(gpu_start_inn)
-      stopSample(gpu_run_out)
-      stopSample(gpu_run_inn)
+    -- check if GPU can be conected
+    local present = get(gpu_present)
+    if math.abs(get(GS)) > 0.1 then
+        gpu_eject_timer = gpu_eject_timer + passed
+    else
+        gpu_eject_timer = 0
     end
 
-  elseif work_timer == 1 then
-    -- running
-    if not isSamplePlaying(gpu_run_out) then
-      playSample(gpu_run_out, true)
-      playSample(gpu_run_inn, true)
+    if gpu_eject_timer < 1 then
+        if present == 1 then
+            work_timer = work_timer + passed * 0.25 -- 3 sec for start
+        else
+            work_timer = work_timer - passed * 0.1 -- 10 sec for stop
+            set(gpu_overload, 0)           -- reset overload flag
+        end
+        -- set limits and working parameters
+        if work_timer > 1 then
+            work_timer = 1
+            if get(DC_27_volt1) > 13 or get(DC_27_volt2) > 13 then
+                set(gpu_volt, 115 * (1 - get(gpu_overload)))
+            else
+                set(gpu_volt, 0)
+            end
+        elseif work_timer < 0 then
+            work_timer = 0
+            set(gpu_volt, 0)
+        elseif work_timer < 0.9 then
+            set(gpu_volt, 0)
+        end
+        set(gpu_work_anim, work_timer) -- set animation
+
+        -- connect GPU to the bus
+        if get(gpu_on) == 1 then
+            gpu_connect_timer = gpu_connect_timer + passed
+            if gpu_connect_timer >= 1 then
+                if work_timer == 1 and get(gpu_overload) ~= 1 then
+                    set(gpu_work_bus, 1)
+                else
+                    set(gpu_work_bus, 0)
+                end
+                gpu_connect_timer = 1
+            else
+                set(gpu_work_bus, 0)
+            end
+        else
+            set(gpu_work_bus, 0)
+            gpu_connect_timer = 0
+        end
+
+        -- set overload flag and reset it when GPU is disconnected
+        if get(gpu_amp) > 500 then
+            set(gpu_overload, 1)
+        elseif get(gpu_on) == 0 then
+            set(gpu_overload, 0)
+        end
+
+        local version = get(xplane_version)
+        if version < 120000 then
+            -- GPU sound logic for X-Plane < 12.000
+            if work_timer > 0 and work_timer < 1 then
+                if present == 1 and not isSamplePlaying(gpu_start_out) then
+                    -- start sequence in
+                    playSample(gpu_start_out, false)
+                    playSample(gpu_start_inn, false)
+                    -- ensure run samples are stopped
+                    stopSample(gpu_run_out)
+                    stopSample(gpu_run_inn)
+                elseif present == 0 and not isSamplePlaying(gpu_stop_out) then
+                    -- shutdown sequence in
+                    playSample(gpu_stop_out, false)
+                    playSample(gpu_stop_inn, false)
+                    -- stop any start/run samples
+                    stopSample(gpu_start_out)
+                    stopSample(gpu_start_inn)
+                    stopSample(gpu_run_out)
+                    stopSample(gpu_run_inn)
+                end
+
+            elseif work_timer == 1 then
+                -- running
+                if not isSamplePlaying(gpu_run_out) then
+                    playSample(gpu_run_out, true)
+                    playSample(gpu_run_inn, true)
+                end
+
+            elseif work_timer == 0 then
+                -- fully stopped
+                stopSample(gpu_start_out)
+                stopSample(gpu_start_inn)
+                stopSample(gpu_run_out)
+                stopSample(gpu_run_inn)
+            end
+        end
+
+        -- set effects to external GPU sound
+        local camera_distance = math.sqrt(((get(view_x) - get(local_x)) ^ 2) + ((get(view_y) - get(local_y)) ^ 2) +
+        ((get(view_z) - get(local_z)) ^ 2))                                                                                  -- in meters
+        if camera_distance < 1 then camera_distance = 1 end                                                                  -- limit minimum distance
+
+        local dist_coef = 300 / camera_distance ^ 1.7
+        if dist_coef > 1 then dist_coef = 1 end
+        -- calculate camera/aircraft speed
+        local spd_time = math.min(0.0001, passed)
+        local camera_spd = -(camera_distance - last_dist) / spd_time
+
+        last_dist = camera_distance
+
+        local dopp_coef = camera_spd * 0.02
+        if dopp_coef > 400 then
+            dopp_coef = 300
+        elseif dopp_coef < -300 then
+            dopp_coef = -300
+        end
+
+        local window_open = 0 -- temp
+
+        -- set sound volume
+        setSampleGain(gpu_start_out, 1000 * (external + window_open * (1 - external)) * dist_coef)
+        setSampleGain(gpu_run_out, 1000 * (external + window_open * (1 - external)) * dist_coef)
+        setSampleGain(gpu_stop_out, 1000 * (external + window_open * (1 - external)) * dist_coef)
+
+        setSampleGain(gpu_start_inn, 2000 * (1 - external))
+        setSampleGain(gpu_run_inn, 2000 * (1 - external))
+        setSampleGain(gpu_stop_inn, 2000 * (1 - external))
+    else
+        work_timer = 0
+        set(gpu_work_anim, 0)
+        set(gpu_present, 0)
+        set(gpu_volt, 0)
+        set(gpu_overload, 0)
+        set(gpu_work_bus, 0)
+        local ver = get(xplane_version)
+        if ver < 120000 then
+            stopSample(gpu_run_out)
+            stopSample(gpu_start_out)
+            stopSample(gpu_stop_out)
+        end
+        -- unload sounds
+        --if gpuSoundsLoaded then unloadSounds() end
     end
-
-  elseif work_timer == 0 then
-    -- fully stopped
-    stopSample(gpu_start_out)
-    stopSample(gpu_start_inn)
-    stopSample(gpu_run_out)
-    stopSample(gpu_run_inn)
-  end
-end
-
-			-- set effects to external GPU sound
-			local camera_distance = math.sqrt(((get(view_x) - get(local_x)) ^ 2) + ((get(view_y) - get(local_y)) ^ 2) +
-			((get(view_z) - get(local_z)) ^ 2))                                                                                  -- in meters
-			if camera_distance < 1 then camera_distance = 1 end                                                                  -- limit minimum distance
-
-			local dist_coef = 300 / camera_distance ^ 1.7
-			if dist_coef > 1 then dist_coef = 1 end
-			-- calculate camera/aircraft speed
-			local spd_time = math.min(0.0001, passed)
-			local camera_spd = -(camera_distance - last_dist) / spd_time
-
-			last_dist = camera_distance
-
-			local dopp_coef = camera_spd * 0.02
-			if dopp_coef > 400 then
-				dopp_coef = 300
-			elseif dopp_coef < -300 then
-				dopp_coef = -300
-			end
-
-			local window_open = 0 -- temp
-
-			-- set sound volume
-			setSampleGain(gpu_start_out, 1000 * (external + window_open * (1 - external)) * dist_coef)
-			setSampleGain(gpu_run_out, 1000 * (external + window_open * (1 - external)) * dist_coef)
-			setSampleGain(gpu_stop_out, 1000 * (external + window_open * (1 - external)) * dist_coef)
-
-			setSampleGain(gpu_start_inn, 2000 * (1 - external))
-			setSampleGain(gpu_run_inn, 2000 * (1 - external))
-			setSampleGain(gpu_stop_inn, 2000 * (1 - external))
-		end
-	else
-		work_timer = 0
-
-		set(gpu_work_anim, 0)
-		set(gpu_present, 0)
-		set(gpu_volt, 0)
-		set(gpu_overload, 0)
-		set(gpu_work_bus, 0)
-
-		local ver = get(xplane_version)
-			if ver < 120000 then
-			  stopSample(gpu_run_out)
-			  stopSample(gpu_start_out)
-			  stopSample(gpu_stop_out)
-			end
-		-- unload sounds
-
-
-		--if gpuSoundsLoaded then unloadSounds() end
-	end
-
-
-
 end

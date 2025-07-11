@@ -9,22 +9,22 @@ defineBatch = function(defs)
 end
 
 defineBatch({
-    {"failures_enabled",   "tu154ce/failures/failures_enabled",   globalPropertyi},
-    {"frame_time",         "tu154ce/time/frame_time",            globalPropertyf},
-    {"ismaster",           "scp/api/ismaster",                   globalPropertyf},
-    {"apu_start_fail",     "tu154ce/failures/apu_start_fail",    globalPropertyi},
-    {"apu_gen_fail",       "tu154ce/failures/apu_gen_fail",      globalPropertyi},
-    {"apu_fail_oilt",      "tu154ce/failures/apu_fail_oilt",     globalPropertyi},
-    {"apu_fail_egt",       "tu154ce/failures/apu_fail_egt",      globalPropertyi},
-    {"apu_fail_fuel_left", "tu154ce/failures/apu_fail_fuel_left",globalPropertyi},
-    {"apu_fail",           "tu154ce/failures/apu_fail",          globalPropertyi},
-    {"apu_press_fail",     "tu154ce/failures/apu_press_fail",    globalPropertyi},
-    {"apu_runtime",        "tu154ce/failures/apu_runtime",       globalPropertyf},
-    {"apu_oil_t",          "tu154ce/eng/apu_oil_t",              globalPropertyf},
-    {"apu_egt",            "tu154ce/eng/apu_egt",                globalPropertyf},
-    {"apu_burn_fuel",      "tu154ce/elec/apu_burning_fuel",      globalPropertyf},
-    {"apu_n1",             "tu154ce/eng/apu_n1",                 globalPropertyf},
-    {"apu_start_seq",      "tu154ce/elec/apu_start_seq",         globalPropertyi}
+    {"failures_enabled",   globalPropertyi, "tu154ce/failures/failures_enabled"},
+    {"frame_time",         globalPropertyf, "tu154ce/time/frame_time"},
+    {"ismaster",           globalPropertyf, "scp/api/ismaster"},
+    {"apu_start_fail",     globalPropertyi, "tu154ce/failures/apu_start_fail"},
+    {"apu_gen_fail",       globalPropertyi, "tu154ce/failures/apu_gen_fail"},
+    {"apu_fail_oilt",      globalPropertyi, "tu154ce/failures/apu_fail_oilt"},
+    {"apu_fail_egt",       globalPropertyi, "tu154ce/failures/apu_fail_egt"},
+    {"apu_fail_fuel_left", globalPropertyi, "tu154ce/failures/apu_fail_fuel_left"},
+    {"apu_fail",           globalPropertyi, "tu154ce/failures/apu_fail"},
+    {"apu_press_fail",     globalPropertyi, "tu154ce/failures/apu_press_fail"},
+    {"apu_runtime",        globalPropertyf, "tu154ce/failures/apu_runtime"},
+    {"apu_oil_t",          globalPropertyf, "tu154ce/eng/apu_oil_t"},
+    {"apu_egt",            globalPropertyf, "tu154ce/eng/apu_egt"},
+    {"apu_burn_fuel",      globalPropertyf, "tu154ce/elec/apu_burning_fuel"},
+    {"apu_n1",             globalPropertyf, "tu154ce/eng/apu_n1"},
+    {"apu_start_seq",      globalPropertyi, "tu154ce/elec/apu_start_seq"},
 })
 
 local function bool2int(b) return b and 1 or 0 end

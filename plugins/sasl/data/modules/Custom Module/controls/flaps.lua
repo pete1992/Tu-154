@@ -2,6 +2,7 @@
 -- Batch DataRef declaration, flap/slat/stab logic, optimized
 
 -- Batch-define DataRefs
+-- Helper function for batch property creation
 local function defineProps(list)
     for _, entry in ipairs(list) do
         defineProperty(entry[1], entry[3](entry[2]))
@@ -10,47 +11,48 @@ end
 
 defineProps({
     -- Environment & version
-    {"external_view",      "sim/graphics/view/view_is_external",           globalPropertyi},
-    {"xplane_version",     "getXPVersion",                                createFunctionalProperty},
+    {"external_view",    "sim/graphics/view/view_is_external",      globalPropertyi},
+    {"xplane_version",   "sim/aircraft/view/acf_version",           globalPropertyf},
     -- Flap & slat positions (FM)
-    {"flap_inn_L",         "sim/flightmodel/controls/wing1l_fla1def",      globalPropertyf},
-    {"flap_inn_R",         "sim/flightmodel/controls/wing1r_fla1def",      globalPropertyf},
-    {"flap_mid_L",         "sim/flightmodel/controls/wing2l_fla2def",      globalPropertyf},
-    {"flap_mid_R",         "sim/flightmodel/controls/wing2r_fla2def",      globalPropertyf},
-    {"slats",              "sim/flightmodel2/controls/slat1_deploy_ratio", globalPropertyf},
-    {"stab_ratio",         "sim/cockpit2/controls/elevator_trim",          globalPropertyf},
+    {"flap_inn_L",       "sim/flightmodel/controls/wing1l_fla1def", globalPropertyf},
+    {"flap_inn_R",       "sim/flightmodel/controls/wing1r_fla1def", globalPropertyf},
+    {"flap_mid_L",       "sim/flightmodel/controls/wing2l_fla2def", globalPropertyf},
+    {"flap_mid_R",       "sim/flightmodel/controls/wing2r_fla2def", globalPropertyf},
+    {"slats",            "sim/flightmodel2/controls/slat1_deploy_ratio", globalPropertyf},
+    {"stab_ratio",       "sim/cockpit2/controls/elevator_trim",     globalPropertyf},
     -- Controls & switches
-    {"sim_flap_ratio",     "sim/cockpit2/controls/flap_ratio",             globalPropertyf},
-    {"flaps_lever",        "tu154ce/controll/flaps_laver",                 globalPropertyf}, -- (Typo 'laver' in DataRef naming is intentional)
-    {"flaps_sel",          "tu154ce/switchers/flaps_sel",                  globalPropertyi},
-    {"slat_man",           "tu154ce/switchers/slat_man",                   globalPropertyi},
-    {"slat_man_cap",       "tu154ce/switchers/slat_man_cap",               globalPropertyi},
-    {"stab_man_cap",       "tu154ce/controll/stab_man_cap",                globalPropertyi},
-    {"stab_manual",        "tu154ce/controll/stab_manual",                 globalPropertyi},
-    {"stab_setting",       "tu154ce/controll/stab_setting",                globalPropertyi},
+    {"sim_flap_ratio",   "sim/cockpit2/controls/flap_ratio",        globalPropertyf},
+    {"flaps_lever",      "tu154ce/controll/flaps_laver",            globalPropertyf}, -- intentional typo in DataRef name!
+    {"flaps_sel",        "tu154ce/switchers/flaps_sel",             globalPropertyi},
+    {"slat_man",         "tu154ce/switchers/slat_man",              globalPropertyi},
+    {"slat_man_cap",     "tu154ce/switchers/slat_man_cap",          globalPropertyi},
+    {"stab_man_cap",     "tu154ce/controll/stab_man_cap",           globalPropertyi},
+    {"stab_manual",      "tu154ce/controll/stab_manual",            globalPropertyi},
+    {"stab_setting",     "tu154ce/controll/stab_setting",           globalPropertyi},
     -- Hydraulics & time
-    {"gs_press_1",         "tu154ce/hydro/gs_press_1",                     globalPropertyf},
-    {"gs_press_2",         "tu154ce/hydro/gs_press_2",                     globalPropertyf},
-    {"frame_time",         "tu154ce/time/frame_time",                      globalPropertyf},
+    {"gs_press_1",       "tu154ce/hydro/gs_press_1",                globalPropertyf},
+    {"gs_press_2",       "tu154ce/hydro/gs_press_2",                globalPropertyf},
+    {"frame_time",       "tu154ce/time/frame_time",                 globalPropertyf},
     -- Electrical power
-    {"bus27_volt_left",    "tu154ce/elec/bus27_volt_left",                 globalPropertyf},
-    {"bus27_volt_right",   "tu154ce/elec/bus27_volt_right",                globalPropertyf},
-    {"bus36_volt_left",    "tu154ce/elec/bus36_volt_left",                 globalPropertyf},
-    {"bus36_volt_right",   "tu154ce/elec/bus36_volt_right",                globalPropertyf},
-    {"bus115_1_volt",      "tu154ce/elec/bus115_1_volt",                   globalPropertyf},
-    {"bus115_3_volt",      "tu154ce/elec/bus115_3_volt",                   globalPropertyf},
-    {"ctr_115_1_cc",       "tu154ce/control/ctr_115_1_cc",                 globalPropertyf},
-    {"ctr_115_3_cc",       "tu154ce/control/ctr_115_3_cc",                 globalPropertyf},
+    {"bus27_volt_left",  "tu154ce/elec/bus27_volt_left",            globalPropertyf},
+    {"bus27_volt_right", "tu154ce/elec/bus27_volt_right",           globalPropertyf},
+    {"bus36_volt_left",  "tu154ce/elec/bus36_volt_left",            globalPropertyf},
+    {"bus36_volt_right", "tu154ce/elec/bus36_volt_right",           globalPropertyf},
+    {"bus115_1_volt",    "tu154ce/elec/bus115_1_volt",              globalPropertyf},
+    {"bus115_3_volt",    "tu154ce/elec/bus115_3_volt",              globalPropertyf},
+    {"ctr_115_1_cc",     "tu154ce/control/ctr_115_1_cc",            globalPropertyf},
+    {"ctr_115_3_cc",     "tu154ce/control/ctr_115_3_cc",            globalPropertyf},
     -- Smart Copilot
-    {"ismaster",           "scp/api/ismaster",                             globalPropertyf},
-    {"hascontrol_1",       "scp/api/hascontrol_1",                         globalPropertyf},
+    {"ismaster",         "scp/api/ismaster",                        globalPropertyf},
+    {"hascontrol_1",     "scp/api/hascontrol_1",                    globalPropertyf},
     -- Failures
-    {"flap_fail_left",     "tu154ce/failures/flap_fail_left",              globalPropertyi},
-    {"flap_fail_right",    "tu154ce/failures/flap_fail_right",             globalPropertyi},
-    {"stab_eng_fail",      "tu154ce/failures/stab_eng_fail",               globalPropertyi},
-    {"stab_automatic_fail","tu154ce/failures/stab_automatic_fail",         globalPropertyi},
-    {"slats_fail",         "tu154ce/failures/slats_fail",                  globalPropertyi}
+    {"flap_fail_left",     "tu154ce/failures/flap_fail_left",        globalPropertyi},
+    {"flap_fail_right",    "tu154ce/failures/flap_fail_right",       globalPropertyi},
+    {"stab_eng_fail",      "tu154ce/failures/stab_eng_fail",         globalPropertyi},
+    {"stab_automatic_fail","tu154ce/failures/stab_automatic_fail",   globalPropertyi},
+    {"slats_fail",         "tu154ce/failures/slats_fail",            globalPropertyi}
 })
+
 
 -- Flap commands and sample
 local flaps_cmd_up   = findCommand("sim/flight_controls/flaps_up")
@@ -196,5 +198,3 @@ function update()
     set(ctr_115_3_cc, bool2int(stab_dir~=0 and stab_state>0) * 6.5)
 end
 
--- Register SASL flight loop
-registerFlightLoop(update, -1)

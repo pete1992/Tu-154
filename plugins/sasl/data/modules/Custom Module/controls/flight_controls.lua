@@ -1,35 +1,6 @@
 -- flight_controls.lua
 
---]]
-	Changelog
-	
-	Refactored DataRef definitions into a single props table with looped 
-	defineProperty calls for clarity and maintainability
-	
-	Added utility functions: clamp, bool2int, line (2-point interpolation), and 
-	interpMach (table-based interpolation)
-	
-	Implemented proper delta-time integration by tracking last_time and 
-	computing dt = now - last_time
-	
-	Corrected SmartCopilot master check to get(ismaster) == 2 so only true 
-	masters drive the controls
-	
-	Defined all previously missing DataRefs (stab_ratio, anim_rud*, 
-	rpm_high_*, etc.) to avoid runtime errors
-	
-	Ensured all float DataRefs use globalPropertyf for consistent typing (e.g. 
-	gear deflections)
-	
-	Consolidated hydraulic and booster logic into clear blocks, using bool2int 
-	and max-of channels for authority
-	
-	Unified aileron/roll-spoiler, spoilers, force-feedback, elevator, and 
-	rudder logic into structured, readable sections
-	
-	Preserved original functionality and failure-mode handling while improving 
-	readability and performance
-]]
+
 
 -- Utility: Clamp value between min and max
 local function clamp(x, minv, maxv)

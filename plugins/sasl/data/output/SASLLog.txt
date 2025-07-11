@@ -1,9 +1,9 @@
 [TU154 INFO]: Initializing...
 [TU154 INFO]: [DISPLAY] Monitor 0: 0, 0, 1920, 1080
-[TU154 INFO]: Path to module: C:\Program Files (x86)/Steam/steamapps/common/X-Plane 12/Aircraft/Tu154_Felis_open/plugins/SASL/data/modules/main.lua
+[TU154 INFO]: Path to module: G:\X-Plane 12/Aircraft/Laminar Research/Tu-154M/plugins/sasl/data/modules/main.lua
 [TU154 INFO]: Loading module...
 [TU154 INFO]: [LUA]: loading	module
-[TU154 INFO]: [LUA]: "module"	This is Tu154M Community Edition, v1.0.0
+[TU154 INFO]: [LUA]: "module"	This is Tu154M Community Edition, XP12 Alpha Custom
 [TU154 INFO]: [LUA]: "module"	Lua version is	Lua 5.1
 [TU154 INFO]: [LUA]: including	dataref_creator_4.lua
 [TU154 INFO]: [LUA]: loading	dataref_creator_1
@@ -15,7 +15,7 @@
 [TU154 INFO]: [LUA]: loading	flap_aero
 [TU154 INFO]: [LUA]: loading	main_panel
 [TU154 INFO]: [LUA]: loading	vers
-[TU154 INFO]: [LUA]: "vers"	Tu154 v2.0.6
+[TU154 INFO]: [LUA]: "vers"	Tu154 v2.0.7
 [TU154 INFO]: [LUA]: loading	sc_controls
 [TU154 INFO]: [LUA]: loading	achs1
 [TU154 INFO]: [LUA]: loading	clock24
@@ -80,6 +80,48 @@
 [TU154 INFO]: [LUA]: including	smooth_light.lua
 [TU154 INFO]: [LUA]: loading	tks_fails
 [TU154 INFO]: [LUA]: loading	pnp
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <RXP/radios/gps_course_degtm> not found
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/main_panel/pnp.lua:68 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <pnp>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:117 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:122 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <RXP/radios/indicators/gps_cross_track_nm> not found
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/main_panel/pnp.lua:72 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <pnp>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:117 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:122 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <RXP/radios/indicators/hsi_flag_from_to_pilot> not found
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/main_panel/pnp.lua:76 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <pnp>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:117 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:122 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <RXP/radios/gps_course_degtm> not found
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/main_panel/pnp.lua:68 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <pnp>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:119 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:122 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <RXP/radios/indicators/gps_cross_track_nm> not found
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/main_panel/pnp.lua:72 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <pnp>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:119 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:122 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <RXP/radios/indicators/hsi_flag_from_to_pilot> not found
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/main_panel/pnp.lua:76 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <pnp>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:119 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:122 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	rmi
 [TU154 INFO]: [LUA]: loading	diss
 [TU154 INFO]: [LUA]: loading	diss_panel
@@ -98,6 +140,7 @@
 [TU154 INFO]: [LUA]: loading	radio_display
 [TU154 INFO]: [LUA]: including	functions.lua
 [TU154 INFO]: [LUA]: loading	course_mp
+[TU154 DEBUG]: [LUA]: "sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot": Casting float to int
 [TU154 INFO]: [LUA]: loading	ark15
 [TU154 INFO]: [LUA]: loading	dme
 [TU154 INFO]: [LUA]: loading	dme_display
@@ -109,6 +152,20 @@
 [TU154 INFO]: [LUA]: including	smooth_light.lua
 [TU154 INFO]: [LUA]: loading	nvu_logic
 [TU154 INFO]: [LUA]: loading	absu
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <RXP/radios/gps_course_degtm> not found
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/main_panel/absu/absu.lua:236 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <absu>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:188 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:122 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <RXP/radios/indicators/gps_cross_track_nm> not found
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/main_panel/absu/absu.lua:240 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <absu>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:188 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:122 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	absu_commands
 [TU154 INFO]: [LUA]: loading	absu_panel
 [TU154 INFO]: [LUA]: including	smooth_light.lua
@@ -122,22 +179,260 @@
 [TU154 INFO]: [LUA]: loading	absu_fails
 [TU154 INFO]: [LUA]: loading	misc_lamps
 [TU154 INFO]: [LUA]: loading	radar
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/EFIS/EFIS_page[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/main_panel/radar/radar.lua:64 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <radar>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:192 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/EFIS/EFIS_page[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/main_panel/radar/radar.lua:65 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <radar>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/main_panel/main_panel.lua:192 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <main_panel>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	vent
 [TU154 INFO]: [LUA]: loading	water_panel
 [TU154 INFO]: [LUA]: including	smooth_light.lua
 [TU154 INFO]: [LUA]: loading	gns430
 [TU154 INFO]: [LUA]: loading	misc_fails
 [TU154 INFO]: [LUA]: loading	overhead
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/engine/ENGN_N1_[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/overhead/overhead.lua:9 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/overhead/overhead.lua:19 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <overhead>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:123 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/engine/ENGN_N1_[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/overhead/overhead.lua:9 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/overhead/overhead.lua:19 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <overhead>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:123 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/engine/ENGN_N1_[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/overhead/overhead.lua:9 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/overhead/overhead.lua:19 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <overhead>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:123 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	animation
 [TU154 INFO]: [LUA]: loading	ext_anim
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/wing/wing_tip_deflection_deg[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:37 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[5]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:39 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[4]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:40 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[3]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[4]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[5]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[6]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[7]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[8]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[9]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[10]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/custom_slider_on[11]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:57 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_anim>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	rain_mask
 [TU154 INFO]: [LUA]: loading	slow_load
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/payload/tank_1_pr> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:11 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/payload/tank_4_pr> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:11 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/payload/tank_2L_pr> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:11 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/payload/tank_2R_pr> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:11 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/payload/tank_3L_pr> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:11 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/payload/tank_3R_pr> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:11 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:22 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:25 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:25 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:25 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[3]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:25 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[4]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:25 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/weight/m_fuel[5]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/slow_load.lua:25 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <slow_load>
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/animation/animation.lua:6 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <animation>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	electric_system
 [TU154 INFO]: [LUA]: loading	battery_logic
 [TU154 INFO]: [LUA]: loading	generators_logic
 [TU154 INFO]: [LUA]: loading	current_counter
 [TU154 INFO]: [LUA]: loading	bus36_logic
 [TU154 INFO]: [LUA]: loading	bus27_logic
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...ta/modules/Custom Module/electric_system/bus27_logic.lua:13 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...ta/modules/Custom Module/electric_system/bus27_logic.lua:16 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <bus27_logic>
+[TU154 WARN]: [STACK]:| ...odules/Custom Module/electric_system/electric_system.lua:56 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	bus115_logic
 [TU154 INFO]: [LUA]: loading	gpu_logic
 [TU154 INFO]: [LUA]: loading	electric_fails
@@ -148,11 +443,96 @@
 [TU154 INFO]: [LUA]: loading	light_panel
 [TU154 INFO]: [LUA]: loading	cockpit_lights
 [TU154 INFO]: [LUA]: loading	ext_lights
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/anticollision_light_switch[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/lights_system/ext_lights.lua:63 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_lights>
+[TU154 WARN]: [STACK]:| ...ta/modules/Custom Module/lights_system/lights_system.lua:8 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <lights_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/switches/landing_lights_switch[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/lights_system/ext_lights.lua:94 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <ext_lights>
+[TU154 WARN]: [STACK]:| ...ta/modules/Custom Module/lights_system/lights_system.lua:8 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <lights_system>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	light_fails
 [TU154 INFO]: [LUA]: loading	apu_system
 [TU154 INFO]: [LUA]: loading	apu_logic
+[TU154 WARN]: [STACK]:| createDataRef : DataRefsHandler::luaCreateDataRef: <tu154ce/eng/apu_egt> already exists
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:343 in function <createGlobalPropertyf>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:8 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| createDataRef : DataRefsHandler::luaCreateDataRef: <tu154ce/eng/apu_oil_t> already exists
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:343 in function <createGlobalPropertyf>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| createDataRef : DataRefsHandler::luaCreateDataRef: <tu154ce/eng/apu_oil_q> already exists
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:343 in function <createGlobalPropertyf>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:10 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| createDataRef : DataRefsHandler::luaCreateDataRef: <tu154ce/eng/apu_oil_p> already exists
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:343 in function <createGlobalPropertyf>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:11 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| createDataRef : DataRefsHandler::luaCreateDataRef: <tu154ce/eng/apu_n1> already exists
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:343 in function <createGlobalPropertyf>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:12 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| createDataRef : DataRefsHandler::luaCreateDataRef: <tu154ce/eng/apu_air_doors> already exists
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:343 in function <createGlobalPropertyf>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:14 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/switchers/apu_main> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <?>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:19 in function <defineBatch>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:23 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/eng/apu_air_bleed> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <?>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:19 in function <defineBatch>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:23 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/elec/apu_stop> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <?>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:19 in function <defineBatch>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:23 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/fuel/tank1_w> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:19 in function <defineBatch>
+[TU154 WARN]: [STACK]:| ...sasl/data/modules/Custom Module/apu_system/apu_logic.lua:23 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <apu_logic>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/apu_system/apu_system.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	apu_panel
 [TU154 INFO]: [LUA]: including	smooth_light.lua
+[TU154 INFO]: [LUA]: loading	apu_fails
 [TU154 INFO]: [LUA]: loading	asu
 [TU154 INFO]: [LUA]: loading	engines_system
 [TU154 INFO]: [LUA]: loading	engines_panel
@@ -161,6 +541,69 @@
 [TU154 INFO]: [LUA]: loading	rud_logic
 [TU154 INFO]: [LUA]: loading	vibration_logic
 [TU154 INFO]: [LUA]: loading	eng_fails
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/engine/ENGN_oil_quan[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/engine/ENGN_oil_quan[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/engine/ENGN_oil_quan[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/engine/indicators/EGT_deg_C[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/engine/indicators/EGT_deg_C[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/engine/indicators/EGT_deg_C[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/engines/engine_is_burning_fuel[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/engines/engine_is_burning_fuel[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/engines/engine_is_burning_fuel[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/engines_system/eng_fails.lua:92 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <eng_fails>
+[TU154 WARN]: [STACK]:| .../modules/Custom Module/engines_system/engines_system.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <engines_system>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	fuel_system
 [TU154 INFO]: [LUA]: loading	fuel_panel
 [TU154 INFO]: [LUA]: including	smooth_light.lua
@@ -178,19 +621,160 @@
 [TU154 INFO]: [LUA]: loading	kskv_bleed
 [TU154 INFO]: [LUA]: loading	kskv_cond
 [TU154 INFO]: [LUA]: loading	kskv_sard
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/aircraft/view/acf_has_press_controls> not found
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/kskv/kskv_sard.lua:17 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <kskv_sard>
+[TU154 WARN]: [STACK]:| ...4M/plugins/sasl/data/modules/Custom Module/kskv/kskv.lua:7 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <kskv>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:132 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	kskv_fails
 [TU154 INFO]: [LUA]: loading	start_system
 [TU154 INFO]: [LUA]: loading	start_panel
 [TU154 INFO]: [LUA]: including	smooth_light.lua
 [TU154 INFO]: [LUA]: loading	start_logic
+[TU154 INFO]: [LUA]: including	smooth_light.lua
 [TU154 INFO]: [LUA]: loading	controls
 [TU154 INFO]: [LUA]: loading	controls_panel
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel/position/machno> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...l/data/modules/Custom Module/controls/controls_panel.lua:7 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...l/data/modules/Custom Module/controls/controls_panel.lua:12 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls_panel>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:4 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: including	smooth_light.lua
 [TU154 INFO]: [LUA]: loading	flight_controls
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:135 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:135 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/engines/thrust_reverser_deploy_ratio[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:135 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/engines/thrust_reverser_deploy_ratio[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| .../data/modules/Custom Module/controls/flight_controls.lua:135 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <flight_controls>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	trimmers
 [TU154 INFO]: [LUA]: loading	flaps
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/aircraft/view/acf_version> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/controls/flaps.lua:8 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/controls/flaps.lua:12 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <flaps>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:7 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/controll/flaps_laver> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/controls/flaps.lua:8 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...ugins/sasl/data/modules/Custom Module/controls/flaps.lua:12 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <flaps>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:7 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	nosewheel
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_steer_command_deg[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:4 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:7 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <nosewheel>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:8 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/joystick/joy_mapped_axis_avail[37]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <?>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:4 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:7 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <nosewheel>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:8 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/joystick/joy_mapped_axis_value[37]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:4 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:7 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <nosewheel>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:8 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_steer_actual_deg[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:4 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:7 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <nosewheel>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:8 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <bp/connected> not found
+[TU154 WARN]: [STACK]:| ...s/sasl/data/modules/Custom Module/controls/nosewheel.lua:30 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <nosewheel>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:8 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:134 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	landing_gears
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/controls/landing_gears.lua:60 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <landing_gears>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/controls/landing_gears.lua:60 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <landing_gears>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/controls/landing_gears.lua:60 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <landing_gears>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/aircraft/parts/acf_gear_deploy[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/controls/landing_gears.lua:60 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <landing_gears>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/aircraft/parts/acf_gear_deploy[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/controls/landing_gears.lua:60 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <landing_gears>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/aircraft/parts/acf_gear_deploy[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/controls/landing_gears.lua:60 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <landing_gears>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/aircraft/view/acf_version> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <globalPropertyf>
+[TU154 WARN]: [STACK]:| ...sl/data/modules/Custom Module/controls/landing_gears.lua:60 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <landing_gears>
+[TU154 WARN]: [STACK]:| ...ns/sasl/data/modules/Custom Module/controls/controls.lua:9 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <controls>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	control_fails
 [TU154 INFO]: [LUA]: loading	fire_system
 [TU154 INFO]: [LUA]: loading	fire_panel
@@ -200,24 +784,84 @@
 [TU154 INFO]: [LUA]: loading	antiice_panel
 [TU154 INFO]: [LUA]: including	smooth_light.lua
 [TU154 INFO]: [LUA]: loading	antiice_logic
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/operation/failures/rel_ice_inlet_heat1> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/antiice/antiice_logic.lua:12 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <antiice_logic>
+[TU154 WARN]: [STACK]:| ...gins/sasl/data/modules/Custom Module/antiice/antiice.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <antiice>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/cockpit2/ice/ice_inlet_heat_on_per_engine[0]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <globalPropertyi>
+[TU154 WARN]: [STACK]:| ...asl/data/modules/Custom Module/antiice/antiice_logic.lua:35 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <antiice_logic>
+[TU154 WARN]: [STACK]:| ...gins/sasl/data/modules/Custom Module/antiice/antiice.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <antiice>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	antiice_fails
 [TU154 INFO]: [LUA]: loading	msrp
 [TU154 INFO]: [LUA]: loading	msrp_panel
 [TU154 INFO]: [LUA]: including	smooth_light.lua
-[TU154 INFO]: [LUA]: "msrp_panel"	found Black Box file with same name - C:\Program Files (x86)/Steam/steamapps/common/X-Plane 12/Aircraft/Tu154_Felis_open/black_box/14_03_23_000.bbox
-[TU154 INFO]: [LUA]: "msrp_panel"	changing route number
-[TU154 INFO]: [LUA]: "msrp_panel"	found Black Box file with same name - C:\Program Files (x86)/Steam/steamapps/common/X-Plane 12/Aircraft/Tu154_Felis_open/black_box/14_03_23_001.bbox
-[TU154 INFO]: [LUA]: "msrp_panel"	changing route number
-[TU154 INFO]: [LUA]: "msrp_panel"	found Black Box file with same name - C:\Program Files (x86)/Steam/steamapps/common/X-Plane 12/Aircraft/Tu154_Felis_open/black_box/14_03_23_002.bbox
-[TU154 INFO]: [LUA]: "msrp_panel"	changing route number
-[TU154 INFO]: [LUA]: "msrp_panel"	found Black Box file with same name - C:\Program Files (x86)/Steam/steamapps/common/X-Plane 12/Aircraft/Tu154_Felis_open/black_box/14_03_23_003.bbox
-[TU154 INFO]: [LUA]: "msrp_panel"	changing route number
-[TU154 INFO]: [LUA]: "msrp_panel"	found Black Box file with same name - C:\Program Files (x86)/Steam/steamapps/common/X-Plane 12/Aircraft/Tu154_Felis_open/black_box/14_03_23_004.bbox
-[TU154 INFO]: [LUA]: "msrp_panel"	changing route number
 [TU154 INFO]: [LUA]: loading	msrp_logic
 [TU154 INFO]: [LUA]: loading	brake_system
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:12 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:17 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <brake_system>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:138 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:12 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:17 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <brake_system>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:138 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/joystick/joy_mapped_axis_avail[6]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <?>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:12 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:17 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <brake_system>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:138 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/joystick/joy_mapped_axis_avail[7]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:390 in function <?>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:12 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:17 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <brake_system>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:138 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/joystick/joy_mapped_axis_value[6]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:12 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:17 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <brake_system>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:138 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <sim/joystick/joy_mapped_axis_value[7]> not found
+[TU154 WARN]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProperties.lua:297 in function <?>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:12 in function <defineProps>
+[TU154 WARN]: [STACK]:| ...data/modules/Custom Module/brake_system/brake_system.lua:17 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <brake_system>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:138 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	sounds
 [TU154 INFO]: [LUA]: loading	cabin_sounds
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/sound/long_horn> not found
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/sounds/cabin_sounds.lua:108 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <cabin_sounds>
+[TU154 WARN]: [STACK]:| ...lugins/sasl/data/modules/Custom Module/sounds/sounds.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <sounds>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:139 in function <f>
+[TU154 WARN]: [STACK]:| ...
+[TU154 WARN]: [STACK]:| findDataRef : DataRefsHandler::luaFindDataRef: <tu154ce/sound/short_horn> not found
+[TU154 WARN]: [STACK]:| .../sasl/data/modules/Custom Module/sounds/cabin_sounds.lua:112 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <cabin_sounds>
+[TU154 WARN]: [STACK]:| ...lugins/sasl/data/modules/Custom Module/sounds/sounds.lua:5 in function <f>
+[TU154 WARN]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:260 in function <sounds>
+[TU154 WARN]: [STACK]:| ...inar Research/Tu-154M/plugins/sasl/data/modules/main.lua:139 in function <f>
+[TU154 WARN]: [STACK]:| ...
 [TU154 INFO]: [LUA]: loading	engines_sound
 [TU154 INFO]: [LUA]: loading	crew_voices
 [TU154 INFO]: [LUA]: including	voice_tables.lua
@@ -257,7 +901,22 @@
 [TU154 INFO]: [LUA]: loading	failures_draw
 [TU154 INFO]: [LUA]: loading	smooth_anim
 [TU154 INFO]: Module loaded
-[TU154 INFO]: [LUA]: "crew_voices"	PREPARE
-[TU154 INFO]: [LUA]: "save_state"	reading last state: OK
+[TU154 INFO]: [LUA]: loading	EFIS_page
+[TU154 ERROR]: [LUA]: can't load component	EFIS_page
+[TU154 ERROR]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:221 in function <__index>
+[TU154 ERROR]: [STACK]:| ...sl/data/modules/Custom Module/main_panel/radar/radar.lua:177 in function <update>
+[TU154 ERROR]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProcessing.lua:114 in function <updateAll>
+[TU154 ERROR]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:77 in function <update>
+[TU154 ERROR]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProcessing.lua:114 in function <updateAll>
+[TU154 ERROR]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:77 in function <update>
+[TU154 ERROR]: [STACK]:| ...
+[TU154 ERROR]: Error updating module
+[TU154 ERROR]: [STACK]:| __add : ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:99: attempt to perform arithmetic on a nil value
+[TU154 ERROR]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:99 in function <animate_surfaces>
+[TU154 ERROR]: [STACK]:| ...s/sasl/data/modules/Custom Module/animation/ext_anim.lua:121 in function <update>
+[TU154 ERROR]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProcessing.lua:114 in function <updateAll>
+[TU154 ERROR]: [STACK]:| ...nar Research/Tu-154M/plugins/sasl/data/init/initMain.lua:77 in function <update>
+[TU154 ERROR]: [STACK]:| ...search/Tu-154M/plugins/sasl/data/init/initProcessing.lua:114 in function <updateAll>
+[TU154 ERROR]: [STACK]:| ...
 [TU154 INFO]: Disabling...
 [TU154 INFO]: SASL plugin stopped...

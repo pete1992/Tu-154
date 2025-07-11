@@ -222,7 +222,7 @@ defineProperty("hydro_pump_fail_3", globalPropertyi("tu154ce/failures/hydro_pump
 defineProperty("hydro_elec_fail_2", globalPropertyi("tu154ce/failures/hydro_elec_fail_2"))
 defineProperty("hydro_elec_fail_3", globalPropertyi("tu154ce/failures/hydro_elec_fail_3"))
 
-ldefineProperty("gs_qty_1", globalPropertyf("tu154ce/hydro/gs_qty_1")) -- hydraulic oil quantity (system 1)
+defineProperty("gs_qty_1", globalPropertyf("tu154ce/hydro/gs_qty_1")) -- hydraulic oil quantity (system 1)
 defineProperty("gs_qty_2", globalPropertyf("tu154ce/hydro/gs_qty_2")) -- hydraulic oil quantity (system 2)
 defineProperty("gs_qty_3", globalPropertyf("tu154ce/hydro/gs_qty_3")) -- hydraulic oil quantity (system 3)
 

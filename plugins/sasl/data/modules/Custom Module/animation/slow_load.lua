@@ -94,7 +94,7 @@ local function load_fuel(dt)
 end
 
 -- Payload & CG loading
-t ocal function load_payload(dt)
+local function load_payload(dt)
     local total_set = get(payload_set)
     local load_time = 600 * total_set / 20000
     if load_time <= 0 then return true end

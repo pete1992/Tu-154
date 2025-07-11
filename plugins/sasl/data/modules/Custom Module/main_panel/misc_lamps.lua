@@ -31,9 +31,7 @@ defineProperty("msg_lamp", globalPropertyf("tu154ce/lights/msg_lamp")) -- MSG
 defineProperty("wpt_lamp", globalPropertyf("tu154ce/lights/wpt_lamp")) -- WPT
 defineProperty("stuard_call", globalPropertyf("tu154ce/lights/stuard_call")) -- вызов БП
 
-if not getGlobalPropertyf("tu154ce/lights/sns_lamp") then
-    createGlobalPropertyf("tu154ce/lights/sns_lamp", 0)
-end
+defineProperty("sns_lamp", globalPropertyf("tu154ce/lights/sns_lamp"))
 
 
 -- sources
