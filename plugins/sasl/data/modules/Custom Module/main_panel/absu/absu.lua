@@ -233,14 +233,14 @@ show_RXP = globalPropertyi("tu154ce/anim/RXP")
 
 
 -- RXP 
-if findDataRef("RXP/radios/gps_course_degtm") then
-    defineProperty("RXP_course", globalPropertyf("RXP/radios/gps_course_degtm")) -- course to active GPS waypoint (from KLN)
+local function defineOptProp(var, ref)
+    if pcall(function() return globalPropertyf(ref) end) then
+        return defineProperty(var, globalPropertyf(ref))
+    end
+    return nil
 end
-
-if findDataRef("RXP/radios/indicators/gps_cross_track_nm") then
-    defineProperty("RXP_dev", globalPropertyf("RXP/radios/indicators/gps_cross_track_nm")) -- deviation from GPS course line, in nautical miles
-end
-
+local rxp_course  = defineOptProp("RXP_course", rxp_course_ref)
+local rxp_dev     = defineOptProp("RXP_dev", rxp_dev_ref)
 
 -- GNS
 GNS430_dtk = globalPropertyf("tu154ce/SC/GNS430_dtk") -- курс на ГНС
@@ -255,16 +255,20 @@ dh_set = globalPropertyf("tu154ce/gauges/alt/radioalt_dh_left") -- DH angle
 rv_angle = globalPropertyf("tu154ce/gauges/alt/radioalt_needle_left") -- RV needle
 
 -- Landing Gears
-gear1_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[0]") -- deploy of front gear
-gear2_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[1]") -- deploy of right gear
-gear3_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[2]") -- deploy of left gear
+local props = {
+    {"gear_deploy_arr", "sim/aircraft/parts/acf_gear_deploy", globalPropertyf},  -- landing gear deploy array
+    {"gear_deflect_arr", "sim/flightmodel2/gear/tire_vertical_deflection_mtr", globalPropertyf}  -- landing gear deflection array
+}
+for _, d in ipairs(props) do
+    defineProperty(d[1], d[3](d[2]))
+end
+
 -- flaps
 flap_inn_L = globalPropertyf("sim/flightmodel/controls/wing1l_fla1def") -- inner flaps left
 flap_inn_R = globalPropertyf("sim/flightmodel/controls/wing1r_fla1def") -- inner flaps right
 
--- ailerons 20, rudder 25, elevator 25-20
 
-gear1_deflect = globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]") -- vertical deflection of front gear
+
 
 -- results
 absu_roll_ind = globalPropertyf("tu154ce/absu/absu_roll_ind") -- индикация директора крена
