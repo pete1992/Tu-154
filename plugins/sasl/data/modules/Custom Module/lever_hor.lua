@@ -44,15 +44,6 @@ components = {
     -- clicable area for lever
     clickable {
        position = { 15, 0, 109, 29 },
-       --[[ 
-       cursor = { 
-            x = 0, 
-            y = 0, 
-            width = 16, 
-            height = 16, 
-            shape = loadImage("clickable.png")
-        },  
-        --]]
         onMouseClick = function(comp, x, y, button)
            mouse_stat = true
            if x < 0 then x = 0 elseif x > 100 then x = 100 end
@@ -87,13 +78,4 @@ components = {
         end,
 		
     },
-
 }
-
-
-
-
-
-
-
-

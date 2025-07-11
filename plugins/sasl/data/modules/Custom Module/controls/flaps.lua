@@ -22,7 +22,7 @@ defineProps({
     {"stab_ratio",       "sim/cockpit2/controls/elevator_trim",     globalPropertyf},
     -- Controls & switches
     {"sim_flap_ratio",   "sim/cockpit2/controls/flap_ratio",        globalPropertyf},
-    {"flaps_lever",      "tu154ce/controll/flaps_laver",            globalPropertyf}, -- intentional typo in DataRef name!
+    {"flaps_lever",      "tu154ce/controll/flaps_lever",            globalPropertyf}, 
     {"flaps_sel",        "tu154ce/switchers/flaps_sel",             globalPropertyi},
     {"slat_man",         "tu154ce/switchers/slat_man",              globalPropertyi},
     {"slat_man_cap",     "tu154ce/switchers/slat_man_cap",          globalPropertyi},

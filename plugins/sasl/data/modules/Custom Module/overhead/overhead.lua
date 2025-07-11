@@ -1,8 +1,19 @@
--- overhead_panel.lua – Tu-154M Overhead Panel Logic (SASL 3.19)
+-- overhead_panel.lua – Tu-154M Overhead Panel Logic (SASL 3.19+ / X-Plane 12)
 -- Handles all overhead switches, caps, buttons, state resets, and sound feedback
+-- Now with correct support for array DataRefs (ENGN_N1_) using SASL3/X-Plane 12+ conventions
 
 -- Helper functions
 local function bool2int(v) return v and 1 or 0 end
+
+-- Helper for safe array DataRef access (for X-Plane arrays like ENGN_N1_)
+local function getArr(dref, idx)
+    local v = get(dref)
+    if type(v) == "table" then
+        return v[idx+1] or 0 -- Lua 1-based, X-Plane docs 0-based
+    else
+        return 0
+    end
+end
 
 local function defineProps(defs)
     for _, d in ipairs(defs) do defineProperty(d[1], d[3](d[2])) end
@@ -80,9 +91,7 @@ defineProps({
     {"emerg_light_cap", "tu154ce/switchers/ovhd/emerg_light_cap", globalPropertyi},
     -- Misc & status
     {"frame_time",      "tu154ce/time/frame_time",                globalPropertyf},
-    {"eng1_N1",         "sim/flightmodel/engine/ENGN_N1_[0]",     globalPropertyf},
-    {"eng2_N1",         "sim/flightmodel/engine/ENGN_N1_[1]",     globalPropertyf},
-    {"eng3_N1",         "sim/flightmodel/engine/ENGN_N1_[2]",     globalPropertyf},
+    {"eng_N1",          "sim/flightmodel/engine/ENGN_N1_",        globalPropertyf}, -- SASL3/X-Plane 12 array!
 })
 
 -- Switches, caps, buttons lists for unified logic
@@ -117,9 +126,9 @@ local button_sound = loadSample('Custom Sounds/plastic_btn.wav')
 local init = true
 local timer = 0
 
--- Reset all switches/caps on cold & dark engines
+-- Reset all switches/caps on cold & dark engines (all N1 < 5%)
 local function reset_all()
-    if get(eng1_N1)<5 and get(eng2_N1)<5 and get(eng3_N1)<5 then
+    if getArr(eng_N1,0)<5 and getArr(eng_N1,1)<5 and getArr(eng_N1,2)<5 then
         for _,k in ipairs(switches) do set(_G[k],0) end
         for cap,_ in pairs(caps) do set(_G[cap],1) end
     end
@@ -151,4 +160,3 @@ function update()
         if get(_G[cap])==0 then set(_G[sw], bool2int(cap=="emerg_light_cap")) end
     end
 end
-

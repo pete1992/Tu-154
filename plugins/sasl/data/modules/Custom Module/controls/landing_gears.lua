@@ -1,15 +1,19 @@
--- flight_gear.lua
--- Landing gear extend/retract logic for Tu-154M
+-- landing_gears.lua 
+-- Landing gear extend/retract logic for Tu-154M | X-Plane 12 | SASL 3.19+
 
--- Utility functions ------------------------------------------------------
+-- Utility functions
 local function clamp(x, minv, maxv)
     if x < minv then return minv end
     if x > maxv then return maxv end
     return x
 end
 local function bool2int(b) return b and 1 or 0 end
+local function getArr(dref, idx)
+    local v = get(dref)
+    if type(v) == "table" then return v[idx+1] or 0 else return 0 end
+end
 
--- Batch DataRef definitions ---------------------------------------------
+-- Batch DataRef definitions
 local props = {
     -- Hydraulics & timing
     {"gs_press_1",    "tu154ce/hydro/gs_press_1",             "f"},
@@ -23,10 +27,8 @@ local props = {
     {"gear_lever",    "tu154ce/controll/gear_lever",          "i"},
     {"gear_handle_1", "sim/cockpit/switches/gear_handle_status","i"},
     {"gear_handle_2", "sim/cockpit2/controls/gear_handle_down","i"},
-    -- Gear positions & deflections
-    {"gear1_deflect","sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]","f"},
-    {"gear2_deflect","sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]","f"},
-    {"gear3_deflect","sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]","f"},
+    -- Gear positions & deflections (as arrays!)
+    {"gear_deflect_arr","sim/flightmodel2/gear/tire_vertical_deflection_mtr","f"},
     {"gear1_deploy","sim/aircraft/parts/acf_gear_deploy[0]","f"},
     {"gear2_deploy","sim/aircraft/parts/acf_gear_deploy[1]","f"},
     {"gear3_deploy","sim/aircraft/parts/acf_gear_deploy[2]","f"},
@@ -54,7 +56,6 @@ local props = {
     -- X-Plane version (for sound)
     {"xplane_version","sim/aircraft/view/acf_version","f"},
 }
-
 for _, p in ipairs(props) do
     if p[3] == "f" then
         defineProperty(p[1], globalPropertyf(p[2]))
@@ -63,21 +64,21 @@ for _, p in ipairs(props) do
     end
 end
 
--- Sounds & commands -----------------------------------------------------
+-- Sounds & commands
 local lock_sound   = loadSample('Custom Sounds/gear_lock.wav')
 local handle_sound = loadSample('Custom Sounds/gear_lvr.wav')
 local cmd_up       = findCommand("sim/flight_controls/landing_gear_up")
 local cmd_down     = findCommand("sim/flight_controls/landing_gear_down")
 local cmd_toggle   = findCommand("sim/flight_controls/landing_gear_toggle")
 
--- State -----------------------------------------------------------------
+-- State
 local last_time = get(frame_time)
 local pos_front, pos_left, pos_right = 1, 1, 1
 local lock_front, lock_left, lock_right = true, true, true
 local last_lever = get(gear_lever)
 local latch_front, latch_left, latch_right = lock_front, lock_left, lock_right
 
--- Command handlers ------------------------------------------------------
+-- Command handlers
 local function onGearUp(phase)
     if phase == 0 then
         local g = get(gear_lever)
@@ -87,7 +88,6 @@ local function onGearUp(phase)
     end
     return 0
 end
-
 local function onGearDown(phase)
     if phase == 0 then
         local g = get(gear_lever)
@@ -97,7 +97,6 @@ local function onGearDown(phase)
     end
     return 0
 end
-
 local function onGearToggle(phase)
     if phase == 0 then
         local g = get(gear_lever)
@@ -120,7 +119,7 @@ registerCommandHandler(cmd_up,     0, onGearUp)
 registerCommandHandler(cmd_down,   0, onGearDown)
 registerCommandHandler(cmd_toggle, 0, onGearToggle)
 
--- Update loop -----------------------------------------------------------
+-- Update loop
 function update()
     -- Delta time
     local now = get(frame_time)
@@ -140,6 +139,11 @@ function update()
     local h3       = math.min(get(gs_press_3)/100,1)
     local IAS2     = get(airspeed)^2
 
+    -- Read gear deflection from array
+    local gear1_deflect = getArr(gear_deflect_arr,0)
+    local gear2_deflect = getArr(gear_deflect_arr,1)
+    local gear3_deflect = getArr(gear_deflect_arr,2)
+
     -- Play handle sound if lever was changed
     if lever ~= last_lever and get(xplane_version) < 120000 then
         playSample(handle_sound, false)
@@ -147,7 +151,7 @@ function update()
     last_lever = lever
 
     -- Allow retract logic
-    local canRetract = (get(gear2_deflect) < 0.01) and (get(gears_retr_lock) == 0)
+    local canRetract = (gear2_deflect < 0.01) and (get(gears_retr_lock) == 0)
     local use3GS     = get(gears_ext_3GS)
 
     -- Compute command for deployment direction & motion flag
@@ -206,8 +210,8 @@ function update()
     -- Write-back or sync with sim/SmartCopilot
     if MASTER then
         set(gear1_deploy, clamp(pos_front,0,1))
-        set(gear2_deploy, clamp(pos_left,0,1))   -- Correct: left main
-        set(gear3_deploy, clamp(pos_right,0,1))  -- Correct: right main
+        set(gear2_deploy, clamp(pos_left,0,1))
+        set(gear3_deploy, clamp(pos_right,0,1))
     else
         pos_front, pos_left, pos_right = get(gear1_deploy), get(gear2_deploy), get(gear3_deploy)
     end

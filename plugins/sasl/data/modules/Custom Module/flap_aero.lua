@@ -6,14 +6,7 @@ defineProperty("cl2", globalPropertyf("sim/aircraft/controls/acf_flap2_cl"))
 defineProperty("cd2", globalPropertyf("sim/aircraft/controls/acf_flap2_cd"))
 defineProperty("cm2", globalPropertyf("sim/aircraft/controls/acf_flap2_cm"))
 
---[[
-sim/aircraft/controls/acf_flap_cl	float	y
-sim/aircraft/controls/acf_flap_cd	float	y
-sim/aircraft/controls/acf_flap_cm	float	y
-sim/aircraft/controls/acf_flap2_cl	float	y
-sim/aircraft/controls/acf_flap2_cd	float	y
-sim/aircraft/controls/acf_flap2_cm	float	y
---]]
+
 defineProperty("flap", globalPropertyf("sim/flightmodel/controls/flaprat"))
 defineProperty("alt", globalPropertyf("sim/flightmodel/position/y_agl"))
 --defineProperty("yd", globalPropertyf("sim/cockpit2/switches/yaw_damper_on"))

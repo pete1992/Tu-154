@@ -1,37 +1,41 @@
 -- nosewheel.lua
--- DataRefs (Batch for clarity/robustness)
-local function defineProps(defs)
-    for _, d in ipairs(defs) do defineProperty(d[1], d[3](d[2])) end
+-- Nosewheel steering logic Tu-154M | X-Plane 12 | SASL 3.19+
+-- Full batch DataRef, X-Plane array handling, safe for multiplayer and plugin pushback
+
+local function getArr(dref, idx)
+    local v = get(dref)
+    if type(v) == "table" then return v[idx+1] or 0 else return 0 end
+end
+local function setArr(dref, idx, value)
+    local v = get(dref)
+    if type(v) == "table" then v[idx+1] = value; set(dref, v) end
 end
 
-defineProps({
-	 {"nosewheel_turn_enable", "tu154ce/switchers/nosewheel_turn_enable", globalPropertyi},
-	 {"nosewheel_turn_sel", "tu154ce/switchers/nosewheel_turn_sel", globalPropertyi},
-	 {"bus27_volt_left", "tu154ce/elec/bus27_volt_left", globalPropertyf},
-	 {"bus27_volt_right", "tu154ce/elec/bus27_volt_right", globalPropertyf},
-	 {"gs_press_2", "tu154ce/hydro/gs_press_2", globalPropertyf},
-	 {"have_pedals", "tu154ce/have_pedals", globalPropertyi},
-	 {"override_wheel_steer", "sim/operation/override/override_wheel_steer", globalPropertyi},
-	 {"weel_angle1", "sim/aircraft/gear/acf_nw_steerdeg1", globalPropertyf},
-	 {"weel_angle2", "sim/aircraft/gear/acf_nw_steerdeg2", globalPropertyf},
-	 {"lock", "sim/cockpit2/controls/nosewheel_steer_on", globalPropertyi},
-	 {"tire_steer_command_deg", "sim/flightmodel2/gear/tire_steer_command_deg[0]", globalPropertyf},
-	 {"tiller_avail", "sim/joystick/joy_mapped_axis_avail[37]", globalPropertyi},
-	 {"tiller_val", "sim/joystick/joy_mapped_axis_value[37]", globalPropertyf},
-	 {"joy_yaw", "sim/cockpit2/controls/yoke_heading_ratio", globalPropertyf},
-	 {"tire_steer_actual_deg", "sim/flightmodel2/gear/tire_steer_actual_deg[0]", globalPropertyf},
-})
+-- DataRef batch setup (array-refs as full arrays!)
+local props = {
+    {"nosewheel_turn_enable", "tu154ce/switchers/nosewheel_turn_enable", globalPropertyi},
+    {"nosewheel_turn_sel",    "tu154ce/switchers/nosewheel_turn_sel",    globalPropertyi},
+    {"bus27_volt_left",       "tu154ce/elec/bus27_volt_left",            globalPropertyf},
+    {"bus27_volt_right",      "tu154ce/elec/bus27_volt_right",           globalPropertyf},
+    {"gs_press_2",            "tu154ce/hydro/gs_press_2",                globalPropertyf},
+    {"have_pedals",           "tu154ce/have_pedals",                     globalPropertyi},
+    {"override_wheel_steer",  "sim/operation/override/override_wheel_steer", globalPropertyi},
+    {"weel_angle1",           "sim/aircraft/gear/acf_nw_steerdeg1",      globalPropertyf},
+    {"weel_angle2",           "sim/aircraft/gear/acf_nw_steerdeg2",      globalPropertyf},
+    {"lock",                  "sim/cockpit2/controls/nosewheel_steer_on",globalPropertyi},
+    {"tire_steer_command_arr","sim/flightmodel2/gear/tire_steer_command_deg",globalPropertyf}, -- [10]
+    {"tiller_avail",          "sim/joystick/joy_mapped_axis_avail[37]",  globalPropertyi},
+    {"tiller_val",            "sim/joystick/joy_mapped_axis_value[37]",  globalPropertyf},
+    {"joy_yaw",               "sim/cockpit2/controls/yoke_heading_ratio",globalPropertyf},
+    {"tire_steer_actual_arr", "sim/flightmodel2/gear/tire_steer_actual_deg",globalPropertyf},  -- [10]
+}
+for _, d in ipairs(props) do defineProperty(d[1], d[3](d[2])) end
 
--- Option: menu-based steering source (0=tiller, 1=yaw/joystick) [if you use this!]
--- defineProperty("nosewheel_source", globalPropertyi("tu154ce/switchers/nosewheel_source"))
-
--- Optional: Pushback plugin support
-local pushback = nil
-if findDataRef("bp/connected") then
+-- Optional: Pushback plugin support (safe pattern: just check after defineProperty, never use findDataRef)
+local pushback = function() return false end
+if pcall(function() return globalPropertyi("bp/connected") end) then
     defineProperty("bp_connected", globalPropertyi("bp/connected"))
     pushback = function() return get(bp_connected) == 1 end
-else
-    pushback = function() return false end
 end
 
 local get, set = get, set
@@ -56,16 +60,8 @@ function update()
         set(weel_angle2, 0)
     end
 
-    -- Choose input axis: Tiller, Yaw, or menu setting
+    -- Choose input axis: Tiller, Yaw
     local steerInput
-    -- If you have a menu option for input source, use that here!
-    -- if get(nosewheel_source) == 0 and get(tiller_avail)==1 then
-    --     steerInput = get(tiller_val)
-    -- else
-    --     steerInput = get(joy_yaw)
-    -- end
-
-    -- Else: fallback on tiller if pedals detected, otherwise yaw
     if get(have_pedals) == 1 and get(tiller_avail)==1 then
         steerInput = get(tiller_val)
     else
@@ -74,19 +70,21 @@ function update()
 
     -- Only drive if not pushback active
     if not pushback() then
-        set(tire_steer_command_deg, steerInput * get(weel_angle1))
+        setArr(tire_steer_command_arr, 0, steerInput * get(weel_angle1))
     end
 end
 
 -- Toggle command for cockpit switch
-local toggleCmd = findCommand("sim/flight_controls/nwheel_steer_toggle")
+local toggleCmd = findCommand and findCommand("sim/flight_controls/nwheel_steer_toggle")
 function gear_toggle_handler(phase)
     if phase == 0 then
         set(nosewheel_turn_enable, 1 - get(nosewheel_turn_enable))
     end
     return 0
 end
-registerCommandHandler(toggleCmd, 0, gear_toggle_handler)
+if toggleCmd and registerCommandHandler then
+    registerCommandHandler(toggleCmd, 0, gear_toggle_handler)
+end
 
 function onAvionicsDone()
     set(override_wheel_steer, 0)

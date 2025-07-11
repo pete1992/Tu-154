@@ -1,0 +1,70 @@
+
+
+
+
+WARN: findDataRef : <sim/cockpit2/EFIS/EFIS_page[0]> not found
+  in ...main_panel/radar/radar.lua:64
+
+WARN: findDataRef : <sim/cockpit2/EFIS/EFIS_page[1]> not found
+  in ...main_panel/radar/radar.lua:65
+  
+ 
+Source:
+sim/flightmodel/engine/ENGN_N1_	float[16]	y	percent	N1 speed 
+as percent of max (per engine)
+WARN: findDataRef : <sim/flightmodel/engine/ENGN_N1_[0]> not found
+  in ...overhead/overhead.lua:9
+WARN: findDataRef : <sim/flightmodel/engine/ENGN_N1_[1]> not found
+  in ...overhead/overhead.lua:9
+WARN: findDataRef : <sim/flightmodel/engine/ENGN_N1_[2]> not found
+  in ...overhead/overhead.lua:9
+
+
+
+
+
+im/flightmodel2/wing/wing_tip_deflection_deg	float[32]	n	degrees	Degrees of deflection of a line from the wing root (extended to the plane centerline) to the tip.
+
+WARN: findDataRef : <sim/flightmodel2/wing/wing_tip_deflection_deg[0]> not found
+  in ...animation/ext_anim.lua:37
+
+WARN: findDataRef : <sim/flightmodel/weight/m_fuel[5]> not found
+  in ...animation/ext_anim.lua:39
+
+WARN: findDataRef : <sim/flightmodel/weight/m_fuel[4]> not found
+  in ...animation/ext_anim.lua:40
+
+WARN: findDataRef : <sim/cockpit2/switches/custom_slider_on[0]> not found
+  in ...animation/ext_anim.lua:57
+
+WARN: findDataRef : <sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]> not found
+  in ...controls/flight_controls.lua:135
+
+WARN: findDataRef : <sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]> not found
+  in ...controls/flight_controls.lua:135
+
+WARN: findDataRef : <sim/flightmodel2/engines/thrust_reverser_deploy_ratio[0]> not found
+  in ...controls/flight_controls.lua:135
+
+WARN: findDataRef : <tu154ce/controll/flaps_laver> not found
+  in ...controls/flaps.lua:8
+
+WARN: findDataRef : <sim/flightmodel2/gear/tire_steer_command_deg[0]> not found
+  in ...controls/nosewheel.lua:4
+
+WARN: findDataRef : <bp/connected> not found
+  in ...controls/nosewheel.lua:30
+
+WARN: findDataRef : <sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]> not found
+  in ...controls/landing_gears.lua:60
+
+WARN: findDataRef : <sim/aircraft/view/acf_has_press_controls> not found
+  in ...kskv/kskv_sard.lua:17
+
+ERROR: can't load component	EFIS_page
+  in ...main_panel/radar/radar.lua:177
+
+ERROR: attempt to perform arithmetic on a nil value
+  in ...animation/ext_anim.lua:99
+ 
+
