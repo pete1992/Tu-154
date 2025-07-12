@@ -255,13 +255,11 @@ dh_set = globalPropertyf("tu154ce/gauges/alt/radioalt_dh_left") -- DH angle
 rv_angle = globalPropertyf("tu154ce/gauges/alt/radioalt_needle_left") -- RV needle
 
 -- Landing Gears
-local props = {
-    {"gear_deploy_arr", "sim/aircraft/parts/acf_gear_deploy", globalPropertyf},  -- landing gear deploy array
-    {"gear_deflect_arr", "sim/flightmodel2/gear/tire_vertical_deflection_mtr", globalPropertyf}  -- landing gear deflection array
-}
-for _, d in ipairs(props) do
-    defineProperty(d[1], d[3](d[2]))
-end
+-- Define full array property for gear deploy
+gear_deploy_arr = globalPropertyfa("sim/aircraft/parts/acf_gear_deploy") -- landing gear deploy array
+-- Define full array property for tire deflection
+gear_deflect_arr = globalPropertyfa("sim/flightmodel2/gear/tire_vertical_deflection_mtr") -- gear deflection array
+
 
 -- flaps
 flap_inn_L = globalPropertyf("sim/flightmodel/controls/wing1l_fla1def") -- inner flaps left
