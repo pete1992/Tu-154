@@ -77,27 +77,6 @@ function isILS(freq)
     return (v % 2) == 1
 end
 
---[[
--- Example for subpanel usage (disabled)
-test_panel = subpanel {
-    position = {50, 50, 1000, 500};
-    noBackground = true;
-    noClose = true;
-    resizeProportional = true;
-    savePosition = true;
-    name = "test_panel";
-    components = {
-        rectangle {
-            position = {0, 0, 1000, 500},
-            color = {1, 1, 1, 1};
-        },
-        afl_ch {
-            position = {0, 0, 1000, 500},
-        },
-    };
-}
-test_panel.visible = true
-]]
 
 -- === MAIN COMPONENTS ===
 components = {

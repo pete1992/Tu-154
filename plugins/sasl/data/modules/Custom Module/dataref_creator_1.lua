@@ -1476,4 +1476,3 @@ createGlobalPropertyf("tu154ce/switchers/console/emerg_elev_trimm_cap_anim", 0) 
 
 -- Misc 
 createGlobalPropertyf("tu154ce/lights/landing_light_off_cap_anim",       0) -- LANDING-LIGHTS SWITCH - guard
-createGlobalPropertyf("tu154ce/controll/flaps_laver", 0)

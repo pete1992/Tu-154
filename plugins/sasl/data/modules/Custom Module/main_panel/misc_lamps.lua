@@ -278,13 +278,7 @@ function update()
 	
 	
 	
-	--[[
-	local no_reserve_c_brt = math.max(get(nav_cs_flag) * bool2int(get(roll_main_mode) > 0 and get(pitch_main_mode) > 0 and get(absu_landing_on) == 1) * lamps_brt, test_btn)
-	set(no_reserve_c, no_reserve_c_brt)
 	
-	local no_reserve_g_brt = math.max(get(nav_gs_flag) * bool2int(get(roll_main_mode) > 0 and get(pitch_main_mode) > 0 and get(absu_landing_on) == 1) * lamps_brt, test_btn)
-	set(no_reserve_g, no_reserve_g_brt)
-	--]]
 	
 	
 	
