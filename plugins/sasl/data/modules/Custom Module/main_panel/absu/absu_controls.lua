@@ -1,128 +1,89 @@
--- this is the improved ABSU logic
+-- absu_controls.lua
 
-
--- sources
---defineProperty("joy_pitch", globalPropertyf("sim/cockpit2/controls/yoke_pitch_ratio")) -- pitch position of joytick
---defineProperty("joy_roll", globalPropertyf("sim/cockpit2/controls/yoke_roll_ratio")) -- roll position of joystick
---defineProperty("joy_yaw", globalPropertyf("sim/cockpit2/controls/yoke_heading_ratio")) -- yaw position of joystick
 
 local pitch_act = 0
 local roll_act = 0
 local yaw_act = 0
-
 local pitch_now = get(bkk_pitch)
 local roll_now = get(bkk_roll)
-
 local mach = get(mach_svs)
-
 local flap_coef = 0.025
-
 local pitch_stab_roll_coef = 0.00175 * 2
-
-local gear_down = get(gear1_deploy) + get(gear2_deploy) + get(gear3_deploy) > 0.05
+local gear_down = (get(gear_deploy_arr, 0) > 0.05 or get(gear_deploy_arr, 1) > 0.05 or get(gear_deploy_arr, 2) > 0.05)
 local flaps = (get(flap_inn_L) + get(flap_inn_R)) / 2
-
-
 local passed = get(frame_time)
-
 -- manual pitch
 local pitch_coef = 0.3
-
 local elev_lim = 0.4
 local ail_lim = 0.4
-
-
 -- PU
 pitch_whl_last = 0
 PU_pitch = pitch_now
-
 -- V
 local V_stab = get(ias) / 1.852
 local V_smth = V_stab
 local V_last = V_stab
 local I_V = 0
-
-
 -- M
 local M_stab = get(mach_svs)
 local M_smth = M_stab
 local I_M = 0
 local M_last = M_stab
-
-
 -- H
 local H_stab = get(alt_svs)
 local H_last = H_stab
 local I_H = 0
-
 -- GS
 local GS_last = 0
 local GS_smth = 0
 local GS_est = 0
-
 -- TOGA
 local toga_alt = get(alt_svs)
-
 -- ROLL
 local roll_coef = 0.5
-
 -- handle mode
 local course_stab_timer = 0
 local course_stab_act = get(course_gpk)
-
 -- NVU
 local nvu_z_last = 0
 local nvu_side_last = 0
 local nvu_spd_last = 0
 local nvu_course_last = 0
-
 -- KLN
 local kln_frame_timer = 0
 local kln_Z_last = 0
 local kln_spd = 0
-
 local course_change_timer = 0
-
 -- VOR
 local vor_slip_act = 0
 local vor_dev_lim = 4
 local vor_dev_act = 0
-
-
 -- APP
 local dev_last = 0
 local ILS_spd_smth = 0
 local ILS_dev_smth = 0
 local ILS_spd_last = 0
-
-
 -- YAW
 local yaw_I = 0
 local yaw_P_last = 0
-
 local roll_ail_tbl = {
-{0, 1},
-{0.2, 1},
-{0.3, 0.5},
-{0.4, -0.1},
-{0.6, -0.2},
-{0.8, -0.4},
-{1, -0.6}
-
+	{0, 1},
+	{0.2, 1},
+	{0.3, 0.5},
+	{0.4, -0.1},
+	{0.6, -0.2},
+	{0.8, -0.4},
+	{1, -0.6}
 }
-
 local pitch_elev_tbl = {
-{0, 0.5},
-{0.2, 0.5},
-{0.3, 0.3},
-{0.4, 0.2},
-{0.6, 0},
-{0.8, -0.1},
-{1, -0.2}
-
+	{0, 0.5},
+	{0.2, 0.5},
+	{0.3, 0.3},
+	{0.4, 0.2},
+	{0.6, 0},
+	{0.8, -0.1},
+	{1, -0.2}
 }
-
-
 local flaps_tbl = {
 {0, 0},
 {15, 5},
@@ -134,38 +95,24 @@ local flaps_tbl = {
 
 local pitch_need = get(bkk_pitch)
 local roll_need = get(bkk_roll)
-
 local roll_need_smth = roll_need
 local pitch_need_smth = pitch_need
-
 local pitch_show = pitch_need
 local roll_show = roll_need
-
 local HS1 = math.max(math.min((get(gs_press_1) - 10) / 70, 1), 0)
 local HS2 = math.max(math.min((get(gs_press_2) - 10) / 70, 1), 0)
 local HS3 = math.max(math.min((get(gs_press_3) - 10) / 70, 1), 0)
-
 local gps_Z_smooth = 0
-
-
---[[
-local pitch_res = 0
-local roll_res = 0
-local yaw_res = 0
---]]
 local pitch_res_need = 0
 local roll_res_need = 0
 local yaw_res_need = 0
-
 local MASTER = get(ismaster) ~= 1
 
 -- functions will be defined later
 local function pitch_holder(pitch_hold)
 end
-
 local function roll_holder(roll_hold)
 end
-
 local function yaw_holder(mode)
 end
 
@@ -174,26 +121,21 @@ end
 function update()
 	
 	passed = get(frame_time)
-	
 	MASTER = get(ismaster) ~= 1	
 	
 	local secondNav = get(absu_use_second_nav) == 1
-	
-	local roll_mode = get(roll_main_mode) -- 0 - выкл, 1 - штурвальный - 2 - стаб
-	local pitch_mode = get(pitch_main_mode) -- 0 - выкл, 1 - штурвальный - 2 - стаб
-	
-	local roll_submode = get(roll_sub_mode) -- 0 - выкл, 1 - стаб, 2 - ЗК, 3 - НВУ, 4 - АЗ1, 5 - АЗ2, 6 - заход
-	local pitch_submode = get(pitch_sub_mode) -- 0 - выкл, 1 - стаб, 2 - V, 3 - M, 4 - H, 5 - глисс, 6 - уход
+	local roll_mode = get(roll_main_mode) 
+	local pitch_mode = get(pitch_main_mode)
+	local roll_submode = get(roll_sub_mode)
+	local pitch_submode = get(pitch_sub_mode)
 	
 	pitch_now = get(bkk_pitch)
 	roll_now = get(bkk_roll)
 	
-	--print(pitch_now)
-	
+
 	local roll_W = get(roll_rate)
 	local pitch_W = get(pitch_rate)
 	local yaw_W = -get(slip)
-	
 	local roll_W2 = get(roll_acc)
 	local pitch_W2 = get(pitch_acc)
 	local yaw_W2 = get(yaw_acc)
@@ -218,7 +160,6 @@ function update()
 	local pitch_cmd = get(joy_pitch)
 	local roll_cmd = get(joy_roll)
 	local yaw_cmd = get(joy_yaw)
-	
 	mach = get(mach_svs)
 	local airspeed = get(ias) * 1.852
 	local gnd_spd = get(diss_groundspeed)
@@ -241,29 +182,14 @@ function update()
 	HS2 = math.max(math.min((get(gs_press_2) - 10) / 70, 1), 0)
 	HS3 = math.max(math.min((get(gs_press_3) - 10) / 70, 1), 0)
 	
-	
-	-----------------------------------
-	-- pitch part --
-	-----------------------------------
-	
-	-- new logic
-	-- calculate needed pitch, 
-	-- put it into pitch holding logic, wich will use PID regulators, flaps and roll parts with trimmer and damper
-	
-	
-	
 	local absu_smooth = get(absu_smooth_on)
+		if pitch_mode >= 1 then
 	
-	if pitch_mode >= 1 then -- SAU pitch part
-	
-		if pitch_submode == 1 or pitch_submode == 10 then -- PU mode
+			if pitch_submode == 1 or pitch_submode == 10 then -- PU mode
 			
 			-- PU part			
 			local pitch_whl = get(absu_pitch_wheel)
 			local pitch_diff = pitch_whl - pitch_whl_last
-			
-			
-			
 			while pitch_diff > 1 do pitch_diff = pitch_diff - 20 end
 			while pitch_diff < -1 do pitch_diff = pitch_diff + 20 end
 			
@@ -281,7 +207,6 @@ function update()
 			
 			V_stab = airspeed
 			V_smth = V_stab
-			
 			M_stab = mach
 			M_smth = M_stab
 			toga_alt = alt
