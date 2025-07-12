@@ -1,6 +1,7 @@
 -- pnp.lua
 -- Landing course indicator (PKP) logic for Tu-154M, SASL 3.x compatible
 -- SmartCopilot & optional RXP plugin support
+-- RXP removed for now
 
 -- Helpers ---------------------------------------------------------------
 local function clamp(x, minv, maxv)
@@ -75,7 +76,7 @@ local props = {
     { "bus36_volt_pts250_2", globalPropertyf("tu154ce/elec/bus36_volt_pts250_2") },
     -- lamps
     { "show_gns",         globalPropertyi("tu154ce/anim/show_gns") },
-    { "show_RXP",         globalPropertyi("tu154ce/anim/RXP") },
+   -- { "show_RXP",         globalPropertyi("tu154ce/anim/RXP") },
     -- knob
     { "pkp_obs_knob_L",   globalPropertyf("tu154ce/gauges/compas/pkp_obs_knob_L") },
     { "absu_use_second_nav", globalPropertyi("tu154ce/absu_use_second_nav") },
@@ -84,12 +85,12 @@ local props = {
 for _, p in ipairs(props) do
     _G[p[1]] = p[2]
 end
-
+--[[
 -- Always declare RXP properties (SASL 3), use with pcall at runtime
 RXP_course = globalPropertyf("RXP/radios/gps_course_degtm")
 RXP_dev    = globalPropertyf("RXP/radios/indicators/gps_cross_track_nm")
 RXP_flag   = globalPropertyf("RXP/radios/indicators/hsi_flag_from_to_pilot")
-
+]]
 -- State vars
 local last_time = get(frame_time)
 local main_scale = get(pkp_gyro_course)
