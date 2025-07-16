@@ -1,125 +1,154 @@
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
-defineProperty("tank_1_pr",globalPropertyi("sim/custom/payload/tank_1"))
-defineProperty("tank_4_pr",globalPropertyi("sim/custom/payload/tank_4"))
-defineProperty("tank_2L_pr",globalPropertyi("sim/custom/payload/tank_2L"))
-defineProperty("tank_2R_pr",globalPropertyi("sim/custom/payload/tank_2R"))
-defineProperty("tank_3L_pr",globalPropertyi("sim/custom/payload/tank_3L"))
-defineProperty("tank_3R_pr",globalPropertyi("sim/custom/payload/tank_3R"))
-defineProperty("fuel_tanker_call", globalPropertyi("sim/custom/anim/fuel_tanker_call")) 
-defineProperty("gear_blocks", globalPropertyi("sim/custom/anim/gear_blocks")) 
-defineProperty("fuel_tanker", globalPropertyf("sim/custom/anim/fuel_tanker")) 
-defineProperty("slider_5", globalPropertyi("sim/cockpit2/switches/custom_slider_on[4]")) 
-defineProperty("payload", globalPropertyf("sim/flightmodel/weight/m_fixed"))  
-defineProperty("CG_load", globalPropertyf("sim/flightmodel/misc/cgz_ref_to_default")) 
-defineProperty("fuel_q_1", globalPropertyf("sim/flightmodel/weight/m_fuel[0]")) 
-defineProperty("fuel_q_4", globalPropertyf("sim/flightmodel/weight/m_fuel[1]")) 
-defineProperty("fuel_q_2R", globalPropertyf("sim/flightmodel/weight/m_fuel[2]")) 
-defineProperty("fuel_q_2L", globalPropertyf("sim/flightmodel/weight/m_fuel[3]")) 
-defineProperty("fuel_q_3R", globalPropertyf("sim/flightmodel/weight/m_fuel[4]")) 
-defineProperty("fuel_q_3L", globalPropertyf("sim/flightmodel/weight/m_fuel[5]")) 
-defineProperty("paylod_set", globalPropertyf("sim/custom/payload/paylod_set")) 
-defineProperty("cg_set", globalPropertyf("sim/custom/payload/cg_set")) 
-defineProperty("load_slow_btn",globalPropertyi("sim/custom/payload/load_slow_btn")) 
+-- slow_load.lua
+
+-- Helper to register DataRefs
+local function defineProps(defs)
+    for _, d in ipairs(defs) do
+        defineProperty(d[1], d[3](d[2]))
+    end
+end
+
+-- Register DataRefs
+defineProps({
+    {"frame_time",        "sim/custom/time/frame_time",                 globalPropertyf},
+    {"tank_1_pr",         "sim/custom/payload/tank_1",                  globalPropertyi},
+    {"tank_4_pr",         "sim/custom/payload/tank_4",                  globalPropertyi},
+    {"tank_2L_pr",        "sim/custom/payload/tank_2L",                 globalPropertyi},
+    {"tank_2R_pr",        "sim/custom/payload/tank_2R",                 globalPropertyi},
+    {"tank_3L_pr",        "sim/custom/payload/tank_3L",                 globalPropertyi},
+    {"tank_3R_pr",        "sim/custom/payload/tank_3R",                 globalPropertyi},
+    {"fuel_tanker_call",  "sim/custom/anim/fuel_tanker_call",           globalPropertyi},
+    {"gear_blocks",       "sim/custom/anim/gear_blocks",                globalPropertyi},
+    {"fuel_tanker",       "sim/custom/anim/fuel_tanker",                globalPropertyf},
+    {"slider_5",          "sim/cockpit2/switches/custom_slider_on[4]",  globalPropertyi},
+    {"payload",           "sim/flightmodel/weight/m_fixed",             globalPropertyf},
+    {"CG_load",           "sim/flightmodel/misc/cgz_ref_to_default",    globalPropertyf},
+    {"fuel_q_1",          "sim/flightmodel/weight/m_fuel[0]",           globalPropertyf},
+    {"fuel_q_4",          "sim/flightmodel/weight/m_fuel[1]",           globalPropertyf},
+    {"fuel_q_2R",         "sim/flightmodel/weight/m_fuel[2]",           globalPropertyf},
+    {"fuel_q_2L",         "sim/flightmodel/weight/m_fuel[3]",           globalPropertyf},
+    {"fuel_q_3R",         "sim/flightmodel/weight/m_fuel[4]",           globalPropertyf},
+    {"fuel_q_3L",         "sim/flightmodel/weight/m_fuel[5]",           globalPropertyf},
+    {"paylod_set",        "sim/custom/payload/paylod_set",              globalPropertyf},
+    {"cg_set",            "sim/custom/payload/cg_set",                  globalPropertyf},
+    {"load_slow_btn",     "sim/custom/payload/load_slow_btn",           globalPropertyi},
+})
+
+-- Convert boolean to integer
+local function bool2int(b) return b and 1 or 0 end
+
+-- Local state
 local load_started = false
-local fuel_load = true
-local cg_read = false
-local CG_old = get(CG_load)
-local CG_need = get(cg_set)
-local load_timer = 0
+local fuel_load    = true
+local cg_read      = false
+local CG_old       = get(CG_load)
+local CG_need      = get(cg_set)
+local load_timer   = 0
+
 function update()
-	local passed = get(frame_time)
-	if get(load_slow_btn) == 1 and not load_started and get(gear_blocks) == 1 then
-		load_started = true
-		cg_read = false
-		load_timer = 0
-	end
-	if load_started then
-		set(gear_blocks, 1)
-		if get(tank_1_pr) + get(tank_4_pr) + get(tank_2L_pr) + get(tank_2R_pr) + get(tank_3L_pr) + get(tank_3R_pr) > get(fuel_q_1) + get(fuel_q_4) + get(fuel_q_2R) + get(fuel_q_2L) + get(fuel_q_3R) + get(fuel_q_3L) then
-			fuel_load = false
-		else fuel_load = true
-		end
-		if get(fuel_tanker) ~= 0 and not fuel_load then set(fuel_tanker_call, 1) end
-		if fuel_load then set(fuel_tanker_call, 0) end
-		local tank1_load = get(tank_1_pr) > get(fuel_q_1) and get(get(fuel_q_1)) < 3300
-		local tank3_1_L_load = get(tank_3L_pr) > get(fuel_q_3L) and get(fuel_q_3L) < 1725 and not tank1_load
-		local tank3_1_R_load = get(tank_3R_pr) > get(fuel_q_3R) and get(fuel_q_3R) < 1725 and not tank1_load
-		local tank3_2_L_load = get(tank_3L_pr) > get(fuel_q_3L) and get(fuel_q_3L) < 5405 and not tank3_1_L_load and not tank1_load
-		local tank3_2_R_load = get(tank_3R_pr) > get(fuel_q_3R) and get(fuel_q_3R) < 5405 and not tank3_1_R_load and not tank1_load
-		local tank2_2_L_load = get(tank_2L_pr) > get(fuel_q_2L) and get(fuel_q_2L) < 3700 and not tank3_1_L_load and not tank1_load
-		local tank2_2_R_load = get(tank_2R_pr) > get(fuel_q_2R) and get(fuel_q_2R) < 3700 and not tank3_1_R_load and not tank1_load
-		local tank2_3_L_load = get(tank_2L_pr) > get(fuel_q_2L) and get(fuel_q_2L) < 9500 and not tank2_2_L_load and not tank1_load and not tank3_1_L_load
-		local tank2_3_R_load = get(tank_2R_pr) > get(fuel_q_2R) and get(fuel_q_2R) < 9500 and not tank2_2_R_load and not tank1_load and not tank3_1_R_load
-		local tank4_load = get(tank_4_pr) > get(fuel_q_4) and get(fuel_q_4) < 6598 and not tank2_3_L_load and not tank2_3_R_load and not tank1_load and not tank2_2_L_load and not tank2_2_R_load and not tank3_1_L_load and not tank3_1_R_load
-		if get(fuel_tanker) == 0 then 
-			if tank1_load then 
-				local t1_q = get(fuel_q_1) + passed * 64 
-				if t1_q > 3300 then t1_q = 3300 end
-				set(fuel_q_1, t1_q)
-			end
-			if tank3_1_L_load then
-				set(fuel_q_3L, get(fuel_q_3L) + passed * 64 / (bool2int(tank3_1_L_load) + bool2int(tank3_1_R_load)))
-			end
-			if tank3_1_R_load then
-				set(fuel_q_3R, get(fuel_q_3R) + passed * 64 / (bool2int(tank3_1_L_load) + bool2int(tank3_1_R_load)))
-			end
-			if tank3_2_L_load then
-				local t3_q = get(fuel_q_3L) + passed * 64 / (bool2int(tank3_2_L_load) + bool2int(tank3_2_R_load) + bool2int(tank2_2_L_load) + bool2int(tank2_2_R_load))
-				if t3_q > 5405 then t3_q = 5405 end
-				set(fuel_q_3L, t3_q)
-			end
-			if tank3_2_R_load then
-				local t3_q = get(fuel_q_3R) + passed * 64 / (bool2int(tank3_2_L_load) + bool2int(tank3_2_R_load) + bool2int(tank2_2_L_load) + bool2int(tank2_2_R_load))
-				if t3_q > 5405 then t3_q = 5405 end
-				set(fuel_q_3R, t3_q)
-			end			
-			if tank2_2_L_load then
-				local t2_q = get(fuel_q_2L) + passed * 64 / (bool2int(tank3_2_L_load) + bool2int(tank3_2_R_load) + bool2int(tank2_2_L_load) + bool2int(tank2_2_R_load))
-				if t2_q > 3700 then t2_q = 3700 end
-				set(fuel_q_2L, t2_q)
-			end
-			if tank2_2_R_load then
-				local t2_q = get(fuel_q_2R) + passed * 64 / (bool2int(tank3_2_L_load) + bool2int(tank3_2_R_load) + bool2int(tank2_2_L_load) + bool2int(tank2_2_R_load))
-				if t2_q > 3700 then t2_q = 3700 end
-				set(fuel_q_2R, t2_q)
-			end
-			if tank2_3_L_load then
-				local t2_q = get(fuel_q_2L) + passed * 64 / (bool2int(tank2_3_L_load) + bool2int(tank2_3_R_load))
-				if t2_q > 9500 then t2_q = 9500 end
-				set(fuel_q_2L, t2_q)
-			end
-			if tank2_3_R_load then
-				local t2_q = get(fuel_q_2R) + passed * 64 / (bool2int(tank2_3_L_load) + bool2int(tank2_3_R_load))
-				if t2_q > 9500 then t2_q = 9500 end
-				set(fuel_q_2R, t2_q)
-			end
-			if tank4_load then 
-				local t4_q = get(fuel_q_4) + passed * 64 
-				if t4_q > 6598 then t4_q = 6598 end
-				set(fuel_q_4, t4_q)
-			end
-		end
-		local load_time = 600 * get(paylod_set) / 20000
-		if load_time == 0 and get(fuel_tanker_call) == 0 and fuel_load then load_started = false end
-		if get(fuel_tanker_call) == 0 and fuel_load and load_timer < load_time then
-			set(slider_5, 1)
-			load_timer = load_timer + passed
-			local cargo = get(payload) + passed * 33.333333
-			if cargo > get(paylod_set) then cargo = get(paylod_set) end
-			set(payload, cargo)
-			if not cg_read then
-				cg_read = true
-				CG_old = get(CG_load)
-				CG_need = get(cg_set)
-			end
-			local CG_spd = 0
-			if load_time > 0 then CG_spd = (CG_need - CG_old) / load_time end
-			set(CG_load, get(CG_load) + passed * CG_spd)
-			if load_timer >= load_time then
-				set(CG_load, CG_need)
-				set(slider_5, 0)
-				load_started = false
-			end
-		end
-	end
+    local dt = get(frame_time)
+
+    -- Begin slow load when button pressed and gear blocks are locked
+    if get(load_slow_btn) == 1 and not load_started and get(gear_blocks) == 1 then
+        load_started = true
+        cg_read      = false
+        load_timer   = 0
+    end
+
+    if load_started then
+        -- Keep gear blocks engaged
+        set(gear_blocks, 1)
+
+        -- Determine if requested fuel exceeds actual
+        local req_sum = get(tank_1_pr) + get(tank_4_pr)
+                      + get(tank_2L_pr) + get(tank_2R_pr)
+                      + get(tank_3L_pr) + get(tank_3R_pr)
+        local act_sum = get(fuel_q_1) + get(fuel_q_4)
+                      + get(fuel_q_2R) + get(fuel_q_2L)
+                      + get(fuel_q_3R) + get(fuel_q_3L)
+        fuel_load = (req_sum <= act_sum)
+
+        -- Request tanker if needed
+        set(fuel_tanker_call, (get(fuel_tanker) ~= 0 and not fuel_load) and 1 or 0)
+
+        -- Perform fuel transfer if tanker not in use
+        if get(fuel_tanker) == 0 then
+            -- Tank 1
+            local t1 = get(tank_1_pr) > get(fuel_q_1) and get(fuel_q_1) < 3300
+            if t1 then
+                set(fuel_q_1, math.min(get(fuel_q_1) + dt * 64, 3300))
+            end
+            -- Tanks 3 stage 1
+            local t3L1 = get(tank_3L_pr) > get(fuel_q_3L) and get(fuel_q_3L) < 1725 and not t1
+            local t3R1 = get(tank_3R_pr) > get(fuel_q_3R) and get(fuel_q_3R) < 1725 and not t1
+            if t3L1 or t3R1 then
+                local share = dt * 64 / (bool2int(t3L1) + bool2int(t3R1))
+                if t3L1 then set(fuel_q_3L, get(fuel_q_3L) + share) end
+                if t3R1 then set(fuel_q_3R, get(fuel_q_3R) + share) end
+            end
+            -- Tanks 3 & 2 stage 2
+            do
+                local t3L2 = get(tank_3L_pr) > get(fuel_q_3L) and get(fuel_q_3L) < 5405 and not t3L1 and not t1
+                local t3R2 = get(tank_3R_pr) > get(fuel_q_3R) and get(fuel_q_3R) < 5405 and not t3R1 and not t1
+                local t2L2 = get(tank_2L_pr) > get(fuel_q_2L) and get(fuel_q_2L) < 3700 and not t3L1 and not t1
+                local t2R2 = get(tank_2R_pr) > get(fuel_q_2R) and get(fuel_q_2R) < 3700 and not t3R1 and not t1
+                local cnt = bool2int(t3L2) + bool2int(t3R2) + bool2int(t2L2) + bool2int(t2R2)
+                if cnt > 0 then
+                    if t3L2 then set(fuel_q_3L, math.min(get(fuel_q_3L) + dt * 64 / cnt, 5405)) end
+                    if t3R2 then set(fuel_q_3R, math.min(get(fuel_q_3R) + dt * 64 / cnt, 5405)) end
+                    if t2L2 then set(fuel_q_2L, math.min(get(fuel_q_2L) + dt * 64 / cnt, 3700)) end
+                    if t2R2 then set(fuel_q_2R, math.min(get(fuel_q_2R) + dt * 64 / cnt, 3700)) end
+                end
+            end
+            -- Tanks 2 stage 3
+            do
+                local t2L3 = get(tank_2L_pr) > get(fuel_q_2L) and get(fuel_q_2L) < 9500
+                           and not (get(tank_2L_pr) > get(fuel_q_2L) < 3700)
+                           and not t1
+                local t2R3 = get(tank_2R_pr) > get(fuel_q_2R) and get(fuel_q_2R) < 9500
+                           and not (get(tank_2R_pr) > get(fuel_q_2R) < 3700)
+                           and not t1
+                local cnt = bool2int(t2L3) + bool2int(t2R3)
+                if cnt > 0 then
+                    if t2L3 then set(fuel_q_2L, math.min(get(fuel_q_2L) + dt * 64 / cnt, 9500)) end
+                    if t2R3 then set(fuel_q_2R, math.min(get(fuel_q_2R) + dt * 64 / cnt, 9500)) end
+                end
+            end
+            -- Tank 4
+            local t4 = get(tank_4_pr) > get(fuel_q_4) and get(fuel_q_4) < 6598
+            if t4 then
+                set(fuel_q_4, math.min(get(fuel_q_4) + dt * 64, 6598))
+            end
+        end
+
+        -- Calculate total load duration
+        local load_time = 600 * get(paylod_set) / 20000
+        if load_time == 0 and get(fuel_tanker_call) == 0 and fuel_load then
+            load_started = false
+        elseif get(fuel_tanker_call) == 0 and fuel_load and load_timer < load_time then
+            -- Animate slider
+            set(slider_5, 1)
+            load_timer = load_timer + dt
+
+            -- Increment payload
+            set(payload, math.min(get(payload) + dt * 33.333333, get(paylod_set)))
+
+            -- Capture CG targets once
+            if not cg_read then
+                cg_read = true
+                CG_old  = get(CG_load)
+                CG_need = get(cg_set)
+            end
+
+            -- Smoothly adjust CG
+            local CG_spd = load_time > 0 and ((CG_need - CG_old) / load_time) or 0
+            set(CG_load, get(CG_load) + dt * CG_spd)
+
+            -- Finish loading
+            if load_timer >= load_time then
+                set(CG_load, CG_need)
+                set(slider_5, 0)
+                load_started = false
+            end
+        end
+    end
 end

@@ -1,3 +1,5 @@
+-- apu_panel.lua
+
 defineProperty("apu_main_switch", globalPropertyi("sim/custom/switchers/eng/apu_main_switch")) 
 defineProperty("apu_start_mode", globalPropertyi("sim/custom/switchers/eng/apu_start_mode")) 
 defineProperty("apu_air_bleed", globalPropertyi("sim/custom/switchers/eng/apu_air_bleed")) 

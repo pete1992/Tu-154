@@ -1,88 +1,129 @@
 -- antiice_fails.lua
-defineProperty("failures_enabled", globalPropertyi("sim/custom/failures/failures_enabled"))
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) 
-defineProperty("ppd_3_heat_fail", globalPropertyi("sim/custom/antiice/ppd_3_heat_fail"))
-defineProperty("rel_ice_inlet_heat1", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat"))
-defineProperty("rel_ice_inlet_heat2", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat2"))
-defineProperty("rel_ice_inlet_heat3", globalPropertyi("sim/operation/failures/rel_ice_inlet_heat3"))
-defineProperty("rel_ice_pitot_heat1", globalPropertyi("sim/operation/failures/rel_ice_pitot_heat1"))
-defineProperty("rel_ice_pitot_heat2", globalPropertyi("sim/operation/failures/rel_ice_pitot_heat2"))
-defineProperty("rel_ice_surf_heat", globalPropertyi("sim/operation/failures/rel_ice_surf_heat"))
-defineProperty("rel_ice_surf_heat2", globalPropertyi("sim/operation/failures/rel_ice_surf_heat2"))
-defineProperty("rio_fail", globalPropertyi("sim/custom/failures/rio_fail"))
-defineProperty("window_heat_fail_1", globalPropertyi("sim/custom/failures/window_heat_fail_1"))
-defineProperty("window_heat_fail_2", globalPropertyi("sim/custom/failures/window_heat_fail_2"))
-defineProperty("window_heat_fail_3", globalPropertyi("sim/custom/failures/window_heat_fail_3"))
-defineProperty("deflection_mtr_2", globalPropertyf("sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]")) 
-defineProperty("deflection_mtr_3", globalPropertyf("sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]")) 
-local fail_counter = 0
-local check_time = math.random(15, 30)
-local ppd1_counter = 0
-local ppd2_counter = 0
-local ppd3_counter = 0
-local wing_counter = 0
-local stab_counter = 0
-function update()
-	local passed = get(frame_time)
-if get(ismaster) ~= 1 then	
-	local FAIL = get(failures_enabled)
-	FAIL = FAIL * 0.05 * 4 ^ (FAIL * 0.5)
-	if FAIL > 0 then
-		fail_counter = fail_counter + passed
-		if fail_counter > check_time then
-			fail_counter = 0
-			check_time = math.random(15, 30)
-			if get(rel_ice_inlet_heat1) ~= 1 then set(rel_ice_inlet_heat1, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 6) end
-			if get(rel_ice_inlet_heat2) ~= 1 then set(rel_ice_inlet_heat2, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 6) end
-			if get(rel_ice_inlet_heat3) ~= 1 then set(rel_ice_inlet_heat3, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 6) end
-			if get(rel_ice_pitot_heat1) ~= 1 then set(rel_ice_pitot_heat1, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 6) end
-			if get(rel_ice_pitot_heat2) ~= 1 then set(rel_ice_pitot_heat2, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 6) end
-			if get(ppd_3_heat_fail) ~= 1 then set(ppd_3_heat_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
-			if get(rel_ice_surf_heat) ~= 1 then set(rel_ice_surf_heat, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 6) end
-			if get(rel_ice_surf_heat2) ~= 1 then set(rel_ice_surf_heat2, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 6) end
-			if get(rio_fail) ~= 1 then set(rio_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
-			if get(window_heat_fail_1) ~= 1 then set(window_heat_fail_1, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
-			if get(window_heat_fail_2) ~= 1 then set(window_heat_fail_2, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
-			if get(window_heat_fail_3) ~= 1 then set(window_heat_fail_3, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
-			if ppd1_counter > 1200 and get(rel_ice_pitot_heat1) ~= 6 then set(rel_ice_pitot_heat1, bool2int(math.random() < 0.1 * FAIL * 0.3) * 6) end
-			if ppd2_counter > 1200 and get(rel_ice_pitot_heat2) ~= 6 then set(rel_ice_pitot_heat2, bool2int(math.random() < 0.1 * FAIL * 0.3) * 6) end
-			if ppd3_counter > 1200 and get(ppd_3_heat_fail) ~= 6 then set(ppd_3_heat_fail, bool2int(math.random() < 0.1 * FAIL * 0.3) * 6) end
-			if wing_counter > 90 and get(rel_ice_surf_heat) ~= 6 then set(rel_ice_surf_heat, bool2int(math.random() < 0.3 * FAIL * 0.3) * 6) end
-			if stab_counter > 90 and get(rel_ice_surf_heat2) ~= 6 then set(rel_ice_surf_heat2, bool2int(math.random() < 0.3 * FAIL * 0.3) * 6) end
-		end
-		if get(deflection_mtr_2) + get(deflection_mtr_3) < 0.02 then
-			ppd1_counter = ppd1_counter + passed
-			ppd2_counter = ppd2_counter + passed
-			ppd3_counter = ppd3_counter + passed
-			wing_counter = wing_counter + passed
-			stab_counter = stab_counter + passed
-		else
-			ppd1_counter = 0
-			ppd2_counter = 0
-			ppd3_counter = 0
-			wing_counter = 0
-			stab_counter = 0			
-		end
-	else
-		fail_counter = 0
-		set(ppd_3_heat_fail, 0)
-		set(rel_ice_inlet_heat1, 0)
-		set(rel_ice_inlet_heat2, 0)
-		set(rel_ice_inlet_heat3, 0)
-		set(rel_ice_pitot_heat1, 0)
-		set(rel_ice_pitot_heat2, 0)
-		set(rel_ice_surf_heat, 0)
-		set(rel_ice_surf_heat2, 0)
-		set(rio_fail, 0)
-		set(window_heat_fail_1, 0)
-		set(window_heat_fail_2, 0)
-		set(window_heat_fail_3, 0)
-		ppd1_counter = 0
-		ppd2_counter = 0
-		ppd3_counter = 0
-		wing_counter = 0
-		stab_counter = 0
-	end
+
+-- Smartcopilot
+defineProperty("ismaster",    globalPropertyf("scp/api/ismaster"))
+defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1"))
+
+-- Helper to register DataRefs
+local function defineProps(defs)
+    for _, d in ipairs(defs) do
+        defineProperty(d[1], d[3](d[2]))
+    end
 end
+
+-- Register all other DataRefs
+defineProps({
+    {"failures_enabled",    "sim/custom/failures/failures_enabled",  globalPropertyi},
+    {"frame_time",          "sim/custom/time/frame_time",            globalPropertyf},
+    {"ppd_3_heat_fail",     "sim/custom/antiice/ppd_3_heat_fail",    globalPropertyi},
+    {"rel_ice_inlet_heat1", "sim/operation/failures/rel_ice_inlet_heat",  globalPropertyi},
+    {"rel_ice_inlet_heat2", "sim/operation/failures/rel_ice_inlet_heat2", globalPropertyi},
+    {"rel_ice_inlet_heat3", "sim/operation/failures/rel_ice_inlet_heat3", globalPropertyi},
+    {"rel_ice_pitot_heat1", "sim/operation/failures/rel_ice_pitot_heat1", globalPropertyi},
+    {"rel_ice_pitot_heat2", "sim/operation/failures/rel_ice_pitot_heat2", globalPropertyi},
+    {"rel_ice_surf_heat",   "sim/operation/failures/rel_ice_surf_heat",   globalPropertyi},
+    {"rel_ice_surf_heat2",  "sim/operation/failures/rel_ice_surf_heat2",  globalPropertyi},
+    {"rio_fail",            "sim/custom/failures/rio_fail",           globalPropertyi},
+    {"window_heat_fail_1",  "sim/custom/failures/window_heat_fail_1", globalPropertyi},
+    {"window_heat_fail_2",  "sim/custom/failures/window_heat_fail_2", globalPropertyi},
+    {"window_heat_fail_3",  "sim/custom/failures/window_heat_fail_3", globalPropertyi},
+    {"deflection_mtr_2",    "sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]", globalPropertyf},
+    {"deflection_mtr_3",    "sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]", globalPropertyf},
+})
+
+-- Convert boolean to integer
+local function bool2int(b) return b and 1 or 0 end
+
+-- Internal state
+local fail_counter  = 0
+local check_time    = math.random(15, 30)
+local ppd_counters  = {pitot1 = 0, pitot2 = 0, ppd3 = 0}
+local surf_counters = {wing = 0, stab = 0}
+
+function update()
+    local dt = get(frame_time)
+
+    -- Only run on non-master instances
+    if get(ismaster) == 1 then
+        -- Reset if master
+        fail_counter = 0
+        ppd_counters = {pitot1 = 0, pitot2 = 0, ppd3 = 0}
+        surf_counters = {wing = 0, stab = 0}
+        return
+    end
+
+    local F    = get(failures_enabled)
+    local prob = F * 0.05 * 4^(F * 0.5)
+
+    if prob > 0 then
+        -- Periodic random failure checks
+        fail_counter = fail_counter + dt
+        if fail_counter > check_time then
+            fail_counter = 0
+            check_time = math.random(15, 30)
+            local function tryFail(ref, scale, duration)
+                if get(ref) ~= 1 and math.random() < 1e-5 * prob * scale then
+                    set(ref, duration)
+                end
+            end
+            tryFail(rel_ice_inlet_heat1, 0.3, 6)
+            tryFail(rel_ice_inlet_heat2, 0.3, 6)
+            tryFail(rel_ice_inlet_heat3, 0.3, 6)
+            tryFail(rel_ice_pitot_heat1, 0.3, 6)
+            tryFail(rel_ice_pitot_heat2, 0.3, 6)
+            tryFail(ppd_3_heat_fail,    0.3, 1)
+            tryFail(rel_ice_surf_heat,  0.3, 6)
+            tryFail(rel_ice_surf_heat2, 0.3, 6)
+            tryFail(rio_fail,           0.3, 1)
+            tryFail(window_heat_fail_1, 0.3, 1)
+            tryFail(window_heat_fail_2, 0.3, 1)
+            tryFail(window_heat_fail_3, 0.3, 1)
+        end
+
+        -- Track how long the aircraft is stationary on tires 2 & 3
+        if get(deflection_mtr_2) + get(deflection_mtr_3) < 0.02 then
+            ppd_counters.pitot1 = ppd_counters.pitot1 + dt
+            ppd_counters.pitot2 = ppd_counters.pitot2 + dt
+            ppd_counters.ppd3   = ppd_counters.ppd3   + dt
+            surf_counters.wing  = surf_counters.wing  + dt
+            surf_counters.stab  = surf_counters.stab  + dt
+        else
+            -- Reset counters when moving
+            ppd_counters = {pitot1 = 0, pitot2 = 0, ppd3 = 0}
+            surf_counters = {wing = 0, stab = 0}
+        end
+
+        -- Long-duration failure conditions
+        if ppd_counters.pitot1 > 1200 and get(rel_ice_pitot_heat1) ~= 6 then
+            set(rel_ice_pitot_heat1, bool2int(math.random() < 0.1 * prob * 0.3) * 6)
+        end
+        if ppd_counters.pitot2 > 1200 and get(rel_ice_pitot_heat2) ~= 6 then
+            set(rel_ice_pitot_heat2, bool2int(math.random() < 0.1 * prob * 0.3) * 6)
+        end
+        if ppd_counters.ppd3 > 1200 and get(ppd_3_heat_fail) ~= 6 then
+            set(ppd_3_heat_fail, bool2int(math.random() < 0.1 * prob * 0.3) * 6)
+        end
+        if surf_counters.wing > 90 and get(rel_ice_surf_heat) ~= 6 then
+            set(rel_ice_surf_heat, bool2int(math.random() < 0.3 * prob * 0.3) * 6)
+        end
+        if surf_counters.stab > 90 and get(rel_ice_surf_heat2) ~= 6 then
+            set(rel_ice_surf_heat2, bool2int(math.random() < 0.3 * prob * 0.3) * 6)
+        end
+
+    else
+        -- Failures disabled: reset everything
+        fail_counter = 0
+        ppd_counters = {pitot1 = 0, pitot2 = 0, ppd3 = 0}
+        surf_counters = {wing = 0, stab = 0}
+        for _, ref in ipairs({
+            ppd_3_heat_fail,
+            rel_ice_inlet_heat1, rel_ice_inlet_heat2, rel_ice_inlet_heat3,
+            rel_ice_pitot_heat1, rel_ice_pitot_heat2,
+            rel_ice_surf_heat, rel_ice_surf_heat2,
+            rio_fail,
+            window_heat_fail_1, window_heat_fail_2, window_heat_fail_3
+        }) do
+            set(ref, 0)
+        end
+    end
 end
