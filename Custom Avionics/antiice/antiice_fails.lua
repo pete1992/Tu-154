@@ -1,3 +1,4 @@
+-- antiice_fails.lua
 defineProperty("failures_enabled", globalPropertyi("sim/custom/failures/failures_enabled"))
 defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
 defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) 
