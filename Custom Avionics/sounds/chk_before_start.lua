@@ -1,0 +1,322 @@
+defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("side",globalPropertyi("sim/custom/checklist/side")) 
+defineProperty("fishka_1",globalPropertyi("sim/custom/checklist/fishka_1")) 
+defineProperty("fishka_2",globalPropertyi("sim/custom/checklist/fishka_2")) 
+defineProperty("fishka_3",globalPropertyi("sim/custom/checklist/fishka_3")) 
+defineProperty("fishka_4",globalPropertyi("sim/custom/checklist/fishka_4")) 
+defineProperty("fishka_5",globalPropertyi("sim/custom/checklist/fishka_5")) 
+defineProperty("fishka_6",globalPropertyi("sim/custom/checklist/fishka_6")) 
+defineProperty("fishka_7",globalPropertyi("sim/custom/checklist/fishka_7")) 
+defineProperty("fishka_8",globalPropertyi("sim/custom/checklist/fishka_8")) 
+defineProperty("fishka_9",globalPropertyi("sim/custom/checklist/fishka_9")) 
+defineProperty("fishka_10",globalPropertyi("sim/custom/checklist/fishka_10")) 
+defineProperty("fishka_11",globalPropertyi("sim/custom/checklist/fishka_11")) 
+defineProperty("fishka_12",globalPropertyi("sim/custom/checklist/fishka_12")) 
+defineProperty("fishka_13",globalPropertyi("sim/custom/checklist/fishka_13")) 
+defineProperty("fishka_14",globalPropertyi("sim/custom/checklist/fishka_14")) 
+defineProperty("fishka_15",globalPropertyi("sim/custom/checklist/fishka_15")) 
+defineProperty("fishka_16",globalPropertyi("sim/custom/checklist/fishka_16")) 
+defineProperty("fishka_17",globalPropertyi("sim/custom/checklist/fishka_17")) 
+defineProperty("fishka_18",globalPropertyi("sim/custom/checklist/fishka_18")) 
+defineProperty("fishka_19",globalPropertyi("sim/custom/checklist/fishka_19")) 
+defineProperty("fishka_20",globalPropertyi("sim/custom/checklist/fishka_20")) 
+defineProperty("checklist_selected",globalPropertyi("sim/custom/checklist/checklist_selected")) 
+defineProperty("bus27_volt_left", globalPropertyf("sim/custom/elec/bus27_volt_left")) 
+defineProperty("bus27_volt_right", globalPropertyf("sim/custom/elec/bus27_volt_right")) 
+defineProperty("mars_on", globalPropertyi("sim/custom/switchers/ovhd/mars_on"))  
+defineProperty("door1", globalPropertyf("sim/custom/lights/left_front_pax_door")) 
+defineProperty("door2", globalPropertyf("sim/custom/lights/left_mid_pax_door")) 
+defineProperty("door3", globalPropertyf("sim/custom/lights/right_mid_pax_door")) 
+defineProperty("door4", globalPropertyf("sim/custom/lights/cargo_front_door")) 
+defineProperty("door5", globalPropertyf("sim/custom/lights/cargo_back_door")) 
+defineProperty("msrp_27_L_cc", globalPropertyf("sim/custom/msrp/msrp_27_L_cc")) 
+defineProperty("msrp_27_R_cc", globalPropertyf("sim/custom/msrp/msrp_27_R_cc")) 
+defineProperty("rv_flag", globalPropertyi("sim/custom/gauges/alt/radioalt_flag_left"))  
+defineProperty("pump_tank2_left", globalPropertyi("sim/custom/switchers/fuel/pump_tank2_left")) 
+defineProperty("pump_tank2_right", globalPropertyi("sim/custom/switchers/fuel/pump_tank2_right")) 
+defineProperty("pump_tank3_left", globalPropertyi("sim/custom/switchers/fuel/pump_tank3_left")) 
+defineProperty("pump_tank3_right", globalPropertyi("sim/custom/switchers/fuel/pump_tank3_right")) 
+defineProperty("pump_tank4", globalPropertyi("sim/custom/switchers/fuel/pump_tank4")) 
+defineProperty("pump_tank1_1", globalPropertyi("sim/custom/switchers/fuel/pump_tank1_1")) 
+defineProperty("pump_tank1_2", globalPropertyi("sim/custom/switchers/fuel/pump_tank1_2")) 
+defineProperty("pump_tank1_3", globalPropertyi("sim/custom/switchers/fuel/pump_tank1_3")) 
+defineProperty("pump_tank1_4", globalPropertyi("sim/custom/switchers/fuel/pump_tank1_4")) 
+defineProperty("gs_press_1", globalPropertyf("sim/custom/hydro/gs_press_1")) 
+defineProperty("gs_press_2", globalPropertyf("sim/custom/hydro/gs_press_2")) 
+defineProperty("gs_press_3", globalPropertyf("sim/custom/hydro/gs_press_3")) 
+defineProperty("gs_press_4", globalPropertyf("sim/custom/hydro/gs_press_4")) 
+defineProperty("gear_brake_press_L", globalPropertyf("sim/custom/gauges/console/gear_brake_press_L")) 
+defineProperty("gear_brake_press_R", globalPropertyf("sim/custom/gauges/console/gear_brake_press_R")) 
+defineProperty("trimm_zero_course", globalPropertyf("sim/custom/lights/trimm_zero_course")) 
+defineProperty("trimm_zero_roll", globalPropertyf("sim/custom/lights/trimm_zero_roll")) 
+defineProperty("trimm_zero_pitch", globalPropertyf("sim/custom/lights/trimm_zero_pitch")) 
+defineProperty("cg_pos_actual", globalPropertyf("sim/custom/misc/cg_pos_actual")) 
+defineProperty("weight_actual", globalPropertyf("sim/custom/misc/weight_actual")) 
+defineProperty("v1_15", globalPropertyi("sim/custom/speeds/v1_15")) 
+defineProperty("vr_15", globalPropertyi("sim/custom/speeds/vr_15")) 
+defineProperty("v2_15", globalPropertyi("sim/custom/speeds/v2_15")) 
+defineProperty("v1_28", globalPropertyi("sim/custom/speeds/v1_28")) 
+defineProperty("vr_28", globalPropertyi("sim/custom/speeds/vr_28")) 
+defineProperty("v2_28", globalPropertyi("sim/custom/speeds/v2_28")) 
+defineProperty("stab_setting", globalPropertyi("sim/custom/controll/stab_setting")) 
+local checklist_started = false
+local stage = 0
+local stage_status = 0 
+local speak_timer = 0
+function checklist_1()
+	if not checklist_started and get(checklist_selected) == 1 then 
+		checklist_started = true 
+		stage = 1
+		local num = find_empty()
+		phrases_tbl[num] = {nav_tbl["befor_eng_run"][lang], 2}
+		speak_timer = 2
+	end
+	if get(checklist_selected) ~= 1 then 
+		checklist_started = false
+		stage = 0
+		stage_status = 0 
+	end
+	if checklist_started then
+		if stage == 1 and get(fishka_1) == 0 then stage = 2 stage_status = 0 end 
+		if stage == 2 and get(fishka_2) == 0 then stage = 3 stage_status = 0 end 
+		if stage == 3 and get(fishka_3) == 0 then stage = 4 stage_status = 0 end 
+		if stage == 4 and get(fishka_4) == 0 then stage = 5 stage_status = 0 end 
+		if stage == 5 and get(fishka_5) == 0 then stage = 6 stage_status = 0 end 
+		if stage == 6 and get(fishka_6) == 0 then stage = 7 stage_status = 0 end 
+		if stage == 7 and get(fishka_7) == 0 then stage = 8 stage_status = 0 end 
+		if stage == 8 and get(fishka_8) == 0 then stage = 9 stage_status = 0 end 
+		if stage == 9 and get(fishka_9) == 0 then 
+			stage = 100 stage_status = 0 
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["checklist_completed"][lang], 2}
+		end 
+	end
+	if stage == 1 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["recorder"][lang], 1}
+			stage_status = 1 
+			speak_timer = 2 
+		end
+		if stage_status == 1 and get(mars_on) ~= 1 and get(bus27_volt_left) < 13 and get(bus27_volt_right) < 13 then
+			local num = find_empty()
+			phrases_tbl[num] = {cop_tbl["fail_"..math.random(1,5)][lang], 1}
+			speak_timer = 1
+			stage_status = 2
+		end
+		if (stage_status == 1 or stage_status == 2) and get(mars_on) == 1 and (get(bus27_volt_left) > 13 or get(bus27_volt_right) > 13) then
+			local num = find_empty()
+			phrases_tbl[num] = {cop_tbl["turned_on"][lang], 2}
+			speak_timer = 3
+			stage_status = 10 
+		end
+	end
+	if stage == 1 and stage_status == 10 and speak_timer < 0.1 then set(fishka_1, 0) end
+	if stage == 2 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["plugs_keys_rod"][lang], 2}
+			stage_status = 1 
+			speak_timer = 2 
+		end
+		if stage_status == 1 and get(mars_on) ~= 1 then
+			stage_status = 2
+		end
+		if (stage_status == 1 or stage_status == 2) then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["on_board"][lang], 1}
+			speak_timer = 2
+			stage_status = 10 
+		end
+	end
+	if stage == 2 and stage_status == 10 and speak_timer < 0.1 then set(fishka_2, 0) end	
+	if stage == 3 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["doors"][lang], 1}
+			stage_status = 1 
+			speak_timer = 2 
+		end
+		if stage_status == 1 and get(door1) + get(door2) + get(door3) + get(door4) + get(door5) > 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["fail_"..math.random(1,5)][lang], 1}
+			speak_timer = 1
+			stage_status = 2
+		end
+		if (stage_status == 1 or stage_status == 2) and get(door1) + get(door2) + get(door3) + get(door4) + get(door5) == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["closed_tablo_off"][lang], 3}
+			speak_timer = 3
+			stage_status = 10 
+		end
+	end
+	if stage == 3 and stage_status == 10 and speak_timer < 0.1 then set(fishka_3, 0) end	
+	if stage == 4 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["msrp_ssos_rv1"][lang], 3}
+			stage_status = 1 
+			speak_timer = 3 
+		end
+		if stage_status == 1 and (get(msrp_27_L_cc) + get(msrp_27_R_cc) == 0 or get(rv_flag) == 1) then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["fail_"..math.random(1,5)][lang], 1}
+			speak_timer = 1
+			stage_status = 2
+		end
+		if (stage_status == 1 or stage_status == 2) and get(msrp_27_L_cc) + get(msrp_27_R_cc) > 0 and get(rv_flag) == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["switch_on_date"][lang], 3}
+			speak_timer = 3
+			stage_status = 10 
+		end
+	end
+	if stage == 4 and stage_status == 10 and speak_timer < 0.1 then set(fishka_4, 0) end		
+	if stage == 5 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["fuel_pumps"][lang], 2}
+			stage_status = 1 
+			speak_timer = 2 
+		end
+		if stage_status == 1 and (get(pump_tank1_1) + get(pump_tank1_2) + get(pump_tank1_3) + get(pump_tank1_4) < 4 or 
+			get(pump_tank2_left) + get(pump_tank2_right) + get(pump_tank3_left) + get(pump_tank3_right) < 4) then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["fail_"..math.random(1,5)][lang], 1}
+			speak_timer = 1
+			stage_status = 2
+		end
+		if (stage_status == 1 or stage_status == 2) and get(pump_tank1_1) + get(pump_tank1_2) + get(pump_tank1_3) + get(pump_tank1_4) == 4 and 
+			get(pump_tank2_left) + get(pump_tank2_right) + get(pump_tank3_left) + get(pump_tank3_right) == 4 then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["pumps_on"][lang], 3}
+			speak_timer = 3
+			stage_status = 10 
+		end
+	end
+	if stage == 5 and stage_status == 10 and speak_timer < 0.1 then set(fishka_5, 0) end	
+	if stage == 6 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["pressure_hydraulic_systems"][lang], 4}
+			stage_status = 1 
+			speak_timer = 2 
+		end
+		if stage_status == 1 and (get(gs_press_1) < 200 or get(gs_press_2) < 200 or get(gs_press_3) < 200) then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["fail_"..math.random(1,5)][lang], 1}
+			speak_timer = 1
+			stage_status = 2
+		end
+		if (stage_status == 1 or stage_status == 2) and get(gs_press_1) >= 200 and get(gs_press_2) >= 200 and get(gs_press_3) >= 200 then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["210"][lang], 2}
+			speak_timer = 2
+			stage_status = 3 
+		end
+		if stage_status == 3 and (get(gear_brake_press_L) < 100 or get(gear_brake_press_R) < 100) then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["fail_"..math.random(1,5)][lang], 1}
+			speak_timer = 1
+			stage_status = 4
+		end
+		if (stage_status == 3 or stage_status == 4) and get(gear_brake_press_L) >= 100 and get(gear_brake_press_R) >= 100 then
+			local num = find_empty()
+			phrases_tbl[num] = {cop_tbl["120"][lang], 2}
+			speak_timer = 2
+			stage_status = 5 
+		end
+		if stage_status == 5 and get(gs_press_4) < 180 then
+			local num = find_empty()
+			phrases_tbl[num] = {eng_tbl["fail_"..math.random(1,5)][lang], 1}
+			speak_timer = 1
+			stage_status = 6
+		end
+		if (stage_status == 5 or stage_status == 6) and get(gs_press_4) >= 180 then
+			local num = find_empty()
+			if get(gs_press_4) >= 200 then phrases_tbl[num] = {eng_tbl["210"][lang], 2}
+			else phrases_tbl[num] = {eng_tbl["180"][lang], 2} end
+			speak_timer = 2
+			stage_status = 10 
+		end		
+	end
+	if stage == 6 and stage_status == 10 and speak_timer < 0.1 then set(fishka_6, 0) end		
+	if stage == 7 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["trim"][lang], 2}
+			stage_status = 1 
+			speak_timer = 2 
+		end
+		if stage_status == 1 and (get(trimm_zero_course) < 0.2 or get(trimm_zero_roll) < 0.2 or get(trimm_zero_pitch) < 0.2) then
+			local num = find_empty()
+			phrases_tbl[num] = {cpt_tbl["fail_"..math.random(1,5)][lang], 1}
+			speak_timer = 1
+			stage_status = 2
+		end
+		if (stage_status == 1 or stage_status == 2) and get(trimm_zero_course) > 0.2 and get(trimm_zero_roll) > 0.2 and get(trimm_zero_pitch) > 0.2 then
+			local num = find_empty()
+			phrases_tbl[num] = {cpt_tbl["neutral"][lang], 2}
+			speak_timer = 2
+			stage_status = 10 
+		end
+	end
+	if stage == 7 and stage_status == 10 and speak_timer < 0.1 then set(fishka_7, 0) end
+	if stage == 8 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["takeoff_data"][lang], 2}
+			stage_status = 1 
+			speak_timer = 2 
+		end
+		if stage_status == 1 then
+			local num = find_empty()
+			phrases_tbl[num] = {cop_tbl["weight"][lang], 1}
+			cop_say_num(math.floor(get(weight_actual)/1000 + 0.5), 3, lang)
+			phrases_tbl[num+4] = {cop_tbl["cg_pos"][lang], 1}
+			cop_say_num(math.floor(get(cg_pos_actual)+0.5), 2, lang)
+			phrases_tbl[num+7] = {nav_tbl["V1"][lang], 1}
+			nav_say_num(math.floor(get(v1_15)+0.5), 3, lang)
+			phrases_tbl[num+11] = {nav_tbl["Vr"][lang], 1}
+			nav_say_num(math.floor(get(vr_15)+0.5), 3, lang)
+			phrases_tbl[num+15] = {nav_tbl["V2"][lang], 1}
+			nav_say_num(math.floor(get(v2_15)+0.5), 3, lang)
+			speak_timer = 13
+			stage_status = 10 
+		end
+	end
+	if stage == 8 and stage_status == 10 and speak_timer < 0.1 then set(fishka_8, 0) end
+	if stage == 9 and speak_timer == 0 then
+		if stage_status == 0 then
+			local num = find_empty()
+			phrases_tbl[num] = {nav_tbl["stabilizer"][lang], 2}
+			stage_status = 1 
+			speak_timer = 2 
+		end
+		if (stage_status == 1 or stage_status == 2) then
+			local num = find_empty()
+			if get(stab_setting) == 0 then
+				phrases_tbl[num] = {cpt_tbl["stab_set_b"][lang], 2}
+			elseif get(stab_setting) == 1 then
+				phrases_tbl[num] = {cpt_tbl["stab_set_m"][lang], 2}
+			else 
+				phrases_tbl[num] = {cpt_tbl["stab_set_f"][lang], 2}
+			end
+			speak_timer = 2
+			stage_status = 10 
+		end
+	end
+	if stage == 9 and stage_status == 10 and speak_timer < 0.1 then set(fishka_9, 0) end
+	speak_timer = speak_timer - passed_time
+	if speak_timer < 0.2 and find_empty() > 1 then speak_timer = phrases_tbl[1][2]
+	elseif speak_timer < 0.2 then speak_timer = 0
+	end
+	if checklist_started then
+		if stage == 100 then
+			checklist_started = false
+			set(checklist_selected, 0)
+			stage = 0
+			stage_status = 0
+		end
+	end
+end

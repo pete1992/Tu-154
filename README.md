@@ -1,95 +1,39 @@
-<!-- PROJECT LOGO --><br />
+<!-- PROJECT LOGO -->
+<br />
 <div align="center">
-  <a href="https://github.com/pete1992/Tu-154">
+  <a href="https://github.com/Unicode4all/Tu-154">
     <img src="https://user-images.githubusercontent.com/4706357/192863670-7191a7d1-cb96-4934-aa3d-3c4820709644.png" alt="Logo" width="512" height="288">
-  </a>  <h1 align="center">Tu-154M Community Edition – Continuation Project</h1>  <p align="left">
-    An open continuation of Felis' legendary Tu-154M for X-Plane – a community-driven effort to keep this iconic aircraft flying in X-Plane 12 and beyond.<br />
+
+  </a>
+
+<h1 align="center">Tu-154 Community Edition</h3>
+
+  <p align="center">
+    The community continuation of Tu-154 by Felis for X-Plane
+    <br />
+    <a href="https://github.com/Unicode4all/Tu-154/releases"><strong>Download»</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/Unicode4all/Tu-154/issues">Report Bug or Request Feature</a>
+    ·
+    <a href="https://github.com/Unicode4all/Tu-154/discussions">Discuss</a>
+    ·
+    <a href="https://github.com/Unicode4all/Tu-154/projects?query=is%3Aopen">Roadmaps</a>
   </p>
 </div>
 
+## Installation
 
-✈️ About the Project
+Download the latest release from [releases page](https://github.com/Unicode4all/Tu-154/releases) and unpack into Aircraft directory.
+<br />
+Download [KLN Navdata](https://drive.google.com/file/d/1_Ro6RVtsKbGzmen8Wdxh_QG8D-FOQfaG/view) and unpack it into your root X-Plane directory so it looks like `X-Plane 11/KLN 90B Navdata`
 
+## Contributing
 
-After the original project by Felis was made open source, 
-Unicode4all launched the first community project. This repository builds on top of that foundation with:
+This repo is called Tu-154 *Community Edition* for a reason! Taking the awesome Tu-154 to a new level takes great effort so we welcome any contributions from the community, be it a feature request issue or even a pull request. Here's a short guide on how to contribute:
 
-
--	Continued compatibility updates for X-Plane 12
--	Internal code improvements (Lua/SASL)
--	Full English translation of codebase and comments
--	Numerous bug fixes
-
-
-A stronger open-source focus and documentation improvements
-
-
-> 🚧 This is an ongoing project. All contributions, suggestions, and bug reports are welcome!
-
-
-
-
-🔧 Installation
-
-1. Clone or download this repository into your X-Plane /Aircraft folder.
-
-
-2. Install KLN 90B Navdata
-	→ Unpack it into your root X-Plane folder so it looks like:
-
-
-
-		X-Plane 11/
-			├── Aircraft/
-			├── KLN 90B Navdata/
-			│   ├── REGS.DAF
-			│   ├── WPT.DAF
-			│   └── ...
-
-
-3. Start X-Plane and load the aircraft.
-
-
-🐛 Bug Reports & Feedback
-
-If you encounter a bug, issue, or any odd behavior, please report it via the GitHub Issues Page.
-
-If you'd like to discuss development, ideas, or improvements, feel free to join the conversation on the Discussions Page.
-
-
-💡 Recent Changes
-
-✅ Compatibility updates for X-Plane 12
-
-
-✅ Refactored and optimized Lua code for SASL
-
-
-✅ All Russian code comments translated into English
-
-
-✅ Electrical system calculations revised
-
-
-✅ Improved support for SmartCopilot and KLN90B
-
-
-Full changelog available in commits
-
-
-💬 Credits
-
-
-Original aircraft mod by Felis
-
-
-Community Project by Unicode4all
-
-
-Ongoing improvements and rewrites by Pete
-
-
-📄 License
-
-This is a continuation of an open project for non-commercial use. Please respect the original authors and contributors. All assets remain property of their original creators unless otherwise stated.
-
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature`)
+3. Commit your Changes (`git commit -m 'Add feature'`)
+4. Push to the Branch (`git push origin feature`)
+5. Open a Pull Request

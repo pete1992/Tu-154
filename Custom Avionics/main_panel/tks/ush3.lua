@@ -1,0 +1,68 @@
+defineProperty("course_ga_1", globalPropertyf("sim/custom/tks/course_ga_1")) 
+defineProperty("course_ga_2", globalPropertyf("sim/custom/tks/course_ga_2")) 
+defineProperty("diss_slip_angle", globalPropertyf("sim/custom/nvu/diss_slip_angle")) 
+defineProperty("tks_mode", globalPropertyi("sim/custom/switchers/ovhd/tks_mode")) 
+defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("bus27_volt_right", globalPropertyf("sim/custom/elec/bus27_volt_right"))
+defineProperty("tks_mode_lit_mk", globalPropertyf("sim/custom/lights/tks_mode_lit_mk")) 
+defineProperty("tks_mode_lit_ak", globalPropertyf("sim/custom/lights/tks_mode_lit_ak")) 
+defineProperty("tks_mode_lit_gpk", globalPropertyf("sim/custom/lights/tks_mode_lit_gpk")) 
+defineProperty("big_course_needle", globalPropertyf("sim/custom/gauges/compas/big_course_needle")) 
+defineProperty("big_true_course_needle", globalPropertyf("sim/custom/gauges/compas/big_true_course_needle")) 
+defineProperty("big_tri_needle", globalPropertyf("sim/custom/gauges/compas/big_tri_needle")) 
+defineProperty("ush_cc", globalPropertyf("sim/custom/tks/ush_cc")) 
+local course_main = math.random(-180, 180)
+local course_aux = math.random(-180, 180)
+local course_pu = course_main
+function update()
+	local passed = get(frame_time)
+	local power = get(bus27_volt_right) > 13
+	local main_ga = get(course_ga_1)
+	local aux_ga = get(course_ga_2)
+	local slip = get(diss_slip_angle)
+	if power then
+		local delta_main = course_main - main_ga
+		while delta_main > 180 do delta_main = delta_main - 360 end
+		while delta_main < -180 do delta_main = delta_main + 360 end
+		if delta_main > 1 then course_main = course_main - passed * 30
+		elseif delta_main < -1 then course_main = course_main + passed * 30
+		else course_main = course_main - delta_main * passed * 20
+		end
+		local delta_aux = course_aux - aux_ga
+		while delta_aux > 180 do delta_aux = delta_aux - 360 end
+		while delta_aux < -180 do delta_aux = delta_aux + 360 end
+		if delta_aux > 1 then course_aux = course_aux - passed * 30
+		elseif delta_aux < -1 then course_aux = course_aux + passed * 30
+		else course_aux = course_aux - delta_aux * passed * 20
+		end
+		local delta_pu = course_pu - course_main - slip
+		while delta_pu > 180 do delta_pu = delta_pu - 360 end
+		while delta_pu < -180 do delta_pu = delta_pu + 360 end
+		if delta_pu > 1 then course_pu = course_pu - passed * 30
+		elseif delta_pu < -1 then course_pu = course_pu + passed * 30
+		else course_pu = course_pu - delta_pu * passed * 20
+		end
+		local mode = get(tks_mode)
+		if mode == 0 then 
+			set(tks_mode_lit_mk, 1)
+			set(tks_mode_lit_gpk, 0)
+			set(tks_mode_lit_ak, 0)
+		elseif mode == 1 then 
+			set(tks_mode_lit_mk, 0)
+			set(tks_mode_lit_gpk, 1)
+			set(tks_mode_lit_ak, 0)
+		else 
+			set(tks_mode_lit_mk, 0)
+			set(tks_mode_lit_gpk, 0)
+			set(tks_mode_lit_ak, 1)
+		end
+	else 
+		set(tks_mode_lit_mk, 0)
+		set(tks_mode_lit_gpk, 0)
+		set(tks_mode_lit_ak, 0)
+	end
+	set(big_course_needle, course_main)
+	set(big_tri_needle, course_aux)
+	set(big_true_course_needle, course_pu)
+	set(ush_cc, bool2int(power))
+end

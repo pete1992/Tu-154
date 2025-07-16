@@ -1,0 +1,101 @@
+defineProperty("bat_fail_1", globalPropertyi("sim/custom/failures/bat_1_fail")) 
+defineProperty("bat_fail_2", globalPropertyi("sim/custom/failures/bat_2_fail")) 
+defineProperty("bat_fail_3", globalPropertyi("sim/custom/failures/bat_3_fail")) 
+defineProperty("bat_fail_4", globalPropertyi("sim/custom/failures/bat_4_fail")) 
+defineProperty("bat_1_kz", globalPropertyi("sim/custom/failures/bat_1_kz")) 
+defineProperty("bat_2_kz", globalPropertyi("sim/custom/failures/bat_2_kz")) 
+defineProperty("bat_3_kz", globalPropertyi("sim/custom/failures/bat_3_kz")) 
+defineProperty("bat_4_kz", globalPropertyi("sim/custom/failures/bat_4_kz")) 
+defineProperty("vu1_fail", globalPropertyi("sim/custom/failures/vu1_fail")) 
+defineProperty("vu2_fail", globalPropertyi("sim/custom/failures/vu2_fail")) 
+defineProperty("vu3_fail", globalPropertyi("sim/custom/failures/vu3_fail")) 
+defineProperty("tr1_fail", globalPropertyi("sim/custom/failures/tr1_fail")) 
+defineProperty("tr2_fail", globalPropertyi("sim/custom/failures/tr2_fail")) 
+defineProperty("pts250_1_fail", globalPropertyi("sim/custom/failures/pts250_1_fail")) 
+defineProperty("pts250_2_fail", globalPropertyi("sim/custom/failures/pts250_2_fail")) 
+defineProperty("inv115_fail", globalPropertyf("sim/custom/failures/inv115_fail"))
+defineProperty("sim_gen1_fail", globalPropertyi("sim/operation/failures/rel_genera0"))
+defineProperty("sim_gen2_fail", globalPropertyi("sim/operation/failures/rel_genera1"))
+defineProperty("sim_gen3_fail", globalPropertyi("sim/operation/failures/rel_genera2"))
+defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("failures_enabled", globalPropertyi("sim/custom/failures/failures_enabled"))
+defineProperty("vu1_amp", globalPropertyf("sim/custom/elec/vu1_amp")) 
+defineProperty("vu2_amp", globalPropertyf("sim/custom/elec/vu2_amp")) 
+defineProperty("vu3_amp", globalPropertyf("sim/custom/elec/vu_res_amp")) 
+defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) 
+defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) 
+local vu_timer_1 = 0
+local vu_timer_2 = 0
+local vu_timer_3 = 0
+local fail_counter = 0
+local check_time = math.random(15, 30)
+function update()
+	local passed = get(frame_time)
+local MASTER = get(ismaster) ~= 1	
+if MASTER then	
+	local FAIL = get(failures_enabled)
+	FAIL = FAIL * 0.05 * 4 ^ (FAIL * 0.5)
+	if FAIL > 0 then
+		fail_counter = fail_counter + passed
+		if fail_counter > check_time then
+			fail_counter = 0
+			check_time = math.random(15, 30)
+			if get(bat_fail_1) ~= 1 then set(bat_fail_1, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(bat_fail_2) ~= 1 then set(bat_fail_2, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(bat_fail_3) ~= 1 then set(bat_fail_3, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(bat_fail_4) ~= 1 then set(bat_fail_4, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(bat_1_kz) ~= 1 then set(bat_1_kz, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(bat_2_kz) ~= 1 then set(bat_2_kz, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(bat_3_kz) ~= 1 then set(bat_3_kz, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(bat_4_kz) ~= 1 then set(bat_4_kz, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(vu1_fail) ~= 1 then set(vu1_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(vu2_fail) ~= 1 then set(vu2_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(vu3_fail) ~= 1 then set(vu3_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(tr1_fail) ~= 1 then set(tr1_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(tr2_fail) ~= 1 then set(tr2_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(pts250_1_fail) ~= 1 then set(pts250_1_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(pts250_2_fail) ~= 1 then set(pts250_2_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(inv115_fail) ~= 1 then set(inv115_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(sim_gen1_fail) ~= 1 then set(sim_gen1_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(sim_gen2_fail) ~= 1 then set(sim_gen2_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+			if get(sim_gen3_fail) ~= 1 then set(sim_gen3_fail, bool2int(math.random() < 0.00001 * FAIL * 0.3) * 1) end
+		end
+		local vu_amp_1 = get(vu1_amp)
+		if vu_amp_1 > 300 then vu_timer_1 = vu_timer_1 + passed * (vu_amp_1 - 297.5) * 0.4
+		elseif vu_timer_1 > 0 then vu_timer_1 = vu_timer_1 - passed * 3
+		end
+		if vu_timer_1 > 180 then set(vu1_fail, 1) end
+		local vu_amp_2 = get(vu2_amp)
+		if vu_amp_2 > 300 then vu_timer_2 = vu_timer_2 + passed * (vu_amp_2 - 297.5) * 0.4
+		elseif vu_timer_2 > 0 then vu_timer_2 = vu_timer_2 - passed * 3
+		end
+		if vu_timer_2 > 180 then set(vu2_fail, 1) end
+		local vu_amp_3 = get(vu3_amp)
+		if vu_amp_3 > 300 then vu_timer_3 = vu_timer_3 + passed * (vu_amp_3 - 297.5) * 0.4
+		elseif vu_timer_3 > 0 then vu_timer_3 = vu_timer_3 - passed * 3
+		end
+		if vu_timer_3 > 180 then set(vu3_fail, 1) end
+	else
+		fail_counter = 0
+		set(bat_fail_1, 0)
+		set(bat_fail_2, 0)
+		set(bat_fail_3, 0)
+		set(bat_fail_4, 0)
+		set(bat_1_kz, 0)
+		set(bat_2_kz, 0)
+		set(bat_3_kz, 0)
+		set(bat_4_kz, 0)
+		set(vu1_fail, 0)
+		set(vu2_fail, 0)
+		set(vu3_fail, 0)
+		set(tr1_fail, 0)
+		set(tr2_fail, 0)
+		set(pts250_1_fail, 0)
+		set(pts250_2_fail, 0)
+		set(inv115_fail, 0)
+		set(sim_gen1_fail, 0)
+		set(sim_gen2_fail, 0)
+		set(sim_gen3_fail, 0)
+	end
+end
+end
