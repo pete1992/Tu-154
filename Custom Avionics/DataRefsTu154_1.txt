@@ -1412,3 +1412,38 @@ tu154ce/switchers/breakers/right/ga_calc_sc1		int				Departure calculator 1 PK	1
 tu154ce/switchers/breakers/right/ga_calc_sc2		int				Departure calculator 2 PK	1
 tu154ce/switchers/breakers/right/at_c2			int				Throttle automation 2 channel	1
 sim/custom/payload/payload_set	float	Custom Payload Setting	0
+sim/custom/switchers/eng/soi21_on           int     soi21_on                         0
+sim/custom/buttons/eng/soi21_test           int     soi21_test                       0
+sim/custom/switchers/eng/antiice_slats      int     antiice_slats                    0
+sim/custom/switchers/eng/antiice_eng_1      int     antiice_eng_1                    0
+sim/custom/switchers/eng/antiice_eng_2      int     antiice_eng_2                    0
+sim/custom/switchers/eng/antiice_eng_3      int     antiice_eng_3                    0
+sim/custom/switchers/eng/antiice_wing       int     antiice_wing                     0
+sim/custom/switchers/ovhd/window_heat_1     int     window_heat_1                    0
+sim/custom/switchers/ovhd/window_heat_2     int     window_heat_2                    0
+sim/custom/switchers/ovhd/window_heat_3     int     window_heat_3                    0
+sim/custom/switchers/ovhd/pitot_heat_1      int     pitot_heat_1                     0
+sim/custom/switchers/ovhd/pitot_heat_2      int     pitot_heat_2                     0
+sim/custom/switchers/ovhd/pitot_heat_3      int     pitot_heat_3                     0
+sim/custom/lights/small/heat_ok_1           float   heat_ok_1                        0
+sim/custom/lights/small/heat_ok_2           float   heat_ok_2                        0
+sim/custom/lights/small/heat_ok_3           float   heat_ok_3                        0
+sim/custom/lights/small/soi_work            float   soi_work                         0
+sim/custom/lights/small/soi_ice_detected    float   soi_ice_detected                 0
+sim/custom/lights/small/antiice_slats       float   antiice_slats                    0
+sim/custom/lights/small/antiice_eng_1       float   antiice_eng_1                    0
+sim/custom/lights/small/antiice_eng_2       float   antiice_eng_2                    0
+sim/custom/lights/small/antiice_eng_3       float   antiice_eng_3                    0
+sim/custom/lights/small/antiice_wings       float   antiice_wings                    0
+sim/custom/gauges/eng/stab_temp             float   stab_temp                        0
+sim/custom/gauges/eng/wing_temp             float   wing_temp                        0
+sim/custom/antiice/wing_heat_t              float   wing_heat_t                      0
+sim/custom/antiice/stab_heat_t              float   stab_heat_t                      0
+sim/custom/antiice/eng_heat_open_1          int     eng_heat_open_1                 0
+sim/custom/antiice/eng_heat_open_2          int     eng_heat_open_2                 0
+sim/custom/antiice/eng_heat_open_3          int     eng_heat_open_3                 0
+sim/custom/antiice/ice_detected             int     ice_detected                     0
+sim/custom/antiice/ice_detect_ok            int     ice_detect_ok                    0
+sim/custom/antiice/ppd_3_heat_fail          int     ppd_3_heat_fail                  0
+sim/custom/antiice/wing_heating             int     wing_heating                     0
+sim/custom/antiice/slat_heating             int     slat_heating                     0
