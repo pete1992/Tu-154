@@ -13,49 +13,77 @@
 
 -- panelDir = path to your aircraft
 
-print("panel dir = ",panelDir)
+-- this is temporary script for generating the code, that will create custom DataRefs
 
-local dataref_filename = panelDir .. "/Custom Avionics/DataRefsTu154_int.txt" -- path for source file
-local save_filename = panelDir .. "/Custom Avionics/dataref_creator_2.lua" -- path for output fils
-
-local dataref_file = io.open(dataref_filename, "r") -- read the source file
-local save_file = io.open(save_filename, "w") -- save output file
-
-if dataref_file then
-
-	while true do
-		local line = dataref_file:read("*line") -- read file line by line
-		if line == nil then break end
-		
-		local a = 0
-		local b = string.find(line, "\t", a) -- find next tab
-		if b ~= nil and b > 9 then -- if we found an actual line with DataRef
-			
-			local dataref_name = string.sub(line, a, b-1)
-			
-			a = b
-			b = string.find(line, "\t", a+1) -- find next tab			
-			local dataref_type = string.sub(line, a+1, b-1)
-			-- convert type to one letter
-			if dataref_type == "float" then dataref_type = "f"
-			elseif dataref_type == "int" then dataref_type = "i"
-			elseif dataref_type == "string" then dataref_type = "s"
-			elseif dataref_type == "double" then dataref_type = "d"
-			end 
-			
-			a = b
-			b = string.find(line, "\t", a+1) -- find next tab
-			dataref_descr = string.sub(line, a+1, b-1)
-
-			dataref_value = string.sub(line, b+1) -- find everything to the end of the line
-			if not dataref_value or dataref_value == nil then dataref_value = "0" end
-			
-			local save_text = "createGlobalProperty"..dataref_type.."\040\""..dataref_name.."\", "..dataref_value.."\041".." -- "..dataref_descr.."\n"
-
-			save_file:write (save_text) -- save text to output file
-	
-		end
-		
-	end
-
+local function script_dir()
+    local info = debug.getinfo(1, "S").source
+    if info:sub(1,1) == "@" then
+        local dir = info:match("@(.*/)")
+        if dir then
+            return dir:gsub("[/\\]$", "")
+        end
+    end
+    return "."
 end
+
+local panelDir = script_dir()
+print("Panel dir = " .. panelDir)
+
+local dataref_filename = panelDir .. "/DataRefsTu154_int.txt"
+local save_filename = panelDir .. "/dataref_creator_2.lua"
+
+print("Opening source file: " .. dataref_filename)
+local dataref_file = io.open(dataref_filename, "r")
+print("Opening output file: " .. save_filename)
+local save_file = io.open(save_filename, "w")
+
+if not dataref_file then
+    print("ERROR: Cannot open input file!")
+    return
+end
+if not save_file then
+    print("ERROR: Cannot open output file!")
+    dataref_file:close()
+    return
+end
+
+local lines_written = 0
+
+while true do
+    local line = dataref_file:read("*line")
+    if line == nil then break end
+
+    local a = 0
+    local b = string.find(line, "\t", a)
+    if b ~= nil and b > 9 then
+        local dataref_name = string.sub(line, a, b-1)
+        a = b
+        b = string.find(line, "\t", a+1)
+        local dataref_type = string.sub(line, a+1, b-1)
+        if dataref_type == "float" then dataref_type = "f"
+        elseif dataref_type == "int" then dataref_type = "i"
+        elseif dataref_type == "string" then dataref_type = "s"
+        elseif dataref_type == "double" then dataref_type = "d"
+        end
+
+        a = b
+        b = string.find(line, "\t", a+1)
+        dataref_descr = string.sub(line, a+1, b-1)
+        dataref_value = string.sub(line, b+1)
+        if not dataref_value or dataref_value == nil then dataref_value = "0" end
+
+        local save_text = "createGlobalProperty"..dataref_type.."\040\""..dataref_name.."\", "..dataref_value.."\041".." -- "..dataref_descr.."\n"
+        save_file:write(save_text)
+        lines_written = lines_written + 1
+
+        -- Fortschrittsanzeige alle 10 Einträge
+        if lines_written % 10 == 0 then
+            print("Written " .. lines_written .. " DataRefs...")
+        end
+    end
+end
+
+print("Total DataRefs written: " .. lines_written)
+print("Done! Closing files.")
+dataref_file:close()
+save_file:close()

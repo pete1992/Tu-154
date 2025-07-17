@@ -1,199 +1,210 @@
 -- apu_panel.lua
 
-defineProperty("apu_main_switch", globalPropertyi("sim/custom/switchers/eng/apu_main_switch")) 
-defineProperty("apu_start_mode", globalPropertyi("sim/custom/switchers/eng/apu_start_mode")) 
-defineProperty("apu_air_bleed", globalPropertyi("sim/custom/switchers/eng/apu_air_bleed")) 
-defineProperty("apu_start", globalPropertyi("sim/custom/buttons/eng/apu_start")) 
-defineProperty("apu_stop", globalPropertyi("sim/custom/buttons/eng/apu_stop")) 
-defineProperty("apu_rpm", globalPropertyf("sim/custom/gauges/eng/apu_rpm")) 
-defineProperty("apu_egt_gau", globalPropertyf("sim/custom/gauges/eng/apu_egt")) 
-defineProperty("apu_oil_temp", globalPropertyf("sim/custom/gauges/eng/apu_oil_temp")) 
-defineProperty("low_oil", globalPropertyf("sim/custom/lights/apu/low_oil")) 
-defineProperty("low_oil_press", globalPropertyf("sim/custom/lights/apu/low_oil_press")) 
-defineProperty("high_temp", globalPropertyf("sim/custom/lights/apu/high_temp")) 
-defineProperty("high_rpm", globalPropertyf("sim/custom/lights/apu/high_rpm")) 
-defineProperty("pta6_fail", globalPropertyf("sim/custom/lights/apu/pta6_fail")) 
-defineProperty("doors_open", globalPropertyf("sim/custom/lights/apu/doors_open")) 
-defineProperty("fuel_press", globalPropertyf("sim/custom/lights/apu/fuel_press")) 
-defineProperty("start_ready", globalPropertyf("sim/custom/lights/apu/start_ready")) 
-defineProperty("work_mode", globalPropertyf("sim/custom/lights/apu/work_mode")) 
-defineProperty("start_apu", globalPropertyf("sim/custom/lights/apu/start_apu")) 
-defineProperty("apu_n1", globalPropertyf("sim/custom/eng/apu_n1")) 
-defineProperty("apu_oil_t", globalPropertyf("sim/custom/eng/apu_oil_t")) 
-defineProperty("apu_oil_q", globalPropertyf("sim/custom/eng/apu_oil_q")) 
-defineProperty("apu_oil_p", globalPropertyf("sim/custom/eng/apu_oil_p")) 
-defineProperty("apu_egt", globalPropertyf("sim/custom/eng/apu_egt")) 
-defineProperty("apu_air_press", globalPropertyf("sim/custom/eng/apu_air_press")) 
-defineProperty("apu_air_doors", globalPropertyf("sim/custom/eng/apu_air_doors")) 
-defineProperty("apu_fuel_p", globalPropertyf("sim/custom/eng/apu_fuel_p")) 
-defineProperty("apu_start_bus", globalPropertyf("sim/custom/elec/apu_start_bus")) 
-defineProperty("apu_start_cc", globalPropertyf("sim/custom/elec/apu_start_cc")) 
-defineProperty("apu_start_seq", globalPropertyi("sim/custom/elec/apu_start_seq")) 
-defineProperty("apu_doors", globalPropertyf("sim/custom/anim/apu_doors")) 
-defineProperty("cockpit_window_left", globalPropertyf("sim/custom/anim/cockpit_window_left")) 
-defineProperty("cockpit_window_right", globalPropertyf("sim/custom/anim/cockpit_window_right")) 
-defineProperty("bus27_volt_left", globalPropertyf("sim/custom/elec/bus27_volt_left")) 
-defineProperty("bus27_volt_right", globalPropertyf("sim/custom/elec/bus27_volt_right")) 
-defineProperty("outside_air_temp", globalPropertyf("sim/cockpit2/temperature/outside_air_temp_degc")) 
-defineProperty("test_lamps", globalPropertyi("sim/custom/buttons/lamp_test_apu")) 
-defineProperty("day_night_set", globalPropertyf("sim/custom/lights/day_night_set")) 
-defineProperty("gear_vent_set", globalPropertyi("sim/custom/switchers/eng/gear_fan")) 
-defineProperty("external_view", globalPropertyi("sim/graphics/view/view_is_external"))
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
-defineProperty("APU_generator_on", globalPropertyi("sim/cockpit2/electrical/APU_generator_on")) 
-defineProperty("APU_starter_switch", globalPropertyi("sim/cockpit2/electrical/APU_starter_switch")) 
-defineProperty("APU_N1_percent", globalPropertyi("sim/cockpit2/electrical/APU_N1_percent")) 
-defineProperty("APU_running", globalPropertyi("sim/cockpit2/electrical/APU_running")) 
-defineProperty("acf_has_APU_switch", globalPropertyi("sim/aircraft/overflow/acf_has_APU_switch")) 
-defineProperty("rel_APU_press", globalPropertyi("sim/operation/failures/rel_APU_press")) 
-defineProperty("bleed_air_mode", globalPropertyi("sim/cockpit2/pressurization/actuators/bleed_air_mode")) 
-defineProperty("local_x", globalPropertyf("sim/flightmodel/position/local_x")) 
-defineProperty("local_y", globalPropertyf("sim/flightmodel/position/local_y")) 
-defineProperty("local_z", globalPropertyf("sim/flightmodel/position/local_z")) 
-defineProperty("view_x", globalPropertyf("sim/graphics/view/view_x")) 
-defineProperty("view_y", globalPropertyf("sim/graphics/view/view_y")) 
-defineProperty("view_z", globalPropertyf("sim/graphics/view/view_z")) 
-defineProperty("apu_start_fail",globalPropertyi("sim/custom/failures/apu_start_fail")) 
-defineProperty("apu_gen_fail",globalPropertyi("sim/custom/failures/apu_gen_fail")) 
-defineProperty("apu_fail_oilt",globalPropertyi("sim/custom/failures/apu_fail_oilt")) 
-defineProperty("apu_fail_egt",globalPropertyi("sim/custom/failures/apu_fail_egt")) 
-defineProperty("apu_fail_fuel_left",globalPropertyi("sim/custom/failures/apu_fail_fuel_left")) 
-defineProperty("apu_fail",globalPropertyi("sim/custom/failures/apu_fail")) 
-defineProperty("apu_press_fail", globalPropertyi("sim/custom/failures/apu_press_fail")) 
+-- Helper to batch-register DataRefs
+local function defineProps(defs)
+    for _, d in ipairs(defs) do
+        defineProperty(d[1], d[3](d[2]))
+    end
+end
+
+-- Register all panel DataRefs
+defineProps({
+    {"apu_main_switch",        "sim/custom/switchers/eng/apu_main_switch",       globalPropertyi},
+    {"apu_start_mode",         "sim/custom/switchers/eng/apu_start_mode",        globalPropertyi},
+    {"apu_air_bleed",          "sim/custom/switchers/eng/apu_air_bleed",         globalPropertyi},
+    {"apu_start",              "sim/custom/buttons/eng/apu_start",               globalPropertyi},
+    {"apu_stop",               "sim/custom/buttons/eng/apu_stop",                globalPropertyi},
+    {"apu_rpm",                "sim/custom/gauges/eng/apu_rpm",                  globalPropertyf},
+    {"apu_egt_gau",            "sim/custom/gauges/eng/apu_egt",                  globalPropertyf},
+    {"apu_oil_temp",           "sim/custom/gauges/eng/apu_oil_temp",             globalPropertyf},
+    {"low_oil",                "sim/custom/lights/apu/low_oil",                  globalPropertyf},
+    {"low_oil_press",          "sim/custom/lights/apu/low_oil_press",            globalPropertyf},
+    {"high_temp",              "sim/custom/lights/apu/high_temp",                globalPropertyf},
+    {"high_rpm",               "sim/custom/lights/apu/high_rpm",                 globalPropertyf},
+    {"pta6_fail",              "sim/custom/lights/apu/pta6_fail",                globalPropertyf},
+    {"doors_open",             "sim/custom/lights/apu/doors_open",               globalPropertyf},
+    {"fuel_press",             "sim/custom/lights/apu/fuel_press",               globalPropertyf},
+    {"start_ready",            "sim/custom/lights/apu/start_ready",              globalPropertyf},
+    {"work_mode",              "sim/custom/lights/apu/work_mode",                globalPropertyf},
+    {"start_apu",              "sim/custom/lights/apu/start_apu",                globalPropertyf},
+    {"apu_n1",                 "sim/custom/eng/apu_n1",                          globalPropertyf},
+    {"apu_oil_t",              "sim/custom/eng/apu_oil_t",                       globalPropertyf},
+    {"apu_oil_q",              "sim/custom/eng/apu_oil_q",                       globalPropertyf},
+    {"apu_oil_p",              "sim/custom/eng/apu_oil_p",                       globalPropertyf},
+    {"apu_egt",                "sim/custom/eng/apu_egt",                         globalPropertyf},
+    {"apu_air_press",          "sim/custom/eng/apu_air_press",                   globalPropertyf},
+    {"apu_air_doors",          "sim/custom/eng/apu_air_doors",                   globalPropertyf},
+    {"apu_fuel_p",             "sim/custom/eng/apu_fuel_p",                      globalPropertyf},
+    {"apu_start_bus",          "sim/custom/elec/apu_start_bus",                  globalPropertyf},
+    {"apu_start_cc",           "sim/custom/elec/apu_start_cc",                   globalPropertyf},
+    {"apu_start_seq",          "sim/custom/elec/apu_start_seq",                  globalPropertyi},
+    {"apu_doors",              "sim/custom/anim/apu_doors",                      globalPropertyf},
+    {"cockpit_window_left",    "sim/custom/anim/cockpit_window_left",            globalPropertyf},
+    {"cockpit_window_right",   "sim/custom/anim/cockpit_window_right",           globalPropertyf},
+    {"bus27_volt_left",        "sim/custom/elec/bus27_volt_left",                globalPropertyf},
+    {"bus27_volt_right",       "sim/custom/elec/bus27_volt_right",               globalPropertyf},
+    {"outside_air_temp",       "sim/cockpit2/temperature/outside_air_temp_degc", globalPropertyf},
+    {"test_lamps",             "sim/custom/buttons/lamp_test_apu",               globalPropertyi},
+    {"day_night_set",          "sim/custom/lights/day_night_set",                globalPropertyf},
+    {"gear_vent_set",          "sim/custom/switchers/eng/gear_fan",              globalPropertyi},
+    {"external_view",          "sim/graphics/view/view_is_external",             globalPropertyi},
+    {"frame_time",             "sim/custom/time/frame_time",                     globalPropertyf},
+    {"APU_generator_on",       "sim/cockpit2/electrical/APU_generator_on",       globalPropertyi},
+    {"APU_starter_switch",     "sim/cockpit2/electrical/APU_starter_switch",     globalPropertyi},
+    {"APU_N1_percent",         "sim/cockpit2/electrical/APU_N1_percent",         globalPropertyi},
+    {"APU_running",            "sim/cockpit2/electrical/APU_running",            globalPropertyi},
+    {"acf_has_APU_switch",     "sim/aircraft/overflow/acf_has_APU_switch",       globalPropertyi},
+    {"rel_APU_press",          "sim/operation/failures/rel_APU_press",           globalPropertyi},
+    {"bleed_air_mode",         "sim/cockpit2/pressurization/actuators/bleed_air_mode", globalPropertyi},
+    {"local_x",                "sim/flightmodel/position/local_x",               globalPropertyf},
+    {"local_y",                "sim/flightmodel/position/local_y",               globalPropertyf},
+    {"local_z",                "sim/flightmodel/position/local_z",               globalPropertyf},
+    {"view_x",                 "sim/graphics/view/view_x",                       globalPropertyf},
+    {"view_y",                 "sim/graphics/view/view_y",                       globalPropertyf},
+    {"view_z",                 "sim/graphics/view/view_z",                       globalPropertyf},
+    {"apu_start_fail",         "sim/custom/failures/apu_start_fail",             globalPropertyi},
+    {"apu_gen_fail",           "sim/custom/failures/apu_gen_fail",               globalPropertyi},
+    {"apu_fail_oilt",          "sim/custom/failures/apu_fail_oilt",              globalPropertyi},
+    {"apu_fail_egt",           "sim/custom/failures/apu_fail_egt",               globalPropertyi},
+    {"apu_fail_fuel_left",     "sim/custom/failures/apu_fail_fuel_left",         globalPropertyi},
+    {"apu_fail",               "sim/custom/failures/apu_fail",                   globalPropertyi},
+    {"apu_press_fail",         "sim/custom/failures/apu_press_fail",             globalPropertyi},
+})
+
+-- Lookup tables for gauge interpolation
+local n1_table_start = {
+    {-5000,   0},
+    {    0,   0},
+    {    8,   0},
+    {   12,  15},
+    {   14,   5},
+    {   16,  18},
+    {   18,  15},
+    {   20,  20},
+    {  110, 110},
+    { 1000, 110},
+}
+local n1_table_off = {
+    {-5000,   0},
+    {    0,   0},
+    {  110, 110},
+    { 1000, 110},
+}
+
+-- Linear interpolation helper
+local function interpolate(tbl, x)
+    for i = 1, #tbl - 1 do
+        local x1,y1 = tbl[i][1], tbl[i][2]
+        local x2,y2 = tbl[i+1][1], tbl[i+1][2]
+        if x >= x1 and x <= x2 then
+            return y1 + (y2 - y1) * (x - x1) / (x2 - x1)
+        end
+    end
+    return tbl[#tbl][2]
+end
+
+-- Preload sounds
 local switcher_sound = loadSample('Custom Sounds/metal_switch.wav')
-local button_sound = loadSample('Custom Sounds/plastic_btn.wav')
-local passed = get(frame_time)
+local button_sound   = loadSample('Custom Sounds/plastic_btn.wav')
+
+-- State for gauges and controls
+local n1_actual, EGT_actual, oil_t_actual = 0, 0, -60
+local lastStates = {
+    apu_main_switch = get(apu_main_switch),
+    apu_start_mode  = get(apu_start_mode),
+    apu_air_bleed   = get(apu_air_bleed),
+    apu_start       = get(apu_start),
+    apu_stop        = get(apu_stop),
+    test_lamps      = get(test_lamps),
+}
+
+-- Default panel behavior
 local function default_APU()
-	set(rel_APU_press, 0)
-	set(acf_has_APU_switch, 1)
-	set(APU_generator_on, 1)
-	set(bleed_air_mode, 4)
-	if (get(APU_running) ~= 1 or get(APU_N1_percent) < 50) and (get(bus27_volt_left) > 10 or get(bus27_volt_right) > 10) then 
-		set(APU_starter_switch, 2)
-	elseif get(bus27_volt_left) > 10 or get(bus27_volt_right) > 10 then
-		set(APU_starter_switch, 1)
-	else set(APU_starter_switch, 0)
-	end
+    set(rel_APU_press,     0)
+    set(acf_has_APU_switch,1)
+    set(APU_generator_on,  1)
+    set(bleed_air_mode,    4)
+    local vL, vR = get(bus27_volt_left), get(bus27_volt_right)
+    if (get(APU_running)~=1 or get(APU_N1_percent)<50) and (vL>10 or vR>10) then
+        set(APU_starter_switch,2)
+    elseif vL>10 or vR>10 then
+        set(APU_starter_switch,1)
+    else
+        set(APU_starter_switch,0)
+    end
 end
-local n1_table_start = {{ -5000, 0},    
-				  { 0, 0 },
-				  { 8, 0 },   
-				  { 12, 15 },   
-				  { 14, 5 },   
-				  { 16, 18 },   
-				  { 18, 15 },   
-				  { 20, 20 },   
-				  { 110, 110 },  
-          		  { 1000, 110 }}   
-local n1_table_off = {{ -5000, 0},    
-				  { 0, 0 },
-				  { 110, 110 },  
-          		  { 1000, 110 }}   
-local n1_actual = 0
-local EGT_actual = 0
-local oil_t_actual = -60
-local function gauges()
-	local n1_angle = 0
-	local EGT_angle = 0
-	local oil_t_angle = -60
-	local n1 = get(apu_n1)
-	if n1 > n1_actual then n1_angle = interpolate(n1_table_start, n1) 
-	else n1_angle = interpolate(n1_table_off, n1) end
-	EGT_angle = get(apu_egt)
-	if EGT_angle < -10 then EGT_angle = -10 end
-	if get(bus27_volt_right) > 13 then
-		oil_t_angle = get(apu_oil_t)
-	else
-		oil_t_angle = -75
-	end
-	n1_actual = n1_actual + (n1_angle - n1_actual) * passed * 5
-	EGT_actual = EGT_actual + (EGT_angle - EGT_actual) * passed * 3
-	oil_t_actual = oil_t_actual + (oil_t_angle - oil_t_actual) * passed * 3
-	set(apu_rpm, n1_actual)
-	set(apu_egt_gau, EGT_actual)
-	set(apu_oil_temp, oil_t_actual)
+
+-- Update gauge needles smoothly
+local function gauges(passed)
+    local n1 = get(apu_n1)
+    local n1_angle = n1_actual < n1 and interpolate(n1_table_start, n1)
+                                         or interpolate(n1_table_off, n1)
+    local EGT = math.max(get(apu_egt), -10)
+    local oil_t = get(bus27_volt_right)>13 and get(apu_oil_t) or -75
+
+    n1_actual  = n1_actual  + (n1_angle   - n1_actual)  * passed * 5
+    EGT_actual = EGT_actual + (EGT        - EGT_actual) * passed * 3
+    oil_t_actual = oil_t_actual + (oil_t - oil_t_actual) * passed * 3
+
+    set(apu_rpm,      n1_actual)
+    set(apu_egt_gau,  EGT_actual)
+    set(apu_oil_temp, oil_t_actual)
 end
-local apu_main_last = get(apu_main_switch)
-local apu_start_mod_last = get(apu_start_mode)
-local apu_air_last = get(apu_air_bleed)
-local apu_start_last = get(apu_start)
-local apu_stop_last = get(apu_stop)
-local test_lamps_last = get(test_lamps)
+
+-- Play click sounds on controls
 local function check_controls()
-	local apu_main_sw = get(apu_main_switch)
-	local apu_start_mod_sw = get(apu_start_mode)
-	local apu_air_sw = get(apu_air_bleed)
-	local apu_start_but = get(apu_start)
-	local apu_stop_but = get(apu_stop)
-	local test_lamps_but = get(test_lamps)
-	local changes_sw = apu_main_sw + apu_start_mod_sw + apu_air_sw - apu_main_last - apu_start_mod_last - apu_air_last
-	local changes_but = apu_start_but + apu_stop_but + test_lamps_but - apu_start_last - apu_stop_last - test_lamps_last
-	if changes_sw ~= 0 then playSample(switcher_sound, 0) end
-	if changes_but ~= 0 then playSample(button_sound, 0) end
-	apu_main_last = apu_main_sw
-	apu_start_mod_last = apu_start_mod_sw
-	apu_air_last = apu_air_sw
-	apu_start_last = apu_start_but
-	apu_stop_last = apu_stop_but
-	test_lamps_last = test_lamps_but
+    local sumChange = 0
+    for prop, last in pairs(lastStates) do
+        local cur = get(_G[prop])
+        sumChange = sumChange + (cur - last)
+        lastStates[prop] = cur
+    end
+    if sumChange ~= 0 then playSample(switcher_sound, 0) end
+    local curTest = get(test_lamps)
+    if curTest ~= lastStates.test_lamps then
+        playSample(button_sound, 0)
+        lastStates.test_lamps = curTest
+    end
 end
-local low_oil_press_sign = 0
-local high_temp_sign = 0
-local high_rpm_sign = 0
-local start_ready_brt = 0
-local function lamps()
-	local test_btn = get(test_lamps) * math.max((get(bus27_volt_right) - 10) / 18.5, 0)
-	local day_night = 1 - get(day_night_set) * 0.25
-	local lamps_brt = math.max((math.max(get(bus27_volt_left), get(bus27_volt_right)) - 10) / 18.5, 0) * day_night
-	local rpm = get(apu_n1)
-	local start_seq = get(apu_start_seq) == 1
-	local thermo = get(apu_egt)
-	local main_sw = get(apu_main_switch) == 1
-	if get(apu_oil_p) < 1 then low_oil_press_sign = 1 end
-	if (start_seq and thermo > 700) or (not start_seq and thermo > 570) then high_temp_sign = 1 end
-	if rpm > 105 then high_rpm_sign = 1 end
-	if not main_sw then
-		low_oil_press_sign = 0
-		high_temp_sign = 0
-		high_rpm_sign = 0		
-	end
-	local low_oil_brt = 0
-	if get(apu_oil_q) < 0.4 then low_oil_brt = 1 end
-	low_oil_brt = math.max(low_oil_brt * lamps_brt, test_btn)
-	set(low_oil, low_oil_brt)
-	local low_oil_press_brt = math.max(low_oil_press_sign * lamps_brt, test_btn)
-	set(low_oil_press, low_oil_press_brt)
-	local high_temp_brt = math.max(high_temp_sign * lamps_brt, test_btn)
-	set(high_temp, high_temp_brt)
-	local high_rpm_brt = math.max(high_rpm_sign * lamps_brt, test_btn)
-	set(high_rpm, high_rpm_brt)
-	local pta6_fail_brt = math.max(0, test_btn) 
-	set(pta6_fail, pta6_fail_brt)
-	local doors_open_brt = 0
-	if get(apu_doors) > 0.9 then doors_open_brt = 1 end
-	doors_open_brt = math.max(doors_open_brt * lamps_brt, test_btn)
-	set(doors_open, doors_open_brt)
-	local fuel_press_brt = 0
-	if get(apu_fuel_p) > 0.8 then fuel_press_brt = 1 end
-	fuel_press_brt = math.max(fuel_press_brt * lamps_brt, test_btn)
-	set(fuel_press, fuel_press_brt)
-	if get(apu_air_doors) == 0 and get(apu_doors) == 1 then start_ready_brt = 1 end
-	if get(apu_air_doors) == 1 or get(apu_doors) < 0.9 then start_ready_brt = 0 end
-	local start_ready_lit = math.max(start_ready_brt * lamps_brt, test_btn)
-	set(start_ready, start_ready_lit)
-	local work_mode_brt = 0
-	if rpm > 92 and main_sw then work_mode_brt = 1 end
-	work_mode_brt = math.max(work_mode_brt * lamps_brt, test_btn)
-	set(work_mode, work_mode_brt)
-	local start_apu_brt = 0
-	if rpm < 92 and get(gear_vent_set) == 1 then start_apu_brt = 1 end
-	start_apu_brt = math.max(start_apu_brt * lamps_brt, test_btn) 
-	set(start_apu, start_apu_brt)
+
+-- Update lamp brightness
+local function lamps(passed)
+    local test = get(test_lamps) * math.max((get(bus27_volt_right)-10)/18.5,0)
+    local night = 1 - get(day_night_set)*0.25
+    local brt = math.max((math.max(get(bus27_volt_left),get(bus27_volt_right))-10)/18.5,0) * night
+
+    -- low oil
+    local lowOil = math.max((get(apu_oil_q)<0.4 and 1 or 0) * brt, test)
+    set(low_oil, lowOil)
+
+    -- other warnings
+    local seq    = get(apu_start_seq)==1
+    local thermo = get(apu_egt)
+    local rpm    = get(apu_n1)
+    local mainOn = get(apu_main_switch)==1
+    local failP  = get(apu_press_fail)==0
+
+    set(low_oil_press, math.max((get(apu_oil_p)<1 and 1 or 0)*brt, test))
+    set(high_temp,     math.max(((seq and thermo>700) or (not seq and thermo>570)) and brt or 0, test))
+    set(high_rpm,      math.max((rpm>105 and 1 or 0)*brt, test))
+    set(pta6_fail,     test)
+    set(doors_open,    math.max((get(apu_doors)>0.9 and brt or 0), test))
+    set(fuel_press,    math.max((get(apu_fuel_p)>0.8 and brt or 0), test))
+
+    local ready = ((get(apu_air_doors)==0 and get(apu_doors)==1) and 1 or 0) * brt
+    set(start_ready, math.max(ready, test))
+
+    local work = (rpm>92 and mainOn and brt or 0)
+    set(work_mode, math.max(work, test))
+
+    local startLit = ((rpm<92 and get(gear_vent_set)==1) and brt or 0)
+    set(start_apu, math.max(startLit, test))
 end
+
 function update()
-	passed = get(frame_time)
-	default_APU()
-	check_controls()
-	lamps()
-	gauges()
+    local passed = get(frame_time)
+    default_APU()
+    check_controls()
+    lamps(passed)
+    gauges(passed)
 end

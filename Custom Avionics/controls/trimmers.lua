@@ -1,4 +1,5 @@
 -- trimmers.lua
+
 -- Batch‐define helper
 local function defineProps(defs)
     for _, d in ipairs(defs) do
@@ -63,7 +64,7 @@ local warn_vl = get(warning_volume_ratio)
 
 
 function update()
-    -- Determine if this is not the master instance (multicrew/networking logic)
+    -- Determine if this is not the master instance 
     local MASTER = get(ismaster) ~= 1
 
     -- Delta time (time passed since last frame)
@@ -84,14 +85,14 @@ function update()
     local emer_tr_sw = get(emerg_elev_trimm)
     local absu_tr_pt = get(absu_pitch_trimm)
 
-    -- Disable manual elevator trim in ABSU pitch mode 2 (automatic control)
+    -- Disable manual elevator trim in ABSU pitch mode 2 l
     if get(absu_pitch_mode) == 2 then
         elev_tr_sw = 0
         emer_tr_sw = 0
     end
 
     -- Pitch trim calculation
-    local pitch_trim_eng = 2  -- Engineering scaling factor for trim motor(s)
+    local pitch_trim_eng = 2  -- Engineering scaling factor for trim motor
     local pitch_trim_pos = get(int_pitch_trim)
     -- Only allow trim movement if not failed and both PK switches are off
     local pitch_trimm_work = bool2int(get(rel_trim_elv) ~= 6 and get(elev_trimm_1_pk) + get(elev_trimm_2_pk) < 2)
@@ -296,3 +297,5 @@ function yaw_CTR_hnd(phase)
 return 0
 end
 registerCommandHandler(yaw_CTR_comm, 0, yaw_CTR_hnd)
+
+
