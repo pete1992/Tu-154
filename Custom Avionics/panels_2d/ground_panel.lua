@@ -1,68 +1,80 @@
+--ground panel.lua
 size = {655, 880}
-defineProperty("save_state", globalPropertyi("sim/custom/save_state")) 
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
-defineProperty("show_ground_panel",globalPropertyi("sim/custom/panels/show_ground_panel")) 
-defineProperty("reset_crew",globalPropertyi("sim/custom/sound/reset_crew")) 
-defineProperty("failures_enabled", globalPropertyi("sim/custom/failures/failures_enabled"))
-defineProperty("have_pedals", globalPropertyi("sim/custom/have_pedals"))
-defineProperty("reset_state",globalPropertyi("sim/custom/reset_state")) 
-defineProperty("hide_rus_objects", globalPropertyi("sim/custom/lang/hide_rus_objects")) 
-defineProperty("hide_eng_objects", globalPropertyi("sim/custom/lang/hide_eng_objects")) 
-defineProperty("sounds_volume", globalPropertyi("sim/custom/sounds_voulme")) 
-defineProperty("slider_1", globalPropertyi("sim/cockpit2/switches/custom_slider_on[0]")) 
-defineProperty("slider_2", globalPropertyi("sim/cockpit2/switches/custom_slider_on[1]")) 
-defineProperty("slider_3", globalPropertyi("sim/cockpit2/switches/custom_slider_on[2]")) 
-defineProperty("slider_4", globalPropertyi("sim/cockpit2/switches/custom_slider_on[3]")) 
-defineProperty("slider_5", globalPropertyi("sim/cockpit2/switches/custom_slider_on[4]")) 
-defineProperty("slider_6", globalPropertyi("sim/cockpit2/switches/custom_slider_on[5]")) 
-defineProperty("slider_7", globalPropertyi("sim/cockpit2/switches/custom_slider_on[6]")) 
-defineProperty("slider_8", globalPropertyi("sim/cockpit2/switches/custom_slider_on[7]")) 
-defineProperty("slider_9", globalPropertyi("sim/cockpit2/switches/custom_slider_on[8]")) 
-defineProperty("slider_10", globalPropertyi("sim/cockpit2/switches/custom_slider_on[9]")) 
-defineProperty("slider_11", globalPropertyi("sim/cockpit2/switches/custom_slider_on[10]")) 
-defineProperty("slider_12", globalPropertyi("sim/cockpit2/switches/custom_slider_on[11]")) 
-defineProperty("gear_blocks", globalPropertyi("sim/custom/anim/gear_blocks")) 
-defineProperty("sensors_caps", globalPropertyi("sim/custom/anim/sensors_caps")) 
-defineProperty("engine_caps", globalPropertyi("sim/custom/anim/engine_caps")) 
-defineProperty("gpu_present", globalPropertyi("sim/custom/anim/gpu_present")) 
-defineProperty("ladder_1_call", globalPropertyi("sim/custom/anim/ladder_1_call")) 
-defineProperty("ladder_2_call", globalPropertyi("sim/custom/anim/ladder_2_call")) 
-defineProperty("catering_call", globalPropertyi("sim/custom/anim/catering_call")) 
-defineProperty("fuel_tanker_call", globalPropertyi("sim/custom/anim/fuel_tanker_call")) 
-defineProperty("ladder_1", globalPropertyf("sim/custom/anim/ladder_1")) 
-defineProperty("ladder_2", globalPropertyf("sim/custom/anim/ladder_2")) 
-defineProperty("catering", globalPropertyf("sim/custom/anim/catering")) 
-defineProperty("fuel_tanker", globalPropertyf("sim/custom/anim/fuel_tanker")) 
-defineProperty("GS", globalPropertyf("sim/flightmodel/position/groundspeed"))  
-defineProperty("eng_rpm1", globalPropertyf("sim/flightmodel/engine/ENGN_N2_[0]"))   
-defineProperty("eng_rpm2", globalPropertyf("sim/flightmodel/engine/ENGN_N2_[1]"))
-defineProperty("eng_rpm3", globalPropertyf("sim/flightmodel/engine/ENGN_N2_[2]"))
-defineProperty("zone_1_pr",globalPropertyi("sim/custom/payload/zone_1"))
-defineProperty("zone_2_pr",globalPropertyi("sim/custom/payload/zone_2"))
-defineProperty("zone_4_pr",globalPropertyi("sim/custom/payload/zone_4"))
-defineProperty("zone_5_pr",globalPropertyi("sim/custom/payload/zone_5"))
-defineProperty("zone_6_pr",globalPropertyi("sim/custom/payload/zone_6"))
-defineProperty("cargo_1_pr",globalPropertyi("sim/custom/payload/cargo_1"))
-defineProperty("cargo_2_pr",globalPropertyi("sim/custom/payload/cargo_2"))
-defineProperty("kitchens_pr",globalPropertyi("sim/custom/payload/kitchens"))
-defineProperty("static_fail_L", globalPropertyi("sim/operation/failures/rel_static"))  
-defineProperty("static_fail_R", globalPropertyi("sim/operation/failures/rel_static2"))  
-defineProperty("rel_pitot", globalPropertyi("sim/operation/failures/rel_pitot")) 
-defineProperty("rel_pitot2", globalPropertyi("sim/operation/failures/rel_pitot2")) 
-defineProperty("alpha_fail", globalPropertyi("sim/operation/failures/rel_AOA"))  
-defineProperty("deflection_mtr_1", globalPropertyf("sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]")) 
-defineProperty("deflection_mtr_2", globalPropertyf("sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]")) 
-defineProperty("deflection_mtr_3", globalPropertyf("sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]")) 
-defineProperty("enable_crew_vo", globalPropertyi("sim/custom/sounds/enable_crew_vo")) 
-defineProperty("show_fail_panel",globalPropertyi("sim/custom/panels/show_fail_panel")) 
-defineProperty("show_gns", globalPropertyi("sim/custom/anim/show_gns"))
-defineProperty("show_RXP",globalPropertyi("sim/custom/anim/RXP"))
-defineProperty("starter_torq", globalPropertyf("sim/aircraft/engine/acf_starter_torque_ratio")) 
-defineProperty("pitot_fail1", globalPropertyi("sim/custom/failures/pitot1")) 
-defineProperty("pitot_fail2", globalPropertyi("sim/custom/failures/pitot2")) 
-defineProperty("static_fail_L", globalPropertyi("sim/custom/failures/static1"))  
-defineProperty("static_fail_R", globalPropertyi("sim/custom/failures/static2"))  
-defineProperty("uap_fail", globalPropertyi("sim/custom/failures/AOA")) 
+
+-- Helper to define multiple datarefs at once
+local function defineProps(defs)
+    for _, d in ipairs(defs) do
+        defineProperty(d[1], d[3](d[2]))
+    end
+end
+
+defineProps({
+	{"save_state", "sim/custom/save_state", globalPropertyi},
+	{"frame_time", "sim/custom/time/frame_time", globalPropertyf},
+	{"show_ground_panel", "sim/custom/panels/show_ground_panel", globalPropertyi},
+	{"reset_crew", "sim/custom/sound/reset_crew", globalPropertyi},
+	{"failures_enabled", "sim/custom/failures/failures_enabled", globalPropertyi},
+	{"have_pedals", "sim/custom/have_pedals", globalPropertyi},
+	{"reset_state", "sim/custom/reset_state", globalPropertyi},
+	{"hide_rus_objects", "sim/custom/lang/hide_rus_objects", globalPropertyi},
+	{"hide_eng_objects", "sim/custom/lang/hide_eng_objects", globalPropertyi},
+	{"sounds_volume", "sim/custom/sounds_volume", globalPropertyi},
+	{"slider_1", "sim/cockpit2/switches/custom_slider_on[0]", globalPropertyi},
+	{"slider_2", "sim/cockpit2/switches/custom_slider_on[1]", globalPropertyi},
+	{"slider_3", "sim/cockpit2/switches/custom_slider_on[2]", globalPropertyi},
+	{"slider_4", "sim/cockpit2/switches/custom_slider_on[3]", globalPropertyi},
+	{"slider_5", "sim/cockpit2/switches/custom_slider_on[4]", globalPropertyi},
+	{"slider_6", "sim/cockpit2/switches/custom_slider_on[5]", globalPropertyi},
+	{"slider_7", "sim/cockpit2/switches/custom_slider_on[6]", globalPropertyi},
+	{"slider_8", "sim/cockpit2/switches/custom_slider_on[7]", globalPropertyi},
+	{"slider_9", "sim/cockpit2/switches/custom_slider_on[8]", globalPropertyi},
+	{"slider_10", "sim/cockpit2/switches/custom_slider_on[9]", globalPropertyi},
+	{"slider_11", "sim/cockpit2/switches/custom_slider_on[10]", globalPropertyi},
+	{"slider_12", "sim/cockpit2/switches/custom_slider_on[11]", globalPropertyi},
+	{"gear_blocks", "sim/custom/anim/gear_blocks", globalPropertyi},
+	{"sensors_caps", "sim/custom/anim/sensors_caps", globalPropertyi},
+	{"engine_caps", "sim/custom/anim/engine_caps", globalPropertyi},
+	{"gpu_present", "sim/custom/anim/gpu_present", globalPropertyi},
+	{"ladder_1_call", "sim/custom/anim/ladder_1_call", globalPropertyi},
+	{"ladder_2_call", "sim/custom/anim/ladder_2_call", globalPropertyi},
+	{"catering_call", "sim/custom/anim/catering_call", globalPropertyi},
+	{"fuel_tanker_call", "sim/custom/anim/fuel_tanker_call", globalPropertyi},
+	{"ladder_1", "sim/custom/anim/ladder_1", globalPropertyf},
+	{"ladder_2", "sim/custom/anim/ladder_2", globalPropertyf},
+	{"catering", "sim/custom/anim/catering", globalPropertyf},
+	{"fuel_tanker", "sim/custom/anim/fuel_tanker", globalPropertyf},
+	{"ground_speed", "sim/flightmodel/position/groundspeed", globalPropertyf},
+	{"eng_rpm1", "sim/flightmodel/engine/ENGN_N2_[0]", globalPropertyf},
+	{"eng_rpm2", "sim/flightmodel/engine/ENGN_N2_[1]", globalPropertyf},
+	{"eng_rpm3", "sim/flightmodel/engine/ENGN_N2_[2]", globalPropertyf},
+	{"zone_1_pr", "sim/custom/payload/zone_1", globalPropertyi},
+	{"zone_2_pr", "sim/custom/payload/zone_2", globalPropertyi},
+	{"zone_4_pr", "sim/custom/payload/zone_4", globalPropertyi},
+	{"zone_5_pr", "sim/custom/payload/zone_5", globalPropertyi},
+	{"zone_6_pr", "sim/custom/payload/zone_6", globalPropertyi},
+	{"cargo_1_pr", "sim/custom/payload/cargo_1", globalPropertyi},
+	{"cargo_2_pr", "sim/custom/payload/cargo_2", globalPropertyi},
+	{"kitchens_pr", "sim/custom/payload/kitchens", globalPropertyi},
+	{"static_fail_L", "sim/operation/failures/rel_static", globalPropertyi},
+	{"static_fail_R", "sim/operation/failures/rel_static2", globalPropertyi},
+	{"rel_pitot", "sim/operation/failures/rel_pitot", globalPropertyi},
+	{"rel_pitot2", "sim/operation/failures/rel_pitot2", globalPropertyi},
+	{"alpha_fail", "sim/operation/failures/rel_AOA", globalPropertyi},
+	{"deflection_mtr_1", "sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]", globalPropertyf},
+	{"deflection_mtr_2", "sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]", globalPropertyf},
+	{"deflection_mtr_3", "sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]", globalPropertyf},
+	{"enable_crew_vo", "sim/custom/sounds/enable_crew_vo", globalPropertyi},
+	{"show_fail_panel", "sim/custom/panels/show_fail_panel", globalPropertyi},
+	{"show_gns", "sim/custom/anim/show_gns", globalPropertyi},
+	{"show_RXP", "sim/custom/anim/RXP", globalPropertyi},
+	{"starter_torq", "sim/aircraft/engine/acf_starter_torque_ratio", globalPropertyf},
+	{"pitot_fail1", "sim/custom/failures/pitot1", globalPropertyi},
+	{"pitot_fail2", "sim/custom/failures/pitot2", globalPropertyi},
+	{"static_fail_L", "sim/custom/failures/static1", globalPropertyi},
+	{"static_fail_R", "sim/custom/failures/static2", globalPropertyi},
+	{"uap_fail", "sim/custom/failures/AOA", globalPropertyi},
+})
+
 local text_font = loadFont('basic_font.fnt')
 defineProperty("bg_img", loadImage("ground_tex.png")) 
 defineProperty("bg_img_rus", loadImage("ground_tex_RUS.png")) 
@@ -70,6 +82,9 @@ defineProperty("green_lamp", loadImage("overhead_tex.png", 1825, 299, 19, 19))
 defineProperty("yellow_lamp", loadImage("overhead_tex.png", 1825, 333, 19, 19))
 defineProperty("lev_img", loadImage("absu_ess.png", 432, 160, 30, 29))
 yokes_cmd = findCommand("sim/operation/toggle_yoke")
+
+
+
 function yokes_hnd(phase)
 	if 0 == phase then
 		set(slider_9, 1 - get(slider_9))
@@ -77,6 +92,8 @@ function yokes_hnd(phase)
 	return 0
 end
 registerCommandHandler(yokes_cmd, 0, yokes_hnd)
+
+
 local ladder_1_pos = get(ladder_1)
 local ladder_2_pos = get(ladder_2)
 local catering_pos = get(catering)
@@ -84,6 +101,8 @@ local fuel_tanker_pos = get(fuel_tanker)
 local notLoaded = true
 local failPanelShow = false
 local reset_click = false
+
+
 local function coldDarkReset()
 	if get(eng_rpm1) < 10 and get(eng_rpm2) < 10 and get(eng_rpm3) < 10 then
 		set(gear_blocks, 1)
@@ -226,6 +245,8 @@ function update()
 		failPanelShow = true
 	end
 end
+
+
 components = {
 	textureLit {
 		position = {0, 0, size[1], size[2]},
@@ -647,10 +668,12 @@ components = {
 	text_draw {
 		position = {32, 120, 55, 60},
 		text = function()
-			if get(show_gns) == 1 and get(show_RXP) == 0 then return "GNS430 INSTALLED"
-			elseif get(show_gns) == 1 and get(show_RXP) == 1 then return "RXP INSTALLED"
-			else return	"KLN90 INSTALLED" end
-		end,
+			if get(show_gns) == 1 and get(show_RXP) == 0 
+			then return "GNS430 INSTALLED"
+				elseif get(show_gns) == 1 and get(show_RXP) == 1 
+					then return "RXP INSTALLED"
+						else return	"KLN90 INSTALLED" end
+			end,
 		font = text_font,
 		color = {0,0,0,1},
 		visible = true,

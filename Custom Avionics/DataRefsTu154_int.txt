@@ -1,7 +1,7 @@
 sim/custom/lang/hide_rus_objects        int     Hide Russian cockpit objects                  0
 sim/custom/lang/hide_eng_objects        int     Hide English cockpit objects                  1
 sim/custom/have_pedals                  int     Pedals with brakes installed                   0
-sim/custom/sounds_voulme                int     Master sound volume                            1000
+sim/custom/sounds_volume                int     Master sound volume                            1000
 sim/custom/elec/bat_volt_1              float   Battery voltage                                25
 sim/custom/elec/bat_volt_2              float   Battery voltage                                25
 sim/custom/elec/bat_volt_3              float   Battery voltage                                25

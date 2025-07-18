@@ -1,7 +1,7 @@
 createGlobalPropertyi("sim/custom/lang/hide_rus_objects", 1) 
 createGlobalPropertyi("sim/custom/lang/hide_eng_objects", 0) 
 createGlobalPropertyi("sim/custom/have_pedals", 0) 
-createGlobalPropertyi("sim/custom/sounds_voulme", 1000) 
+createGlobalPropertyi("sim/custom/sounds_volume", 1000) 
 createGlobalPropertyf("sim/custom/elec/bat_volt_1", 25) 
 createGlobalPropertyf("sim/custom/elec/bat_volt_2", 25) 
 createGlobalPropertyf("sim/custom/elec/bat_volt_3", 25) 

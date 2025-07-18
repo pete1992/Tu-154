@@ -56,7 +56,11 @@ defineProperty("lan_lamp_fail_WL", globalPropertyi("sim/custom/failures/lan_lamp
 defineProperty("lan_lamp_fail_WR", globalPropertyi("sim/custom/failures/lan_lamp_fail_WR")) 
 defineProperty("rel_lites_nav", globalPropertyi("sim/operation/failures/rel_lites_nav")) 
 defineProperty("rel_lites_beac", globalPropertyi("sim/operation/failures/rel_lites_beac")) 
+
+
+
 defineProperty("sim_lights_switch", globalPropertyi("sim/cockpit2/switches/landing_lights_switch"))
+
 set(sim_strobes, 0)
 set(lamp_deploy_FL, 0)
 set(lamp_deploy_FR, 0)
@@ -182,6 +186,7 @@ function update()
 	set(sim_wings_R, wing_R_lit)
 	set(sim_cargo_1, cargo_1_lit)
 	set(sim_cargo_2, cargo_2_lit)
+
 	if lan_light_WL + lan_light_WR + lan_light_FL + lan_light_FR > 0 then
 		set(sim_lights_switch, 1)
 	else

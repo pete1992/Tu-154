@@ -1,3 +1,6 @@
+-- start_logic.lua
+
+
 defineProperty("starter_cap", globalPropertyi("sim/custom/switchers/eng/starter_cap")) 
 defineProperty("starter_switch", globalPropertyi("sim/custom/switchers/eng/starter_switch")) 
 defineProperty("starter_eng_select", globalPropertyi("sim/custom/switchers/eng/starter_eng_select")) 
@@ -62,13 +65,14 @@ defineProperty("APU_running", globalPropertyf("sim/cockpit/engine/APU_running"))
 defineProperty("APU_N1", globalPropertyf("sim/cockpit/engine/APU_N1"))
 defineProperty("apu_bleed", globalPropertyf("sim/cockpit2/bleedair/actuators/apu_bleed"))
 defineProperty("sim_vers", globalPropertyi("sim/version/xplane_internal_version")) 
+
 if get(sim_vers) then
 	if get(sim_vers) >= 111000 then
-		set(starter_torq, 0.2)
+		set(starter_torq, 0.28)
 	end
 end
-sim/aircraft/engine/acf_starter_torque_ratio	float	y	Ratio	This is the ratio of the engine's maximum torque that the starter applies at its design RPM.
-sim/aircraft/engine/acf_starter_max_rpm_ratio	float	y	Ratio	This is the ratio of the engine's max RPM that the starter can spin the engine up to before it loses torque.
+--sim/aircraft/engine/acf_starter_torque_ratio	float	y	Ratio	This is the ratio of the engine's maximum torque that the starter applies at its design RPM.
+-- sim/aircraft/engine/acf_starter_max_rpm_ratio	float	y	Ratio	This is the ratio of the engine's max RPM that the starter can spin the engine up to before it loses torque.
 local time_last = get(sim_run_time)  
 local eng1_start_time = time_last - 100
 local eng2_start_time = time_last - 100
