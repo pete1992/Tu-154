@@ -2,7 +2,6 @@
 
 -- Smartcopilot
 defineProperty("ismaster",    globalPropertyf("scp/api/ismaster"))
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1"))
 
 -- Helper to register DataRefs
 local function defineProps(defs)
@@ -27,9 +26,9 @@ defineProps({
     {"window_heat_fail_1",  "tu154ce/failures/window_heat_fail_1", globalPropertyi},
     {"window_heat_fail_2",  "tu154ce/failures/window_heat_fail_2", globalPropertyi},
     {"window_heat_fail_3",  "tu154ce/failures/window_heat_fail_3", globalPropertyi},
-    {"deflection_mtr_2",    "sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]", globalPropertyf},
-    {"deflection_mtr_3",    "sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]", globalPropertyf},
 })
+
+local tireDeflection = globalPropertyfa("sim/flightmodel2/gear/tire_vertical_deflection_mtr")
 
 -- Convert boolean to integer
 local function bool2int(b) return b and 1 or 0 end
@@ -81,7 +80,9 @@ function update()
         end
 
         -- Track how long the aircraft is stationary on tires 2 & 3
-        if get(deflection_mtr_2) + get(deflection_mtr_3) < 0.02 then
+		local tireDefl2 = tonumber(get(tireDeflection, 1)) or 0
+		local tireDefl3 = tonumber(get(tireDeflection, 2)) or 0
+        if tireDefl2 + tireDefl3 < 0.02 then
             ppd_counters.pitot1 = ppd_counters.pitot1 + dt
             ppd_counters.pitot2 = ppd_counters.pitot2 + dt
             ppd_counters.ppd3   = ppd_counters.ppd3   + dt
@@ -100,9 +101,9 @@ function update()
         if ppd_counters.pitot2 > 1200 and get(rel_ice_pitot_heat2) ~= 6 then
             set(rel_ice_pitot_heat2, bool2int(math.random() < 0.1 * prob * 0.3) * 6)
         end
-        if ppd_counters.ppd3 > 1200 and get(ppd_3_heat_fail) ~= 6 then
-            set(ppd_3_heat_fail, bool2int(math.random() < 0.1 * prob * 0.3) * 6)
-        end
+		if ppd_counters.ppd3 > 1200 and get(ppd_3_heat_fail) ~= 6 then
+			set(ppd_3_heat_fail, bool2int(math.random() < 0.1 * prob * 0.3) * 6)
+		end
         if surf_counters.wing > 90 and get(rel_ice_surf_heat) ~= 6 then
             set(rel_ice_surf_heat, bool2int(math.random() < 0.3 * prob * 0.3) * 6)
         end
