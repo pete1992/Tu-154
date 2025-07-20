@@ -1,9 +1,5 @@
 -- rain_mask.lua
 
--- Smartcopilot
-defineProperty("ismaster",    globalPropertyf("scp/api/ismaster"))
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1"))
-
 -- Helper to register DataRefs
 local function defineProps(defs)
     for _, d in ipairs(defs) do
@@ -11,16 +7,21 @@ local function defineProps(defs)
     end
 end
 
+
 -- Register static DataRefs (excluding Smartcopilot ones)
 defineProps({
-    {"wiper_angle_left",   "tu154ce/anim/wiper_angle_left",           globalPropertyf},
-    {"wiper_angle_right",  "tu154ce/anim/wiper_angle_right",          globalPropertyf},
-    {"actual_rain",        "sim/weather/precipitation_on_aircraft_ratio", globalPropertyf},
-    {"net_rain_ratio",     "tu154ce/anim/net_rain_ratio",             globalPropertyf},
+    {"wiper_angle_left", "tu154ce/anim/wiper_angle_left", globalPropertyf},
+    {"wiper_angle_right", "tu154ce/anim/wiper_angle_right", globalPropertyf},
+    {"actual_rain", "sim/weather/precipitation_on_aircraft_ratio", globalPropertyf},
+    {"net_rain_ratio", "tu154ce/anim/net_rain_ratio", globalPropertyf},
     {"indicated_airspeed", "sim/flightmodel/position/indicated_airspeed", globalPropertyf},
-    {"frame_time",         "tu154ce/time/frame_time",                 globalPropertyf},
-    {"thermo",             "sim/cockpit2/temperature/outside_air_temp_degc", globalPropertyf},
+    {"frame_time", "tu154ce/time/frame_time", globalPropertyf},
+    {"thermo", "sim/cockpit2/temperature/outside_air_temp_degc", globalPropertyf},
 })
+
+-- Smart Copilot
+defineProperty("ismaster", globalPropertyf("scp/api/ismaster"))
+defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1"))
 
 -- Dynamic rain‐mask properties per windshield
 local mask = {}
