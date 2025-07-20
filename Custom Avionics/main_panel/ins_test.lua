@@ -1,4 +1,4 @@
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
 defineProperty("groundspeed", globalPropertyf("sim/flightmodel/position/groundspeed")) 
 defineProperty("latitude", globalPropertyd("sim/flightmodel/position/latitude")) 
 defineProperty("longitude", globalPropertyd("sim/flightmodel/position/longitude")) 

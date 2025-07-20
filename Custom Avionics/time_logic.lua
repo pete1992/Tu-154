@@ -1,6 +1,6 @@
 defineProperty("M", globalPropertyf("sim/flightmodel/position/M"))  
 defineProperty("sim_run_time", globalPropertyf("sim/time/total_running_time_sec")) 
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
 local time_last = get(sim_run_time)  
 local last_m = get(M)
 function update()

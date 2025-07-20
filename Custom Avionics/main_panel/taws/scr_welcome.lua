@@ -1,13 +1,13 @@
 size = {1000, 770}
-defineProperty("mode_set", globalPropertyi("sim/custom/taws/mode_set")) 
-defineProperty("brt_handle", globalPropertyf("sim/custom/rotary/srpbz/brightness")) 
-defineProperty("distance_set", globalPropertyi("sim/custom/taws/distance_set")) 
+defineProperty("mode_set", globalPropertyi("tu154ce/taws/mode_set")) 
+defineProperty("brt_handle", globalPropertyf("tu154ce/rotary/srpbz/brightness")) 
+defineProperty("distance_set", globalPropertyi("tu154ce/taws/distance_set")) 
 defineProperty("course_fly", globalPropertyf("sim/flightmodel/position/hpath")) 
 defineProperty("latitude", globalPropertyf("sim/flightmodel/position/latitude")) 
 defineProperty("longitude", globalPropertyf("sim/flightmodel/position/longitude")) 
 defineProperty("speed", globalPropertyf("sim/flightmodel/position/groundspeed"))
 defineProperty("sim_time", globalPropertyf("sim/time/zulu_time_sec"))  
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
 defineProperty("wc_screen_img", loadImage("taws_welcome.png", 0, 0, 1000, 770))
 local text_font = loadFont('taws_scr.fnt')
 local screen_work = get(mode_set) == 4

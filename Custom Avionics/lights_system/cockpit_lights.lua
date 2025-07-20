@@ -1,25 +1,25 @@
-defineProperty("bus27_volt_left", globalPropertyf("sim/custom/elec/bus27_volt_left"))
-defineProperty("bus27_volt_right", globalPropertyf("sim/custom/elec/bus27_volt_right"))
-defineProperty("bus115_1_volt", globalPropertyf("sim/custom/elec/bus115_1_volt"))
-defineProperty("bus115_3_volt", globalPropertyf("sim/custom/elec/bus115_3_volt"))
-defineProperty("cockpit_light_cc_left", globalPropertyf("sim/custom/elec/cockpit_light_cc_left"))нагрузка на левую сеть от освещения в кабине
-defineProperty("cockpit_light_cc_right", globalPropertyf("sim/custom/elec/cockpit_light_cc_right"))нагрузка на правую сеть от освещения в кабине
-defineProperty("cockpit_light_cc_115", globalPropertyf("sim/custom/elec/cockpit_light_cc_115"))нагрузка на сеть 115 от освещения в кабине
-defineProperty("gen1_work_bus", globalPropertyi("sim/custom/elec/gen1_work"))  
-defineProperty("gen2_work_bus", globalPropertyi("sim/custom/elec/gen2_work"))
-defineProperty("gen3_work_bus", globalPropertyi("sim/custom/elec/gen3_work"))
-defineProperty("gen4_work_bus", globalPropertyi("sim/custom/elec/gen4_work"))
-defineProperty("gpu_work_bus", globalPropertyi("sim/custom/elec/gpu_work"))
+defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left"))
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right"))
+defineProperty("bus115_1_volt", globalPropertyf("tu154ce/elec/bus115_1_volt"))
+defineProperty("bus115_3_volt", globalPropertyf("tu154ce/elec/bus115_3_volt"))
+defineProperty("cockpit_light_cc_left", globalPropertyf("tu154ce/elec/cockpit_light_cc_left"))нагрузка на левую сеть от освещения в кабине
+defineProperty("cockpit_light_cc_right", globalPropertyf("tu154ce/elec/cockpit_light_cc_right"))нагрузка на правую сеть от освещения в кабине
+defineProperty("cockpit_light_cc_115", globalPropertyf("tu154ce/elec/cockpit_light_cc_115"))нагрузка на сеть 115 от освещения в кабине
+defineProperty("gen1_work_bus", globalPropertyi("tu154ce/elec/gen1_work"))  
+defineProperty("gen2_work_bus", globalPropertyi("tu154ce/elec/gen2_work"))
+defineProperty("gen3_work_bus", globalPropertyi("tu154ce/elec/gen3_work"))
+defineProperty("gen4_work_bus", globalPropertyi("tu154ce/elec/gen4_work"))
+defineProperty("gpu_work_bus", globalPropertyi("tu154ce/elec/gpu_work"))
 defineProperty("percent_lights_on", globalPropertyf("sim/graphics/scenery/percent_lights_on")) процент света в городах рядом
 defineProperty("default_cockpit_flood", globalPropertyf("sim/cockpit2/switches/panel_brightness_ratio[0]")) 
 defineProperty("default_eng_panel_flood", globalPropertyf("sim/cockpit2/switches/panel_brightness_ratio[1]")) 
 defineProperty("default_pedestal_flood", globalPropertyf("sim/cockpit2/switches/panel_brightness_ratio[2]")) 
-defineProperty("cabin_2d_light", globalPropertyf("sim/custom/lights/cabin_2d_light")) 
-defineProperty("exit_lamp", globalPropertyf("sim/custom/lights/exit_lamp")) 
-defineProperty("fasten_seatbelts_lamp", globalPropertyf("sim/custom/lights/fasten_seatbelts_lamp")) 
-defineProperty("nosmoking_lamp", globalPropertyf("sim/custom/lights/nosmoking_lamp")) 
-defineProperty("toilet_busy_lamp", globalPropertyf("sim/custom/lights/toilet_busy_lamp")) 
-defineProperty("seats_leters_lamp", globalPropertyf("sim/custom/lights/seats_leters_lamp")) 
+defineProperty("cabin_2d_light", globalPropertyf("tu154ce/lights/cabin_2d_light")) 
+defineProperty("exit_lamp", globalPropertyf("tu154ce/lights/exit_lamp")) 
+defineProperty("fasten_seatbelts_lamp", globalPropertyf("tu154ce/lights/fasten_seatbelts_lamp")) 
+defineProperty("nosmoking_lamp", globalPropertyf("tu154ce/lights/nosmoking_lamp")) 
+defineProperty("toilet_busy_lamp", globalPropertyf("tu154ce/lights/toilet_busy_lamp")) 
+defineProperty("seats_leters_lamp", globalPropertyf("tu154ce/lights/seats_leters_lamp")) 
 defineProperty("HDR_on", globalPropertyf("sim/graphics/settings/HDR_on")) 
 заливающее освещение левой боковой панели
 заливающее освещение правой боковой панели
@@ -130,38 +130,38 @@ defineProperty("l9_5", globalPropertyf("sim/weapons/Prad[5]")) set(l9_5, 1)
 defineProperty("l9_6", globalPropertyf("sim/weapons/Prad[6]")) set(l9_6, 1)  
 defineProperty("l9_7", globalPropertyf("sim/weapons/Prad[7]")) set(l9_7, 0)  
 defineProperty("l9_8", globalPropertyf("sim/weapons/Prad[8]")) set(l9_8, 1)  
-defineProperty("mid_left_panel_int", globalPropertyf("sim/custom/lights/mid_left_panel_int"))  яркость свечения пъедестала
-defineProperty("left_panel_int", globalPropertyf("sim/custom/lights/left_panel_int"))  яркость свечения встроенного освещения панели КВС
-defineProperty("right_panel_int", globalPropertyf("sim/custom/lights/right_panel_int"))   яркость свечения встроенного освещения панели 2П
-defineProperty("mid_right_panel_int", globalPropertyf("sim/custom/lights/mid_right_panel_int"))  яркость свечения встроенного освещения средней передней панели
-defineProperty("ovhd_panel_int", globalPropertyf("sim/custom/lights/ovhd_panel_int"))   яркость свечения встроенного освещения верхней панели
-defineProperty("left_panel_flood", globalPropertyf("sim/custom/lights/left_panel_flood"))   яркость заливающего света левой панели
-defineProperty("right_panel_flood", globalPropertyf("sim/custom/lights/right_panel_flood"))   яркость заливающего света правой панели
-defineProperty("mid_panel_flood", globalPropertyf("sim/custom/lights/mid_panel_flood"))   яркость заливающего света центральной панели
-defineProperty("front_panel_flood", globalPropertyf("sim/custom/lights/front_panel_flood"))   яркость заливающего света передней панели
-defineProperty("ovhd_front_panel_flood", globalPropertyf("sim/custom/lights/ovhd_front_panel_flood"))   яркость заливающего света передней части оверхеда
-defineProperty("ovhd_back_panel_flood", globalPropertyf("sim/custom/lights/ovhd_back_panel_flood"))   яркость заливающего света задней части оверхеда
-defineProperty("eng_panel_flood", globalPropertyf("sim/custom/lights/eng_panel_flood"))   яркость освещения панели БИ
-defineProperty("azs_panel_flood", globalPropertyf("sim/custom/lights/azs_panel_flood"))   освещение панели АЗС
-defineProperty("left_spotlight_flood", globalPropertyf("sim/custom/lights/left_spotlight_flood"))   яркость левого фонарика
-defineProperty("cabinl_flood_set", globalPropertyi("sim/custom/lights/cabinl_flood_set"))   выключатель освещения кабины
-defineProperty("mid_left_panel_int_set", globalPropertyf("sim/custom/lights/mid_left_panel_int_set"))   регулятор встроенного освещения передней панели КВС
-defineProperty("left_panel_int_set", globalPropertyf("sim/custom/lights/left_panel_int_set"))   регулятор встроенного освещения левой панели
-defineProperty("right_panel_int_set", globalPropertyf("sim/custom/lights/right_panel_int_set"))   регулятор встроенного освещения правой панели
-defineProperty("mid_right_panel_int_set", globalPropertyf("sim/custom/lights/mid_right_panel_int_set"))   регулятор встроенного освещения передней панели 2П
-defineProperty("ovhd_panel_int_set", globalPropertyf("sim/custom/lights/ovhd_panel_int_set"))   регулятор встроенного освещения верхней панели
-defineProperty("left_panel_flood_set", globalPropertyf("sim/custom/lights/left_panel_flood_set"))   регулятор яркости заливающего света левой панели
-defineProperty("right_panel_flood_set", globalPropertyf("sim/custom/lights/right_panel_flood_set"))   регулятор яркости заливающего света правой панели
-defineProperty("mid_panel_flood_set", globalPropertyf("sim/custom/lights/mid_panel_flood_set"))   регулятор яркости заливающего света центральной панели
-defineProperty("front_panel_flood_set", globalPropertyf("sim/custom/lights/front_panel_flood_set"))   регулятор яркости заливающего света передней панели
-defineProperty("ovhd_front_panel_flood_set", globalPropertyf("sim/custom/lights/ovhd_front_panel_flood_set"))   регулятор яркости заливающего света передней части оверхеда
-defineProperty("ovhd_back_panel_flood_set", globalPropertyf("sim/custom/lights/ovhd_back_panel_flood_set"))   регулятор яркости заливающего света заднией части оверхеда
-defineProperty("eng_panel_flood_set", globalPropertyf("sim/custom/lights/eng_panel_flood_set"))   регулятор яркости освещения панели БИ
-defineProperty("azs_panel_flood_set", globalPropertyi("sim/custom/lights/azs_panel_flood_set"))   выключатель освещения панели АЗС
-defineProperty("sign_belts", globalPropertyi("sim/custom/switchers/ovhd/sign_belts")) транспарант пристегните ремни
-defineProperty("sign_nosmoke", globalPropertyi("sim/custom/switchers/ovhd/sign_nosmoke")) транспарант пристегните ремни
-defineProperty("sign_exit", globalPropertyi("sim/custom/switchers/ovhd/sign_exit")) транспарант пристегните ремни
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("mid_left_panel_int", globalPropertyf("tu154ce/lights/mid_left_panel_int"))  яркость свечения пъедестала
+defineProperty("left_panel_int", globalPropertyf("tu154ce/lights/left_panel_int"))  яркость свечения встроенного освещения панели КВС
+defineProperty("right_panel_int", globalPropertyf("tu154ce/lights/right_panel_int"))   яркость свечения встроенного освещения панели 2П
+defineProperty("mid_right_panel_int", globalPropertyf("tu154ce/lights/mid_right_panel_int"))  яркость свечения встроенного освещения средней передней панели
+defineProperty("ovhd_panel_int", globalPropertyf("tu154ce/lights/ovhd_panel_int"))   яркость свечения встроенного освещения верхней панели
+defineProperty("left_panel_flood", globalPropertyf("tu154ce/lights/left_panel_flood"))   яркость заливающего света левой панели
+defineProperty("right_panel_flood", globalPropertyf("tu154ce/lights/right_panel_flood"))   яркость заливающего света правой панели
+defineProperty("mid_panel_flood", globalPropertyf("tu154ce/lights/mid_panel_flood"))   яркость заливающего света центральной панели
+defineProperty("front_panel_flood", globalPropertyf("tu154ce/lights/front_panel_flood"))   яркость заливающего света передней панели
+defineProperty("ovhd_front_panel_flood", globalPropertyf("tu154ce/lights/ovhd_front_panel_flood"))   яркость заливающего света передней части оверхеда
+defineProperty("ovhd_back_panel_flood", globalPropertyf("tu154ce/lights/ovhd_back_panel_flood"))   яркость заливающего света задней части оверхеда
+defineProperty("eng_panel_flood", globalPropertyf("tu154ce/lights/eng_panel_flood"))   яркость освещения панели БИ
+defineProperty("azs_panel_flood", globalPropertyf("tu154ce/lights/azs_panel_flood"))   освещение панели АЗС
+defineProperty("left_spotlight_flood", globalPropertyf("tu154ce/lights/left_spotlight_flood"))   яркость левого фонарика
+defineProperty("cabinl_flood_set", globalPropertyi("tu154ce/lights/cabinl_flood_set"))   выключатель освещения кабины
+defineProperty("mid_left_panel_int_set", globalPropertyf("tu154ce/lights/mid_left_panel_int_set"))   регулятор встроенного освещения передней панели КВС
+defineProperty("left_panel_int_set", globalPropertyf("tu154ce/lights/left_panel_int_set"))   регулятор встроенного освещения левой панели
+defineProperty("right_panel_int_set", globalPropertyf("tu154ce/lights/right_panel_int_set"))   регулятор встроенного освещения правой панели
+defineProperty("mid_right_panel_int_set", globalPropertyf("tu154ce/lights/mid_right_panel_int_set"))   регулятор встроенного освещения передней панели 2П
+defineProperty("ovhd_panel_int_set", globalPropertyf("tu154ce/lights/ovhd_panel_int_set"))   регулятор встроенного освещения верхней панели
+defineProperty("left_panel_flood_set", globalPropertyf("tu154ce/lights/left_panel_flood_set"))   регулятор яркости заливающего света левой панели
+defineProperty("right_panel_flood_set", globalPropertyf("tu154ce/lights/right_panel_flood_set"))   регулятор яркости заливающего света правой панели
+defineProperty("mid_panel_flood_set", globalPropertyf("tu154ce/lights/mid_panel_flood_set"))   регулятор яркости заливающего света центральной панели
+defineProperty("front_panel_flood_set", globalPropertyf("tu154ce/lights/front_panel_flood_set"))   регулятор яркости заливающего света передней панели
+defineProperty("ovhd_front_panel_flood_set", globalPropertyf("tu154ce/lights/ovhd_front_panel_flood_set"))   регулятор яркости заливающего света передней части оверхеда
+defineProperty("ovhd_back_panel_flood_set", globalPropertyf("tu154ce/lights/ovhd_back_panel_flood_set"))   регулятор яркости заливающего света заднией части оверхеда
+defineProperty("eng_panel_flood_set", globalPropertyf("tu154ce/lights/eng_panel_flood_set"))   регулятор яркости освещения панели БИ
+defineProperty("azs_panel_flood_set", globalPropertyi("tu154ce/lights/azs_panel_flood_set"))   выключатель освещения панели АЗС
+defineProperty("sign_belts", globalPropertyi("tu154ce/switchers/ovhd/sign_belts")) транспарант пристегните ремни
+defineProperty("sign_nosmoke", globalPropertyi("tu154ce/switchers/ovhd/sign_nosmoke")) транспарант пристегните ремни
+defineProperty("sign_exit", globalPropertyi("tu154ce/switchers/ovhd/sign_exit")) транспарант пристегните ремни
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
 local bright_tbl = {{ -5000, 0},    
 				  { 0, 0 },   
 				  { 0.1, 0.6 },   

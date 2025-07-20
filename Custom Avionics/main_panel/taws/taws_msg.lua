@@ -1,9 +1,9 @@
 size = {1000, 770}
-defineProperty("taws_message", globalPropertyi("sim/custom/taws/taws_message")) 
-defineProperty("hide_eng_objects", globalPropertyi("sim/custom/lang/hide_eng_objects")) 
-defineProperty("taws_english", globalPropertyi("sim/custom/taws/taws_english")) 
-defineProperty("brt_handle", globalPropertyf("sim/custom/rotary/srpbz/brightness")) 
-defineProperty("mode_set", globalPropertyi("sim/custom/taws/mode_set")) 
+defineProperty("taws_message", globalPropertyi("tu154ce/taws/taws_message")) 
+defineProperty("hide_eng_objects", globalPropertyi("tu154ce/lang/hide_eng_objects")) 
+defineProperty("taws_english", globalPropertyi("tu154ce/taws/taws_english")) 
+defineProperty("brt_handle", globalPropertyf("tu154ce/rotary/srpbz/brightness")) 
+defineProperty("mode_set", globalPropertyi("tu154ce/taws/mode_set")) 
 local text_font = loadFont('taws_scr.fnt')
 local msg = 0
 local eng = false

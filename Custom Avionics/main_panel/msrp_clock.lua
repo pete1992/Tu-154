@@ -1,7 +1,7 @@
 size = {195, 84}
 defineProperty("digitsImage", loadImage("green_digit_strip.png", 12, 0, 40, 784))
 defineProperty("sim_time", globalPropertyf("sim/time/zulu_time_sec"))  
-defineProperty("msrp_power", globalPropertyi("sim/custom/msrp/msrp_power"))  
+defineProperty("msrp_power", globalPropertyi("tu154ce/msrp/msrp_power"))  
 local show_time = 0
 local power = get(msrp_power) == 1
 function update()

@@ -1,18 +1,18 @@
-defineProperty("vent_1", globalPropertyf("sim/custom/anim/cockpit_vent_1"))
-defineProperty("vent_2", globalPropertyf("sim/custom/anim/cockpit_vent_2"))
-defineProperty("vent_3", globalPropertyf("sim/custom/anim/cockpit_vent_3"))
-sim/custom/anim/cockpit_vent_1
-sim/custom/anim/cockpit_vent_2
-sim/custom/anim/cockpit_vent_3
-defineProperty("vent_1_sw", globalPropertyi("sim/custom/switchers/ovhd/vent_1"))
-defineProperty("vent_2_sw", globalPropertyi("sim/custom/switchers/ovhd/vent_2"))
-defineProperty("vent_3_sw", globalPropertyi("sim/custom/switchers/ovhd/vent_3"))
-sim/custom/switchers/ovhd/vent_1
-sim/custom/switchers/ovhd/vent_2
-sim/custom/switchers/ovhd/vent_3
-defineProperty("bus27_volt_left", globalPropertyf("sim/custom/elec/bus27_volt_left"))
-defineProperty("bus27_volt_right", globalPropertyf("sim/custom/elec/bus27_volt_right")) 
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("vent_1", globalPropertyf("tu154ce/anim/cockpit_vent_1"))
+defineProperty("vent_2", globalPropertyf("tu154ce/anim/cockpit_vent_2"))
+defineProperty("vent_3", globalPropertyf("tu154ce/anim/cockpit_vent_3"))
+tu154ce/anim/cockpit_vent_1
+tu154ce/anim/cockpit_vent_2
+tu154ce/anim/cockpit_vent_3
+defineProperty("vent_1_sw", globalPropertyi("tu154ce/switchers/ovhd/vent_1"))
+defineProperty("vent_2_sw", globalPropertyi("tu154ce/switchers/ovhd/vent_2"))
+defineProperty("vent_3_sw", globalPropertyi("tu154ce/switchers/ovhd/vent_3"))
+tu154ce/switchers/ovhd/vent_1
+tu154ce/switchers/ovhd/vent_2
+tu154ce/switchers/ovhd/vent_3
+defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left"))
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
 defineProperty("cam_in_cockpit", globalPropertyi("sim/graphics/view/view_is_external"))
 defineProperty("fan_volume_ratio", globalPropertyf("sim/operation/sound/fan_volume_ratio")) 
 local vent1_sound = loadSample('Custom Sounds/cockpit_fan.wav')

@@ -13,19 +13,19 @@ end
 
 -- Register static DataRefs (excluding Smartcopilot ones)
 defineProps({
-    {"wiper_angle_left",   "sim/custom/anim/wiper_angle_left",           globalPropertyf},
-    {"wiper_angle_right",  "sim/custom/anim/wiper_angle_right",          globalPropertyf},
+    {"wiper_angle_left",   "tu154ce/anim/wiper_angle_left",           globalPropertyf},
+    {"wiper_angle_right",  "tu154ce/anim/wiper_angle_right",          globalPropertyf},
     {"actual_rain",        "sim/weather/precipitation_on_aircraft_ratio", globalPropertyf},
-    {"net_rain_ratio",     "sim/custom/anim/net_rain_ratio",             globalPropertyf},
+    {"net_rain_ratio",     "tu154ce/anim/net_rain_ratio",             globalPropertyf},
     {"indicated_airspeed", "sim/flightmodel/position/indicated_airspeed", globalPropertyf},
-    {"frame_time",         "sim/custom/time/frame_time",                 globalPropertyf},
+    {"frame_time",         "tu154ce/time/frame_time",                 globalPropertyf},
     {"thermo",             "sim/cockpit2/temperature/outside_air_temp_degc", globalPropertyf},
 })
 
 -- Dynamic rain‐mask properties per windshield
 local mask = {}
 for i = 1, 2 do
-    mask[i] = globalPropertyf(("sim/custom/anim/rain_glass_%d"):format(i))
+    mask[i] = globalPropertyf(("tu154ce/anim/rain_glass_%d"):format(i))
 end
 
 -- Dynamic wiper‐segment masks [windshield][segment][side]
@@ -33,8 +33,8 @@ local wiper_mask_L = { {}, {} }
 local wiper_mask_R = { {}, {} }
 for i = 1, 2 do
     for y = 1, 5 do
-        wiper_mask_L[i][y] = globalPropertyf(("sim/custom/anim/rain_glass_%d_w_%d_L"):format(i, y))
-        wiper_mask_R[i][y] = globalPropertyf(("sim/custom/anim/rain_glass_%d_w_%d_R"):format(i, y))
+        wiper_mask_L[i][y] = globalPropertyf(("tu154ce/anim/rain_glass_%d_w_%d_L"):format(i, y))
+        wiper_mask_R[i][y] = globalPropertyf(("tu154ce/anim/rain_glass_%d_w_%d_R"):format(i, y))
     end
 end
 

@@ -1,7 +1,7 @@
 size = {1000, 770}
-defineProperty("mode_set", globalPropertyi("sim/custom/taws/mode_set")) 
-defineProperty("distance_set", globalPropertyi("sim/custom/taws/distance_set")) 
-defineProperty("brt_handle", globalPropertyf("sim/custom/rotary/srpbz/brightness")) 
+defineProperty("mode_set", globalPropertyi("tu154ce/taws/mode_set")) 
+defineProperty("distance_set", globalPropertyi("tu154ce/taws/distance_set")) 
+defineProperty("brt_handle", globalPropertyf("tu154ce/rotary/srpbz/brightness")) 
 defineProperty("scale_top_img", loadImage("taws_scale_1.png", 0, 0, 1000, 770))
 defineProperty("pos_x", globalPropertyf("sim/flightmodel/position/local_x")) 
 defineProperty("pos_y", globalPropertyf("sim/flightmodel/position/local_y")) 

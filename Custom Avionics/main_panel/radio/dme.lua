@@ -1,14 +1,14 @@
 size = {215, 70}
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
-defineProperty("vor_dme", globalPropertyf("sim/custom/radio/vor_dme_1")) 
-defineProperty("sd75_on", globalPropertyi("sim/custom/switchers/ovhd/sd75_1_on")) 
-defineProperty("nav_mile_km", globalPropertyi("sim/custom/switchers/nav_1_mile_km")) 
-defineProperty("dme_mile_lit", globalPropertyf("sim/custom/lights/small/dme_mile_left")) 
-defineProperty("dme_km_lit", globalPropertyf("sim/custom/lights/small/dme_km_left")) 
-defineProperty("bus27_volt", globalPropertyf("sim/custom/elec/bus27_volt_left"))
-defineProperty("bus115_volt", globalPropertyf("sim/custom/elec/bus115_1_volt"))
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
+defineProperty("vor_dme", globalPropertyf("tu154ce/radio/vor_dme_1")) 
+defineProperty("sd75_on", globalPropertyi("tu154ce/switchers/ovhd/sd75_1_on")) 
+defineProperty("nav_mile_km", globalPropertyi("tu154ce/switchers/nav_1_mile_km")) 
+defineProperty("dme_mile_lit", globalPropertyf("tu154ce/lights/small/dme_mile_left")) 
+defineProperty("dme_km_lit", globalPropertyf("tu154ce/lights/small/dme_km_left")) 
+defineProperty("bus27_volt", globalPropertyf("tu154ce/elec/bus27_volt_left"))
+defineProperty("bus115_volt", globalPropertyf("tu154ce/elec/bus115_1_volt"))
 defineProperty("fail", globalPropertyi("sim/operation/failures/rel_dme")) 
-defineProperty("dme_fail", globalPropertyi("sim/custom/failures/dme1_fail")) 
+defineProperty("dme_fail", globalPropertyi("tu154ce/failures/dme1_fail")) 
 local text_font = loadFont('digital7_it.fnt')
 local dist_text = "888.8"
 local power = false

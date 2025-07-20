@@ -9,7 +9,7 @@
 -- in this example, table must be in following format:
 -- dataref name [TAB] dataref type [tab] dataref description [TAB] dataref initial value
 -- like this:
--- sim/custom/anim/cargo_1	float	положение багажной двери 1. 0 - закрыта, 1 - открыта	0
+-- tu154ce/anim/cargo_1	float	положение багажной двери 1. 0 - закрыта, 1 - открыта	0
 
 -- panelDir = path to your aircraft
 

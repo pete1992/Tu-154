@@ -9,17 +9,17 @@ end
 
 -- Register DataRefs
 defineProps({
-    {"failures_enabled",       "sim/custom/failures/failures_enabled",       globalPropertyi},
-    {"frame_time",             "sim/custom/time/frame_time",                 globalPropertyf},
+    {"failures_enabled",       "tu154ce/failures/failures_enabled",       globalPropertyi},
+    {"frame_time",             "tu154ce/time/frame_time",                 globalPropertyf},
     {"ismaster",               "scp/api/ismaster",                           globalPropertyf},
-    {"apu_start_fail",         "sim/custom/failures/apu_start_fail",         globalPropertyi},
-    {"apu_gen_fail",           "sim/custom/failures/apu_gen_fail",           globalPropertyi},
-    {"apu_runtime",            "sim/custom/failures/apu_runtime",            globalPropertyf},
-    {"apu_fail_oilt",          "sim/custom/failures/apu_fail_oilt",          globalPropertyi},
-    {"apu_fail_egt",           "sim/custom/failures/apu_fail_egt",           globalPropertyi},
-    {"apu_fail_fuel_left",     "sim/custom/failures/apu_fail_fuel_left",     globalPropertyi},
-    {"apu_fail",               "sim/custom/failures/apu_fail",               globalPropertyi},
-    {"apu_press_fail",         "sim/custom/failures/apu_press_fail",         globalPropertyi},
+    {"apu_start_fail",         "tu154ce/failures/apu_start_fail",         globalPropertyi},
+    {"apu_gen_fail",           "tu154ce/failures/apu_gen_fail",           globalPropertyi},
+    {"apu_runtime",            "tu154ce/failures/apu_runtime",            globalPropertyf},
+    {"apu_fail_oilt",          "tu154ce/failures/apu_fail_oilt",          globalPropertyi},
+    {"apu_fail_egt",           "tu154ce/failures/apu_fail_egt",           globalPropertyi},
+    {"apu_fail_fuel_left",     "tu154ce/failures/apu_fail_fuel_left",     globalPropertyi},
+    {"apu_fail",               "tu154ce/failures/apu_fail",               globalPropertyi},
+    {"apu_press_fail",         "tu154ce/failures/apu_press_fail",         globalPropertyi},
 })
 
 -- Convert boolean to integer

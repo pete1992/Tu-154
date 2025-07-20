@@ -1,30 +1,30 @@
 size = {2048, 2048}
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
 defineProperty("deg1", globalPropertyf("sim/flightmodel/position/psi")) 
 defineProperty("deg2", globalPropertyf("sim/flightmodel/position/hpath")) 
-defineProperty("rls_on", globalPropertyi("sim/custom/switchers/console/rls_on")) 
-defineProperty("rls_mode", globalPropertyi("sim/custom/switchers/console/rls_mode")) 
-defineProperty("rls_distance", globalPropertyi("sim/custom/switchers/console/rls_distance")) 
-defineProperty("rls_brt", globalPropertyf("sim/custom/switchers/console/rls_brt")) 
-defineProperty("rls_contr", globalPropertyf("sim/custom/switchers/console/rls_contr")) 
-defineProperty("rls_signs", globalPropertyf("sim/custom/switchers/console/rls_signs")) 
-defineProperty("rls_ready", globalPropertyf("sim/custom/lights/small/rls_ready")) 
-defineProperty("rls_weather", globalPropertyf("sim/custom/lights/small/rls_weather")) 
-sim/custom/switchers/console/rls_on
-sim/custom/switchers/console/rls_mode
-sim/custom/switchers/console/rls_distance
-defineProperty("rls_power_sw", globalPropertyi("sim/custom/xap/An24_rls/rls_power_sw")) 
-defineProperty("rls_power_cc", globalPropertyf("sim/custom/xap/An24_rls/rls_power_cc")) 
-defineProperty("rls_scan_spd", globalPropertyi("sim/custom/xap/An24_rls/rls_scan_spd")) 
-defineProperty("rls_mode", globalPropertyi("sim/custom/xap/An24_rls/rls_mode")) 
-defineProperty("rls_mode_lamp", globalPropertyi("sim/custom/xap/An24_rls/rls_mode_lamp")) 
-defineProperty("rls_bright", globalPropertyf("sim/custom/xap/An24_rls/rls_bright")) 
-defineProperty("rls_contr", globalPropertyf("sim/custom/xap/An24_rls/rls_contr")) 
-defineProperty("rls_signs", globalPropertyf("sim/custom/xap/An24_rls/rls_signs")) 
-defineProperty("bus27_volt_right", globalPropertyf("sim/custom/elec/bus27_volt_right"))
-defineProperty("bus36_volt_pts250_1", globalPropertyf("sim/custom/elec/bus36_volt_pts250_1"))
-defineProperty("bus115_3_volt", globalPropertyf("sim/custom/elec/bus115_3_volt"))
-defineProperty("radar_cc", globalPropertyf("sim/custom/radio/radar_cc")) потребление тока от РЛС Гроза
+defineProperty("rls_on", globalPropertyi("tu154ce/switchers/console/rls_on")) 
+defineProperty("rls_mode", globalPropertyi("tu154ce/switchers/console/rls_mode")) 
+defineProperty("rls_distance", globalPropertyi("tu154ce/switchers/console/rls_distance")) 
+defineProperty("rls_brt", globalPropertyf("tu154ce/switchers/console/rls_brt")) 
+defineProperty("rls_contr", globalPropertyf("tu154ce/switchers/console/rls_contr")) 
+defineProperty("rls_signs", globalPropertyf("tu154ce/switchers/console/rls_signs")) 
+defineProperty("rls_ready", globalPropertyf("tu154ce/lights/small/rls_ready")) 
+defineProperty("rls_weather", globalPropertyf("tu154ce/lights/small/rls_weather")) 
+tu154ce/switchers/console/rls_on
+tu154ce/switchers/console/rls_mode
+tu154ce/switchers/console/rls_distance
+defineProperty("rls_power_sw", globalPropertyi("tu154ce/xap/An24_rls/rls_power_sw")) 
+defineProperty("rls_power_cc", globalPropertyf("tu154ce/xap/An24_rls/rls_power_cc")) 
+defineProperty("rls_scan_spd", globalPropertyi("tu154ce/xap/An24_rls/rls_scan_spd")) 
+defineProperty("rls_mode", globalPropertyi("tu154ce/xap/An24_rls/rls_mode")) 
+defineProperty("rls_mode_lamp", globalPropertyi("tu154ce/xap/An24_rls/rls_mode_lamp")) 
+defineProperty("rls_bright", globalPropertyf("tu154ce/xap/An24_rls/rls_bright")) 
+defineProperty("rls_contr", globalPropertyf("tu154ce/xap/An24_rls/rls_contr")) 
+defineProperty("rls_signs", globalPropertyf("tu154ce/xap/An24_rls/rls_signs")) 
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right"))
+defineProperty("bus36_volt_pts250_1", globalPropertyf("tu154ce/elec/bus36_volt_pts250_1"))
+defineProperty("bus115_3_volt", globalPropertyf("tu154ce/elec/bus115_3_volt"))
+defineProperty("radar_cc", globalPropertyf("tu154ce/radio/radar_cc")) потребление тока от РЛС Гроза
 defineProperty("map_mode", globalPropertyi("sim/cockpit2/EFIS/map_mode"))
 defineProperty("map_mode_is_HSI", globalPropertyi("sim/cockpit2/EFIS/map_mode_is_HSI"))
 defineProperty("map_range", globalPropertyi("sim/cockpit/switches/EFIS_map_range_selector"))
@@ -51,7 +51,7 @@ defineProperty("scale_6", loadImage("radar_scale_marks.png", 251, 154, 250, 156)
 defineProperty("eng1_N1", globalPropertyf("sim/flightmodel/engine/ENGN_N1_[0]")) 
 defineProperty("eng2_N1", globalPropertyf("sim/flightmodel/engine/ENGN_N1_[1]")) 
 defineProperty("eng3_N1", globalPropertyf("sim/flightmodel/engine/ENGN_N1_[2]")) 
-defineProperty("radar_fail", globalPropertyi("sim/custom/failures/radar_fail")) 
+defineProperty("radar_fail", globalPropertyi("tu154ce/failures/radar_fail")) 
 local notLoaded = true
 local start_timer = 0
 local function sw_reset()

@@ -118,6 +118,9 @@ function find_dataref(name)
 	t = XLuaGetDataRefType(dref)
 	return wrap_dref_any(dref,t)
 end
+
+
+
 function create_dataref(name,type,notifier)
 	if notifier == nil then
 		error("create_dataref unsupported - use init script")
@@ -126,6 +129,10 @@ function create_dataref(name,type,notifier)
 	end
 	return wrap_dref_any(dref,type)
 end
+
+
+
+
 function make_command_obj(in_cmd, in_name)
 	return { 
 		start = function(self)
@@ -159,25 +166,42 @@ function make_command_obj(in_cmd, in_name)
 		name = in_name
 	}
 end
+
+
+
 function find_command(name)
 	c = XLuaFindCommand(name)
 	return make_command_obj(c,name)
 end
+
+
+
 function create_command(name,desc,handler)
 	c = XLuaCreateCommand(name,desc)
 	XLuaReplaceCommand(c,handler)
 	return make_command_obj(c)
 end
+
+
+
 function replace_command(name, func)
 	c = XLuaFindCommand(name)
 	XLuaReplaceCommand(c,func)
 	return make_command_obj(c)
 end	
+
+
+
+
 function wrap_command(name, before, after)
 	c = XLuaFindCommand(name)
 	XLuaWrapCommand(c,before,after)
 	return make_command_obj(c)
 end
+
+
+
+
 function run_timer(func,delay,rep)
 	tobj = all_timers[func]
 	if tobj == nil then
@@ -186,12 +210,20 @@ function run_timer(func,delay,rep)
 	end
 	XLuaRunTimer(tobj,delay,rep)
 end
+
+
+
+
 function stop_timer(func)
 	tobj = all_timers[func]
 	if tobj ~= nil then
 		XLuaRunTimer(tobj, -1.0, -1.0)
 	end
 end
+
+
+
+
 function is_timer_scheduled(func)
 	tobj = all_timers[func]
 	if tobj == nil then
@@ -205,6 +237,10 @@ end
 function run_after_time(func,delay)
 	run_timer(func,delay,-1.0)
 end
+
+
+
+
 function seems_like_prop(p)
 	if type(p) ~= "table" then
 		return false
@@ -219,6 +255,9 @@ function seems_like_prop(p)
 	end
 	return true
 end
+
+
+
 function seems_like_object(p)
 	if type(p) ~= "table" then
 		return false
@@ -232,6 +271,9 @@ function seems_like_object(p)
 		end
 	end
 end
+
+
+
 function namespace_ipairs(table, i)
 	local function namespace_iter(table, i)
 		i = i + 1
@@ -249,11 +291,16 @@ function namespace_ipairs(table, i)
 	end
 	return namespace_iter, table, 0
 end
+
+
+
 function namespace_len(table)
 	local count = 0
 	for _ in namespace_ipairs(table) do count = count + 1 end
 	return count
 end
+
+
 function namespace_pairs(table, key, value)
 	local function namespace_next(table, index)
 		ftable = rawget(table,'functions')
@@ -281,6 +328,8 @@ function namespace_pairs(table, key, value)
 	end
 	return namespace_next, table, nil
 end
+
+
 function namespace_write(table, key, value)
 	ftable = rawget(table,'functions')
 	vtable = rawget(table,'values')
@@ -313,6 +362,7 @@ function namespace_write(table, key, value)
 		end
 	end
 end
+
 function namespace_read(table,key)
 	ftable = rawget(table,'functions')
 	vtable = rawget(table,'values')
@@ -329,6 +379,7 @@ function namespace_read(table,key)
 	end
 	return nil
 end
+
 function create_namespace()
 	ret = { 
 		functions = {}, 
@@ -343,6 +394,7 @@ function create_namespace()
 	setmetatable(ret,mt)
 	return ret
 end
+
 function get_run_file_in_namespace(ns)
 	return function(fname)
 		chunk = XLuaGetCode(fname)
@@ -356,18 +408,21 @@ function get_run_file_in_namespace(ns)
 		end
 	end
 end
+
 function get_real_table_in_namespace(ns)
 	return function(key,real_table)
 		vtable = rawget(ns,'values')
 		vtable[key] = real_table
 	end
 end
+
 function get_raw_table_in_namespace(ns)
 	return function(key)
 		rkeys = rawget(ns,'raw_table_keys')
 		rkeys[key] = true
 	end
 end
+
 function run_module_in_namespace(fn)
 	n = create_namespace()
 	all_timers = { }
@@ -390,9 +445,11 @@ function run_module_in_namespace(fn)
 	setfenv(fn,n)
 	fn()
 end
+
 function setup_callback_var(var_name,var_value)
 	n[var_name] = var_value
 end
+
 function do_callout(fname)
 	func=n[fname]
 	if func ~= nil then

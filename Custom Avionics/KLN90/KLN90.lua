@@ -1,21 +1,21 @@
 size = { 1029, 329 }
-createProp("sim/custom/xap/MD41/test", "int", 0);
-createProp("sim/custom/xap/MD41/OBSreq", "int", 0);
-createProp("sim/custom/xap/MD41/visible", "int", 1);
-createProp("sim/custom/xap/KLN90/OBS", "int", 1);
-createProp("sim/custom/xap/KLN90/APR", "int", 0);
-createProp("sim/custom/xap/KLN90/MSG", "int", 0);
-createProp("sim/custom/xap/KLN90/WPT", "int", 0);
-createProp("sim/custom/xap/KLN90/Flash", "int", 0);
-createProp("sim/custom/xap/KLN90/visible", "int", 0);
-createProp("sim/custom/xap/KLN90pop/visible", "int", 0);
-createProp("sim/custom/xap/KLN90pop/x", "int", 1);
-createProp("sim/custom/xap/KLN90pop/y", "int", 1);
-defineProperty("MD41visible", globalPropertyi("sim/custom/xap/MD41/visible"))
-defineProperty("KLN90visible", globalPropertyi("sim/custom/xap/KLN90/visible"))
-defineProperty("KLN90popupvisible", globalPropertyi("sim/custom/xap/KLN90pop/visible"))
-defineProperty("popx", globalPropertyi("sim/custom/xap/KLN90pop/x"))
-defineProperty("popy", globalPropertyi("sim/custom/xap/KLN90pop/y"))
+createProp("tu154ce/xap/MD41/test", "int", 0);
+createProp("tu154ce/xap/MD41/OBSreq", "int", 0);
+createProp("tu154ce/xap/MD41/visible", "int", 1);
+createProp("tu154ce/xap/KLN90/OBS", "int", 1);
+createProp("tu154ce/xap/KLN90/APR", "int", 0);
+createProp("tu154ce/xap/KLN90/MSG", "int", 0);
+createProp("tu154ce/xap/KLN90/WPT", "int", 0);
+createProp("tu154ce/xap/KLN90/Flash", "int", 0);
+createProp("tu154ce/xap/KLN90/visible", "int", 0);
+createProp("tu154ce/xap/KLN90pop/visible", "int", 0);
+createProp("tu154ce/xap/KLN90pop/x", "int", 1);
+createProp("tu154ce/xap/KLN90pop/y", "int", 1);
+defineProperty("MD41visible", globalPropertyi("tu154ce/xap/MD41/visible"))
+defineProperty("KLN90visible", globalPropertyi("tu154ce/xap/KLN90/visible"))
+defineProperty("KLN90popupvisible", globalPropertyi("tu154ce/xap/KLN90pop/visible"))
+defineProperty("popx", globalPropertyi("tu154ce/xap/KLN90pop/x"))
+defineProperty("popy", globalPropertyi("tu154ce/xap/KLN90pop/y"))
 defineProperty("window_height",globalPropertyi("sim/graphics/view/window_height"))
 defineProperty("window_width",globalPropertyi("sim/graphics/view/window_width"))
 defineProperty("external",globalPropertyi("sim/graphics/view/view_is_external"))

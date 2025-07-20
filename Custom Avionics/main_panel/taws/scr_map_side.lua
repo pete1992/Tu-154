@@ -1,7 +1,7 @@
 size = {1000, 770}
-defineProperty("mode_set", globalPropertyi("sim/custom/taws/mode_set")) 
-defineProperty("distance_set", globalPropertyi("sim/custom/taws/distance_set")) 
-defineProperty("brt_handle", globalPropertyf("sim/custom/rotary/srpbz/brightness")) 
+defineProperty("mode_set", globalPropertyi("tu154ce/taws/mode_set")) 
+defineProperty("distance_set", globalPropertyi("tu154ce/taws/distance_set")) 
+defineProperty("brt_handle", globalPropertyf("tu154ce/rotary/srpbz/brightness")) 
 defineProperty("pos_x", globalPropertyf("sim/flightmodel/position/local_x")) 
 defineProperty("pos_y", globalPropertyf("sim/flightmodel/position/local_y")) 
 defineProperty("pos_z", globalPropertyf("sim/flightmodel/position/local_z")) 
@@ -12,7 +12,7 @@ defineProperty("elevation", globalPropertyf("sim/flightmodel/position/elevation"
 defineProperty("gear1_deploy", globalPropertyf("sim/aircraft/parts/acf_gear_deploy[0]"))  
 defineProperty("gear2_deploy", globalPropertyf("sim/aircraft/parts/acf_gear_deploy[1]"))  
 defineProperty("gear3_deploy", globalPropertyf("sim/aircraft/parts/acf_gear_deploy[2]"))  
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
 defineProperty("scale_side_img", loadImage("taws_scale_2.png", 0, 0, 1000, 770))
 local rows = 60
 local low_qlty = false

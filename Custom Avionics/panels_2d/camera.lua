@@ -1,5 +1,5 @@
 size = {512, 512}
-defineProperty("show_cam",globalPropertyi("sim/custom/panels/show_cam")) 
+defineProperty("show_cam",globalPropertyi("tu154ce/panels/show_cam")) 
 defineProperty("px", globalPropertyf("sim/graphics/view/pilots_head_x"))
 defineProperty("py", globalPropertyf("sim/graphics/view/pilots_head_y"))
 defineProperty("pz", globalPropertyf("sim/graphics/view/pilots_head_z"))

@@ -9,16 +9,16 @@ end
 
 -- Register DataRefs
 defineProps({
-    {"frame_time",        "sim/custom/time/frame_time",                 globalPropertyf},
-    {"tank_1_pr",         "sim/custom/payload/tank_1",                  globalPropertyi},
-    {"tank_4_pr",         "sim/custom/payload/tank_4",                  globalPropertyi},
-    {"tank_2L_pr",        "sim/custom/payload/tank_2L",                 globalPropertyi},
-    {"tank_2R_pr",        "sim/custom/payload/tank_2R",                 globalPropertyi},
-    {"tank_3L_pr",        "sim/custom/payload/tank_3L",                 globalPropertyi},
-    {"tank_3R_pr",        "sim/custom/payload/tank_3R",                 globalPropertyi},
-    {"fuel_tanker_call",  "sim/custom/anim/fuel_tanker_call",           globalPropertyi},
-    {"gear_blocks",       "sim/custom/anim/gear_blocks",                globalPropertyi},
-    {"fuel_tanker",       "sim/custom/anim/fuel_tanker",                globalPropertyf},
+    {"frame_time",        "tu154ce/time/frame_time",                 globalPropertyf},
+    {"tank_1_pr",         "tu154ce/payload/tank_1",                  globalPropertyi},
+    {"tank_4_pr",         "tu154ce/payload/tank_4",                  globalPropertyi},
+    {"tank_2L_pr",        "tu154ce/payload/tank_2L",                 globalPropertyi},
+    {"tank_2R_pr",        "tu154ce/payload/tank_2R",                 globalPropertyi},
+    {"tank_3L_pr",        "tu154ce/payload/tank_3L",                 globalPropertyi},
+    {"tank_3R_pr",        "tu154ce/payload/tank_3R",                 globalPropertyi},
+    {"fuel_tanker_call",  "tu154ce/anim/fuel_tanker_call",           globalPropertyi},
+    {"gear_blocks",       "tu154ce/anim/gear_blocks",                globalPropertyi},
+    {"fuel_tanker",       "tu154ce/anim/fuel_tanker",                globalPropertyf},
     {"slider_5",          "sim/cockpit2/switches/custom_slider_on[4]",  globalPropertyi},
     {"payload",           "sim/flightmodel/weight/m_fixed",             globalPropertyf},
     {"CG_load",           "sim/flightmodel/misc/cgz_ref_to_default",    globalPropertyf},
@@ -28,9 +28,9 @@ defineProps({
     {"fuel_q_2L",         "sim/flightmodel/weight/m_fuel[3]",           globalPropertyf},
     {"fuel_q_3R",         "sim/flightmodel/weight/m_fuel[4]",           globalPropertyf},
     {"fuel_q_3L",         "sim/flightmodel/weight/m_fuel[5]",           globalPropertyf},
-    {"paylod_set",        "sim/custom/payload/paylod_set",              globalPropertyf},
-    {"cg_set",            "sim/custom/payload/cg_set",                  globalPropertyf},
-    {"load_slow_btn",     "sim/custom/payload/load_slow_btn",           globalPropertyi},
+    {"paylod_set",        "tu154ce/payload/paylod_set",              globalPropertyf},
+    {"cg_set",            "tu154ce/payload/cg_set",                  globalPropertyf},
+    {"load_slow_btn",     "tu154ce/payload/load_slow_btn",           globalPropertyi},
 })
 
 -- Convert boolean to integer

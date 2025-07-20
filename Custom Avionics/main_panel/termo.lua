@@ -1,8 +1,8 @@
 defineProperty("thermo", globalPropertyf("sim/cockpit2/temperature/outside_air_temp_degc")) 
-defineProperty("bus27_volt_left", globalPropertyf("sim/custom/elec/bus27_volt_left")) 
-defineProperty("bus27_volt_right", globalPropertyf("sim/custom/elec/bus27_volt_right")) 
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
-defineProperty("thermo_outside", globalPropertyf("sim/custom/gauges/misc/thermo_outside")) 
+defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left")) 
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
+defineProperty("thermo_outside", globalPropertyf("tu154ce/gauges/misc/thermo_outside")) 
 local termENG_act = -55
 function update()
 	local passed = get(frame_time)

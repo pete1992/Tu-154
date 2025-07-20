@@ -1,5 +1,5 @@
 print("Tu154 v2.0.6")
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
 local counter = 0
 function update()
 	counter = counter + get(frame_time)

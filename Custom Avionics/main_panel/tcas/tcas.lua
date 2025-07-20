@@ -14,11 +14,11 @@ components = {
 	},
 	tcas_gau {
 		position = {518, 11, 482, 530},
-		var_on = globalPropertyi("sim/custom/switchers/ovhd/var_right"),  
-		bus27_volt = globalPropertyf("sim/custom/elec/bus27_volt_right"), 
-		bus115_volt = globalPropertyf("sim/custom/elec/bus115_3_volt"), 
-		vsi_brt = globalPropertyf("sim/custom/gauges/vsi/vsi_brt_right"),  
-		vvi_int = globalPropertyf("sim/custom/gauges/vvi_right"), 
+		var_on = globalPropertyi("tu154ce/switchers/ovhd/var_right"),  
+		bus27_volt = globalPropertyf("tu154ce/elec/bus27_volt_right"), 
+		bus115_volt = globalPropertyf("tu154ce/elec/bus115_3_volt"), 
+		vsi_brt = globalPropertyf("tu154ce/gauges/vsi/vsi_brt_right"),  
+		vvi_int = globalPropertyf("tu154ce/gauges/vvi_right"), 
 		vvi_fail = globalPropertyi("sim/operation/failures/rel_cop_vvi"), 
 	},
 }

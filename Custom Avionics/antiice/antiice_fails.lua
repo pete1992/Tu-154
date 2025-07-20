@@ -13,9 +13,9 @@ end
 
 -- Register all other DataRefs
 defineProps({
-    {"failures_enabled",    "sim/custom/failures/failures_enabled",  globalPropertyi},
-    {"frame_time",          "sim/custom/time/frame_time",            globalPropertyf},
-    {"ppd_3_heat_fail",     "sim/custom/antiice/ppd_3_heat_fail",    globalPropertyi},
+    {"failures_enabled",    "tu154ce/failures/failures_enabled",  globalPropertyi},
+    {"frame_time",          "tu154ce/time/frame_time",            globalPropertyf},
+    {"ppd_3_heat_fail",     "tu154ce/antiice/ppd_3_heat_fail",    globalPropertyi},
     {"rel_ice_inlet_heat1", "sim/operation/failures/rel_ice_inlet_heat",  globalPropertyi},
     {"rel_ice_inlet_heat2", "sim/operation/failures/rel_ice_inlet_heat2", globalPropertyi},
     {"rel_ice_inlet_heat3", "sim/operation/failures/rel_ice_inlet_heat3", globalPropertyi},
@@ -23,10 +23,10 @@ defineProps({
     {"rel_ice_pitot_heat2", "sim/operation/failures/rel_ice_pitot_heat2", globalPropertyi},
     {"rel_ice_surf_heat",   "sim/operation/failures/rel_ice_surf_heat",   globalPropertyi},
     {"rel_ice_surf_heat2",  "sim/operation/failures/rel_ice_surf_heat2",  globalPropertyi},
-    {"rio_fail",            "sim/custom/failures/rio_fail",           globalPropertyi},
-    {"window_heat_fail_1",  "sim/custom/failures/window_heat_fail_1", globalPropertyi},
-    {"window_heat_fail_2",  "sim/custom/failures/window_heat_fail_2", globalPropertyi},
-    {"window_heat_fail_3",  "sim/custom/failures/window_heat_fail_3", globalPropertyi},
+    {"rio_fail",            "tu154ce/failures/rio_fail",           globalPropertyi},
+    {"window_heat_fail_1",  "tu154ce/failures/window_heat_fail_1", globalPropertyi},
+    {"window_heat_fail_2",  "tu154ce/failures/window_heat_fail_2", globalPropertyi},
+    {"window_heat_fail_3",  "tu154ce/failures/window_heat_fail_3", globalPropertyi},
     {"deflection_mtr_2",    "sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]", globalPropertyf},
     {"deflection_mtr_3",    "sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]", globalPropertyf},
 })

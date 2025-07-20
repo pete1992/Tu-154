@@ -2,7 +2,7 @@ size = {241, 446}
 defineProperty("bg", loadImage("UPhone.png", 0, 0, 241, 446))
 defineProperty("APPS", loadImage("UPhone.png", 260, 0, 205, 305))
 defineProperty("digitsImage", loadImage("UPhone.png", 493, 0, 14, 280))
-defineProperty("uphone_subpanel",globalPropertyi("sim/custom/panels/show_phone")) 
+defineProperty("uphone_subpanel",globalPropertyi("tu154ce/panels/show_phone")) 
 program = 0
 components = {
 	texture {

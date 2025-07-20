@@ -1,55 +1,55 @@
 ﻿size = {457, 146.5}
-createProp("sim/custom/xap/KLN90/graphNAV5Comp", "string", 2048," ");
-createProp("sim/custom/xap/KLN90/graphAPT3Comp", "string", 2048," ");
-createProp("sim/custom/xap/KLN90/gline_1", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/gline_2", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/gline_3", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/gline_4", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/gline_5", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/gline_6", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/gline_7", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/bline_1", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/bline_2", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/bline_3", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/bline_4", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/bline_5", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/bline_6", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/bline_7", "string", 256,"WAIT FOR MASTER");
-createProp("sim/custom/xap/KLN90/scale_line", "string", 256," ");
-createProp("sim/custom/xap/KLN90/cage", "int", 0);
-defineProperty("show_gns", globalPropertyi("sim/custom/anim/show_gns"))
-createProp("sim/custom/kln_power", "int", 1);
-defineProperty("kln_power", globalPropertyi("sim/custom/kln_power"));
+createProp("tu154ce/xap/KLN90/graphNAV5Comp", "string", 2048," ");
+createProp("tu154ce/xap/KLN90/graphAPT3Comp", "string", 2048," ");
+createProp("tu154ce/xap/KLN90/gline_1", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/gline_2", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/gline_3", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/gline_4", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/gline_5", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/gline_6", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/gline_7", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/bline_1", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/bline_2", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/bline_3", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/bline_4", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/bline_5", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/bline_6", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/bline_7", "string", 256,"WAIT FOR MASTER");
+createProp("tu154ce/xap/KLN90/scale_line", "string", 256," ");
+createProp("tu154ce/xap/KLN90/cage", "int", 0);
+defineProperty("show_gns", globalPropertyi("tu154ce/anim/show_gns"))
+createProp("tu154ce/kln_power", "int", 1);
+defineProperty("kln_power", globalPropertyi("tu154ce/kln_power"));
 defineProperty("SC_master", globalPropertyi("scp/api/ismaster")) 
-defineProperty("kln_knob_out", globalPropertyi("sim/custom/switchers/kln_knob_out")) 
-defineProperty("kln_power_knob", globalPropertyi("sim/custom/switchers/kln_power_knob")) 
-defineProperty("sc_graphNAV5Comp", globalPropertys("sim/custom/xap/KLN90/graphNAV5Comp"))
-defineProperty("sc_graphAPT3Comp", globalPropertys("sim/custom/xap/KLN90/graphAPT3Comp"))
-defineProperty("sc_gline_1", globalPropertys("sim/custom/xap/KLN90/gline_1"))
-defineProperty("sc_gline_2", globalPropertys("sim/custom/xap/KLN90/gline_2"))
-defineProperty("sc_gline_3", globalPropertys("sim/custom/xap/KLN90/gline_3"))
-defineProperty("sc_gline_4", globalPropertys("sim/custom/xap/KLN90/gline_4"))
-defineProperty("sc_gline_5", globalPropertys("sim/custom/xap/KLN90/gline_5"))
-defineProperty("sc_gline_6", globalPropertys("sim/custom/xap/KLN90/gline_6"))
-defineProperty("sc_gline_7", globalPropertys("sim/custom/xap/KLN90/gline_7"))
-defineProperty("sc_gline_8", globalPropertys("sim/custom/xap/KLN90/gline_8"))
-defineProperty("sc_bline_1", globalPropertys("sim/custom/xap/KLN90/bline_1"))
-defineProperty("sc_bline_2", globalPropertys("sim/custom/xap/KLN90/bline_2"))
-defineProperty("sc_bline_3", globalPropertys("sim/custom/xap/KLN90/bline_3"))
-defineProperty("sc_bline_4", globalPropertys("sim/custom/xap/KLN90/bline_4"))
-defineProperty("sc_bline_5", globalPropertys("sim/custom/xap/KLN90/bline_5"))
-defineProperty("sc_bline_6", globalPropertys("sim/custom/xap/KLN90/bline_6"))
-defineProperty("sc_bline_7", globalPropertys("sim/custom/xap/KLN90/bline_7"))
-defineProperty("sc_bline_8", globalPropertys("sim/custom/xap/KLN90/bline_8"))
-defineProperty("sc_scaleline", globalPropertys("sim/custom/xap/KLN90/scale_line"))
-defineProperty("sc_cage", globalPropertyi("sim/custom/xap/KLN90/cage"))
-defineProperty("L_Angle_3D", globalPropertyi("sim/custom/rotary/KLN90/3D_L_Angle"))
-defineProperty("R_Angle_3D", globalPropertyi("sim/custom/rotary/KLN90/3D_R_Angle"))
-defineProperty("power_knob_angle", globalPropertyi("sim/custom/rotary/KLN90/power_knob_angle"))
-defineProperty("scan_knob", globalPropertyi("sim/custom/rotary/KLN90/scan_knob"))
-defineProperty("kln_course", globalPropertyf("sim/custom/kln90/kln_course")) 
-defineProperty("kln_dev", globalPropertyf("sim/custom/kln90/kln_dev")) 
-defineProperty("kln_flag", globalPropertyi("sim/custom/kln90/kln_flag")) 
+defineProperty("kln_knob_out", globalPropertyi("tu154ce/switchers/kln_knob_out")) 
+defineProperty("kln_power_knob", globalPropertyi("tu154ce/switchers/kln_power_knob")) 
+defineProperty("sc_graphNAV5Comp", globalPropertys("tu154ce/xap/KLN90/graphNAV5Comp"))
+defineProperty("sc_graphAPT3Comp", globalPropertys("tu154ce/xap/KLN90/graphAPT3Comp"))
+defineProperty("sc_gline_1", globalPropertys("tu154ce/xap/KLN90/gline_1"))
+defineProperty("sc_gline_2", globalPropertys("tu154ce/xap/KLN90/gline_2"))
+defineProperty("sc_gline_3", globalPropertys("tu154ce/xap/KLN90/gline_3"))
+defineProperty("sc_gline_4", globalPropertys("tu154ce/xap/KLN90/gline_4"))
+defineProperty("sc_gline_5", globalPropertys("tu154ce/xap/KLN90/gline_5"))
+defineProperty("sc_gline_6", globalPropertys("tu154ce/xap/KLN90/gline_6"))
+defineProperty("sc_gline_7", globalPropertys("tu154ce/xap/KLN90/gline_7"))
+defineProperty("sc_gline_8", globalPropertys("tu154ce/xap/KLN90/gline_8"))
+defineProperty("sc_bline_1", globalPropertys("tu154ce/xap/KLN90/bline_1"))
+defineProperty("sc_bline_2", globalPropertys("tu154ce/xap/KLN90/bline_2"))
+defineProperty("sc_bline_3", globalPropertys("tu154ce/xap/KLN90/bline_3"))
+defineProperty("sc_bline_4", globalPropertys("tu154ce/xap/KLN90/bline_4"))
+defineProperty("sc_bline_5", globalPropertys("tu154ce/xap/KLN90/bline_5"))
+defineProperty("sc_bline_6", globalPropertys("tu154ce/xap/KLN90/bline_6"))
+defineProperty("sc_bline_7", globalPropertys("tu154ce/xap/KLN90/bline_7"))
+defineProperty("sc_bline_8", globalPropertys("tu154ce/xap/KLN90/bline_8"))
+defineProperty("sc_scaleline", globalPropertys("tu154ce/xap/KLN90/scale_line"))
+defineProperty("sc_cage", globalPropertyi("tu154ce/xap/KLN90/cage"))
+defineProperty("L_Angle_3D", globalPropertyi("tu154ce/rotary/KLN90/3D_L_Angle"))
+defineProperty("R_Angle_3D", globalPropertyi("tu154ce/rotary/KLN90/3D_R_Angle"))
+defineProperty("power_knob_angle", globalPropertyi("tu154ce/rotary/KLN90/power_knob_angle"))
+defineProperty("scan_knob", globalPropertyi("tu154ce/rotary/KLN90/scan_knob"))
+defineProperty("kln_course", globalPropertyf("tu154ce/kln90/kln_course")) 
+defineProperty("kln_dev", globalPropertyf("tu154ce/kln90/kln_dev")) 
+defineProperty("kln_flag", globalPropertyi("tu154ce/kln90/kln_flag")) 
 defineProperty("bg", loadImage("KLN90.png", 0, 0, 914, 293))
 defineProperty("glass", loadImage("KLN90.png", 10, 298, 426, 199))
 defineProperty("powerknob", loadImage("KLN90.png", 455, 321, 52, 52))
@@ -129,7 +129,7 @@ defineProperty("FuelFlow6", globalPropertyf("sim/flightmodel/engine/ENGN_FF_[5]"
 defineProperty("FuelFlow7", globalPropertyf("sim/flightmodel/engine/ENGN_FF_[6]"))
 defineProperty("FuelFlow8", globalPropertyf("sim/flightmodel/engine/ENGN_FF_[7]"))
 defineProperty("FuelTOT", globalPropertyf("sim/flightmodel/weight/m_fuel_total"))
-defineProperty("MD41test", globalPropertyi("sim/custom/xap/MD41/test"))
+defineProperty("MD41test", globalPropertyi("tu154ce/xap/MD41/test"))
 defineProperty("HSIsource", globalPropertyi("sim/cockpit2/radios/actuators/HSI_source_select_pilot"))
 defineProperty("overrideGPS", globalPropertyi("sim/operation/override/override_gps"))
 defineProperty("overrideNAV", globalPropertyi("sim/operation/override/override_nav_heading"))
@@ -140,12 +140,12 @@ defineProperty("HSIOBS", globalPropertyf("sim/cockpit2/radios/actuators/hsi_obs_
 defineProperty("navsteer", globalPropertyf("sim/cockpit/autopilot/nav_steer_deg_mag"))
 defineProperty("APState", globalPropertyf("sim/cockpit/autopilot/autopilot_state"))
 defineProperty("NavState", globalPropertyf("sim/cockpit2/autopilot/nav_status"))
-defineProperty("GPSmode", globalPropertyi("sim/custom/xap/KLN90/OBS"))
-defineProperty("OBSreq", globalPropertyi("sim/custom/xap/MD41/OBSreq"))
-defineProperty("APR", globalPropertyi("sim/custom/xap/KLN90/APR"))
-defineProperty("WPTalert", globalPropertyi("sim/custom/xap/KLN90/WPT"))
-defineProperty("MSGalert", globalPropertyi("sim/custom/xap/KLN90/MSG"))
-defineProperty("Flash", globalPropertyi("sim/custom/xap/KLN90/Flash"))
+defineProperty("GPSmode", globalPropertyi("tu154ce/xap/KLN90/OBS"))
+defineProperty("OBSreq", globalPropertyi("tu154ce/xap/MD41/OBSreq"))
+defineProperty("APR", globalPropertyi("tu154ce/xap/KLN90/APR"))
+defineProperty("WPTalert", globalPropertyi("tu154ce/xap/KLN90/WPT"))
+defineProperty("MSGalert", globalPropertyi("tu154ce/xap/KLN90/MSG"))
+defineProperty("Flash", globalPropertyi("tu154ce/xap/KLN90/Flash"))
 defineProperty("LATin", globalPropertyf("sim/flightmodel/position/latitude"))
 defineProperty("LONin", globalPropertyf("sim/flightmodel/position/longitude"))
 defineProperty("SPEEDin", globalPropertyf("sim/flightmodel/position/groundspeed"))
@@ -153,9 +153,9 @@ defineProperty("PSIin", globalPropertyf("sim/flightmodel/position/magpsi"))
 defineProperty("HPATHin", globalPropertyf("sim/flightmodel/position/hpath"))
 defineProperty("MAGVARin", globalPropertyf("sim/flightmodel/position/magnetic_variation"))
 defineProperty("simspeed", globalPropertyf("sim/time/sim_speed"))
-defineProperty("KLN90visible", globalPropertyi("sim/custom/xap/KLN90/visible"))
-defineProperty("popx", globalPropertyi("sim/custom/xap/KLN90pop/x"))
-defineProperty("popy", globalPropertyi("sim/custom/xap/KLN90pop/y"))
+defineProperty("KLN90visible", globalPropertyi("tu154ce/xap/KLN90/visible"))
+defineProperty("popx", globalPropertyi("tu154ce/xap/KLN90pop/x"))
+defineProperty("popy", globalPropertyi("tu154ce/xap/KLN90pop/y"))
 local alert = loadSample('altitude_alerts.wav')
 local alertl = loadSample('altitude_alert.wav')
 local font = loadFont('KLN90.fnt')

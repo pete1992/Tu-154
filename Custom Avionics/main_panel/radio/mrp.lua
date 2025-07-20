@@ -3,19 +3,19 @@ defineProperty("outer_marker", globalPropertyi("sim/cockpit/misc/outer_marker_li
 defineProperty("middle_marker", globalPropertyi("sim/cockpit/misc/middle_marker_lit"))
 defineProperty("inner_marker", globalPropertyi("sim/cockpit/misc/inner_marker_lit"))
 defineProperty("alt", globalPropertyf("sim/flightmodel/position/y_agl"))
-defineProperty("mrp_mode", globalPropertyi("sim/custom/switchers/ovhd/sp50_nav_mode")) 
-sim/custom/switchers/ovhd/sp50_mode	int	режим СП50. 0 - ILS, 1 - Katet, 2 - SP-50	0
-sim/custom/switchers/ovhd/sp50_nav_mode	int	режим СП50. посадка - маршрут	0
-defineProperty("bus27_volt_left", globalPropertyf("sim/custom/elec/bus27_volt_left"))
-defineProperty("bus27_volt_right", globalPropertyf("sim/custom/elec/bus27_volt_right"))
-defineProperty("mrp_cc", globalPropertyf("sim/custom/xap/An24_gauges/mrp_cc"))
+defineProperty("mrp_mode", globalPropertyi("tu154ce/switchers/ovhd/sp50_nav_mode")) 
+tu154ce/switchers/ovhd/sp50_mode	int	режим СП50. 0 - ILS, 1 - Katet, 2 - SP-50	0
+tu154ce/switchers/ovhd/sp50_nav_mode	int	режим СП50. посадка - маршрут	0
+defineProperty("bus27_volt_left", globalPropertyf("tu154ce/elec/bus27_volt_left"))
+defineProperty("bus27_volt_right", globalPropertyf("tu154ce/elec/bus27_volt_right"))
+defineProperty("mrp_cc", globalPropertyf("tu154ce/xap/An24_gauges/mrp_cc"))
 defineProperty("sim_fail", globalPropertyi("sim/operation/sim_failures/rel_marker"))
-defineProperty("mrp_fail", globalPropertyi("sim/custom/failures/mrp_fail"))
-defineProperty("marker_1", globalPropertyf("sim/custom/lights/marker_1")) 
-defineProperty("marker_2", globalPropertyf("sim/custom/lights/marker_2")) 
-defineProperty("marker_3", globalPropertyf("sim/custom/lights/marker_3")) 
-defineProperty("lamp_test", globalPropertyi("sim/custom/buttons/lamp_test_front")) 
-defineProperty("day_night_set", globalPropertyf("sim/custom/lights/day_night_set")) 
+defineProperty("mrp_fail", globalPropertyi("tu154ce/failures/mrp_fail"))
+defineProperty("marker_1", globalPropertyf("tu154ce/lights/marker_1")) 
+defineProperty("marker_2", globalPropertyf("tu154ce/lights/marker_2")) 
+defineProperty("marker_3", globalPropertyf("tu154ce/lights/marker_3")) 
+defineProperty("lamp_test", globalPropertyi("tu154ce/buttons/lamp_test_front")) 
+defineProperty("day_night_set", globalPropertyf("tu154ce/lights/day_night_set")) 
 local out_lit = 0
 local mid_lit = 0
 local in_lit = 0

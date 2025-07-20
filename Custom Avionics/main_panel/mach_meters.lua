@@ -1,10 +1,10 @@
 defineProperty("mach", globalPropertyf("sim/flightmodel/misc/machno")) 
-defineProperty("mach_svs", globalPropertyf("sim/custom/svs/machno")) 
+defineProperty("mach_svs", globalPropertyf("tu154ce/svs/machno")) 
 defineProperty("rel_pitot", globalPropertyi("sim/operation/failures/rel_pitot")) 
 defineProperty("rel_pitot2", globalPropertyi("sim/operation/failures/rel_pitot2")) 
-defineProperty("frame_time", globalPropertyf("sim/custom/time/frame_time")) 
-defineProperty("mach_ind_left", globalPropertyf("sim/custom/gauges/speed/mach_left")) 
-defineProperty("mach_ind_right", globalPropertyf("sim/custom/gauges/speed/mach_right")) 
+defineProperty("frame_time", globalPropertyf("tu154ce/time/frame_time")) 
+defineProperty("mach_ind_left", globalPropertyf("tu154ce/gauges/speed/mach_left")) 
+defineProperty("mach_ind_right", globalPropertyf("tu154ce/gauges/speed/mach_right")) 
 local mach_ind_L = 0
 local mach_ind_R = 0
 local mach_L_act = 0
