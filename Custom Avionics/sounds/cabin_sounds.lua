@@ -1,5 +1,6 @@
 -- cabin_sounds.lua 
 
+
 -- Helper: Batch DataRef registration
 local function defineProps(defs)
     for _, d in ipairs(defs) do
@@ -13,58 +14,61 @@ defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1"))
 
 -- Register all DataRefs needed for cabin_sounds.lua
 defineProps({
-    {"frame_time",            "tu154ce/time/frame_time",                globalPropertyf},
-    {"external_view",         "sim/graphics/view/view_is_external",        globalPropertyi},
-    {"dh_set_L",              "tu154ce/gauges/alt/radioalt_dh_left",    globalPropertyf},
-    {"dh_set_R",              "tu154ce/gauges/alt/radioalt_dh_right",   globalPropertyf},
-    {"rv_angle_L",            "tu154ce/gauges/alt/radioalt_needle_left",globalPropertyf},
-    {"rv_angle_R",            "tu154ce/gauges/alt/radioalt_needle_right",globalPropertyf},
-    {"rv5_dh_signal_left",    "tu154ce/misc/rv5_dh_signal_left",        globalPropertyi},
-    {"rv5_dh_signal_right",   "tu154ce/misc/rv5_dh_signal_right",       globalPropertyi},
-    {"roll_main_mode",        "tu154ce/absu/roll_main_mode",            globalPropertyi},
-    {"pitch_main_mode",       "tu154ce/absu/pitch_main_mode",           globalPropertyi},
-    {"stu_mode",              "tu154ce/absu/stu_mode",                  globalPropertyi},
-    {"absu_fail_signal",      "tu154ce/absu/absu_fail_signal",          globalPropertyi},
-    {"main_gear_flaps",       "tu154ce/alarm/main_gear_flaps",          globalPropertyi},
-    {"main_pressure",         "tu154ce/alarm/main_pressure",            globalPropertyi},
-    {"speaker_auasp",         "tu154ce/alarm/speaker_auasp",            globalPropertyi},
-    {"speaker_fuel",          "tu154ce/alarm/speaker_fuel",             globalPropertyi},
-    {"speaker_speed",         "tu154ce/alarm/speaker_speed",            globalPropertyi},
-    {"speaker_absu",          "tu154ce/alarm/speaker_absu",             globalPropertyi},
-    {"fire_siren",            "tu154ce/fire/fire_siren",                globalPropertyi},
-    {"srd_buzzer",            "tu154ce/switchers/eng/srd_buzzer",       globalPropertyi},
-    {"fuel_buzzer",           "tu154ce/switchers/eng/fuel_buzzer",      globalPropertyi},
-    {"srd_buzzer_cap",        "tu154ce/switchers/eng/srd_buzzer_cap",   globalPropertyi},
-    {"fuel_buzzer_cap",       "tu154ce/switchers/eng/fuel_buzzer_cap",  globalPropertyi},
-    {"srd_buzzer_test",       "tu154ce/buttons/eng/srd_buzzer_test",    globalPropertyi},
-    {"outer_marker",          "sim/cockpit/misc/outer_marker_lit",         globalPropertyi},
-    {"middle_marker",         "sim/cockpit/misc/middle_marker_lit",        globalPropertyi},
-    {"inner_marker",          "sim/cockpit/misc/inner_marker_lit",         globalPropertyi},
-    {"light_open_left",       "tu154ce/anim/light_open_left",           globalPropertyf},
-    {"light_open_right",      "tu154ce/anim/light_open_right",          globalPropertyf},
-    {"airspeed",              "sim/flightmodel/position/indicated_airspeed",globalPropertyf},
-    {"bus27_volt_L",          "tu154ce/elec/bus27_volt_left",           globalPropertyf},
-    {"bus27_volt_R",          "tu154ce/elec/bus27_volt_right",          globalPropertyf},
-    {"bus27_source_left",     "tu154ce/elec/bus27_source_left",         globalPropertyf},
-    {"bus27_source_right",    "tu154ce/elec/bus27_source_right",        globalPropertyf},
-    {"pilot_Z",               "sim/aircraft/view/acf_peZ",                 globalPropertyf},
-    {"air_usage_L",           "tu154ce/bleed/air_usage_L",              globalPropertyf},
-    {"air_usage_R",           "tu154ce/bleed/air_usage_R",              globalPropertyf},
-    {"deflection_mtr_2",      "sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]",globalPropertyf},
-    {"deflection_mtr_3",      "sim/flightmodel2/gear/tire_vertical_deflection_mtr[2]",globalPropertyf},
-    {"groundspeed",           "sim/flightmodel/position/groundspeed",      globalPropertyf},
-    {"flaps_lever",           "tu154ce/controll/flaps_lever",           globalPropertyf},
-    {"engine_volume_ratio",   "sim/operation/sound/engine_volume_ratio",   globalPropertyf},
-    {"prop_volume_ratio",     "sim/operation/sound/prop_volume_ratio",     globalPropertyf},
-    {"ground_volume_ratio",   "sim/operation/sound/ground_volume_ratio",   globalPropertyf},
-    {"weather_volume_ratio",  "sim/operation/sound/weather_volume_ratio",  globalPropertyf},
-    {"warning_volume_ratio",  "sim/operation/sound/warning_volume_ratio",  globalPropertyf},
-    {"radio_volume_ratio",    "sim/operation/sound/radio_volume_ratio",    globalPropertyf},
-    {"fan_volume_ratio",      "sim/operation/sound/fan_volume_ratio",      globalPropertyf},
-    {"main_alarm_fail",       "tu154ce/failures/main_alarm_fail",       globalPropertyi},
-    {"speaker_alarm_fail",    "tu154ce/failures/speaker_alarm_fail",    globalPropertyi},
-    {"failures_enabled",      "tu154ce/failures/failures_enabled",      globalPropertyi},
+	{"frame_time", "tu154ce/time/frame_time", globalPropertyf},
+	{"dh_set_L", "tu154ce/gauges/alt/radioalt_dh_left", globalPropertyf},
+	{"dh_set_R", "tu154ce/gauges/alt/radioalt_dh_right", globalPropertyf},
+	{"rv_angle_L", "tu154ce/gauges/alt/radioalt_needle_left", globalPropertyf},
+	{"rv_angle_R", "tu154ce/gauges/alt/radioalt_needle_right", globalPropertyf},
+	{"rv5_dh_signal_left", "tu154ce/misc/rv5_dh_signal_left", globalPropertyi},
+	{"rv5_dh_signal_right", "tu154ce/misc/rv5_dh_signal_right", globalPropertyi},
+	{"roll_main_mode", "tu154ce/absu/roll_main_mode", globalPropertyi},
+	{"pitch_main_mode", "tu154ce/absu/pitch_main_mode", globalPropertyi},
+	{"stu_mode", "tu154ce/absu/stu_mode", globalPropertyi},
+	{"absu_fail_signal", "tu154ce/absu/absu_fail_signal", globalPropertyi},
+	{"main_gear_flaps", "tu154ce/alarm/main_gear_flaps", globalPropertyi},
+	{"main_pressure", "tu154ce/alarm/main_pressure", globalPropertyi},
+	{"speaker_auasp", "tu154ce/alarm/speaker_auasp", globalPropertyi},
+	{"speaker_fuel", "tu154ce/alarm/speaker_fuel", globalPropertyi},
+	{"outer_marker", "sim/cockpit/misc/outer_marker_lit", globalPropertyi},
+	{"middle_marker", "sim/cockpit/misc/middle_marker_lit", globalPropertyi},
+	{"inner_marker", "sim/cockpit/misc/inner_marker_lit", globalPropertyi},
+	{"speaker_speed", "tu154ce/alarm/speaker_speed",  globalPropertyi},
+	{"speaker_absu", "tu154ce/alarm/speaker_absu",  globalPropertyi},
+	{"fire_siren", "tu154ce/fire/fire_siren", globalPropertyi},
+	{"srd_buzzer", "tu154ce/switchers/eng/srd_buzzer", globalPropertyi},
+	{"fuel_buzzer", "tu154ce/switchers/eng/fuel_buzzer", globalPropertyi},
+	{"srd_buzzer_cap", "tu154ce/switchers/eng/srd_buzzer_cap",       globalPropertyi},
+	{"fuel_buzzer_cap", "tu154ce/switchers/eng/fuel_buzzer_cap",      globalPropertyi},
+	{"srd_buzzer_test", "tu154ce/buttons/eng/srd_buzzer_test", globalPropertyi},
+	{"bus27_volt_L", "tu154ce/elec/bus27_volt_left", globalPropertyf},
+	{"bus27_volt_R", "tu154ce/elec/bus27_volt_right", globalPropertyf},
+	{"bus27_source_left", "tu154ce/elec/bus27_source_left", globalPropertyf},
+	{"bus27_source_right", "tu154ce/elec/bus27_source_right",            globalPropertyf},
+	{"air_usage_L", "tu154ce/bleed/air_usage_L", globalPropertyf},
+	{"air_usage_R", "tu154ce/bleed/air_usage_R",  globalPropertyf},
+	{"flaps_lever", "tu154ce/controll/flaps_lever", globalPropertyf},
+	{"main_alarm_fail", "tu154ce/failures/main_alarm_fail", globalPropertyi},
+	{"speaker_alarm_fail", "tu154ce/failures/speaker_alarm_fail",        globalPropertyi},
+	{"failures_enabled", "tu154ce/failures/failures_enabled", globalPropertyi},
+	{"engine_volume_ratio", "sim/operation/sound/engine_volume_ratio",   globalPropertyf},
+	{"prop_volume_ratio", "sim/operation/sound/prop_volume_ratio",     globalPropertyf},
+	{"radio_volume_ratio", "sim/operation/sound/radio_volume_ratio",    globalPropertyf},
+	{"fan_volume_ratio", "sim/operation/sound/fan_volume_ratio",      globalPropertyf},
+	{"external_view", "sim/graphics/view/view_is_external", globalPropertyi},
+	{"warning_volume_ratio",  "sim/operation/sound/warning_volume_ratio", globalPropertyf},
+	{"pilot_Z", "sim/aircraft/view/acf_peZ", globalPropertyf},
 })
+
+
+
+
+local tireDeflection = globalPropertyfa("sim/flightmodel2/gear/tire_vertical_deflection_mtr")
+local groundspeed      = globalPropertyf("sim/flightmodel/position/groundspeed")
+local airspeed         = globalPropertyf("sim/flightmodel/position/indicated_airspeed")
+local light_open_left  = globalPropertyf("tu154ce/anim/light_open_left")
+local light_open_right = globalPropertyf("tu154ce/anim/light_open_right")
+local ground_volume_ratio  = globalPropertyf("sim/operation/sound/ground_volume_ratio")
+local weather_volume_ratio = globalPropertyf("sim/operation/sound/weather_volume_ratio")
 
 -- Boolean to int helper
 local function bool2int(v) return v and 1 or 0 end
@@ -89,8 +93,8 @@ local absu_last       = get(roll_main_mode) + get(pitch_main_mode)
 local stu_last        = get(stu_mode)
 local invert_counter  = 0
 
-playSample(inverters, 1);     setSampleGain(inverters, 0)
-playSample(air_cond_noise, 1); setSampleGain(air_cond_noise, 0)
+-- playSample(inverters, 1);     setSampleGain(inverters, 0)
+-- playSample(air_cond_noise, 1); setSampleGain(air_cond_noise, 0)
 
 local switcher_sound  = loadSample('Custom Sounds/metal_switch.wav')
 local button_sound    = loadSample('Custom Sounds/plastic_btn.wav')
@@ -108,10 +112,11 @@ function update()
     local power         = get(bus27_volt_L) > 13 or get(bus27_volt_R) > 13
     local warn_vl       = get(warning_volume_ratio)
     local switchers     = get(srd_buzzer) + get(fuel_buzzer)
+	
 
     -- Switcher clicks
-    if switchers ~= switchers_last then playSample(switcher_sound,0) end
-    switchers_last = switchers
+    -- if switchers ~= switchers_last then playSample(switcher_sound,0) end
+    -- switchers_last = switchers
 
     -- Caps clicks
     local caps = get(srd_buzzer_cap) + get(fuel_buzzer_cap)
@@ -164,8 +169,8 @@ function update()
             if not isSamplePlaying(long_speaker) and short_speaker_timer>0.3 then playSample(long_speaker,1) end
             if short_speaker_timer>0.6 then short_speaker_timer=0; stopSample(long_speaker) end
             stopSample(absu_sound)
-        elseif ((absu_now~=absu_last and absu_now<4) or (stu_last>=3 and stu_now<=2)) then
-            playSample(absu_sound,0); stopSample(long_speaker)
+        -- elseif ((absu_now~=absu_last and absu_now<4) or (stu_last>=3 and stu_now<=2)) then
+            -- playSample(absu_sound,0); stopSample(long_speaker)
         else
             stopSample(long_speaker)
         end
@@ -198,35 +203,39 @@ function update()
     setSamplePitch(inverters, invert_counter*800 + 200)
     if passed==0 or external==1 then setSampleGain(inverters, 0) end
 
-    -- Air conditioning noise
-    local air_usage = get(air_usage_L) + get(air_usage_R)
-    setSampleGain(air_cond_noise, fan_vl * math.min(600,air_usage) * (1-external) * run)
-    setSamplePitch(air_cond_noise, 1000)
+	-- Air conditioning noise
+	local air_usage = get(air_usage_L) + get(air_usage_R)
+	setSampleGain(air_cond_noise, fan_vl * math.min(600,air_usage) * (1-external) * run)
+	setSamplePitch(air_cond_noise, 1000)
 
-    -- Taxi (wheel) noise
-    local taxi_gain  = bool2int(math.max(get(deflection_mtr_2),get(deflection_mtr_3))>0.001)
-                       * math.max(get(groundspeed)-50,0) * (1-external)
-    local taxi_pitch = 1000 + (get(groundspeed)-80)*3
-    if taxi_gain>0 then
-        if not isSamplePlaying(taxi_noise) then playSample(taxi_noise,1) end
-    else
-        stopSample(taxi_noise)
-    end
-    setSampleGain(taxi_noise, taxi_gain*10 * get(ground_volume_ratio))
-    setSamplePitch(taxi_noise, taxi_pitch)
-
-    -- Window/lighting noise
-    local light_L = get(light_open_left)
-    local light_R = get(light_open_right)
-    local IAS     = get(airspeed)
-    if light_L+light_R>0.1 then
-        if not isSamplePlaying(lights_noise) then playSample(lights_noise,1) end
-        local gain = math.max(IAS-150,0) * (light_L+light_R) * (1-external) * get(weather_volume_ratio)
-        setSampleGain(lights_noise, gain)
-        setSamplePitch(lights_noise, 250 + IAS)
-    else
-        stopSample(lights_noise)
-    end
+    
+	-- Taxi (wheel) noise
+	local gs = tonumber(get(groundspeed)) or 0
+	local tireDefl2 = tonumber(get(tireDeflection, 1)) or 0
+	local tireDefl3 = tonumber(get(tireDeflection, 2)) or 0
+	local taxi_gain  = bool2int(math.max(tireDefl2, tireDefl3) > 0.001)
+	                    * math.max(gs - 50, 0) * (1 - external)
+	local taxi_pitch = 1000 + (gs - 80) * 3
+	if taxi_gain > 0 then
+	    if not isSamplePlaying(taxi_noise) then playSample(taxi_noise, 1) end
+	else
+	    stopSample(taxi_noise)
+	end
+	setSampleGain(taxi_noise, taxi_gain * 10 * (tonumber(get(ground_volume_ratio)) or 1))
+	setSamplePitch(taxi_noise, taxi_pitch)
+	
+	-- Window/lighting noise (robust gegen nil)
+	local light_L = tonumber(get(light_open_left)) or 0
+	local light_R = tonumber(get(light_open_right)) or 0
+	local IAS     = tonumber(get(airspeed)) or 0
+	if light_L + light_R > 0.1 then
+	    if not isSamplePlaying(lights_noise) then playSample(lights_noise, 1) end
+	    local gain = math.max(IAS - 150, 0) * (light_L + light_R) * (1 - external) * (tonumber(get(weather_volume_ratio)) or 1)
+	    setSampleGain(lights_noise, gain)
+	    setSamplePitch(lights_noise, 250 + IAS)
+	else
+	    stopSample(lights_noise)
+	end
 
     -- Failure injection
     if get(ismaster)~=1 then
