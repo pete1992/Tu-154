@@ -104,9 +104,9 @@ defineProps({
     {"bus115_1_volt", "tu154ce/elec/bus115_1_volt", globalPropertyf},
     {"bus115_3_volt", "tu154ce/elec/bus115_3_volt", globalPropertyf},
     {"wiper_angle_left", "tu154ce/anim/wiper_angle_left", globalPropertyf},
-    {"wiper_angle_right", "tu154ce/anim/wiper_angle_right", globalPropertyf}
-	{"cockpit_table_1", "tu154ce/anim/cockpit_table_1" globalPropertyf}
-	{"cockpit_table_2", "tu154ce/anim/cockpit_table_2" globalPropertyf}
+    {"wiper_angle_right", "tu154ce/anim/wiper_angle_right", globalPropertyf},
+	{"cockpit_table_1", "tu154ce/anim/cockpit_table_1" globalPropertyf},
+	{"cockpit_table_2", "tu154ce/anim/cockpit_table_2" globalPropertyf},
 })
 
 -- Sound resources
@@ -121,8 +121,8 @@ local wing_flx_act_L = 0
 local wing_flx_act_R = 0
 local wiper_pos_L = 0
 local wiper_pos_R = 0
-local window_L_last = get(cockpit_window_left)
-local window_R_last = get(cockpit_window_right)
+local window_L_last = tonumber(get(cockpit_window_left)) or 0
+local window_R_last = tonumber(get(cockpit_window_right)) or 0
 
 -- Helper function for boolean to int
 local function bool2int(v)
