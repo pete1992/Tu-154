@@ -1,6 +1,5 @@
 -- ext_anim.lua
 
-
 -- DataRef bulk mapping
 local function defineProps(defs)
     for _, d in ipairs(defs) do
@@ -106,6 +105,8 @@ defineProps({
     {"bus115_3_volt", "tu154ce/elec/bus115_3_volt", globalPropertyf},
     {"wiper_angle_left", "tu154ce/anim/wiper_angle_left", globalPropertyf},
     {"wiper_angle_right", "tu154ce/anim/wiper_angle_right", globalPropertyf}
+	{"cockpit_table_1", "tu154ce/anim/cockpit_table_1" globalPropertyf}
+	{"cockpit_table_2", "tu154ce/anim/cockpit_table_2" globalPropertyf}
 })
 
 -- Sound resources
@@ -363,16 +364,22 @@ function update()
 	set(wiper_angle_right, (math.cos(math.pi * wiper_pos_R * 2 - math.pi) + 1) * 0.5 * 62)
 	
 	-- Cockpit tables
-	local table_pos_L = get(cockpit_table_1)
-	local table_pos_R = get(cockpit_table_2)
-	local table_sw_L = get(table_up_L)
-	local table_sw_R = get(table_up_R)
+	local table_pos_L = tonumber(get(cockpit_table_1)) or 0
+	local table_pos_R = tonumber(get(cockpit_table_2)) or 0
+	local table_sw_L = get(table_up_L) or 0
+	local table_sw_R = get(table_up_R) or 0
+	
 	if table_pos_L < 1 and table_sw_L == 1 then table_pos_L = table_pos_L + passed * 0.5
-	elseif table_pos_L > 0 and table_sw_L == 0 then table_pos_L = table_pos_L - passed * 0.5 end
+	elseif table_pos_L > 0 and table_sw_L == 0 
+	then table_pos_L = table_pos_L - passed * 0.5 end
+	
 	if table_pos_R < 1 and table_sw_R == 1 then table_pos_R = table_pos_R + passed * 0.5
-	elseif table_pos_R > 0 and table_sw_R == 0 then table_pos_R = table_pos_R - passed * 0.5 end
+	elseif table_pos_R > 0 and table_sw_R == 0 
+	then table_pos_R = table_pos_R - passed * 0.5 end
+	
 	set(cockpit_table_1, table_pos_L)
 	set(cockpit_table_2, table_pos_R)
 	
 	-- Reverse handle mid animation
 	set(reverse_mid, (get(revers_L) + get(revers_R)) / 2)
+end
