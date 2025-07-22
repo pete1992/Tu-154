@@ -1,0 +1,358 @@
+
+--- Returns global sim property (dataref), retrieving type automatically.
+--- @param name string
+--- @return GlobalProperty
+--- @see reference
+--- : https://1-sim.com/files/SASL3Manual.pdf#globalProperty
+function globalProperty(name)
+    local ref, t = sasl.findDataRef(name, TYPE_UNKNOWN, true)
+    local index
+    if not ref then
+        local sname, sindex = string.match(name, '(.+)%[(%d+)%]$')
+        if sname and sindex then
+            ref, t = sasl.findDataRef(sname, TYPE_UNKNOWN, true)
+            index = tonumber(sindex)
+        end
+        if not ref then
+            sasl.findDataRef(name, TYPE_UNKNOWN)
+            return nil
+        end
+    end
+
+    local get, set
+    local size = function() return sasl.getDataRefSize(ref) end
+    if t == TYPE_INT_ARRAY or t == TYPE_FLOAT_ARRAY or t == TYPE_STRING then
+        if index then
+            get = function(_) return sasl.getDataRef(ref, index + 1, nil) end
+            set = function(_, value) sasl.setDataRef(ref, value, index + 1, nil) end
+            size = function() return 1 end
+        else
+            get = function(_, offset, numValues) return sasl.getDataRef(ref, offset, numValues) end
+            set = function(_, value, offset, numValues) sasl.setDataRef(ref, value, offset, numValues) end
+        end
+    else
+        get = function(_) return sasl.getDataRef(ref) end
+        set = function(_, value) sasl.setDataRef(ref, value) end
+    end
+
+    return {
+        __p = 1;
+        name = name;
+        get = get;
+        set = set;
+        size = size;
+        free = function() sasl.freeDataRef(ref) end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+
+
+
+
+--- Returns global sim property (dataref) of type int array.
+--- @param name string
+--- @return GlobalProperty
+--- @see reference
+--- : https://1-sim.com/files/SASL3Manual.pdf#globalProperty
+function globalPropertyia(name)
+    local ref, t = sasl.findDataRef(name, TYPE_INT_ARRAY)
+    if not ref then
+        return nil
+    end
+    local get, set
+
+    if t == TYPE_INT_ARRAY then
+        get = function(_, offset, numValues)
+            return sasl.getDataRef(ref, offset, numValues)
+        end
+        set = function(_, value, offset, numValues)
+            sasl.setDataRef(ref, value, offset, numValues)
+        end
+    elseif t == TYPE_FLOAT_ARRAY then
+        get = function(_, offset, numValues)
+            return floorArray(sasl.getDataRef(ref, offset, numValues))
+        end
+        set = function(_, value, offset, numValues)
+            sasl.setDataRef(ref, floorArray(value), offset, numValues)
+        end
+        logDebug('"'..name..'": '.."Casting float array to int array")
+    else
+        logWarning('"'..name..'": '.."Can't cast "..propTypeToString(t).." to int array")
+        return nil
+    end
+
+    return {
+        __p = 1;
+        name = name;
+        get = get;
+        set = set;
+        size = function() return sasl.getDataRefSize(ref) end;
+        free = function() sasl.freeDataRef(ref) end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+--- Returns global sim property (dataref) bound to int array element.
+--- @param name string
+--- @param index number
+--- @return GlobalProperty
+--- @see reference
+--- : https://1-sim.com/files/SASL3Manual.pdf#globalProperty
+function globalPropertyiae(name, index)
+    local ref, t = sasl.findDataRef(name, TYPE_INT_ARRAY)
+    if not ref then
+        return nil
+    end
+    local get, set
+    if t == TYPE_INT_ARRAY then
+        get = function(_) return sasl.getDataRef(ref, index, nil) end
+        set = function(_, value) sasl.setDataRef(ref, value, index, nil) end
+    elseif t == TYPE_FLOAT_ARRAY then
+        get = function(_) return math.floor(sasl.getDataRef(ref, index, nil)) end
+        set = function(_, value) sasl.setDataRef(ref, math.floor(value), index, nil) end
+        logDebug('"'..name..'": '.."Casting float array element to int array element")
+    else
+        logWarning('"'..name..'": '.."Can't cast "..propTypeToString(t).." to int array element")
+        return nil
+    end
+
+    return {
+        __p = 1;
+        name = name;
+        get = get;
+        set = set;
+        size = function() return 1 end;
+        free = function() sasl.freeDataRef(ref) end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+--- Creates new sim property (dataref) of type int array.
+--- @param name string
+--- @param default table | number
+--- @param isNotPublished boolean
+--- @param isShared boolean
+--- @param isReadOnly boolean
+--- @overload fun(name:string):GlobalProperty
+--- @overload fun(name:string, default:table | number):GlobalProperty
+--- @overload fun(name:string, default:table | number, isNotPublished:boolean):GlobalProperty
+--- @overload fun(name:string, default:table | number, isNotPublished:boolean, isShared:boolean):GlobalProperty
+--- @return GlobalProperty
+--- @see reference
+--- : https://1-sim.com/files/SASL3Manual.pdf#createGlobalProperty
+function createGlobalPropertyia(name, default, isNotPublished, isShared, isReadOnly)
+    local ref = sasl.createDataRef(name, TYPE_INT_ARRAY, isNotPublished or false, isShared or false, isReadOnly or false)
+    if default ~= nil then
+        if type(default) == 'number' and default > 0 then
+            local initializer = {}
+            for i = 1, default do
+                initializer[i] = 0
+            end
+            sasl.setDataRef(ref, initializer, nil, nil)
+        else
+            sasl.setDataRef(ref, default, nil, nil)
+        end
+    end
+
+    return {
+        __p = 1;
+        name = name;
+        get = function(_, offset, numValues)
+            return sasl.getDataRef(ref, offset, numValues)
+        end;
+        set = function(_, value, offset, numValues)
+            sasl.setDataRef(ref, value, offset, numValues)
+        end;
+        size = function() return sasl.getDataRefSize(ref) end;
+        free = function() sasl.freeDataRef(ref) end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+--- Creates new functional sim property (dataref) of type int array.
+--- @param name string
+--- @param getter fun(offset:number, numValues:number):table
+--- @param setter fun(v:table, offset:number)
+--- @param isNotPublished boolean
+--- @param sizeGetter fun():number
+--- @overload fun(name:string, getter:function, setter:function)
+--- @overload fun(name:string, getter:function, setter:function, isNotPublished:boolean)
+--- @return GlobalProperty
+--- @see reference
+--- : https://1-sim.com/files/SASL3Manual.pdf#createFunctionalProperty
+function createFunctionalPropertyia(name, getter, setter, isNotPublished, sizeGetter)
+    local ref = sasl.createFunctionalDataRef(name, TYPE_INT_ARRAY, getter, setter, isNotPublished or false, sizeGetter or 0)
+    return {
+        __p = 1;
+        name = name;
+        get = function(_, offset, numValues)
+            return sasl.getDataRef(ref, offset, numValues)
+        end;
+        set = function(_, value, offset, numValues)
+            sasl.setDataRef(ref, value, offset, numValues)
+        end;
+        size = function() return sasl.getDataRefSize(ref) end;
+        free = function() sasl.freeDataRef(ref) end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+
+
+
+
+
+
+--Returns global sim property (dataref) of type float array.
+--- @param name string
+--- @return GlobalProperty
+--- @see reference
+function globalPropertyfa(name)
+    local ref, t = sasl.findDataRef(name, TYPE_FLOAT_ARRAY)
+    if not ref then
+        return nil
+    end
+    local get, set
+
+    if t == TYPE_FLOAT_ARRAY or t == TYPE_INT_ARRAY then
+        get = function(_, offset, numValues)
+            return sasl.getDataRef(ref, offset, numValues)
+        end
+        set = function(_, value, offset, numValues)
+            sasl.setDataRef(ref, value, offset, numValues)
+        end
+    else
+        logWarning('"'..name..'": '.."Can't cast "..propTypeToString(t).." to float array")
+        return nil
+    end
+
+    return {
+        __p = 1;
+        name = name;
+        get = get;
+        set = set;
+        size = function() return sasl.getDataRefSize(ref) end;
+        free = function() sasl.freeDataRef(ref) end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+--- Returns global sim property (dataref) bound to float array element.
+--- @param name string
+--- @param index number
+--- @return GlobalProperty
+--- @see reference
+function globalPropertyfae(name, index)
+    local ref, t = sasl.findDataRef(name, TYPE_FLOAT_ARRAY)
+    if not ref then
+        return nil
+    end
+    local get, set
+
+    if t == TYPE_FLOAT_ARRAY or t == TYPE_INT_ARRAY then
+        get = function(_) return sasl.getDataRef(ref, index, nil) end
+        set = function(_, value) sasl.setDataRef(ref, value, index, nil) end
+    else
+        logWarning('"'..name..'": '.."Can't cast "..propTypeToString(t).." to float array element")
+    end
+
+    return {
+        __p = 1;
+        name = name;
+        get = get;
+        set = set;
+        size = function() return 1 end;
+        free = function() sasl.freeDataRef(ref) end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+--- Creates new sim property (dataref) of type float array.
+--- @param name string
+--- @param default table | number
+--- @param isNotPublished boolean
+--- @param isShared boolean
+--- @param isReadOnly boolean
+--- @overload fun(name:string):GlobalProperty
+--- @overload fun(name:string, default:table | number):GlobalProperty
+--- @overload fun(name:string, default:table | number, isNotPublished:boolean):GlobalProperty
+--- @overload fun(name:string, default:table | number, isNotPublished:boolean, isShared:boolean):GlobalProperty
+--- @return GlobalProperty
+function createGlobalPropertyfa(name, default, isNotPublished, isShared, isReadOnly)
+    local ref = sasl.createDataRef(name, TYPE_FLOAT_ARRAY, isNotPublished or false, isShared or false, isReadOnly or false)
+    if default ~= nil then
+        if type(default) == 'number' and default > 0 then
+            local initializer = {}
+            for i = 1, default do
+                initializer[i] = 0
+            end
+            sasl.setDataRef(ref, initializer, nil, nil)
+        else
+            sasl.setDataRef(ref, default, nil, nil)
+        end
+    end
+
+    return {
+        __p = 1;
+        name = name;
+        get = function(_, offset, numValues)
+            return sasl.getDataRef(ref, offset, numValues)
+        end;
+        set = function(_, value, offset, numValues)
+            sasl.setDataRef(ref, value, offset, numValues)
+        end;
+        size = function() return sasl.getDataRefSize(ref) end;
+        free = function() sasl.freeDataRef(ref) end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+--- Creates new functional sim property (dataref) of type float array.
+--- @param name string
+--- @param getter fun(offset:number, numValues:number):table
+--- @param setter fun(v:table, offset:number)
+--- @param isNotPublished boolean
+--- @param sizeGetter fun():number
+--- @overload fun(name:string, getter:function, setter:function)
+--- @overload fun(name:string, getter:function, setter:function, isNotPublished:boolean)
+--- @return GlobalProperty
+function createFunctionalPropertyfa(name, getter, setter, isNotPublished, sizeGetter)
+    local ref = sasl.createFunctionalDataRef(name, TYPE_FLOAT_ARRAY, getter, setter, isNotPublished or false, sizeGetter or 0)
+    return {
+        __p = 1;
+        name = name;
+        get = function(_, offset, numValues)
+            return sasl.getDataRef(ref, offset, numValues)
+        end;
+        set = function(_, value, offset, numValues)
+            sasl.setDataRef(ref, value, offset, numValues)
+        end;
+        size = function() return sasl.getDataRefSize(ref); end;
+        free = function() sasl.freeDataRef(ref); end;
+        raw = function() return sasl.getRawDataRef(ref) end;
+    }
+end
+
+
+
+
+
