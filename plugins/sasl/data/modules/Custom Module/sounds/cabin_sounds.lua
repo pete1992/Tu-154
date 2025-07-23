@@ -105,6 +105,8 @@ local caps_last       = 0
 local buttons_last    = 0
 local fail_counter    = 0
 local check_time      = math.random(15, 30)
+local short_speaker_timer = 0
+local short_sirena_timer = 0
 
 function update()
     local passed        = get(frame_time)
@@ -237,10 +239,6 @@ if light_L + light_R > 0.1 then
 else
     stopSample(lights_noise)
 end
-
-
-
-
 
 
     -- Failure injection
