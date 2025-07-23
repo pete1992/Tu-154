@@ -78,8 +78,7 @@ defineProperty("rel_pitot", globalPropertyi("sim/operation/failures/rel_pitot"))
 defineProperty("rel_pitot2", globalPropertyi("sim/operation/failures/rel_pitot2")) -- Pitot 2 - Blockage
 defineProperty("alpha_fail", globalPropertyi("sim/operation/failures/rel_AOA")) -- angle of attack fail
 
---defineProperty("parkbrake", globalPropertyf("sim/flightmodel/controls/parkbrake")) -- Parking Brake
---defineProperty("parkbrake", globalPropertyf("tu154ce/SC/controls/parkbrake"))
+
 
 defineProperty("deflection_mtr_1", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]")) --
 defineProperty("deflection_mtr_2", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]")) --
@@ -181,7 +180,7 @@ local load_counter = 0
 
 function update()
 	local passed = get(frame_time)
-	--local groundspeed = get(GS)
+
 
 	load_counter = load_counter + passed
 
@@ -932,24 +931,8 @@ components = {
 		end,
 	},
 
-	--[[
 	
-	text_draw {
-		position = {32, 50, 55, 60},
-		text = "WARNING, HOLD FOR 5 SEC",
-		font = text_font,
-		color = {0,0,0,1},
-		visible = true,
-	},
-	text_draw {
-		position = {32, 30, 55, 60},
-		text = "TO RESET ALL JOYSTICKS",
-		font = text_font,
-		color = {0,0,0,1},
-		visible = true,
-	},
 
---]]
 
 	clickable {
 		position = { 23, 70, 200, 35 },

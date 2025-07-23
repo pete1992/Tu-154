@@ -1,4 +1,4 @@
--- apu_panel.lua (optimized)
+-- apu_panel.lua 
 -- Manages APU panel controls, gauges, and indicator lamps
 
 -- Batch define properties helper
@@ -119,7 +119,7 @@ local function update_lamps(dt)
     local lop = clamp((get(apu_oil_p) < 1 and 1 or 0) * brt, 0, 1)
     set(low_oil_press, smooth_light(lop, get(low_oil_press)))
     -- overtemp & overspeed
-    local ht = clamp(((seq and temp > 700 or not seq and temp > 570) and 1 or 0) * brt, 0, 1)
+	local ht = clamp((((seq and temp > 700) or (not seq and temp > 570)) and 1 or 0) * brt, 0, 1)
     set(high_temp, smooth_light(ht, get(high_temp)))
     local hr = clamp((rpm > 105 and 1 or 0) * brt, 0, 1)
     set(high_rpm, smooth_light(hr, get(high_rpm)))
