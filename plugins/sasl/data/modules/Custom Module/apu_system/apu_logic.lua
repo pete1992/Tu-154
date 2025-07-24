@@ -66,6 +66,12 @@ local function interpolate(tbl, x)
     return tbl[#tbl][2]
 end
 
+local function clamp(val, min, max)
+    if val < min then return min end
+    if val > max then return max end
+    return val
+end
+
 local OIL_TEMP_FAIL_LIMIT = 115
 local EGT_FAIL_LIMIT = 150
 local N1_STOP_RPM = 45
@@ -318,6 +324,13 @@ function update()
             apu_emerg_off = 0
         end
 
+		local oil_press_sim = 0
+		if apu_starter == 1 or RPM > 0 then
+			oil_press_sim = clamp(((math.max(RPM, 8) / 100) * 4), 0, 4) * oil_q
+		else
+			oil_press_sim = 0
+		end
+
         -- Failure timer and runtime decrement
         if get(failures_enabled) > 0 then
             minusTimer = minusTimer + passed * RPM * 0.01
@@ -340,7 +353,7 @@ function update()
         set(apu_doors, apu_doors_pos)
         set(apu_oil_t, oil_temp)
         set(apu_oil_q, oil_q)
-        set(apu_oil_p, oil_q * 3)
+		set(apu_oil_p, oil_press_sim)
         set(apu_egt, egt_current)
         set(apu_fuel_p, fuel_press)
         set(apu_start_cc, start_current)
